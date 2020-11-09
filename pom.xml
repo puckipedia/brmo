@@ -74,15 +74,15 @@
         <mssql.instancename />
         <skip-windows />
         <javasimon.version>4.2.0</javasimon.version>
-        <jakarta.mail.version>1.6.6</jakarta.mail.version>
+        <jakarta.mail.version>2.0.1</jakarta.mail.version>
         <apache.poi.version>5.0.0</apache.poi.version>
         <quartz.version>2.3.2</quartz.version>
         <slf4j.version>1.7.32</slf4j.version>
-        <jaxb.api.version>2.3.3</jaxb.api.version>
-        <jaxb.impl.version>2.3.3</jaxb.impl.version>
+        <jaxb.api.version>3.0.2</jaxb.api.version>
+        <jaxb.impl.version>3.0.2</jaxb.impl.version>
         <jackson.version>2.13.0</jackson.version>
         <javax-annotation.version>1.3.2</javax-annotation.version>
-        <activation.api.version>1.2.2</activation.api.version>
+        <activation.api.version>2.0.1</activation.api.version>
         <tomcat.version>9.0.54</tomcat.version>
         <tomcat.http.port>9091</tomcat.http.port>
         <tomcat.localDatasource>false</tomcat.localDatasource>
@@ -344,7 +344,7 @@
             <dependency>
                 <groupId>nl.b3p</groupId>
                 <artifactId>kadaster-gds2</artifactId>
-                <version>2.5</version>
+                <version>3.0-SNAPSHOT</version>
             </dependency>
             <!-- J2EE dependencies en stripes -->
             <dependency>
@@ -473,7 +473,7 @@
             <dependency>
                 <groupId>com.sun.xml.ws</groupId>
                 <artifactId>jaxws-rt</artifactId>
-                <version>2.3.3</version>
+                <version>3.0.2</version>
             </dependency>
             <dependency>
                 <groupId>org.json</groupId>
@@ -986,7 +986,7 @@
                 <plugin>
                     <groupId>com.sun.xml.ws</groupId>
                     <artifactId>jaxws-maven-plugin</artifactId>
-                    <version>2.3.3</version>
+                    <version>3.0.2</version>
                 </plugin>
                 <plugin>
                     <groupId>org.owasp</groupId>
