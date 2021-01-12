@@ -692,6 +692,8 @@ public class RsgbProxy implements Runnable, BerichtenHandler {
 //                t = new BGTLightRsgbTransformer(this.stagingProxy);
             } else if (brType.equals(BrmoFramework.BR_GBAV)) {
                 t = new RsgbTransformer(BrmoFramework.XSL_GBAV);
+            } else if(brType.equals(BrmoFramework.BR_WOZ)){
+                t = new RsgbBRPTransformer(BrmoFramework.XSL_WOZ, this.stagingProxy);
             } else {
                 throw new IllegalArgumentException("Onbekende basisregistratie: " + brType);
             }
