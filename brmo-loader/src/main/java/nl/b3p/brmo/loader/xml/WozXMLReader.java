@@ -35,7 +35,13 @@ public class WozXMLReader extends BrmoXMLReader {
     public WozXMLReader(InputStream in, Date d, StagingProxy staging) throws Exception {
         this.in = in;
         this.staging = staging;
-        setBestandsDatum(d);
+
+        if (d!=null) {
+            setBestandsDatum(d);
+        } else {
+            //TODO  WOZ:stuurgegevens/StUF:tijdstipBericht 20200712072147894
+             setDatumAsString("20200712072147894","yyyyMMddHHmmssSSS");
+        }
         init();
     }
 
@@ -75,7 +81,6 @@ public class WozXMLReader extends BrmoXMLReader {
         StringWriter sw = new StringWriter();
         Bericht old = staging.getPreviousBericht(object_ref, getBestandsDatum(), -1L, new StringBuilder());
         // kijk hier of dit bericht een voorganger heeft: zo niet, dan moet niet de preprocessor template gebruikt worden, maar de gewone.
-
         Transformer t;
 
         if (old != null) {
@@ -110,21 +115,17 @@ public class WozXMLReader extends BrmoXMLReader {
         // WOZ:object StUF:entiteittype="NNP"/WOZ:isEen/WOZ:gerelateerde/BG:inn.nnpId
         // WOZ.NNP.nummer
 
-        // TODO implement
-
-//        NodeList childs = n.getChildNodes();
-//        String hash = null;
-//        for (int i = 0; i < childs.getLength(); i++) {
-//            Node child = childs.item(i);
-//            String name = child.getNodeName();
-//            if (name.contains("inp.bsn")) {
-//                hash = child.getTextContent();
-//                hash = getHash(hash);
-//                break;
-//            }
-//        }
-//        return PREFIX + hash;
-        return "TODO";
+        NodeList childs = n.getChildNodes();
+        String objRef = null;
+        for (int i = 0; i < childs.getLength(); i++) {
+            Node child = childs.item(i);
+            String name = child.getNodeName();
+            if (name.contains("wozObjectNummer")) {
+                objRef = child.getTextContent();
+                break;
+            }
+        }
+        return objRef;
     }
 
     /**

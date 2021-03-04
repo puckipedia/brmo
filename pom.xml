@@ -20,6 +20,7 @@
         <module>brmo-soap-util</module>
         <module>brmo-soap</module>
         <module>brmo-stufbg204</module>
+        <!-- module>brmo-stufwoz312</module -->
         <module>brmo-dist</module>
         <module>docker</module>
     </modules>

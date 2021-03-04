@@ -168,7 +168,7 @@
         <xsl:param name="snapshot-date"/>
         <xsl:variable name="class">NATUURLIJK PERSOON</xsl:variable>
         <xsl:variable name="searchcol">
-            <xsl:call-template name="getHash"><xsl:with-param name="bsn" select="ns2:PRS/ns2:bsn-nummer"/></xsl:call-template>
+            <xsl:call-template name="getHash"><xsl:with-param name="bsn" select="woz:soFiNummer"/></xsl:call-template>
         </xsl:variable>
         <xsl:if test="searchcol != ''">
             <xsl:variable name="datum">
@@ -178,7 +178,7 @@
             </xsl:variable>
 
             <comfort search-table="subject" search-column="identif" search-value="{$searchcol}" snapshot-date="{$datum}">
-                <xsl:for-each select="ns2:PRS">
+                <xsl:for-each select="*[s:entiteittype='NPS']">
                     <xsl:call-template name="persoon" >
                         <xsl:with-param name="key" select="$searchcol"/>
                         <xsl:with-param name="class" select="$class"/>
@@ -186,6 +186,73 @@
                 </xsl:for-each>
             </comfort>
         </xsl:if>
+    </xsl:template>
+
+
+
+    <xsl:template name="persoon">
+        <xsl:param name="key"/>
+        <xsl:param name="class"/>
+
+        <subject>
+            <identif><xsl:value-of select="$key"/></identif>
+            <clazz><xsl:value-of select="$class"/></clazz>
+            <typering><xsl:value-of select="substring($class,1,35)"/></typering>
+            <xsl:call-template name="subject"/>
+        </subject>
+        <prs>
+            <sc_identif>
+                <xsl:value-of select="$key"/>
+            </sc_identif>
+            <clazz>
+                <xsl:value-of select="$class"/>
+            </clazz>
+        </prs>
+        <nat_prs>
+            <sc_identif>
+                <xsl:value-of select="$key"/>
+            </sc_identif>
+            <clazz>
+                <xsl:value-of select="$class"/>
+            </clazz>
+
+            <aand_naamgebruik><xsl:value-of select="bg:aanduidingNaamgebruik"/></aand_naamgebruik>
+            <geslachtsaand><xsl:value-of select="bg:geslachtsaanduiding"/></geslachtsaand>
+            <nm_adellijke_titel_predikaat><xsl:value-of select="bg:adellijkeTitelPredikaat"/></nm_adellijke_titel_predikaat>
+            <nm_geslachtsnaam><xsl:value-of select="bg:geslachtsnaam"/></nm_geslachtsnaam>
+            <nm_voornamen><xsl:value-of select="bg:voornamen"/></nm_voornamen>
+            <nm_voorvoegsel_geslachtsnaam><xsl:value-of select="bg:voorvoegselGeslachtsnaam"/></nm_voorvoegsel_geslachtsnaam>
+            <na_voorletters_aanschrijving><xsl:value-of select="bg:voorletters"/></na_voorletters_aanschrijving>
+        </nat_prs>
+        <ingeschr_nat_prs>
+            <sc_identif>
+                <xsl:value-of select="$key"/>
+            </sc_identif>
+
+            <clazz>
+                <xsl:value-of select="$class"/>
+            </clazz>
+            <bsn><xsl:value-of select="bg:inp.bsn"/></bsn>
+<!--            <a_nummer />-->
+            <gb_geboortedatum><xsl:value-of select="bg:geboortedatum"/></gb_geboortedatum>
+            <indic_geheim><xsl:value-of select="bg:inp.indicatieGeheim"/></indic_geheim>
+<!--            <gb_geboorteplaats><xsl:value-of select="bg:geboorteplaats"/></gb_geboorteplaats>-->
+            <!--fk_gb_lnd_code_iso><xsl:value-of select="ns2:codeGeboorteland"/></fk_gb_lnd_code_iso-->
+            <ol_overlijdensdatum><xsl:value-of select="bg:datumOverlijden"/></ol_overlijdensdatum>
+            <ol_overlijdensplaats><xsl:value-of select="bg:plaatsOverlijden"/></ol_overlijdensplaats>
+            <!--fk_ol_lnd_code_iso><xsl:value-of select="ns2:codeLandOverlijden"/></fk_ol_lnd_code_iso-->
+        </ingeschr_nat_prs>
+    </xsl:template>
+
+    <xsl:template name="subject">
+        <naam>
+            <xsl:value-of select="bg:voorletters"/>
+            <xsl:if test="bg:voorvoegselGeslachtsnaam != ''"><xsl:value-of select="' '"/></xsl:if><xsl:value-of select="bg:voorvoegselGeslachtsnaam"/>
+            <xsl:value-of select="' '"/>
+            <xsl:value-of select="bg:geslachtsnaam"/>
+        </naam>
+<!--        <xsl:apply-templates select="ns2:PRSADRVBL"/>-->
+<!--        TODO adres / verblijf adres-->
     </xsl:template>
 
     <!-- jjjj-mm-dd -> jjjjmmdd -->

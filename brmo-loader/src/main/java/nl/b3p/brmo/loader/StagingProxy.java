@@ -25,14 +25,7 @@ import nl.b3p.brmo.loader.util.BrmoLeegBestandException;
 import nl.b3p.brmo.loader.util.RsgbTransformer;
 import nl.b3p.brmo.loader.util.StagingRowHandler;
 import nl.b3p.brmo.loader.util.TableData;
-import nl.b3p.brmo.loader.xml.BGTLightFileReader;
-import nl.b3p.brmo.loader.xml.BRPXMLReader;
-import nl.b3p.brmo.loader.xml.BagXMLReader;
-import nl.b3p.brmo.loader.xml.BrkSnapshotXMLReader;
-import nl.b3p.brmo.loader.xml.BrmoXMLReader;
-import nl.b3p.brmo.loader.xml.GbavXMLReader;
-import nl.b3p.brmo.loader.xml.NhrXMLReader;
-import nl.b3p.brmo.loader.xml.TopNLFileReader;
+import nl.b3p.brmo.loader.xml.*;
 import nl.b3p.loader.jdbc.GeometryJdbcConverter;
 import nl.b3p.loader.jdbc.GeometryJdbcConverterFactory;
 import nl.b3p.loader.jdbc.LongColumnListHandler;
@@ -764,6 +757,8 @@ public class StagingProxy {
             brmoXMLReader = new BRPXMLReader(cis, d, this);
         } else if (type.equals(BrmoFramework.BR_GBAV)) {
             brmoXMLReader = new GbavXMLReader(cis);
+        } else if(type.equals(BrmoFramework.BR_WOZ)){
+            brmoXMLReader = new WozXMLReader(cis, d, this);
         } else {
             throw new UnsupportedOperationException("Ongeldige basisregistratie: " + type);
         }
