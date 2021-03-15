@@ -1,0 +1,1942 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:StUF="http://www.egem.nl/StUF/StUF0301"
+        xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310"
+        xmlns:gml="http://www.opengis.net/gml"
+        targetNamespace="http://www.egem.nl/StUF/sector/bg/0310"
+        elementFormDefault="qualified"
+        attributeFormDefault="unqualified"
+        version="031206">
+   <import namespace="http://www.egem.nl/StUF/StUF0301"
+           schemaLocation="woz0312_msg_stuf_lv_mutatie_resolved.xsd"/>
+   <import namespace="http://www.opengis.net/gml"
+           schemaLocation="gml_resolved.xsd"/>
+   <annotation>
+		    <documentation>
+			Dit schema bevat de restricties van BG-types tbv het LV WOZ deel van het sectormodel WOZ.
+			
+			Wijzigingen vergeleken met versie 031205:
+			- De complexTypes LIG-lv-synchroniseer, NUM-lv-synchroniseer, STA-lv-synchroniseer en VBO-lv-synchroniseer toegevoegd
+ 		</documentation>
+	  </annotation>
+   <annotation>
+		    <documentation>
+			Dit schema bevat de restricties van BG-types tbv het LV WOZ berichtencatalogus.
+			
+			Wijzigingen vergeleken met version 031202:
+			- Overal waar binnen een attribute de combinatie fixed="waarde" en prohibited voorkomt fixed verwijderd
+ 		</documentation>
+	  </annotation>
+   <annotation>
+		    <documentation>
+			Dit schema bevat de restricties van BG-types tbv het sectormodel WOZ.
+			
+			Wijzigingen vergeleken met version 031207:
+			- ComplexTypes AanduidingWOZobjectGrp-woz-kerngegevensVerplicht, CorrespondentieAdrGrp-woz-kerngegevensVerplicht, VerblijfBuitenlandGrp-woz-kerngegevensVerplicht, VerblijfsadresGrp-woz-kerngegevensVerplicht, NNP-woz-kerngegevensVerplicht, NPS-woz-kerngegevensVerplicht en VES-woz-kerngegevensVerplicht toegevoegd
+ 		</documentation>
+	  </annotation>
+   <annotation>
+		    <documentation xml:lang="nl">
+			   Nieuw bestand in verband met nieuwe werkwijze maken sectormodellen
+			   - ERR0178: binnen KadastraleAanduidingGrp-verplicht is de choice verplicht gemaakt
+			   - ERR0202: complexType KadastraleAanduidingGrp toegevoegd met maxOccurs="2" voor de choice
+			   - ERR0205: In complexType KOZZKR-basis element StUF:extraElementen toegevoegd
+			
+			   Vergeleken met versie 031000 zijn de volgende wijzigingen doorgevoerd:
+			   - ERR238:	Binnen het complexType 'CorrespondentieAdresGrp-basis' zijn de elementen 'sub.postadresType' en 
+							    'sub.postadresNummer' optioneel gemaakt.
+							
+			   Wijzigingen t.b.v. patch 1-1-2013 vergeleken met versie 031001 zijn de volgende wijzigingen doorgevoerd:
+			   - ERR257:	Binnen het complexType 'RPS-kerngegevens' is het attribuut 'StUF:entiteittype' ontdaan van een fixed waarde.
+
+			   Wijzigingen t.b.v. patch 19 (1-4-2014) vergeleken met versie 031002 zijn de volgende wijzigingen doorgevoerd:			
+			   - ERR313: Bij alle complexTypes is het 'final' attribute verwijderd.
+			
+			   Wijzigingen t.b.v. patch 21 (1-4-2015) vergeleken met versie 031003 zijn de volgende wijzigingen doorgevoerd:			
+			   - ERR0365: In de complexTypes 'ZRA-kerngegevens' is het element 'omschrijving' verwijderd.
+			   - ONV0366: In KZA-basis is de kardinaliteit van de relatie 'hoortBij' (KZAKOZ) gewijzigd in 'unbounded'.
+							     In KZA-kerngegevens is de relatie 'hoortBij' (KZAKOZ) verwijderd.
+							     In ZRA-basis is de kardinaliteit van de relatie 'hoortBij' (ZRAZKR) gewijzigd in 'unbounded'.
+							     In ZRA-kerngegevens is de relatie 'hoortBij' (ZRAZKR) verwijderd.
+			   - ONV0370: Aan de elementen 'overgangsgrootte' in KOZKOZVAN en KOZKOZNAR is het type 'Maateenheid8-2-e' toegekend (was 'Maateenheid6-2-e').
+							    Aan het element 'kdp.grootte' in KOZ is het type 'Maateenheid8-2-neg-e' toegekend (was 'Maateenheid11-2-neg-e')
+							    Aan het element 'landinrichtingsrente/bedrag' in KOZ is het type 'Maateenheid18-2-neg-e' toegekend (was 'Maateenheid11-2-neg-e')
+							    Aan het element 'koopsom/bedrag' in KOZ is het type 'Maateenheid18-2-neg-e' toegekend (was 'Maateenheid11-2-neg-e')
+			   - ERR0353: Het schema is voorzien van de afgesproken structuur in 'appinfo'
+			
+			   Wijzigingen t.b.v. patch 22 (1-7-2015) vergeleken met versie 031004 zijn de volgende wijzigingen doorgevoerd:			
+			   - ERR0355: Bij alle 'historieFormeel' elementen is de 'maxOccurs' op 'unbounded' ingesteld.
+
+			   Wijzigingen t.b.v. patch 24 (1-4-2016) vergeleken met versie 031005 zijn de volgende wijzigingen doorgevoerd:
+			   - ERR0354: In het complexType 'KOZ-basis' is het element 'apr.heeftVerenigingVanEigenaars' uit de tweede choice gehaald en
+								 direct onder die choice geplaatst.			
+			
+        </documentation>
+		    <appinfo>
+			      <StUF:onderdeel>http://www.egem.nl/StUF/sector/bg/0310</StUF:onderdeel>
+			      <StUF:patch>28</StUF:patch>
+			      <StUF:patchdatum>20180401</StUF:patchdatum>
+			      <StUF:schemaversie>6</StUF:schemaversie>
+		    </appinfo>
+	  </annotation>
+   <annotation>
+		    <documentation xml:lang="nl">
+			   - Nieuw bestand in verband met nieuwe werkwijze maken sectormodellen
+			   - Schema met de definitie van de simpleTypes, "-e" complexTypes en metagegevens complexTypes gebruikt in de basisentiteiten voor bg0310.
+			
+			   Wijzigingen t.b.v. patch 1-7-2012 vergeleken met versie bg0310_simpleTypes.xsd v031000:
+			   - ERR227: In enumeration van de complexType 'StatusWOZBeschikking' 'ambsthalve' gecorrigeerd in 'ambtshalve'.
+			   - ERR224: Aan het simpleType 'RedenOpschortingBijhouding' de enumeration waarde 'R' toegevoegd.
+			
+			   Wijzigingen t.b.v. patch 1-10-2012 vergeleken met versie bg0310_simpleTypes.xsd v031001:
+			   - ERR246: Update naar gmnl 3.1.1.2.
+			
+			   Wijzigingen t.b.v. patch 1-1-2013 vergeleken met versie bg0310_simpleTypes.xsd v031002:
+			   - ERR253: Definitie van complexType 'GeometrieIMGeo-e' gewijzigd. Extend niet meer 'BG:GeometrieIMGeo' maar 'gml:SurfacePropertyType'.		
+			
+			   Wijzigingen t.b.v. patch 21 (1-4-2015) vergeleken met versie 031003 zijn de volgende wijzigingen doorgevoerd:			
+			   - ERR0352: In het complexType IdentificatieBRK-e is de regular expression '[0-9]{1,15}' gewijzigd in '\S.*'.
+			   - ONV0370: simpleTypes 'Maateenheid8-2' en 'Maateenheid8-2-e' zijn aangemaakt.
+							     simpleTypes 'Maateenheid8-2-neg' en 'Maateenheid8-2-neg-e' zijn aangemaakt.
+							     simpleTypes 'Maateenheid20-2-neg' en 'Maateenheid20-2-neg-e' zijn aangemaakt.
+			   - ERR0353: Het schema is voorzien van de afgesproken structuur in 'appinfo'
+			
+			   Wijzigingen t.b.v. patch 25 (1-7-2016) vergeleken met versie 031004 zijn de volgende wijzigingen doorgevoerd:			
+			   - ERR0433: Aan het simpleType 'aanduidingInhoudingVermissing' is de enumeration 'R' (van rechtswege vervallen) toegevoegd.
+			
+        </documentation>
+		    <appinfo>
+			      <StUF:onderdeel>http://www.egem.nl/StUF/sector/bg/0310</StUF:onderdeel>
+			      <StUF:patch>28</StUF:patch>
+			      <StUF:patchdatum>20180401</StUF:patchdatum>
+			      <StUF:schemaversie>5</StUF:schemaversie>
+		    </appinfo>
+	  </annotation>
+   <complexType name="AOT-lv-kerngegevensKennisgeving">
+		
+			   <choice minOccurs="0">
+					    <choice minOccurs="0">
+						      <element name="ligplaats" type="BG:LIG-lv-kerngegevensKennisgeving"/>
+						      <element name="standplaats" type="BG:STA-lv-kerngegevensKennisgeving"/>
+						      <element name="verblijfsobject" type="BG:VBO-lv-kerngegevensKennisgeving"/>
+					    </choice>
+				  </choice>
+		
+	  </complexType>
+   <complexType name="KOZ-lv-kerngegevensKennisgeving">
+		
+			   <sequence>
+					    <element name="kadastraleIdentificatie"
+                  type="BG:KadastraleIdentificatie-e"
+                  nillable="true"/>
+					    <element name="kadastraleAanduiding"
+                  type="BG:KadastraleAanduidingGrp-verplicht-lv"/>
+				  </sequence>
+      <attribute ref="StUF:verwerkingssoort" use="required"/>
+      <attribute ref="StUF:entiteittype" use="required" fixed="KOZ"/>
+      <attribute ref="StUF:sleutelSynchronisatie"/>
+		
+	  </complexType>
+   <complexType name="LIG-lv-kennisgeving">
+		
+			   <sequence>
+					    <element name="identificatie" type="BG:ObjectNummeringLIG-r"/>
+					    <element name="adresAanduidingGrp"
+                  type="BG:AdrGrp-lv-kerngegevensKennisgeving-nietNillable"/>
+				  </sequence>
+      <attribute ref="StUF:verwerkingssoort" use="required"/>
+      <attribute ref="StUF:entiteittype" use="required" fixed="LIG"/>
+      <attribute ref="StUF:sleutelSynchronisatie"/>
+		
+	  </complexType>
+   <complexType name="LIG-lv-kerngegevensKennisgeving">
+		
+			   <sequence>
+					    <element name="identificatie" type="BG:ObjectNummeringLIG-r"/>
+					    <element name="adresAanduidingGrp"
+                  type="BG:AdrGrp-lv-kerngegevensKennisgeving-nietNillable"/>
+				  </sequence>
+      <attribute ref="StUF:verwerkingssoort" use="required"/>
+      <attribute ref="StUF:entiteittype" use="required" fixed="LIG"/>
+      <attribute ref="StUF:sleutelSynchronisatie"/>
+		
+	  </complexType>
+   <complexType name="LIG-lv-synchroniseer">
+		
+			   <sequence>
+					    <element name="identificatie" type="BG:ObjectNummeringLIG-e" nillable="true"/>
+					    <element name="adresAanduidingGrp" type="BG:AdrGrp-lv-kerngegevensKennisgeving"/>
+				  </sequence>
+      <attribute ref="StUF:entiteittype" use="required" fixed="LIG"/>
+		
+	  </complexType>
+   <complexType name="MAC-lv-kennisgeving">
+		
+			   <sequence>
+					    <element name="kvkNummer" type="BG:KvKNummer-r"/>
+				  </sequence>
+      <attribute ref="StUF:entiteittype" use="required" fixed="MAC"/>
+      <attribute ref="StUF:verwerkingssoort" use="required"/>
+      <attribute ref="StUF:sleutelSynchronisatie"/>
+		
+	  </complexType>
+   <complexType name="NNP-lv-kennisgeving">
+		
+			   <sequence>
+					    <choice>
+						      <sequence>
+							        <element name="inn.nnpId" type="BG:BSN-e" nillable="true"/>
+						      </sequence>
+						      <element name="ann.identificatie"
+                     type="BG:IdentificatieRPSBTL-e"
+                     nillable="true"/>
+					    </choice>
+					    <element name="statutaireNaam" type="BG:StatutaireNaam-r"/>
+					    <element name="sub.correspondentieAdres"
+                  type="BG:CorrespondentieAdrGrp-lv-kennisgeving"/>
+					    <choice minOccurs="0">
+						      <element name="sub.verblijfBuitenland"
+                     type="BG:VerblijfBuitenlandGrp-lv-kerngegevensKennisgeving"
+                     minOccurs="0"/>
+					    </choice>
+					    <element name="rps.isEigenaarVan"
+                  type="BG:NNPMAC-lv-kennisgeving"
+                  nillable="true"
+                  minOccurs="0"/>
+				  </sequence>
+      <attribute ref="StUF:verwerkingssoort" use="required"/>
+      <attribute ref="StUF:entiteittype" use="required" fixed="NNP"/>
+      <attribute ref="StUF:sleutelVerzendend"/>
+      <attribute ref="StUF:sleutelOntvangend"/>
+      <attribute ref="StUF:sleutelGegevensbeheer"/>
+      <attribute ref="StUF:sleutelSynchronisatie"/>
+		
+	  </complexType>
+   <complexType name="NNP-lv-kerngegevensKennisgeving">
+		
+			   <sequence>
+					    <choice>
+						      <sequence>
+							        <element name="inn.nnpId" type="BG:BSN-e" nillable="true"/>
+						      </sequence>
+						      <element name="ann.identificatie"
+                     type="BG:IdentificatieRPSBTL-e"
+                     nillable="true"/>
+					    </choice>
+					    <element name="statutaireNaam" type="BG:StatutaireNaam-r"/>
+					    <element name="sub.correspondentieAdres"
+                  type="BG:CorrespondentieAdrGrp-lv-kennisgeving"/>
+				  </sequence>
+      <attribute ref="StUF:verwerkingssoort" use="required"/>
+      <attribute ref="StUF:entiteittype" use="required" fixed="NNP"/>
+      <attribute ref="StUF:sleutelSynchronisatie"/>
+		
+	  </complexType>
+   <complexType name="NNP-lv-kerngegevensVerplicht">
+		
+			   <sequence>
+					    <choice>
+						      <sequence>
+							        <element name="inn.nnpId" type="BG:BSN-e" nillable="true"/>
+						      </sequence>
+						      <element name="ann.identificatie"
+                     type="BG:IdentificatieRPSBTL-e"
+                     nillable="true"/>
+					    </choice>
+					    <element name="statutaireNaam" type="BG:StatutaireNaam-r"/>
+					    <element name="sub.correspondentieAdres"
+                  type="BG:CorrespondentieAdrGrp-lv-kennisgeving"/>
+				  </sequence>
+      <attribute ref="StUF:entiteittype" use="required" fixed="NNP"/>
+      <attribute ref="StUF:sleutelSynchronisatie"/>
+		
+	  </complexType>
+   <complexType name="NNPMAC-lv-kennisgeving">
+		
+			   <sequence>
+					    <element name="gerelateerde" type="BG:MAC-lv-kennisgeving"/>
+				  </sequence>
+      <attribute ref="StUF:verwerkingssoort" use="required"/>
+      <attribute ref="StUF:entiteittype" use="required" fixed="NNPMAC"/>
+      <attribute ref="StUF:sleutelSynchronisatie"/>
+      <attribute ref="StUF:noValue"/>
+		
+	  </complexType>
+   <complexType name="NPS-lv-kennisgeving">
+		
+			   <sequence>
+					    <choice>
+						      <sequence>
+							        <element name="inp.bsn" type="BG:BSN-e" nillable="true"/>
+						      </sequence>
+						      <element name="anp.identificatie"
+                     type="BG:IdentificatieRPSBTL-e"
+                     nillable="true"/>
+					    </choice>
+					    <element name="geslachtsnaam" type="BG:Geslachtsnaam-r"/>
+					    <element name="voorvoegselGeslachtsnaam"
+                  type="BG:VoorvoegselGeslachtsnaam-e"
+                  nillable="true"/>
+					    <element name="voorletters" type="BG:Voorletters-e" nillable="true"/>
+					    <element name="aanduidingNaamgebruik"
+                  type="BG:AanduidingNaamgebruik-e"
+                  nillable="true"
+                  minOccurs="0"/>
+					    <element name="geslachtsnaamPartner"
+                  type="BG:Geslachtsnaam-e"
+                  nillable="true"
+                  minOccurs="0"/>
+					    <element name="voorvoegselGeslachtsnaamPartner"
+                  type="BG:VoorvoegselGeslachtsnaam-e"
+                  nillable="true"
+                  minOccurs="0"/>
+					    <element name="aanhefAanschrijving"
+                  type="BG:Aanhef-e"
+                  nillable="true"
+                  minOccurs="0"/>
+					    <element name="geslachtsnaamAanschrijving"
+                  type="BG:Geslachtsnaam-e"
+                  nillable="true"
+                  minOccurs="0"/>
+					    <element name="geslachtsaanduiding"
+                  type="BG:Geslachtsaanduiding-e"
+                  nillable="true"/>
+					    <element name="geboortedatum" type="StUF:DatumMetIndicator" nillable="true"/>
+					    <element name="inp.verblijftIn"
+                  type="BG:NPSTGO-lv-kennisgeving"
+                  nillable="true"
+                  minOccurs="0"/>
+					    <choice>
+						      <element name="verblijfsadres" type="BG:VerblijfsadresGrp-lv-kennisgeving"/>
+						      <element name="sub.verblijfBuitenland"
+                     type="BG:VerblijfBuitenlandGrp-lv-kerngegevensKennisgeving"/>
+					    </choice>
+					    <element name="sub.correspondentieAdres"
+                  type="BG:CorrespondentieAdrGrp-lv-kennisgeving"
+                  minOccurs="0"/>
+					    <element name="inp.indicatieGeheim"
+                  type="BG:IndicatieGeheim-e"
+                  nillable="true"
+                  minOccurs="0"/>
+				  </sequence>
+      <attribute ref="StUF:verwerkingssoort" use="required"/>
+      <attribute ref="StUF:entiteittype" use="required" fixed="NPS"/>
+      <attribute ref="StUF:sleutelVerzendend"/>
+      <attribute ref="StUF:sleutelOntvangend"/>
+      <attribute ref="StUF:sleutelGegevensbeheer"/>
+      <attribute ref="StUF:sleutelSynchronisatie"/>
+      <attribute ref="StUF:noValue"/>
+		
+	  </complexType>
+   <complexType name="NPS-lv-kerngegevensKennisgeving">
+		
+			   <sequence>
+					    <choice>
+						      <sequence>
+							        <element name="inp.bsn" type="BG:BSN-e" nillable="true"/>
+						      </sequence>
+						      <element name="anp.identificatie"
+                     type="BG:IdentificatieRPSBTL-e"
+                     nillable="true"/>
+					    </choice>
+					    <element name="geslachtsnaam" type="BG:Geslachtsnaam-r"/>
+					    <element name="voorvoegselGeslachtsnaam"
+                  type="BG:VoorvoegselGeslachtsnaam-e"
+                  nillable="true"/>
+					    <element name="voorletters" type="BG:Voorletters-e" nillable="true"/>
+					    <element name="geslachtsaanduiding"
+                  type="BG:Geslachtsaanduiding-e"
+                  nillable="true"/>
+					    <element name="geboortedatum" type="StUF:DatumMetIndicator" nillable="true"/>
+					    <choice>
+						      <element name="verblijfsadres"
+                     type="BG:VerblijfsadresGrp-lv-kerngegevensKennisgeving"/>
+						      <element name="sub.verblijfBuitenland"
+                     type="BG:VerblijfBuitenlandGrp-lv-kerngegevensKennisgeving"/>
+					    </choice>
+				  </sequence>
+      <attribute ref="StUF:verwerkingssoort" use="required"/>
+      <attribute ref="StUF:entiteittype" use="required" fixed="NPS"/>
+      <attribute ref="StUF:sleutelSynchronisatie"/>
+		
+	  </complexType>
+   <complexType name="NPS-lv-kerngegevensVerplicht">
+		
+			   <sequence>
+					    <choice>
+						      <sequence>
+							        <element name="inp.bsn" type="BG:BSN-e" nillable="true"/>
+						      </sequence>
+						      <element name="anp.identificatie"
+                     type="BG:IdentificatieRPSBTL-e"
+                     nillable="true"/>
+					    </choice>
+					    <element name="geslachtsnaam" type="BG:Geslachtsnaam-r"/>
+					    <element name="voorvoegselGeslachtsnaam"
+                  type="BG:VoorvoegselGeslachtsnaam-e"
+                  nillable="true"/>
+					    <element name="voorletters" type="BG:Voorletters-e" nillable="true"/>
+					    <element name="geslachtsaanduiding"
+                  type="BG:Geslachtsaanduiding-e"
+                  nillable="true"/>
+					    <element name="geboortedatum" type="StUF:DatumMetIndicator" nillable="true"/>
+					    <choice>
+						      <element name="verblijfsadres"
+                     type="BG:VerblijfsadresGrp-lv-kerngegevensKennisgeving"/>
+						      <element name="sub.verblijfBuitenland"
+                     type="BG:VerblijfBuitenlandGrp-lv-kerngegevensKennisgeving"/>
+					    </choice>
+				  </sequence>
+      <attribute ref="StUF:entiteittype" use="required" fixed="NPS"/>
+      <attribute ref="StUF:sleutelSynchronisatie"/>
+		
+	  </complexType>
+   <complexType name="NPSTGO-lv-kennisgeving">
+		
+			   <sequence>
+					    <element name="gerelateerde" type="BG:TGO-lv-kerngegevensKennisgeving"/>
+				  </sequence>
+      <attribute ref="StUF:verwerkingssoort" use="required"/>
+      <attribute ref="StUF:entiteittype" use="required" fixed="NPSTGO"/>
+      <attribute ref="StUF:sleutelSynchronisatie"/>
+      <attribute ref="StUF:noValue"/>
+		
+	  </complexType>
+   <complexType name="NUM-lv-kennisgeving">
+		
+			   <sequence>
+					    <element name="identificatie" type="BG:ObjectNummering-e"/>
+					    <element name="wpl.woonplaatsNaam" type="BG:NaamgevingObject-r"/>
+					    <element name="gor.openbareRuimteNaam" type="BG:NaamgevingObject-r"/>
+					    <element name="huisnummer" type="BG:Huisnummering-r"/>
+					    <element name="huisletter" type="BG:Huislettering-e" nillable="true"/>
+					    <element name="huisnummertoevoeging"
+                  type="BG:Huisnummertoevoeging-e"
+                  nillable="true"/>
+					    <element name="postcode" type="BG:Postcode-e" nillable="true"/>
+					    <element name="gor.straatnaam"
+                  type="BG:Straatnaam-e"
+                  nillable="true"
+                  minOccurs="0"/>
+				  </sequence>
+      <attribute ref="StUF:verwerkingssoort" use="required"/>
+      <attribute ref="StUF:entiteittype" use="required" fixed="NUM"/>
+      <attribute ref="StUF:sleutelSynchronisatie"/>
+		
+	  </complexType>
+   <complexType name="NUM-lv-kerngegevensKennisgeving">
+		
+			   <sequence>
+					    <element name="identificatie" type="BG:ObjectNummering-e"/>
+					    <element name="wpl.woonplaatsNaam" type="BG:NaamgevingObject-r"/>
+					    <element name="gor.openbareRuimteNaam" type="BG:NaamgevingObject-r"/>
+					    <element name="huisnummer" type="BG:Huisnummering-r"/>
+					    <element name="huisletter" type="BG:Huislettering-e" nillable="true"/>
+					    <element name="huisnummertoevoeging"
+                  type="BG:Huisnummertoevoeging-e"
+                  nillable="true"/>
+					    <element name="postcode" type="BG:Postcode-e" nillable="true"/>
+				  </sequence>
+      <attribute ref="StUF:verwerkingssoort" use="required"/>
+      <attribute ref="StUF:entiteittype" use="required" fixed="NUM"/>
+      <attribute ref="StUF:sleutelSynchronisatie"/>
+		
+	  </complexType>
+   <complexType name="NUM-lv-synchroniseer">
+		
+			   <sequence>
+					    <element name="identificatie" type="BG:ObjectNummering-e" nillable="true"/>
+					    <element name="wpl.woonplaatsNaam"
+                  type="BG:NaamgevingObject-e"
+                  nillable="true"/>
+					    <element name="gor.openbareRuimteNaam"
+                  type="BG:NaamgevingObject-e"
+                  nillable="true"/>
+					    <element name="huisnummer" type="BG:Huisnummering-e" nillable="true"/>
+					    <element name="huisletter" type="BG:Huislettering-e" nillable="true"/>
+					    <element name="huisnummertoevoeging"
+                  type="BG:Huisnummertoevoeging-e"
+                  nillable="true"/>
+					    <element name="postcode" type="BG:Postcode-e" nillable="true"/>
+					    <element name="gor.straatnaam"
+                  type="BG:Straatnaam-e"
+                  nillable="true"
+                  minOccurs="0"/>
+				  </sequence>
+      <attribute ref="StUF:entiteittype" use="required" fixed="NUM"/>
+		
+	  </complexType>
+   <complexType name="PND-lv-kerngegevensKennisgeving">
+		
+			   <sequence>
+					    <element name="identificatie" type="BG:ObjectNummeringPND-r"/>
+				  </sequence>
+      <attribute ref="StUF:verwerkingssoort" use="required"/>
+      <attribute ref="StUF:entiteittype" use="required" fixed="PND"/>
+      <attribute ref="StUF:sleutelSynchronisatie"/>
+		
+	  </complexType>
+   <complexType name="STA-lv-kennisgeving">
+		
+			   <sequence>
+					    <element name="identificatie" type="BG:ObjectNummeringSTA-r"/>
+					    <element name="adresAanduidingGrp"
+                  type="BG:AdrGrp-lv-kerngegevensKennisgeving-nietNillable"/>
+				  </sequence>
+      <attribute ref="StUF:verwerkingssoort" use="required"/>
+      <attribute ref="StUF:entiteittype" use="required" fixed="STA"/>
+      <attribute ref="StUF:sleutelSynchronisatie"/>
+      <attribute ref="StUF:noValue"/>
+		
+	  </complexType>
+   <complexType name="STA-lv-kerngegevensKennisgeving">
+		
+			   <sequence>
+					    <element name="identificatie" type="BG:ObjectNummeringSTA-r"/>
+					    <element name="adresAanduidingGrp"
+                  type="BG:AdrGrp-lv-kerngegevensKennisgeving-nietNillable"/>
+				  </sequence>
+      <attribute ref="StUF:verwerkingssoort" use="required"/>
+      <attribute ref="StUF:entiteittype" use="required" fixed="STA"/>
+      <attribute ref="StUF:sleutelSynchronisatie"/>
+      <attribute ref="StUF:noValue"/>
+		
+	  </complexType>
+   <complexType name="STA-lv-synchroniseer">
+		
+			   <sequence>
+					    <element name="identificatie" type="BG:ObjectNummeringSTA-e" nillable="true"/>
+					    <element name="adresAanduidingGrp" type="BG:AdrGrp-lv-kerngegevensKennisgeving"/>
+				  </sequence>
+      <attribute ref="StUF:entiteittype" use="required" fixed="STA"/>
+		
+	  </complexType>
+   <complexType name="TGO-lv-kerngegevensKennisgeving">
+		
+			   <sequence>
+					    <element name="identificatie" type="BG:ObjectNummeringAOT-e" nillable="true"/>
+					    <element name="adresAanduidingGrp" type="BG:AdrGrp-lv-kerngegevensKennisgeving"/>
+				  </sequence>
+      <attribute ref="StUF:verwerkingssoort" use="required"/>
+      <attribute ref="StUF:entiteittype" use="required" fixed="TGO"/>
+      <attribute ref="StUF:sleutelSynchronisatie"/>
+		
+	  </complexType>
+   <complexType name="VBO-lv-kennisgeving">
+		
+			   <sequence>
+					    <element name="identificatie" type="BG:ObjectNummeringVBO-r"/>
+					    <element name="adresAanduidingGrp"
+                  type="BG:AdrGrp-lv-kerngegevensKennisgeving-nietNillable"/>
+				  </sequence>
+      <attribute ref="StUF:verwerkingssoort" use="required"/>
+      <attribute ref="StUF:entiteittype" use="required" fixed="VBO"/>
+      <attribute ref="StUF:sleutelSynchronisatie"/>
+      <attribute ref="StUF:noValue"/>
+		
+	  </complexType>
+   <complexType name="VBO-lv-kerngegevensKennisgeving">
+		
+			   <sequence>
+					    <element name="identificatie" type="BG:ObjectNummeringVBO-r"/>
+					    <element name="adresAanduidingGrp"
+                  type="BG:AdrGrp-lv-kerngegevensKennisgeving-nietNillable"/>
+				  </sequence>
+      <attribute ref="StUF:verwerkingssoort" use="required"/>
+      <attribute ref="StUF:entiteittype" use="required" fixed="VBO"/>
+      <attribute ref="StUF:sleutelSynchronisatie"/>
+      <attribute ref="StUF:noValue"/>
+		
+	  </complexType>
+   <complexType name="VBO-lv-synchroniseer">
+		
+			   <sequence>
+					    <element name="identificatie" type="BG:ObjectNummeringVBO-e" nillable="true"/>
+					    <element name="adresAanduidingGrp" type="BG:AdrGrp-lv-kerngegevensKennisgeving"/>
+				  </sequence>
+      <attribute ref="StUF:entiteittype" use="required" fixed="VBO"/>
+		
+	  </complexType>
+   <complexType name="VES-lv-kennisgeving">
+		
+			   <sequence>
+					    <element name="vestigingsNummer"
+                  type="BG:VestigingsNummer-e"
+                  nillable="true"/>
+					    <sequence>
+						      <element name="handelsnaam" type="BG:Handelsnaam-r"/>
+					    </sequence>
+					    <choice>
+						      <element name="verblijfsadres" type="BG:VerblijfsadresGrp-lv-kennisgeving"/>
+						      <element name="sub.verblijfBuitenland"
+                     type="BG:VerblijfBuitenlandGrp-lv-kerngegevensKennisgeving"/>
+					    </choice>
+					    <element name="sub.correspondentieAdres"
+                  type="BG:CorrespondentieAdrGrp-lv-kennisgeving"
+                  minOccurs="0"/>
+					    <element name="oefentActiviteitenUitVoor"
+                  type="BG:VESMAC-lv-kennisgeving"
+                  nillable="true"
+                  minOccurs="0"/>
+					    <element name="heeftAlsHoofdLocatie"
+                  type="BG:VESTGOHFD-lv-kennisgeving"
+                  nillable="true"
+                  minOccurs="0"/>
+				  </sequence>
+      <attribute ref="StUF:verwerkingssoort" use="required"/>
+      <attribute ref="StUF:entiteittype" use="required" fixed="VES"/>
+      <attribute ref="StUF:sleutelVerzendend"/>
+      <attribute ref="StUF:sleutelOntvangend"/>
+      <attribute ref="StUF:sleutelGegevensbeheer"/>
+      <attribute ref="StUF:sleutelSynchronisatie"/>
+      <attribute ref="StUF:noValue"/>
+		
+	  </complexType>
+   <complexType name="VES-lv-kerngegevensKennisgeving">
+		
+			   <sequence>
+					    <element name="vestigingsNummer"
+                  type="BG:VestigingsNummer-e"
+                  nillable="true"/>
+					    <sequence>
+						      <element name="handelsnaam" type="BG:Handelsnaam-r"/>
+					    </sequence>
+					    <choice>
+						      <element name="verblijfsadres"
+                     type="BG:VerblijfsadresGrp-lv-kerngegevensKennisgeving"/>
+						      <element name="sub.verblijfBuitenland"
+                     type="BG:VerblijfBuitenlandGrp-lv-kerngegevensKennisgeving"/>
+					    </choice>
+				  </sequence>
+      <attribute ref="StUF:verwerkingssoort" use="required"/>
+      <attribute ref="StUF:entiteittype" use="required" fixed="VES"/>
+      <attribute ref="StUF:sleutelSynchronisatie"/>
+		
+	  </complexType>
+   <complexType name="VES-lv-kerngegevensVerplicht">
+		
+			   <sequence>
+					    <element name="vestigingsNummer"
+                  type="BG:VestigingsNummer-e"
+                  nillable="true"/>
+					    <sequence>
+						      <element name="handelsnaam" type="BG:Handelsnaam-r"/>
+					    </sequence>
+					    <choice>
+						      <element name="verblijfsadres"
+                     type="BG:VerblijfsadresGrp-lv-kerngegevensKennisgeving"/>
+						      <element name="sub.verblijfBuitenland"
+                     type="BG:VerblijfBuitenlandGrp-lv-kerngegevensKennisgeving"/>
+					    </choice>
+				  </sequence>
+      <attribute ref="StUF:entiteittype" use="required" fixed="VES"/>
+      <attribute ref="StUF:sleutelSynchronisatie"/>
+		
+	  </complexType>
+   <complexType name="VESMAC-lv-kennisgeving">
+		
+			   <sequence>
+					    <element name="gerelateerde" type="BG:MAC-lv-kennisgeving"/>
+				  </sequence>
+      <attribute ref="StUF:entiteittype" use="required" fixed="VESMAC"/>
+      <attribute ref="StUF:verwerkingssoort" use="required"/>
+      <attribute ref="StUF:sleutelSynchronisatie"/>
+      <attribute ref="StUF:noValue"/>
+		
+	  </complexType>
+   <complexType name="VESTGOHFD-lv-kennisgeving">
+		
+			   <sequence>
+					    <element name="gerelateerde" type="BG:TGO-lv-kerngegevensKennisgeving"/>
+				  </sequence>
+      <attribute ref="StUF:entiteittype" use="required" fixed="VESTGOHFD"/>
+      <attribute ref="StUF:verwerkingssoort" use="required"/>
+      <attribute ref="StUF:sleutelVerzendend"/>
+      <attribute ref="StUF:sleutelOntvangend"/>
+      <attribute ref="StUF:sleutelGegevensbeheer"/>
+      <attribute ref="StUF:sleutelSynchronisatie"/>
+      <attribute ref="StUF:noValue"/>
+		
+	  </complexType>
+   <complexType name="AanduidingWOZobjectGrp-lv-kennisgeving">
+		
+			   <sequence minOccurs="0">
+					    <element name="aoa.identificatie"
+                  type="BG:ObjectNummering-e"
+                  nillable="true"/>
+					    <element name="wpl.woonplaatsNaam"
+                  type="BG:WoonplaatsNaam-e"
+                  nillable="true"/>
+					    <element name="aoa.postcode" type="BG:Postcode-e" nillable="true"/>
+					    <element name="gor.openbareRuimteNaam"
+                  type="BG:NaamgevingObject-e"
+                  nillable="true"/>
+					    <element name="gor.straatnaam"
+                  type="BG:Straatnaam-e"
+                  nillable="true"
+                  minOccurs="0"/>
+					    <element name="aoa.huisnummer" type="BG:Huisnummering-e" nillable="true"/>
+					    <element name="aoa.huisletter" type="BG:Huislettering-e" nillable="true"/>
+					    <element name="aoa.huisnummertoevoeging"
+                  type="BG:Huisnummertoevoeging-e"
+                  nillable="true"/>
+					    <element name="locatieOmschrijving"
+                  type="BG:LocatieOmschrijving-e"
+                  nillable="true"/>
+				  </sequence>
+		
+	  </complexType>
+   <complexType name="AanduidingWOZobjectGrp-lv-kerngegevensKennisgeving">
+		
+			   <sequence minOccurs="0">
+					    <element name="aoa.identificatie"
+                  type="BG:ObjectNummering-e"
+                  nillable="true"/>
+					    <element name="wpl.woonplaatsNaam"
+                  type="BG:WoonplaatsNaam-e"
+                  nillable="true"/>
+					    <element name="aoa.postcode" type="BG:Postcode-e" nillable="true"/>
+					    <element name="gor.openbareRuimteNaam"
+                  type="BG:NaamgevingObject-e"
+                  nillable="true"/>
+					    <element name="aoa.huisnummer" type="BG:Huisnummering-e" nillable="true"/>
+					    <element name="aoa.huisletter" type="BG:Huislettering-e" nillable="true"/>
+					    <element name="aoa.huisnummertoevoeging"
+                  type="BG:Huisnummertoevoeging-e"
+                  nillable="true"/>
+					    <element name="locatieOmschrijving"
+                  type="BG:LocatieOmschrijving-e"
+                  nillable="true"/>
+				  </sequence>
+		
+	  </complexType>
+   <complexType name="AdrGrp-lv-kerngegevensKennisgeving">
+		
+			   <sequence>
+					    <sequence>
+						      <choice>
+							        <element name="num.identificatie"
+                        type="BG:ObjectNummering-e"
+                        nillable="true"/>
+						      </choice>
+					    </sequence>
+					    <element name="wpl.woonplaatsNaam"
+                  type="BG:WoonplaatsNaam-e"
+                  nillable="true"/>
+					    <element name="gor.openbareRuimteNaam"
+                  type="BG:NaamgevingObject-e"
+                  nillable="true"/>
+					    <element name="gor.straatnaam" type="BG:Straatnaam-e" nillable="true"/>
+					    <element name="aoa.postcode" type="BG:Postcode-e" nillable="true"/>
+					    <element name="aoa.huisnummer" type="BG:Huisnummering-e" nillable="true"/>
+					    <element name="aoa.huisletter" type="BG:Huislettering-e" nillable="true"/>
+					    <element name="aoa.huisnummertoevoeging"
+                  type="BG:Huisnummertoevoeging-e"
+                  nillable="true"/>
+				  </sequence>
+		
+	  </complexType>
+   <complexType name="AdrGrp-lv-kerngegevensKennisgeving-nietNillable">
+		
+			   <sequence>
+					    <sequence>
+						      <choice>
+							        <element name="num.identificatie" type="BG:ObjectNummering-e"/>
+						      </choice>
+					    </sequence>
+					    <element name="wpl.woonplaatsNaam" type="BG:WoonplaatsNaam-e"/>
+					    <element name="gor.openbareRuimteNaam" type="BG:NaamgevingObject-e"/>
+					    <element name="gor.straatnaam" type="BG:Straatnaam-e" nillable="true"/>
+					    <element name="aoa.postcode" type="BG:Postcode-e" nillable="true"/>
+					    <element name="aoa.huisnummer" type="BG:Huisnummering-e"/>
+					    <element name="aoa.huisletter" type="BG:Huislettering-e" nillable="true"/>
+					    <element name="aoa.huisnummertoevoeging"
+                  type="BG:Huisnummertoevoeging-e"
+                  nillable="true"/>
+				  </sequence>
+		
+	  </complexType>
+   <complexType name="CorrespondentieAdrGrp-lv-kennisgeving">
+		
+			   <sequence>
+					    <element name="wpl.woonplaatsNaam"
+                  type="BG:NaamgevingObject-e"
+                  nillable="true"/>
+					    <element name="postcode" type="BG:Postcode-e" nillable="true"/>
+					    <choice>
+						      <sequence>
+							        <element name="aoa.identificatie"
+                        type="BG:ObjectNummering-e"
+                        nillable="true"/>
+							        <element name="gor.openbareRuimteNaam"
+                        type="BG:NaamgevingObject-e"
+                        nillable="true"/>
+							        <element name="gor.straatnaam"
+                        type="BG:Straatnaam-e"
+                        nillable="true"
+                        minOccurs="0"/>
+							        <element name="aoa.huisnummer" type="BG:Huisnummering-e" nillable="true"/>
+							        <element name="aoa.huisletter" type="BG:Huislettering-e" nillable="true"/>
+							        <element name="aoa.huisnummertoevoeging"
+                        type="BG:Huisnummertoevoeging-e"
+                        nillable="true"/>
+						      </sequence>
+						      <sequence>
+							        <element name="sub.postadresType" type="BG:PostadresType-e" nillable="true"/>
+							        <element name="sub.postadresNummer"
+                        type="BG:PostadresNummer-e"
+                        nillable="true"/>
+						      </sequence>
+					    </choice>
+				  </sequence>
+		
+	  </complexType>
+   <complexType name="KadastraleAanduidingGrp-verplicht-lv">
+		
+			   <sequence>
+					    <element name="kadastraleGemeentecode" type="BG:KadastraleGemeentecode-e"/>
+					    <element name="kadastraleSectie" type="BG:KadastraleSectie-e"/>
+					    <element name="kadastraalPerceelnummer" type="BG:KadastraalPerceelnummer-e"/>
+					    <choice>
+						      <element name="kdp.deelperceelNummer"
+                     type="BG:DeelperceelNummer-e"
+                     nillable="true"/>
+						      <element name="apr.appartementsIndex"
+                     type="BG:Appartementsindex-e"
+                     nillable="true"/>
+					    </choice>
+				  </sequence>
+		
+	  </complexType>
+   <complexType name="VerantwoordelijkeGemeenteGrp-lv-kerngegevensKennisgeving">
+		
+			   <sequence>
+					    <element name="gemeenteCode" type="BG:Gemeentecodering-e" nillable="true"/>
+				  </sequence>
+		
+	  </complexType>
+   <complexType name="VerblijfsadresGrp-lv-kennisgeving">
+		
+			   <sequence minOccurs="0">
+					    <element name="aoa.identificatie"
+                  type="BG:ObjectNummering-e"
+                  nillable="true"/>
+					    <element name="wpl.woonplaatsNaam"
+                  type="BG:WoonplaatsNaam-e"
+                  nillable="true"/>
+					    <element name="gor.openbareRuimteNaam"
+                  type="BG:NaamgevingObject-e"
+                  nillable="true"/>
+					    <element name="gor.straatnaam"
+                  type="BG:Straatnaam-e"
+                  nillable="true"
+                  minOccurs="0"/>
+					    <element name="aoa.postcode" type="BG:Postcode-e" nillable="true"/>
+					    <element name="aoa.huisnummer" type="BG:Huisnummering-e" nillable="true"/>
+					    <element name="aoa.huisletter" type="BG:Huislettering-e" nillable="true"/>
+					    <element name="aoa.huisnummertoevoeging"
+                  type="BG:Huisnummertoevoeging-e"
+                  nillable="true"/>
+					    <element name="inp.locatiebeschrijving"
+                  type="BG:Locatiebeschrijving-e"
+                  nillable="true"/>
+				  </sequence>
+		
+	  </complexType>
+   <complexType name="VerblijfsadresGrp-lv-kerngegevensKennisgeving">
+		
+			   <sequence minOccurs="0">
+					    <element name="aoa.identificatie"
+                  type="BG:ObjectNummering-e"
+                  nillable="true"/>
+					    <element name="wpl.woonplaatsNaam"
+                  type="BG:WoonplaatsNaam-e"
+                  nillable="true"/>
+					    <element name="gor.openbareRuimteNaam"
+                  type="BG:NaamgevingObject-e"
+                  nillable="true"/>
+					    <element name="aoa.postcode" type="BG:Postcode-e" nillable="true"/>
+					    <element name="aoa.huisnummer" type="BG:Huisnummering-e" nillable="true"/>
+					    <element name="aoa.huisletter" type="BG:Huislettering-e" nillable="true"/>
+					    <element name="aoa.huisnummertoevoeging"
+                  type="BG:Huisnummertoevoeging-e"
+                  nillable="true"/>
+					    <element name="inp.locatiebeschrijving"
+                  type="BG:Locatiebeschrijving-e"
+                  nillable="true"/>
+				  </sequence>
+		
+	  </complexType>
+   <complexType name="VerblijfBuitenlandGrp-lv-kerngegevensKennisgeving">
+		
+			   <sequence>
+					    <element name="lnd.landcode" type="BG:Landcode-e" nillable="true"/>
+					    <element name="lnd.landnaam" type="BG:Landnaam-e" nillable="true"/>
+					    <element name="sub.adresBuitenland1"
+                  type="BG:AdresBuitenland-e"
+                  nillable="true"/>
+					    <element name="sub.adresBuitenland2"
+                  type="BG:AdresBuitenland-e"
+                  nillable="true"/>
+					    <element name="sub.adresBuitenland3"
+                  type="BG:AdresBuitenland-e"
+                  nillable="true"/>
+				  </sequence>
+		
+	  </complexType>
+   <complexType name="NNP-lv-kerngegevens">
+		
+			   <sequence>
+					    <choice minOccurs="0">
+						      <sequence minOccurs="0">
+							        <element name="inn.nnpId" type="BG:BSN-e" nillable="true" minOccurs="0"/>
+						      </sequence>
+						      <element name="ann.identificatie"
+                     type="BG:IdentificatieRPSBTL-e"
+                     nillable="true"
+                     minOccurs="0"/>
+					    </choice>
+					    <element name="statutaireNaam"
+                  type="BG:StatutaireNaam-e"
+                  nillable="true"
+                  minOccurs="0"/>
+					    <element name="sub.correspondentieAdres"
+                  type="BG:CorrespondentieAdrGrp-woz-basis"
+                  minOccurs="0"/>
+				  </sequence>
+      <attribute ref="StUF:entiteittype" use="required" fixed="NNP"/>
+      <attribute ref="StUF:sleutelSynchronisatie"/>
+		
+	  </complexType>
+   <complexType name="NPS-lv-kerngegevens">
+		
+			   <sequence>
+					    <choice minOccurs="0">
+						      <sequence minOccurs="0">
+							        <element name="inp.bsn" type="BG:BSN-e" nillable="true" minOccurs="0"/>
+						      </sequence>
+						      <element name="anp.identificatie"
+                     type="BG:IdentificatieRPSBTL-e"
+                     nillable="true"
+                     minOccurs="0"/>
+					    </choice>
+					    <element name="geslachtsnaam"
+                  type="BG:Geslachtsnaam-e"
+                  nillable="true"
+                  minOccurs="0"/>
+					    <element name="voorvoegselGeslachtsnaam"
+                  type="BG:VoorvoegselGeslachtsnaam-e"
+                  nillable="true"
+                  minOccurs="0"/>
+					    <element name="voorletters"
+                  type="BG:Voorletters-e"
+                  nillable="true"
+                  minOccurs="0"/>
+					    <element name="geslachtsaanduiding"
+                  type="BG:Geslachtsaanduiding-e"
+                  nillable="true"
+                  minOccurs="0"/>
+					    <element name="geboortedatum"
+                  type="StUF:DatumMetIndicator"
+                  nillable="true"
+                  minOccurs="0"/>
+					    <choice minOccurs="0">
+						      <element name="verblijfsadres" type="BG:VerblijfsadresGrp-woz-kerngegevens"/>
+						      <element name="sub.verblijfBuitenland" type="BG:VerblijfBuitenlandGrp"/>
+					    </choice>
+				  </sequence>
+      <attribute ref="StUF:entiteittype" use="required" fixed="NPS"/>
+      <attribute ref="StUF:sleutelSynchronisatie"/>
+		
+	  </complexType>
+   <complexType name="VES-lv-kerngegevens">
+		
+			   <sequence>
+					    <element name="vestigingsNummer"
+                  type="BG:VestigingsNummer-e"
+                  nillable="true"
+                  minOccurs="0"/>
+					    <sequence minOccurs="0">
+						      <element name="handelsnaam"
+                     type="BG:Handelsnaam-e"
+                     nillable="true"
+                     minOccurs="0"/>
+					    </sequence>
+					    <choice minOccurs="0">
+						      <element name="verblijfsadres"
+                     type="BG:VerblijfsadresGrp-woz-kerngegevens"
+                     minOccurs="0"/>
+						      <element name="sub.verblijfBuitenland"
+                     type="BG:VerblijfBuitenlandGrp"
+                     minOccurs="0"/>
+					    </choice>
+				  </sequence>
+      <attribute ref="StUF:entiteittype" use="required" fixed="VES"/>
+      <attribute ref="StUF:sleutelSynchronisatie"/>
+		
+	  </complexType>
+   <complexType name="BrondocumentWOZ-lv-verplicht">
+		
+			   <sequence>
+					    <element name="identificatie" type="BG:DocumentNummering-r"/>
+					    <element name="datum" type="StUF:Datum-r"/>
+				  </sequence>
+      <attribute ref="StUF:metagegeven" use="required"/>
+		
+	  </complexType>
+   <complexType name="ObjectNummeringAOT-e">
+		    <simpleContent>
+			      <restriction base="BG:ObjectNummering-e">
+				        <simpleType>
+					          <restriction base="BG:ObjectNummering"/>
+				        </simpleType>
+				        <pattern value="[0-9]{4}(01|02|03)[0-9]{10}"/>
+			      </restriction>
+		    </simpleContent>
+	  </complexType>
+   <complexType name="AanduidingWOZobjectGrp-woz">
+		
+			   <sequence minOccurs="0">
+					    <element name="aoa.identificatie"
+                  type="BG:ObjectNummering-e"
+                  nillable="true"
+                  minOccurs="0"/>
+					    <element name="wpl.woonplaatsNaam"
+                  type="BG:WoonplaatsNaam-e"
+                  nillable="true"
+                  minOccurs="0"/>
+					    <element name="aoa.postcode"
+                  type="BG:Postcode-e"
+                  nillable="true"
+                  minOccurs="0"/>
+					    <element name="gor.openbareRuimteNaam"
+                  type="BG:NaamgevingObject-e"
+                  nillable="true"
+                  minOccurs="0"/>
+					    <element name="gor.straatnaam"
+                  type="BG:Straatnaam-e"
+                  nillable="true"
+                  minOccurs="0"/>
+					    <element name="aoa.huisnummer"
+                  type="BG:Huisnummering-e"
+                  nillable="true"
+                  minOccurs="0"/>
+					    <element name="aoa.huisletter"
+                  type="BG:Huislettering-e"
+                  nillable="true"
+                  minOccurs="0"/>
+					    <element name="aoa.huisnummertoevoeging"
+                  type="BG:Huisnummertoevoeging-e"
+                  nillable="true"
+                  minOccurs="0"/>
+					    <element name="locatieOmschrijving"
+                  type="BG:LocatieOmschrijving-e"
+                  nillable="true"
+                  minOccurs="0"/>
+				  </sequence>
+		
+	  </complexType>
+   <complexType name="AanduidingWOZobjectGrp-woz-kerngegevens">
+		
+			   <sequence minOccurs="0">
+					    <element name="aoa.identificatie"
+                  type="BG:ObjectNummering-e"
+                  nillable="true"
+                  minOccurs="0"/>
+					    <element name="wpl.woonplaatsNaam"
+                  type="BG:WoonplaatsNaam-e"
+                  nillable="true"
+                  minOccurs="0"/>
+					    <element name="aoa.postcode"
+                  type="BG:Postcode-e"
+                  nillable="true"
+                  minOccurs="0"/>
+					    <element name="gor.openbareRuimteNaam"
+                  type="BG:NaamgevingObject-e"
+                  nillable="true"
+                  minOccurs="0"/>
+					    <element name="aoa.huisnummer"
+                  type="BG:Huisnummering-e"
+                  nillable="true"
+                  minOccurs="0"/>
+					    <element name="aoa.huisletter"
+                  type="BG:Huislettering-e"
+                  nillable="true"
+                  minOccurs="0"/>
+					    <element name="aoa.huisnummertoevoeging"
+                  type="BG:Huisnummertoevoeging-e"
+                  nillable="true"
+                  minOccurs="0"/>
+					    <element name="locatieOmschrijving"
+                  type="BG:LocatieOmschrijving-e"
+                  nillable="true"
+                  minOccurs="0"/>
+				  </sequence>
+		
+	  </complexType>
+   <complexType name="BrondocumentWOZ-lv">
+		
+			   <sequence>
+					    <element name="identificatie"
+                  type="BG:DocumentNummering-e"
+                  nillable="true"
+                  minOccurs="0"/>
+					    <element name="datum" type="StUF:Datum-e" nillable="true" minOccurs="0"/>
+				  </sequence>
+      <attribute ref="StUF:metagegeven" use="required"/>
+		
+	  </complexType>
+   <complexType name="CorrespondentieAdrGrp-woz-basis">
+		
+			   <sequence>
+					    <element name="wpl.woonplaatsNaam"
+                  type="BG:NaamgevingObject-e"
+                  nillable="true"
+                  minOccurs="0"/>
+					    <element name="postcode"
+                  type="BG:Postcode-e"
+                  nillable="true"
+                  minOccurs="0"/>
+					    <choice minOccurs="0" maxOccurs="2">
+						      <sequence>
+							        <element name="aoa.identificatie"
+                        type="BG:ObjectNummering-e"
+                        nillable="true"
+                        minOccurs="0"/>
+							        <element name="gor.openbareRuimteNaam"
+                        type="BG:NaamgevingObject-e"
+                        nillable="true"
+                        minOccurs="0"/>
+							        <element name="gor.straatnaam"
+                        type="BG:Straatnaam-e"
+                        nillable="true"
+                        minOccurs="0"/>
+							        <element name="aoa.huisnummer"
+                        type="BG:Huisnummering-e"
+                        nillable="true"
+                        minOccurs="0"/>
+							        <element name="aoa.huisletter"
+                        type="BG:Huislettering-e"
+                        nillable="true"
+                        minOccurs="0"/>
+							        <element name="aoa.huisnummertoevoeging"
+                        type="BG:Huisnummertoevoeging-e"
+                        nillable="true"
+                        minOccurs="0"/>
+						      </sequence>
+						      <sequence>
+							        <element name="sub.postadresType"
+                        type="BG:PostadresType-e"
+                        nillable="true"
+                        minOccurs="0"/>
+							        <element name="sub.postadresNummer"
+                        type="BG:PostadresNummer-e"
+                        nillable="true"
+                        minOccurs="0"/>
+						      </sequence>
+					    </choice>
+				  </sequence>
+		
+	  </complexType>
+   <complexType name="VerblijfsadresGrp-woz-kerngegevens">
+		
+			   <sequence minOccurs="0">
+					    <element name="aoa.identificatie"
+                  type="BG:ObjectNummering-e"
+                  nillable="true"
+                  minOccurs="0"/>
+					    <element name="wpl.woonplaatsNaam"
+                  type="BG:WoonplaatsNaam-e"
+                  nillable="true"
+                  minOccurs="0"/>
+					    <element name="gor.openbareRuimteNaam"
+                  type="BG:NaamgevingObject-e"
+                  nillable="true"
+                  minOccurs="0"/>
+					    <element name="aoa.postcode"
+                  type="BG:Postcode-e"
+                  nillable="true"
+                  minOccurs="0"/>
+					    <element name="aoa.huisnummer"
+                  type="BG:Huisnummering-e"
+                  nillable="true"
+                  minOccurs="0"/>
+					    <element name="aoa.huisletter"
+                  type="BG:Huislettering-e"
+                  nillable="true"
+                  minOccurs="0"/>
+					    <element name="aoa.huisnummertoevoeging"
+                  type="BG:Huisnummertoevoeging-e"
+                  nillable="true"
+                  minOccurs="0"/>
+					    <element name="inp.locatiebeschrijving"
+                  type="BG:Locatiebeschrijving-e"
+                  nillable="true"
+                  minOccurs="0"/>
+				  </sequence>
+		
+	  </complexType>
+   <complexType name="AanduidingEigenaarGebruikerBSKMB-r">
+		    <simpleContent>
+			      <restriction base="BG:AanduidingEigenaarGebruiker-e">
+				        <simpleType>
+					          <restriction base="BG:AanduidingEigenaarGebruiker">
+						            <enumeration value="M"/>
+					          </restriction>
+				        </simpleType>
+				        <attribute ref="StUF:noValue" use="prohibited"/>
+			      </restriction>
+		    </simpleContent>
+	  </complexType>
+   <complexType name="AanduidingEigenaarGebruikerMBE-r">
+		    <simpleContent>
+			      <restriction base="BG:AanduidingEigenaarGebruiker-e">
+				        <simpleType>
+					          <restriction base="BG:AanduidingEigenaarGebruiker">
+						            <enumeration value="B"/>
+						            <enumeration value="E"/>
+					          </restriction>
+				        </simpleType>
+				        <attribute ref="StUF:noValue" use="prohibited"/>
+			      </restriction>
+		    </simpleContent>
+	  </complexType>
+   <complexType name="AanduidingEigenaarGebruikerMBG-r">
+		    <simpleContent>
+			      <restriction base="BG:AanduidingEigenaarGebruiker-e">
+				        <simpleType>
+					          <restriction base="BG:AanduidingEigenaarGebruiker">
+						            <enumeration value="B"/>
+						            <enumeration value="G"/>
+					          </restriction>
+				        </simpleType>
+				        <attribute ref="StUF:noValue" use="prohibited"/>
+			      </restriction>
+		    </simpleContent>
+	  </complexType>
+   <complexType name="AanduidingEigenaarGebruiker-r">
+		    <simpleContent>
+			      <restriction base="BG:AanduidingEigenaarGebruiker-e">
+				        <attribute ref="StUF:noValue" use="prohibited"/>
+			      </restriction>
+		    </simpleContent>
+	  </complexType>
+   <complexType name="DocumentNummering-r">
+		    <simpleContent>
+			      <restriction base="BG:DocumentNummering-e">
+				        <attribute ref="StUF:noValue" use="prohibited"/>
+			      </restriction>
+		    </simpleContent>
+	  </complexType>
+   <complexType name="Gemeentecodering-r">
+		    <simpleContent>
+			      <restriction base="BG:Gemeentecodering-e">
+				        <attribute ref="StUF:noValue" use="prohibited"/>
+			      </restriction>
+		    </simpleContent>
+	  </complexType>
+   <complexType name="Geslachtsnaam-r">
+		    <simpleContent>
+			      <restriction base="BG:Geslachtsnaam-e">
+				        <attribute ref="StUF:noValue" use="prohibited"/>
+			      </restriction>
+		    </simpleContent>
+	  </complexType>
+   <complexType name="Handelsnaam-r">
+		    <simpleContent>
+			      <restriction base="BG:Handelsnaam-e">
+				        <attribute ref="StUF:noValue" use="prohibited"/>
+			      </restriction>
+		    </simpleContent>
+	  </complexType>
+   <complexType name="Huisnummering-r">
+		    <simpleContent>
+			      <restriction base="BG:Huisnummering-e">
+				        <attribute ref="StUF:noValue" use="prohibited"/>
+			      </restriction>
+		    </simpleContent>
+	  </complexType>
+   <complexType name="KvKNummer-r">
+		    <simpleContent>
+			      <restriction base="BG:KvKNummer-e">
+				        <attribute ref="StUF:noValue" use="prohibited"/>
+			      </restriction>
+		    </simpleContent>
+	  </complexType>
+   <complexType name="NaamgevingObject-r">
+		    <simpleContent>
+			      <restriction base="BG:NaamgevingObject-e">
+				        <attribute ref="StUF:noValue" use="prohibited"/>
+			      </restriction>
+		    </simpleContent>
+	  </complexType>
+   <complexType name="ObjectNummeringLIG-e">
+		    <simpleContent>
+			      <restriction base="BG:ObjectNummering-e">
+				        <pattern value="[0-9]{4}02[0-9]{10}"/>
+			      </restriction>
+		    </simpleContent>
+	  </complexType>
+   <complexType name="ObjectNummeringLIG-r">
+		    <simpleContent>
+			      <restriction base="BG:ObjectNummeringLIG-e">
+				        <attribute ref="StUF:noValue" use="prohibited"/>
+			      </restriction>
+		    </simpleContent>
+	  </complexType>
+   <complexType name="ObjectNummeringPND-r">
+		    <simpleContent>
+			      <restriction base="BG:ObjectNummering-e">
+				        <pattern value="[0-9]{4}10[0-9]{10}"/>
+				        <attribute ref="StUF:noValue" use="prohibited"/>
+			      </restriction>
+		    </simpleContent>
+	  </complexType>
+   <complexType name="ObjectNummeringSTA-e">
+		    <simpleContent>
+			      <restriction base="BG:ObjectNummering-e">
+				        <pattern value="[0-9]{4}03[0-9]{10}"/>
+			      </restriction>
+		    </simpleContent>
+	  </complexType>
+   <complexType name="ObjectNummeringSTA-r">
+		    <simpleContent>
+			      <restriction base="BG:ObjectNummeringSTA-e">
+				        <attribute ref="StUF:noValue" use="prohibited"/>
+			      </restriction>
+		    </simpleContent>
+	  </complexType>
+   <complexType name="ObjectNummeringVBO-e">
+		    <simpleContent>
+			      <restriction base="BG:ObjectNummering-e">
+				        <pattern value="[0-9]{4}01[0-9]{10}"/>
+			      </restriction>
+		    </simpleContent>
+	  </complexType>
+   <complexType name="ObjectNummeringVBO-r">
+		    <simpleContent>
+			      <restriction base="BG:ObjectNummeringVBO-e">
+				        <attribute ref="StUF:noValue" use="prohibited"/>
+			      </restriction>
+		    </simpleContent>
+	  </complexType>
+   <complexType name="StatutaireNaam-r">
+		    <simpleContent>
+			      <restriction base="BG:StatutaireNaam-e">
+				        <attribute ref="StUF:noValue" use="prohibited"/>
+			      </restriction>
+		    </simpleContent>
+	  </complexType>
+   <complexType name="VerblijfBuitenlandGrp">
+		    <sequence>
+			      <element name="lnd.landcode"
+                  type="BG:Landcode-e"
+                  nillable="true"
+                  minOccurs="0"/>
+			      <element name="lnd.landnaam"
+                  type="BG:Landnaam-e"
+                  nillable="true"
+                  minOccurs="0"/>
+			      <element name="sub.adresBuitenland1"
+                  type="BG:AdresBuitenland-e"
+                  nillable="true"
+                  minOccurs="0"/>
+			      <element name="sub.adresBuitenland2"
+                  type="BG:AdresBuitenland-e"
+                  nillable="true"
+                  minOccurs="0"/>
+			      <element name="sub.adresBuitenland3"
+                  type="BG:AdresBuitenland-e"
+                  nillable="true"
+                  minOccurs="0"/>
+		    </sequence>
+	  </complexType>
+   <complexType name="AanduidingEigenaarGebruiker-e">
+		    <simpleContent>
+			      <extension base="BG:AanduidingEigenaarGebruiker">
+				        <attributeGroup ref="StUF:element"/>
+			      </extension>
+		    </simpleContent>
+	  </complexType>
+   <complexType name="AanduidingNaamgebruik-e">
+		    <simpleContent>
+			      <extension base="BG:AanduidingNaamgebruik">
+				        <attributeGroup ref="StUF:element"/>
+			      </extension>
+		    </simpleContent>
+	  </complexType>
+   <complexType name="Aanhef-e">
+		    <simpleContent>
+			      <extension base="BG:Aanhef">
+				        <attributeGroup ref="StUF:element"/>
+			      </extension>
+		    </simpleContent>
+	  </complexType>
+   <complexType name="AardZakelijkRecht-e">
+		    <simpleContent>
+			      <extension base="BG:AardZakelijkRecht">
+				        <attributeGroup ref="StUF:element"/>
+			      </extension>
+		    </simpleContent>
+	  </complexType>
+   <complexType name="AdresBuitenland-e">
+		    <simpleContent>
+			      <extension base="BG:AdresBuitenland">
+				        <attributeGroup ref="StUF:element"/>
+			      </extension>
+		    </simpleContent>
+	  </complexType>
+   <complexType name="Appartementsindex-e">
+		    <simpleContent>
+			      <extension base="BG:Appartementsindex">
+				        <attributeGroup ref="StUF:element"/>
+			      </extension>
+		    </simpleContent>
+	  </complexType>
+   <complexType name="BSN-e">
+		    <simpleContent>
+			      <restriction base="BG:BsVesNummerOfId-e">
+				        <simpleType>
+					          <restriction base="BG:BSN"/>
+				        </simpleType>
+			      </restriction>
+		    </simpleContent>
+	  </complexType>
+   <complexType name="BsVesNummerOfId-e">
+		    <simpleContent>
+			      <extension base="BG:BsVesNummerOfId">
+				        <attributeGroup ref="StUF:element"/>
+			      </extension>
+		    </simpleContent>
+	  </complexType>
+   <complexType name="DeelperceelNummer-e">
+		    <simpleContent>
+			      <extension base="BG:DeelperceelNummer">
+				        <attributeGroup ref="StUF:element"/>
+			      </extension>
+		    </simpleContent>
+	  </complexType>
+   <complexType name="DocumentNummering-e">
+		    <simpleContent>
+			      <extension base="BG:DocumentNummering">
+				        <attributeGroup ref="StUF:element"/>
+			      </extension>
+		    </simpleContent>
+	  </complexType>
+   <complexType name="Gemeentecodering-e">
+		    <simpleContent>
+			      <extension base="BG:Gemeentecodering">
+				        <attributeGroup ref="StUF:element"/>
+			      </extension>
+		    </simpleContent>
+	  </complexType>
+   <complexType name="GeometrieVlak-e">
+		    <complexContent>
+			      <extension base="gml:SurfacePropertyType">
+				        <attributeGroup ref="StUF:element"/>
+			      </extension>
+		    </complexContent>
+	  </complexType>
+   <complexType name="Geslachtsaanduiding-e">
+		    <simpleContent>
+			      <extension base="BG:Geslachtsaanduiding">
+				        <attributeGroup ref="StUF:element"/>
+			      </extension>
+		    </simpleContent>
+	  </complexType>
+   <complexType name="Geslachtsnaam-e">
+		    <simpleContent>
+			      <extension base="BG:Geslachtsnaam">
+				        <attributeGroup ref="StUF:element"/>
+			      </extension>
+		    </simpleContent>
+	  </complexType>
+   <complexType name="Handelsnaam-e">
+		    <simpleContent>
+			      <extension base="BG:Handelsnaam">
+				        <attributeGroup ref="StUF:element"/>
+			      </extension>
+		    </simpleContent>
+	  </complexType>
+   <complexType name="Huislettering-e">
+		    <simpleContent>
+			      <extension base="BG:Huislettering">
+				        <attributeGroup ref="StUF:element"/>
+			      </extension>
+		    </simpleContent>
+	  </complexType>
+   <complexType name="Huisnummering-e">
+		    <simpleContent>
+			      <extension base="BG:Huisnummering">
+				        <attributeGroup ref="StUF:element"/>
+			      </extension>
+		    </simpleContent>
+	  </complexType>
+   <complexType name="Huisnummertoevoeging-e">
+		    <simpleContent>
+			      <extension base="BG:Huisnummertoevoeging">
+				        <attributeGroup ref="StUF:element"/>
+			      </extension>
+		    </simpleContent>
+	  </complexType>
+   <complexType name="IdentificatieRPSBTL-e">
+		    <simpleContent>
+			      <extension base="BG:IdentificatieRPSBTL">
+				        <attributeGroup ref="StUF:element"/>
+			      </extension>
+		    </simpleContent>
+	  </complexType>
+   <complexType name="IndicatieGeheim-e">
+		    <simpleContent>
+			      <extension base="BG:IndicatieGeheim">
+				        <attributeGroup ref="StUF:element"/>
+			      </extension>
+		    </simpleContent>
+	  </complexType>
+   <complexType name="KadastraalPerceelnummer-e">
+		    <simpleContent>
+			      <extension base="BG:KadastraalPerceelnummer">
+				        <attributeGroup ref="StUF:element"/>
+			      </extension>
+		    </simpleContent>
+	  </complexType>
+   <complexType name="KadastraleGemeentecode-e">
+		    <simpleContent>
+			      <extension base="BG:KadastraleGemeentecode">
+				        <attributeGroup ref="StUF:element"/>
+			      </extension>
+		    </simpleContent>
+	  </complexType>
+   <complexType name="KadastraleIdentificatie-e">
+		    <simpleContent>
+			      <extension base="BG:KadastraleIdentificatie">
+				        <attributeGroup ref="StUF:element"/>
+			      </extension>
+		    </simpleContent>
+	  </complexType>
+   <complexType name="KadastraleSectie-e">
+		    <simpleContent>
+			      <extension base="BG:KadastraleSectie">
+				        <attributeGroup ref="StUF:element"/>
+			      </extension>
+		    </simpleContent>
+	  </complexType>
+   <complexType name="KvKNummer-e">
+		    <simpleContent>
+			      <extension base="BG:KvKNummer">
+				        <attributeGroup ref="StUF:element"/>
+			      </extension>
+		    </simpleContent>
+	  </complexType>
+   <complexType name="Landcode-e">
+		    <simpleContent>
+			      <extension base="BG:Landcode">
+				        <attributeGroup ref="StUF:element"/>
+			      </extension>
+		    </simpleContent>
+	  </complexType>
+   <complexType name="Landnaam-e">
+		    <simpleContent>
+			      <extension base="BG:Landnaam">
+				        <attributeGroup ref="StUF:element"/>
+			      </extension>
+		    </simpleContent>
+	  </complexType>
+   <complexType name="Locatiebeschrijving-e">
+		    <simpleContent>
+			      <extension base="BG:Locatiebeschrijving">
+				        <attributeGroup ref="StUF:element"/>
+			      </extension>
+		    </simpleContent>
+	  </complexType>
+   <complexType name="LocatieOmschrijving-e">
+		    <simpleContent>
+			      <extension base="BG:LocatieOmschrijving">
+				        <attributeGroup ref="StUF:element"/>
+			      </extension>
+		    </simpleContent>
+	  </complexType>
+   <complexType name="NaamgevingObject-e">
+		    <simpleContent>
+			      <extension base="BG:NaamgevingObject">
+				        <attributeGroup ref="StUF:element"/>
+			      </extension>
+		    </simpleContent>
+	  </complexType>
+   <complexType name="ObjectNummering-e">
+		    <simpleContent>
+			      <extension base="BG:ObjectNummering">
+				        <attributeGroup ref="StUF:element"/>
+			      </extension>
+		    </simpleContent>
+	  </complexType>
+   <complexType name="PostadresNummer-e">
+		    <simpleContent>
+			      <extension base="BG:PostadresNummer">
+				        <attributeGroup ref="StUF:element"/>
+			      </extension>
+		    </simpleContent>
+	  </complexType>
+   <complexType name="PostadresType-e">
+		    <simpleContent>
+			      <extension base="BG:PostadresType">
+				        <attributeGroup ref="StUF:element"/>
+			      </extension>
+		    </simpleContent>
+	  </complexType>
+   <complexType name="Postcode-e">
+		    <simpleContent>
+			      <extension base="BG:Postcode">
+				        <attributeGroup ref="StUF:element"/>
+			      </extension>
+		    </simpleContent>
+	  </complexType>
+   <complexType name="StatusBelang-e">
+		    <simpleContent>
+			      <extension base="BG:StatusBelang">
+				        <attributeGroup ref="StUF:element"/>
+			      </extension>
+		    </simpleContent>
+	  </complexType>
+   <complexType name="StatutaireNaam-e">
+		    <simpleContent>
+			      <extension base="BG:StatutaireNaam">
+				        <attributeGroup ref="StUF:element"/>
+			      </extension>
+		    </simpleContent>
+	  </complexType>
+   <complexType name="Straatnaam-e">
+		    <simpleContent>
+			      <extension base="BG:Straatnaam">
+				        <attributeGroup ref="StUF:element"/>
+			      </extension>
+		    </simpleContent>
+	  </complexType>
+   <complexType name="VestigingsNummer-e">
+		    <simpleContent>
+			      <extension base="BG:VestigingsNummer">
+				        <attributeGroup ref="StUF:element"/>
+			      </extension>
+		    </simpleContent>
+	  </complexType>
+   <complexType name="Voorletters-e">
+		    <simpleContent>
+			      <extension base="BG:Voorletters">
+				        <attributeGroup ref="StUF:element"/>
+			      </extension>
+		    </simpleContent>
+	  </complexType>
+   <complexType name="VoorvoegselGeslachtsnaam-e">
+		    <simpleContent>
+			      <extension base="BG:VoorvoegselGeslachtsnaam">
+				        <attributeGroup ref="StUF:element"/>
+			      </extension>
+		    </simpleContent>
+	  </complexType>
+   <complexType name="WoonplaatsNaam-e">
+		    <simpleContent>
+			      <extension base="BG:WoonplaatsNaam">
+				        <attributeGroup ref="StUF:element"/>
+			      </extension>
+		    </simpleContent>
+	  </complexType>
+   <simpleType name="AanduidingEigenaarGebruiker">
+		    <restriction base="string">
+			      <length value="1"/>
+			      <enumeration value="B">
+				        <annotation>
+					          <documentation>Eigenaar-gebruiker</documentation>
+				        </annotation>
+			      </enumeration>
+			      <enumeration value="E">
+				        <annotation>
+					          <documentation>Eigenaar</documentation>
+				        </annotation>
+			      </enumeration>
+			      <enumeration value="G">
+				        <annotation>
+					          <documentation>Gebruiker</documentation>
+				        </annotation>
+			      </enumeration>
+			      <enumeration value="M">
+				        <annotation>
+					          <documentation>Medebelanghebbende</documentation>
+				        </annotation>
+			      </enumeration>
+		    </restriction>
+	  </simpleType>
+   <simpleType name="AanduidingNaamgebruik">
+		    <restriction base="string">
+			      <enumeration value="E"/>
+			      <enumeration value="N"/>
+			      <enumeration value="P"/>
+			      <enumeration value="V"/>
+		    </restriction>
+	  </simpleType>
+   <simpleType name="Aanhef">
+		    <restriction base="string">
+			      <minLength value="1"/>
+			      <maxLength value="50"/>
+		    </restriction>
+	  </simpleType>
+   <simpleType name="AardZakelijkRecht">
+		    <restriction base="string">
+			      <pattern value="[A-Z]{2,6}"/>
+		    </restriction>
+	  </simpleType>
+   <simpleType name="AdresBuitenland">
+		    <restriction base="string">
+			      <maxLength value="35"/>
+		    </restriction>
+	  </simpleType>
+   <simpleType name="Appartementsindex">
+		    <restriction base="string">
+			      <maxLength value="4"/>
+		    </restriction>
+	  </simpleType>
+   <simpleType name="BsVesNummerOfId">
+		    <restriction base="string">
+			      <maxLength value="17"/>
+		    </restriction>
+	  </simpleType>
+   <simpleType name="BSN">
+		    <restriction base="BG:BsVesNummerOfId">
+			      <maxLength value="9"/>
+			      <pattern value="[0-9]{9}"/>
+		    </restriction>
+	  </simpleType>
+   <simpleType name="DeelperceelNummer">
+		    <restriction base="string">
+			      <maxLength value="4"/>
+		    </restriction>
+	  </simpleType>
+   <simpleType name="DocumentNummering">
+		    <restriction base="string">
+			      <maxLength value="20"/>
+		    </restriction>
+	  </simpleType>
+   <simpleType name="Gemeentecodering">
+		    <restriction base="nonNegativeInteger">
+			      <totalDigits value="4"/>
+		    </restriction>
+	  </simpleType>
+   <simpleType name="Geslachtsaanduiding">
+		    <restriction base="string">
+			      <enumeration value="M"/>
+			      <enumeration value="V"/>
+			      <enumeration value="O"/>
+		    </restriction>
+	  </simpleType>
+   <simpleType name="Geslachtsnaam">
+		    <restriction base="string">
+			      <maxLength value="200"/>
+		    </restriction>
+	  </simpleType>
+   <simpleType name="Handelsnaam">
+		    <restriction base="string">
+			      <maxLength value="200"/>
+		    </restriction>
+	  </simpleType>
+   <simpleType name="Huislettering">
+		    <restriction base="string">
+			      <pattern value="[a-zA-Z]"/>
+		    </restriction>
+	  </simpleType>
+   <simpleType name="Huisnummering">
+		    <restriction base="positiveInteger">
+			      <maxInclusive value="99999"/>
+		    </restriction>
+	  </simpleType>
+   <simpleType name="Huisnummertoevoeging">
+		    <restriction base="string">
+			      <pattern value="[a-zA-Z0-9]{0,4}"/>
+		    </restriction>
+	  </simpleType>
+   <simpleType name="IdentificatieRPSBTL">
+		    <restriction base="nonNegativeInteger">
+			      <pattern value="[0-9]{17}"/>
+		    </restriction>
+	  </simpleType>
+   <simpleType name="IndicatieGeheim">
+		    <restriction base="string">
+			      <enumeration value="0">
+				        <annotation>
+					          <documentation>geen beperking</documentation>
+				        </annotation>
+			      </enumeration>
+			      <enumeration value="1">
+				        <annotation>
+					          <documentation>niet zonder toestemming aan derden ter uitvoering van een algemeen verbindend voorschrift</documentation>
+				        </annotation>
+			      </enumeration>
+			      <enumeration value="2">
+				        <annotation>
+					          <documentation>niet aan kerken</documentation>
+				        </annotation>
+			      </enumeration>
+			      <enumeration value="3">
+				        <annotation>
+					          <documentation>niet aan vrije derden</documentation>
+				        </annotation>
+			      </enumeration>
+			      <enumeration value="4">
+				        <annotation>
+					          <documentation>niet zonder toestemming aan derden ter uitvoering van een algemeen verbindend voorschrift en niet aan kerken</documentation>
+				        </annotation>
+			      </enumeration>
+			      <enumeration value="5">
+				        <annotation>
+					          <documentation>niet zonder toestemming aan derden ter uitvoering van een algemeen verbindend voorschrift en niet aan vrije derden</documentation>
+				        </annotation>
+			      </enumeration>
+			      <enumeration value="6">
+				        <annotation>
+					          <documentation>niet aan kerken en niet aan vrije derden</documentation>
+				        </annotation>
+			      </enumeration>
+			      <enumeration value="7">
+				        <annotation>
+					          <documentation>niet zonder toestemming aan derden ter uitvoering van een algemeen verbindend voorschrift en niet aan vrije derden en niet aan kerken</documentation>
+				        </annotation>
+			      </enumeration>
+		    </restriction>
+	  </simpleType>
+   <simpleType name="KadastraalPerceelnummer">
+		    <restriction base="string">
+			      <maxLength value="5"/>
+		    </restriction>
+	  </simpleType>
+   <simpleType name="KadastraleGemeentecode">
+		    <restriction base="string">
+			      <maxLength value="5"/>
+		    </restriction>
+	  </simpleType>
+   <simpleType name="KadastraleIdentificatie">
+		    <restriction base="nonNegativeInteger">
+			      <totalDigits value="15"/>
+		    </restriction>
+	  </simpleType>
+   <simpleType name="KadastraleSectie">
+		    <restriction base="string">
+			      <maxLength value="2"/>
+		    </restriction>
+	  </simpleType>
+   <simpleType name="KvKNummer">
+		    <restriction base="string">
+			      <length value="8"/>
+		    </restriction>
+	  </simpleType>
+   <simpleType name="Landcode">
+		    <restriction base="integer">
+			      <pattern value="[0-9]{1,4}"/>
+		    </restriction>
+	  </simpleType>
+   <simpleType name="Landnaam">
+		    <restriction base="string">
+			      <maxLength value="40"/>
+		    </restriction>
+	  </simpleType>
+   <simpleType name="Locatiebeschrijving">
+		    <restriction base="string">
+			      <maxLength value="35"/>
+		    </restriction>
+	  </simpleType>
+   <simpleType name="LocatieOmschrijving">
+		    <restriction base="string">
+			      <maxLength value="40"/>
+		    </restriction>
+	  </simpleType>
+   <simpleType name="NaamgevingObject">
+		    <restriction base="string">
+			      <maxLength value="80"/>
+		    </restriction>
+	  </simpleType>
+   <simpleType name="ObjectNummering">
+		    <restriction base="string">
+			      <length value="16"/>
+		    </restriction>
+	  </simpleType>
+   <simpleType name="PostadresNummer">
+		    <restriction base="positiveInteger">
+			      <minInclusive value="1"/>
+			      <maxInclusive value="99999"/>
+		    </restriction>
+	  </simpleType>
+   <simpleType name="PostadresType">
+		    <restriction base="string">
+			      <length value="1"/>
+			      <enumeration value="A">
+				        <annotation>
+					          <documentation>Antwoordnummer</documentation>
+				        </annotation>
+			      </enumeration>
+			      <enumeration value="P">
+				        <annotation>
+					          <documentation>Postbusnummer</documentation>
+				        </annotation>
+			      </enumeration>
+		    </restriction>
+	  </simpleType>
+   <simpleType name="Postcode">
+		    <restriction base="string">
+			      <pattern value="[1-9][0-9]{3}[A-Z]{0,2}"/>
+		    </restriction>
+	  </simpleType>
+   <simpleType name="StatusBelang">
+		    <restriction base="nonNegativeInteger">
+			      <totalDigits value="2"/>
+			      <enumeration value="0">
+				        <annotation>
+					          <documentation>Actief</documentation>
+				        </annotation>
+			      </enumeration>
+			      <enumeration value="1">
+				        <annotation>
+					          <documentation>Gevormd, niet actief</documentation>
+				        </annotation>
+			      </enumeration>
+			      <enumeration value="8">
+				        <annotation>
+					          <documentation>Beëindigd</documentation>
+				        </annotation>
+			      </enumeration>
+			      <enumeration value="9">
+				        <annotation>
+					          <documentation>Ten onrechte opgevoerd</documentation>
+				        </annotation>
+			      </enumeration>
+		    </restriction>
+	  </simpleType>
+   <simpleType name="StatutaireNaam">
+		    <restriction base="string">
+			      <maxLength value="500"/>
+		    </restriction>
+	  </simpleType>
+   <simpleType name="Straatnaam">
+		    <restriction base="string">
+			      <maxLength value="24"/>
+		    </restriction>
+	  </simpleType>
+   <simpleType name="VestigingsNummer">
+		    <restriction base="string">
+			      <length value="12"/>
+		    </restriction>
+	  </simpleType>
+   <simpleType name="Voorletters">
+		    <restriction base="string">
+			      <maxLength value="20"/>
+		    </restriction>
+	  </simpleType>
+   <simpleType name="VoorvoegselGeslachtsnaam">
+		    <restriction base="string">
+			      <maxLength value="10"/>
+		    </restriction>
+	  </simpleType>
+   <simpleType name="WoonplaatsNaam">
+		    <restriction base="string">
+			      <maxLength value="80"/>
+		    </restriction>
+	  </simpleType>
+</schema>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/brmo-stufwoz312">
+    <ResourceLink global="jdbc/brmo/staging" name="jdbc/brmo/staging" type="javax.sql.DataSource"/>
+</Context>
