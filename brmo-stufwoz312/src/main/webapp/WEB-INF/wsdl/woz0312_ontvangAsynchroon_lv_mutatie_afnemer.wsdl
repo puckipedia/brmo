@@ -4,8 +4,7 @@
              xmlns:WOZ="http://www.waarderingskamer.nl/StUF/0312" 
              xmlns:StUF="http://www.egem.nl/StUF/StUF0301" 
              xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
-             xmlns:xs="http://www.w3.org/2001/XMLSchema" 
-             xmlns:wsi="http://ws-i.org/schemas/conformanceClaim/" 
+             xmlns:xs="http://www.w3.org/2001/XMLSchema"
              name="StUF-WOZ0312" 
              targetNamespace="http://www.waarderingskamer.nl/StUF/0312"
 >
@@ -24,6 +23,7 @@
 		</xs:schema>
 	</types>
 
+	<!--
 	<message name="nnpSa01">
 		<part name="body" element="WOZ:nnpSa01"/>
 	</message>
@@ -78,9 +78,11 @@
 	<message name="MHEF_Di01">
 		<part name="body" element="WOZ:MHEF_Di01"/>
 	</message>
+	-->
 	<message name="MKEN_Di01">
 		<part name="body" element="WOZ:MKEN_Di01"/>
 	</message>
+	<!--
 	<message name="MKOZ_Di01">
 		<part name="body" element="WOZ:MKOZ_Di01"/>
 	</message>
@@ -123,13 +125,24 @@
 	<message name="WWSP_Di01">
 		<part name="body" element="WOZ:WWSP_Di01"/>
 	</message>
-	<portType name="OntvangAsynchroon">
+	-->
+	<portType name="OntvangAsynchroonPortType">
+		<operation name="Fo01">
+			<input message="StUF:Fo01"/>
+			<output message="StUF:Fo03"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="Fo03">
+			<input message="StUF:Fo03"/>
+			<output message="StUF:Fo03"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<!--
 		<operation name="nnpSa01">
 			<input message="WOZ:nnpSa01"/>
 			<output message="StUF:Bv03"/>
 			<fault name="fout" message="StUF:Fo03"/>
 		</operation>
-
 		<operation name="npsSa01">
 			<input message="WOZ:npsSa01"/>
 			<output message="StUF:Bv03"/>
@@ -168,16 +181,6 @@
 		<operation name="wrdSh01-lvwoz">
 			<input message="WOZ:wrdSh01-lvwoz"/>
 			<output message="StUF:Bv03"/>
-			<fault name="fout" message="StUF:Fo03"/>
-		</operation>
-		<operation name="Fo01">
-			<input message="StUF:Fo01"/>
-			<output message="StUF:Fo03"/>
-			<fault name="fout" message="StUF:Fo03"/>
-		</operation>
-		<operation name="Fo03">
-			<input message="StUF:Fo03"/>
-			<output message="StUF:Fo03"/>
 			<fault name="fout" message="StUF:Fo03"/>
 		</operation>
 		<operation name="BSKMB_Di01">
@@ -225,11 +228,13 @@
 			<output message="StUF:Bv03"/>
 			<fault name="fout" message="StUF:Fo03"/>
 		</operation>
+		-->
 		<operation name="MKEN_Di01">
 			<input message="WOZ:MKEN_Di01"/>
 			<output message="StUF:Bv03"/>
 			<fault name="fout" message="StUF:Fo03"/>
 		</operation>
+		<!--
 		<operation name="MKOZ_Di01">
 			<input message="WOZ:MKOZ_Di01"/>
 			<output message="StUF:Bv03"/>
@@ -300,13 +305,39 @@
 			<output message="StUF:Bv03"/>
 			<fault name="fout" message="StUF:Fo03"/>
 		</operation>
+		-->
 	</portType>
-	<binding name="SOAPOntvangAsynchroon" type="WOZ:OntvangAsynchroon">
+	<binding name="SOAPOntvangAsynchroonBinding" type="WOZ:OntvangAsynchroonPortType">
 		<documentation>
 			Omdat de uit te wisselen berichten volledig gedefinieerd zijn in het sectormodel cq de StUF-standaard, kunnen we ze zonder verdere encoding (“literal”) opnemen in de body.
 			Niet ondersteunde berichten kunnen uit de binding en portType worden verwijderd.
 		</documentation>
 		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="Fo01">
+			<soap:operation soapAction="http://www.egem.nl/StUF/StUF0301/Fo01"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="Fo03">
+			<soap:operation soapAction="http://www.egem.nl/StUF/StUF0301/Fo03"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<!--
 		<operation name="nnpSa01">
 			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/nnpSa01"/>
 			<input>
@@ -405,30 +436,6 @@
 		</operation>
 		<operation name="wrdSh01-lvwoz">
 			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/wrdSh01-lvwoz"/>
-			<input>
-				<soap:body use="literal"/>
-			</input>
-			<output>
-				<soap:body use="literal"/>
-			</output>
-			<fault name="fout">
-				<soap:fault name="fout" use="literal"/>
-			</fault>
-		</operation>
-		<operation name="Fo01">
-			<soap:operation soapAction="http://www.egem.nl/StUF/StUF0301/Fo01"/>
-			<input>
-				<soap:body use="literal"/>
-			</input>
-			<output>
-				<soap:body use="literal"/>
-			</output>
-			<fault name="fout">
-				<soap:fault name="fout" use="literal"/>
-			</fault>
-		</operation>
-		<operation name="Fo03">
-			<soap:operation soapAction="http://www.egem.nl/StUF/StUF0301/Fo03"/>
 			<input>
 				<soap:body use="literal"/>
 			</input>
@@ -547,6 +554,7 @@
 				<soap:fault name="fout" use="literal"/>
 			</fault>
 		</operation>
+		-->
 		<operation name="MKEN_Di01">
 			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/MKEN_Di01"/>
 			<input>
@@ -559,6 +567,7 @@
 				<soap:fault name="fout" use="literal"/>
 			</fault>
 		</operation>
+		<!--
 		<operation name="MKOZ_Di01">
 			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/MKOZ_Di01"/>
 			<input>
@@ -727,15 +736,14 @@
 				<soap:fault name="fout" use="literal"/>
 			</fault>
 		</operation>
+		-->
 	</binding>
 	<service name="OntvangAsynchroon">
 		<documentation>
-			Hieronder wordt de concreet aan te roepen service voor het ontvangen van asynchrone berichten vanuit de LV WOZ gedefinieerd. In het attribute location in het element soap:address dient nog de correcte URL te worden ingevuld.
+			Hieronder wordt de concreet aan te roepen service voor het ontvangen van asynchrone berichten vanuit de LV WOZ gedefinieerd.
+			In het attribute location in het element soap:address dient nog de correcte URL te worden ingevuld.
 		</documentation>
-		<port name="OntvangAsynchroon" binding="WOZ:SOAPOntvangAsynchroon">
-			<documentation>
-				<wsi:Claim conformsTo="http://ws-i.org/profiles/basic/1.1"/>
-			</documentation>
+		<port name="OntvangAsynchronePort" binding="WOZ:SOAPOntvangAsynchroonBinding">
 			<soap:address location="http://example.com/OntvangAsynchroon"/>
 		</port>
 	</service>

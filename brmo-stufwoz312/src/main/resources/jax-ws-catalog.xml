@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="file:/home/mark/dev/projects/brmo/brmo-stufwoz312/src/main/webapp/WEB-INF/wsdl/gml_resolved.xsd"
+            uri="wsdl/gml_resolved.xsd"/>
+    <system systemId="file:/home/mark/dev/projects/brmo/brmo-stufwoz312/src/main/webapp/WEB-INF/wsdl/smil20-language_resolved.xsd"
+            uri="wsdl/smil20-language_resolved.xsd"/>
+    <system systemId="file:/home/mark/dev/projects/brmo/brmo-stufwoz312/src/main/webapp/WEB-INF/wsdl/smil20_resolved.xsd"
+            uri="wsdl/smil20_resolved.xsd"/>
+    <system systemId="file:/home/mark/dev/projects/brmo/brmo-stufwoz312/src/main/webapp/WEB-INF/wsdl/woz0312_bg0310_lv_mutatie_resolved.xsd"
+            uri="wsdl/woz0312_bg0310_lv_mutatie_resolved.xsd"/>
+    <system systemId="file:/home/mark/dev/projects/brmo/brmo-stufwoz312/src/main/webapp/WEB-INF/wsdl/woz0312_msg_lv_mutatie_resolved.xsd"
+            uri="wsdl/woz0312_msg_lv_mutatie_resolved.xsd"/>
+    <system systemId="file:/home/mark/dev/projects/brmo/brmo-stufwoz312/src/main/webapp/WEB-INF/wsdl/woz0312_msg_stuf_lv_mutatie_resolved.xsd"
+            uri="wsdl/woz0312_msg_stuf_lv_mutatie_resolved.xsd"/>
+    <system systemId="file:/home/mark/dev/projects/brmo/brmo-stufwoz312/src/main/webapp/WEB-INF/wsdl/xlink_resolved.xsd"
+            uri="wsdl/xlink_resolved.xsd"/>
+    <system systemId="file:/home/mark/dev/projects/brmo/brmo-stufwoz312/src/main/webapp/WEB-INF/wsdl/xml_resolved.xsd"
+            uri="wsdl/xml_resolved.xsd"/>
+</catalog>
