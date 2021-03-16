@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2013 rel. 2 sp2 (x64) (http://www.altova.com) by Maarten van den Broek (messageDesign B.V.) -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:StUF="http://www.egem.nl/StUF/StUF0301" targetNamespace="http://www.egem.nl/StUF/StUF0301" elementFormDefault="qualified" attributeFormDefault="unqualified" version="031201">
+	<include schemaLocation="../../0301/stuf0301mtom.xsd"/>
+	<include schemaLocation="../../bg0310/entiteiten/bg0310_stuf_simpleTypes.xsd"/>
+	<annotation>
+		<documentation>
+			Dit schema bevat de restricties van StUF-types tbv het opvragen voor mijnOverheid
+			
+			Wijzigingen vergeleken met versie 031200:
+			- SimpleType voor berichtcode in de complexTypes voor de stuurgegevens in lijn gebracht met gewijzigde simpleType in patch016 van StUF0301
+			- SimpleType voor functie in stuurgegevens vervangen door toegevoegd simpleType met als enige enumeration value de huidige fixed value
+			- SimpleType voor sortering vervangen door toegevoegd simpleType met als enige enumeration value de huidige fixed value
+			- SimpleType voor maximumAantal vervangen door toegevoegd simpleType met als enige enumeration value de huidige fixed value
+		</documentation>
+	</annotation>
+	<!--Restricties op ParametersVraag voor fundamentele entiteittypen-->
+	<complexType name="ParametersAntwoord-mijnOverheid">
+		<complexContent>
+			<restriction base="StUF:ParametersAntwoordSynchroon">
+				<sequence>
+					<element name="indicatorVervolgvraag" type="boolean"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WRD-mijnOverheid-parametersVraagSynchroon">
+		<complexContent>
+			<restriction base="StUF:ParametersVraag">
+				<sequence>
+					<element name="sortering" type="StUF:Sortering4"/>
+					<element name="indicatorVervolgvraag" type="boolean" fixed="false"/>
+					<element name="maximumAantal" type="StUF:MaximumAantal99999999"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WRD-mijnOverheid-parametersVraagSynchroon2">
+		<complexContent>
+			<restriction base="StUF:ParametersVraag">
+				<sequence>
+					<element name="sortering" type="StUF:Sortering1"/>
+					<element name="indicatorVervolgvraag" type="boolean" fixed="false"/>
+					<element name="maximumAantal" type="StUF:MaximumAantal1"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WRD-mijnOverheid-parametersVraagTaxVerslag">
+		<complexContent>
+			<restriction base="StUF:ParametersVraag">
+				<sequence>
+					<element name="sortering" type="StUF:Sortering1"/>
+					<element name="indicatorVervolgvraag" type="boolean" fixed="false"/>
+					<element name="maximumAantal" type="StUF:MaximumAantal1"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<!--Definities van stuurgegeven elementen-->
+	<complexType name="Stuurgegevens-mijnOverheid-antwTaxatieverslag">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensDu02">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeDu02"/>
+					<element name="ontvanger" type="StUF:Systeem"/>
+					<element name="functie" type="StUF:FunctieMijnOverheid-antwTaxVerslag"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="Stuurgegevens-mijnOverheid-antwWRDDetails">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensDu02">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeDu02"/>
+					<element name="ontvanger" type="StUF:Systeem"/>
+					<element name="functie" type="StUF:FunctieMijnOverheid-antwWRDDetails"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="Stuurgegevens-mijnOverheid-antwWRDPerBsn">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLa01">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLa01"/>
+					<element name="ontvanger" type="StUF:Systeem"/>
+					<element name="entiteittype" type="StUF:EntiteittypeWRD"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="Stuurgegevens-mijnOverheid-vraagTaxatieverslag">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensDi02">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeDi02"/>
+					<element name="zender" type="StUF:Systeem"/>
+					<element name="functie" type="StUF:FunctieMijnOverheid-vraagTaxVerslag"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="Stuurgegevens-mijnOverheid-vraagWRDDetails">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensDi02">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeDi02"/>
+					<element name="zender" type="StUF:Systeem"/>
+					<element name="functie" type="StUF:FunctieMijnOverheid-vraagWRDDetails"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="Stuurgegevens-mijnOverheid-vraagWRDPerBsn">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLv01">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLv01"/>
+					<element name="zender" type="StUF:Systeem"/>
+					<element name="entiteittype" type="StUF:EntiteittypeWRD"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<simpleType name="FunctieMijnOverheid-antwTaxVerslag">
+		<restriction base="StUF:Functie">
+			<enumeration value="mijnOverheid-antwTaxVerslag"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="FunctieMijnOverheid-antwWRDDetails">
+		<restriction base="StUF:Functie">
+			<enumeration value="mijnOverheid-antwWRDDetails"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="FunctieMijnOverheid-vraagTaxVerslag">
+		<restriction base="StUF:Functie">
+			<enumeration value="mijnOverheid-vraagTaxVerslag"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="FunctieMijnOverheid-vraagWRDDetails">
+		<restriction base="StUF:Functie">
+			<enumeration value="mijnOverheid-vraagWRDDetails"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="MaximumAantal1">
+		<restriction base="StUF:MaximumAantal">
+			<enumeration value="1"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="MaximumAantal99999999">
+		<restriction base="StUF:MaximumAantal">
+			<enumeration value="99999999"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Sortering1">
+		<restriction base="StUF:Sortering">
+			<enumeration value="1"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Sortering4">
+		<restriction base="StUF:Sortering">
+			<enumeration value="4"/>
+		</restriction>
+	</simpleType>
+</schema>

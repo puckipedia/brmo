@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2012 sp1 (http://www.altova.com) by Maarten van den Broek (messageDesign) -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:StUF="http://www.egem.nl/StUF/StUF0301" xmlns:WOZ="http://www.waarderingskamer.nl/StUF/0312" xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310" targetNamespace="http://www.waarderingskamer.nl/StUF/0312" elementFormDefault="qualified" attributeFormDefault="unqualified" version="031201">
+	<annotation>
+		<documentation>
+			Dit schema bevat de definitie van de complexTypes gebruikt in de vrije berichten voor de communicatie met mijnOverheid
+			
+			Wijzigingen vergeleken met versie 031200:
+			- Waar nodig attribute sleutelSynchronisatie prohibited gemaakt
+		</documentation>
+	</annotation>
+	<import namespace="http://www.egem.nl/StUF/StUF0301" schemaLocation="../entiteiten/woz0312_stuf_simpleTypes.xsd"/>
+	<import namespace="http://www.egem.nl/StUF/sector/bg/0310" schemaLocation="woz0312_bg0310_mijnOverheid.xsd"/>
+	<include schemaLocation="../entiteiten/woz0312_ent_basis.xsd"/>
+	<complexType name="SOC-mijnOverheid-entiteit">
+		<complexContent>
+			<restriction base="WOZ:SOC-basis">
+				<sequence>
+					<element name="omschrijvingSoortObject" type="WOZ:Omschrijving50-e" nillable="true"/>
+					<element name="omschrijvingSoortObjectVerkort" type="WOZ:Omschrijving12-e" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="SUB-mijnOverheid-selectieBsn">
+		<complexContent>
+			<restriction base="WOZ:SUB-woz-basis">
+				<choice>
+					<sequence>
+						<element name="bsVesNummerOfId" type="BG:BsVesNummerOfId-e" nillable="true"/>
+					</sequence>
+				</choice>
+				<attribute ref="StUF:entiteittype" use="required" fixed="SUB"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZ-mijnOverheid-antwoord-inWRD">
+		<complexContent>
+			<restriction base="WOZ:WOZ-basis">
+				<sequence>
+					<element name="wozObjectNummer" type="WOZ:WOZObjectNummer-e" nillable="true"/>
+					<element name="aanduidingWOZobject" type="BG:AanduidingWOZobjectGrp-mijnOverheid-vraagAntwoord"/>
+					<element name="grondoppervlakte" type="WOZ:Maateenheid11-neg-e" nillable="true"/>
+					<element name="isVerbondenMet" type="WOZ:WOZAOTOND-mijnOverheid-vraagAntwoord" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="heeftPand" type="WOZ:WOZPND-mijnOverheid-vraagAntwoord" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WOZ"/>
+				<attribute ref="StUF:sleutelVerzendend" use="prohibited"/>
+				<attribute ref="StUF:sleutelOntvangend" use="prohibited"/>
+				<attribute ref="StUF:sleutelGegevensbeheer" use="prohibited"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZ-mijnOverheid-antwoord-inWRD2">
+		<complexContent>
+			<restriction base="WOZ:WOZ-basis">
+				<sequence>
+					<element name="wozObjectNummer" type="WOZ:WOZObjectNummer-e" nillable="true"/>
+					<element name="soortObjectCode" type="WOZ:SoortObjectCode-e" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WOZ"/>
+				<attribute ref="StUF:sleutelVerzendend" use="prohibited"/>
+				<attribute ref="StUF:sleutelOntvangend" use="prohibited"/>
+				<attribute ref="StUF:sleutelGegevensbeheer" use="prohibited"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZ-mijnOverheid-scope-inWRD">
+		<complexContent>
+			<restriction base="WOZ:WOZ-basis">
+				<sequence>
+					<element name="wozObjectNummer" type="WOZ:WOZObjectNummer-e" nillable="true"/>
+					<element name="aanduidingWOZobject" type="BG:AanduidingWOZobjectGrp-mijnOverheid-vraagAntwoord"/>
+					<element name="grondoppervlakte" type="WOZ:Maateenheid11-neg-e" nillable="true"/>
+					<element name="isVerbondenMet" type="WOZ:WOZAOTOND-mijnOverheid-vraagAntwoord" nillable="true"/>
+					<element name="heeftPand" type="WOZ:WOZPND-mijnOverheid-vraagAntwoord" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WOZ"/>
+				<attribute ref="StUF:sleutelVerzendend" use="prohibited"/>
+				<attribute ref="StUF:sleutelOntvangend" use="prohibited"/>
+				<attribute ref="StUF:sleutelGegevensbeheer" use="prohibited"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZ-mijnOverheid-scope-inWRD2">
+		<complexContent>
+			<restriction base="WOZ:WOZ-basis">
+				<sequence>
+					<element name="wozObjectNummer" type="WOZ:WOZObjectNummer-e" nillable="true"/>
+					<element name="soortObjectCode" type="WOZ:SoortObjectCode-e" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WOZ"/>
+				<attribute ref="StUF:sleutelVerzendend" use="prohibited"/>
+				<attribute ref="StUF:sleutelOntvangend" use="prohibited"/>
+				<attribute ref="StUF:sleutelGegevensbeheer" use="prohibited"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZ-mijnOverheid-selectieWOZObjectnr">
+		<complexContent>
+			<restriction base="WOZ:WOZ-basis">
+				<sequence>
+					<element name="wozObjectNummer" type="WOZ:WOZObjectNummer-e" nillable="true"/>
+					<element name="verantwoordelijkeGemeente" type="BG:VerantwoordelijkeGemeenteGrp"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WOZ"/>
+				<attribute ref="StUF:sleutelVerzendend" use="prohibited"/>
+				<attribute ref="StUF:sleutelOntvangend" use="prohibited"/>
+				<attribute ref="StUF:sleutelGegevensbeheer" use="prohibited"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZ-mijnOverheid-selectieVerantwGem">
+		<complexContent>
+			<restriction base="WOZ:WOZ-basis">
+				<sequence>
+					<element name="verantwoordelijkeGemeente" type="BG:VerantwoordelijkeGemeenteGrp-mijnOverheid-selectie"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WOZ"/>
+				<attribute ref="StUF:sleutelVerzendend" use="prohibited"/>
+				<attribute ref="StUF:sleutelOntvangend" use="prohibited"/>
+				<attribute ref="StUF:sleutelGegevensbeheer" use="prohibited"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZAOTOND-mijnOverheid-vraagAntwoord">
+		<complexContent>
+			<restriction base="WOZ:WOZAOTOND-basis">
+				<sequence>
+					<element name="gerelateerde" type="BG:AOT-mijnOverheid-vraagAntwoord"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WOZAOTOND"/>
+				<attribute ref="StUF:sleutelVerzendend" use="prohibited"/>
+				<attribute ref="StUF:sleutelOntvangend" use="prohibited"/>
+				<attribute ref="StUF:sleutelGegevensbeheer" use="prohibited"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZPND-mijnOverheid-vraagAntwoord">
+		<complexContent>
+			<restriction base="WOZ:WOZPND-basis">
+				<sequence>
+					<element name="gerelateerde" type="BG:PND-mijnOverheid-vraagAntwoord"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WOZPND"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZSUB-mijnOverheid-selectieBsn">
+		<complexContent>
+			<restriction base="WOZ:WOZSUB-basis">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:SUB-mijnOverheid-selectieBsn"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WOZSUB"/>
+				<attribute ref="StUF:sleutelVerzendend" use="prohibited"/>
+				<attribute ref="StUF:sleutelOntvangend" use="prohibited"/>
+				<attribute ref="StUF:sleutelGegevensbeheer" use="prohibited"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WRD-mijnOverheid-antwoord">
+		<complexContent>
+			<restriction base="WOZ:WRD-basis">
+				<sequence>
+					<element name="waardepeildatum" type="WOZ:Peildatum-e" nillable="true"/>
+					<element name="vastgesteldeWaarde" type="WOZ:Maateenheid11-e" nillable="true"/>
+					<element name="isVoor" type="WOZ:WRDWOZ-mijnOverheid-antwoord" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WRD"/>
+				<attribute ref="StUF:sleutelVerzendend" use="prohibited"/>
+				<attribute ref="StUF:sleutelOntvangend" use="prohibited"/>
+				<attribute ref="StUF:sleutelGegevensbeheer" use="prohibited"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WRD-mijnOverheid-antwoord2">
+		<complexContent>
+			<restriction base="WOZ:WRD-basis">
+				<sequence>
+					<element name="waardepeildatum" type="WOZ:Peildatum-e" nillable="true"/>
+					<element name="isVoor" type="WOZ:WRDWOZ-mijnOverheid-antwoord2" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WRD"/>
+				<attribute ref="StUF:sleutelVerzendend" use="prohibited"/>
+				<attribute ref="StUF:sleutelOntvangend" use="prohibited"/>
+				<attribute ref="StUF:sleutelGegevensbeheer" use="prohibited"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WRD-mijnOverheid-scope">
+		<complexContent>
+			<restriction base="WOZ:WRD-basis">
+				<sequence>
+					<element name="waardepeildatum" type="WOZ:Peildatum-e" nillable="true"/>
+					<element name="vastgesteldeWaarde" type="WOZ:Maateenheid11-e" nillable="true"/>
+					<element name="isVoor" type="WOZ:WRDWOZ-mijnOverheid-scope" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WRD"/>
+				<attribute ref="StUF:sleutelVerzendend" use="prohibited"/>
+				<attribute ref="StUF:sleutelOntvangend" use="prohibited"/>
+				<attribute ref="StUF:sleutelGegevensbeheer" use="prohibited"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WRD-mijnOverheid-scope2">
+		<complexContent>
+			<restriction base="WOZ:WRD-basis">
+				<sequence>
+					<element name="waardepeildatum" type="WOZ:Peildatum-e" nillable="true"/>
+					<element name="isVoor" type="WOZ:WRDWOZ-mijnOverheid-scope2" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WRD"/>
+				<attribute ref="StUF:sleutelVerzendend" use="prohibited"/>
+				<attribute ref="StUF:sleutelOntvangend" use="prohibited"/>
+				<attribute ref="StUF:sleutelGegevensbeheer" use="prohibited"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WRD-mijnOverheid-selectiePeildatum">
+		<complexContent>
+			<restriction base="WOZ:WRD-basis">
+				<sequence>
+					<element name="waardepeildatum" type="WOZ:Peildatum-e" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WRD"/>
+				<attribute ref="StUF:sleutelVerzendend" use="prohibited"/>
+				<attribute ref="StUF:sleutelOntvangend" use="prohibited"/>
+				<attribute ref="StUF:sleutelGegevensbeheer" use="prohibited"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WRD-mijnOverheid-selectieWOZ">
+		<complexContent>
+			<restriction base="WOZ:WRD-basis">
+				<sequence>
+					<element name="isVoor" type="WOZ:WRDWOZ-mijnOverheid-selectieVerantwGemeente" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WRD"/>
+				<attribute ref="StUF:sleutelVerzendend" use="prohibited"/>
+				<attribute ref="StUF:sleutelOntvangend" use="prohibited"/>
+				<attribute ref="StUF:sleutelGegevensbeheer" use="prohibited"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WRD-mijnOverheid-selectieWOZPeildatum">
+		<complexContent>
+			<restriction base="WOZ:WRD-basis">
+				<sequence>
+					<element name="waardepeildatum" type="WOZ:Peildatum-e" nillable="true"/>
+					<element name="isVoor" type="WOZ:WRDWOZ-mijnOverheid-selectieWOZ" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WRD"/>
+				<attribute ref="StUF:sleutelVerzendend" use="prohibited"/>
+				<attribute ref="StUF:sleutelOntvangend" use="prohibited"/>
+				<attribute ref="StUF:sleutelGegevensbeheer" use="prohibited"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WRD-mijnOverheid-selectieBsnEnGemeente">
+		<complexContent>
+			<restriction base="WOZ:WRD-basis">
+				<sequence>
+					<element name="isVoor" type="WOZ:WRDWOZ-mijnOverheid-selectieVerantwGemeente" nillable="true"/>
+					<element name="isBeschiktVoor" type="WOZ:WRDSUB-mijnOverheid-selectieBsn" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WRD"/>
+				<attribute ref="StUF:sleutelVerzendend" use="prohibited"/>
+				<attribute ref="StUF:sleutelOntvangend" use="prohibited"/>
+				<attribute ref="StUF:sleutelGegevensbeheer" use="prohibited"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WRD-mijnOverheid-vraagAntwoord-inWOZ">
+		<complexContent>
+			<restriction base="WOZ:WRD-basis">
+				<sequence>
+					<element name="waardepeildatum" type="WOZ:Peildatum-e" nillable="true"/>
+					<element name="vastgesteldeWaarde" type="WOZ:Maateenheid11-e" nillable="true"/>
+					<element ref="StUF:tijdvakGeldigheid"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WRD"/>
+				<attribute ref="StUF:sleutelVerzendend" use="prohibited"/>
+				<attribute ref="StUF:sleutelOntvangend" use="prohibited"/>
+				<attribute ref="StUF:sleutelGegevensbeheer" use="prohibited"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WRDSUB-mijnOverheid-selectieBsn">
+		<complexContent>
+			<restriction base="WOZ:WRDSUB-basis">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:SUB-mijnOverheid-selectieBsn"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WRDSUB"/>
+				<attribute ref="StUF:sleutelVerzendend" use="prohibited"/>
+				<attribute ref="StUF:sleutelOntvangend" use="prohibited"/>
+				<attribute ref="StUF:sleutelGegevensbeheer" use="prohibited"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+				<attribute ref="StUF:aantalVoorkomens" use="prohibited"/>
+				<attribute ref="StUF:aardAantal" use="prohibited"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WRDWOZ-mijnOverheid-antwoord">
+		<complexContent>
+			<restriction base="WOZ:WRDWOZ-basis">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:WOZ-mijnOverheid-antwoord-inWRD" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WRDWOZ"/>
+				<attribute ref="StUF:sleutelVerzendend" use="prohibited"/>
+				<attribute ref="StUF:sleutelOntvangend" use="prohibited"/>
+				<attribute ref="StUF:sleutelGegevensbeheer" use="prohibited"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WRDWOZ-mijnOverheid-antwoord2">
+		<complexContent>
+			<restriction base="WOZ:WRDWOZ-basis">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:WOZ-mijnOverheid-antwoord-inWRD2" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WRDWOZ"/>
+				<attribute ref="StUF:sleutelVerzendend" use="prohibited"/>
+				<attribute ref="StUF:sleutelOntvangend" use="prohibited"/>
+				<attribute ref="StUF:sleutelGegevensbeheer" use="prohibited"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WRDWOZ-mijnOverheid-scope">
+		<complexContent>
+			<restriction base="WOZ:WRDWOZ-basis">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:WOZ-mijnOverheid-scope-inWRD" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WRDWOZ"/>
+				<attribute ref="StUF:sleutelVerzendend" use="prohibited"/>
+				<attribute ref="StUF:sleutelOntvangend" use="prohibited"/>
+				<attribute ref="StUF:sleutelGegevensbeheer" use="prohibited"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WRDWOZ-mijnOverheid-scope2">
+		<complexContent>
+			<restriction base="WOZ:WRDWOZ-basis">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:WOZ-mijnOverheid-scope-inWRD2" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WRDWOZ"/>
+				<attribute ref="StUF:sleutelVerzendend" use="prohibited"/>
+				<attribute ref="StUF:sleutelOntvangend" use="prohibited"/>
+				<attribute ref="StUF:sleutelGegevensbeheer" use="prohibited"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WRDWOZ-mijnOverheid-selectieWOZ">
+		<complexContent>
+			<restriction base="WOZ:WRDWOZ-basis">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:WOZ-mijnOverheid-selectieWOZObjectnr" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WRDWOZ"/>
+				<attribute ref="StUF:sleutelVerzendend" use="prohibited"/>
+				<attribute ref="StUF:sleutelOntvangend" use="prohibited"/>
+				<attribute ref="StUF:sleutelGegevensbeheer" use="prohibited"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WRDWOZ-mijnOverheid-selectieVerantwGemeente">
+		<complexContent>
+			<restriction base="WOZ:WRDWOZ-basis">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:WOZ-mijnOverheid-selectieVerantwGem" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WRDWOZ"/>
+				<attribute ref="StUF:sleutelVerzendend" use="prohibited"/>
+				<attribute ref="StUF:sleutelOntvangend" use="prohibited"/>
+				<attribute ref="StUF:sleutelGegevensbeheer" use="prohibited"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+</schema>

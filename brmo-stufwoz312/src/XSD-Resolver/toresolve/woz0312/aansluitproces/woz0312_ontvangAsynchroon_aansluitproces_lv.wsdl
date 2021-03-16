@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2012 (http://www.altova.com) by Maarten van den Broek (messageDesign) -->
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:WOZ="http://www.waarderingskamer.nl/StUF/0312" xmlns:StUF="http://www.egem.nl/StUF/StUF0301" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wsi="http://ws-i.org/schemas/conformanceClaim/" name="StUF-WOZ0312" targetNamespace="http://www.waarderingskamer.nl/StUF/0312">
+	<import namespace="http://www.egem.nl/StUF/StUF0301" location="../../0301/stuf0301_types.wsdl"/>
+	<documentation>
+		Deze wsdl definieert voor een OntvangAsynchroon webservice van de LV WOZ het ontvangen van berichten relevant tijdens het aansluitproces
+		
+		Versie 031201.
+			
+		Deze wsdl is een kopie van woz031200_ontvangAsynchroon_aansluitproces met de volgende wijzigingen
+		- een nieuwe naam
+		- het toevoegen van een operation voor StUF:Fo03
+	</documentation>
+	<types>
+		<xs:schema>
+			<xs:import namespace="http://www.waarderingskamer.nl/StUF/0312" schemaLocation="woz0312_msg_aansluitproces.xsd"/>
+		</xs:schema>
+	</types>
+	<message name="leegDatabaseDi01">
+		<part name="body" element="WOZ:leegDatabaseDi01"/>
+	</message>
+	<portType name="OntvangAsynchroon">
+		<operation name="leegDatabaseDi01">
+			<input message="WOZ:leegDatabaseDi01"/>
+			<output message="StUF:Bv03"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="Fo03">
+			<input message="StUF:Fo03"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+	</portType>
+	<binding name="SOAPOntvangAsynchroon" type="WOZ:OntvangAsynchroon">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<documentation>
+We definieren in alle operaties als soapAction "http://www.waarderingskamer.nl/StUF/0312/...", niet conform voorschriften OSB WUS Koppelvlak definitie v0.9, omdat XMLSpy niet
+toestaat dat de soapAction leeg is en omdat .Net een unieke soapAction vereist per operation.
+Omdat de uit te wisselen berichten volledig gedefinieerd zijn in het sectormodel cq de StUF-standaard, kunnen we ze zonder verdere encoding (“literal”) opnemen in de body.
+Niet ondersteunde berichten kunnen uit de binding en portType worden verwijderd.
+			</documentation>
+		<operation name="leegDatabaseDi01">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/leegDatabaseDi01"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="Fo03">
+			<soap:operation soapAction="http://www.egem.nl/StUF/StUF0301/Fo03"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+	</binding>
+	<service name="OntvangAsynchroon">
+		<documentation>
+	Hieronder wordt de concreet aan te roepen service voor het ontvangen van asynchrone berichten gedefinieerd.
+	In het attribute location binnen het element soap:address dient nog wel de correcte URL te worden ingevuld.
+		</documentation>
+		<port name="OntvangAsynchroon" binding="WOZ:SOAPOntvangAsynchroon">
+			<soap:address location="http://example.com/OntvangAsynchroon"/>
+			<documentation>
+				<wsi:Claim conformsTo="http://ws-i.org/profiles/basic/1.1"/>
+			</documentation>
+		</port>
+	</service>
+</definitions>

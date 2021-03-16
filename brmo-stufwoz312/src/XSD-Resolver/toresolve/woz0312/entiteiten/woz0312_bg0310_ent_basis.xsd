@@ -1,0 +1,1049 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2018 rel. 2 sp1 (x64) (http://www.altova.com) by M. van den Broek (messageDesign B.V.) -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:StUF="http://www.egem.nl/StUF/StUF0301" xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310" targetNamespace="http://www.egem.nl/StUF/sector/bg/0310" elementFormDefault="qualified" attributeFormDefault="unqualified" version="031208">
+	<annotation>
+		<documentation>
+			Dit schema bevat de restricties van BG-types tbv het sectormodel WOZ.
+			
+			Wijzigingen vergeleken met version 031207:
+			- ComplexTypes AanduidingWOZobjectGrp-woz-kerngegevensVerplicht, CorrespondentieAdrGrp-woz-kerngegevensVerplicht, VerblijfBuitenlandGrp-woz-kerngegevensVerplicht, VerblijfsadresGrp-woz-kerngegevensVerplicht, NNP-woz-kerngegevensVerplicht, NPS-woz-kerngegevensVerplicht en VES-woz-kerngegevensVerplicht toegevoegd
+ 		</documentation>
+	</annotation>
+	<include schemaLocation="../../bg0310/entiteiten/bg0310_ent_basis.xsd"/>
+	<import namespace="http://www.egem.nl/StUF/StUF0301" schemaLocation="woz0312_stuf_simpleTypes.xsd"/>
+	<!--ComplexTypes voor groepen-->
+	<complexType name="AanduidingWOZobjectGrp-woz">
+		<complexContent>
+			<restriction base="BG:AanduidingWOZobjectGrp-basis">
+				<sequence minOccurs="0">
+					<element name="aoa.identificatie" type="BG:ObjectNummering-e" nillable="true" minOccurs="0"/>
+					<element name="wpl.woonplaatsNaam" type="BG:WoonplaatsNaam-e" nillable="true" minOccurs="0"/>
+					<element name="aoa.postcode" type="BG:Postcode-e" nillable="true" minOccurs="0"/>
+					<element name="gor.openbareRuimteNaam" type="BG:NaamgevingObject-e" nillable="true" minOccurs="0"/>
+					<element name="gor.straatnaam" type="BG:Straatnaam-e" nillable="true" minOccurs="0"/>
+					<element name="aoa.huisnummer" type="BG:Huisnummering-e" nillable="true" minOccurs="0"/>
+					<element name="aoa.huisletter" type="BG:Huislettering-e" nillable="true" minOccurs="0"/>
+					<element name="aoa.huisnummertoevoeging" type="BG:Huisnummertoevoeging-e" nillable="true" minOccurs="0"/>
+					<element name="locatieOmschrijving" type="BG:LocatieOmschrijving-e" nillable="true" minOccurs="0"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="AanduidingWOZobjectGrp-woz-kerngegevens">
+		<complexContent>
+			<restriction base="BG:AanduidingWOZobjectGrp-woz">
+				<sequence minOccurs="0">
+					<element name="aoa.identificatie" type="BG:ObjectNummering-e" nillable="true" minOccurs="0"/>
+					<element name="wpl.woonplaatsNaam" type="BG:WoonplaatsNaam-e" nillable="true" minOccurs="0"/>
+					<element name="aoa.postcode" type="BG:Postcode-e" nillable="true" minOccurs="0"/>
+					<element name="gor.openbareRuimteNaam" type="BG:NaamgevingObject-e" nillable="true" minOccurs="0"/>
+					<element name="aoa.huisnummer" type="BG:Huisnummering-e" nillable="true" minOccurs="0"/>
+					<element name="aoa.huisletter" type="BG:Huislettering-e" nillable="true" minOccurs="0"/>
+					<element name="aoa.huisnummertoevoeging" type="BG:Huisnummertoevoeging-e" nillable="true" minOccurs="0"/>
+					<element name="locatieOmschrijving" type="BG:LocatieOmschrijving-e" nillable="true" minOccurs="0"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="AanduidingWOZobjectGrp-woz-kerngegevensVerplicht">
+		<complexContent>
+			<restriction base="BG:AanduidingWOZobjectGrp-woz-kerngegevens">
+				<sequence>
+					<element name="aoa.identificatie" type="BG:ObjectNummering-e" nillable="true"/>
+					<element name="wpl.woonplaatsNaam" type="BG:WoonplaatsNaam-e" nillable="true"/>
+					<element name="aoa.postcode" type="BG:Postcode-e" nillable="true"/>
+					<element name="gor.openbareRuimteNaam" type="BG:NaamgevingObject-e" nillable="true"/>
+					<element name="aoa.huisnummer" type="BG:Huisnummering-e" nillable="true"/>
+					<element name="aoa.huisletter" type="BG:Huislettering-e" nillable="true"/>
+					<element name="aoa.huisnummertoevoeging" type="BG:Huisnummertoevoeging-e" nillable="true"/>
+					<element name="locatieOmschrijving" type="BG:LocatieOmschrijving-e" nillable="true"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="AdrGrp-woz-basis">
+		<complexContent>
+			<restriction base="BG:AdrGrp-basis">
+				<sequence minOccurs="0">
+					<sequence minOccurs="0">
+						<choice>
+							<element name="num.identificatie" type="BG:ObjectNummering-e" nillable="true"/>
+						</choice>
+					</sequence>
+					<element name="wpl.woonplaatsNaam" type="BG:WoonplaatsNaam-e" nillable="true" minOccurs="0"/>
+					<element name="gor.openbareRuimteNaam" type="BG:NaamgevingObject-e" nillable="true" minOccurs="0"/>
+					<element name="gor.straatnaam" type="BG:Straatnaam-e" nillable="true" minOccurs="0"/>
+					<element name="aoa.postcode" type="BG:Postcode-e" nillable="true" minOccurs="0"/>
+					<element name="aoa.huisnummer" type="BG:Huisnummering-e" nillable="true" minOccurs="0"/>
+					<element name="aoa.huisletter" type="BG:Huislettering-e" nillable="true" minOccurs="0"/>
+					<element name="aoa.huisnummertoevoeging" type="BG:Huisnummertoevoeging-e" nillable="true" minOccurs="0"/>
+					<element name="ogo.locatieAanduiding" type="BG:LocatieOmschrijving-e" nillable="true" minOccurs="0"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="AdrGrp-woz-kerngegevens">
+		<complexContent>
+			<restriction base="BG:AdrGrp-woz-basis">
+				<sequence>
+					<sequence minOccurs="0">
+						<choice>
+							<element name="num.identificatie" type="BG:ObjectNummering-e" nillable="true"/>
+						</choice>
+					</sequence>
+					<element name="wpl.woonplaatsNaam" type="BG:WoonplaatsNaam-e" nillable="true" minOccurs="0"/>
+					<element name="gor.openbareRuimteNaam" type="BG:NaamgevingObject-e" nillable="true" minOccurs="0"/>
+					<element name="aoa.postcode" type="BG:Postcode-e" nillable="true" minOccurs="0"/>
+					<element name="aoa.huisnummer" type="BG:Huisnummering-e" nillable="true" minOccurs="0"/>
+					<element name="aoa.huisletter" type="BG:Huislettering-e" nillable="true" minOccurs="0"/>
+					<element name="aoa.huisnummertoevoeging" type="BG:Huisnummertoevoeging-e" nillable="true" minOccurs="0"/>
+					<element name="ogo.locatieAanduiding" type="BG:LocatieOmschrijving-e" nillable="true" minOccurs="0"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="AdrGrp-woz-kerngegevensVerplicht">
+		<complexContent>
+			<restriction base="BG:AdrGrp-woz-basis">
+				<sequence>
+					<sequence>
+						<choice>
+							<element name="num.identificatie" type="BG:ObjectNummering-e" nillable="true"/>
+						</choice>
+					</sequence>
+					<element name="wpl.woonplaatsNaam" type="BG:WoonplaatsNaam-e" nillable="true"/>
+					<element name="gor.openbareRuimteNaam" type="BG:NaamgevingObject-e" nillable="true"/>
+					<element name="aoa.postcode" type="BG:Postcode-e" nillable="true"/>
+					<element name="aoa.huisnummer" type="BG:Huisnummering-e" nillable="true"/>
+					<element name="aoa.huisletter" type="BG:Huislettering-e" nillable="true"/>
+					<element name="aoa.huisnummertoevoeging" type="BG:Huisnummertoevoeging-e" nillable="true"/>
+					<element name="ogo.locatieAanduiding" type="BG:LocatieOmschrijving-e" nillable="true"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="BrondocumentWOZ-aanvulling">
+		<complexContent>
+			<restriction base="BG:BrondocumentWOZ">
+				<sequence>
+					<element name="identificatie" type="BG:DocumentNummering-e" nillable="true"/>
+					<element name="datum" type="StUF:Datum-e" nillable="true"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="BrondocumentWOZ-kerngegevens">
+		<complexContent>
+			<restriction base="BG:BrondocumentWOZ">
+				<sequence>
+					<element name="identificatie" type="BG:DocumentNummering-e" nillable="true" minOccurs="0"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="BrondocumentWOZ-lv">
+		<complexContent>
+			<restriction base="BG:BrondocumentWOZ">
+				<sequence>
+					<element name="identificatie" type="BG:DocumentNummering-e" nillable="true" minOccurs="0"/>
+					<element name="datum" type="StUF:Datum-e" nillable="true" minOccurs="0"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="CorrespondentieAdrGrp-woz-basis">
+		<complexContent>
+			<restriction base="BG:CorrespondentieAdresGrp-basis">
+				<sequence>
+					<element name="wpl.woonplaatsNaam" type="BG:NaamgevingObject-e" nillable="true" minOccurs="0"/>
+					<element name="postcode" type="BG:Postcode-e" nillable="true" minOccurs="0"/>
+					<choice minOccurs="0" maxOccurs="2">
+						<sequence>
+							<element name="aoa.identificatie" type="BG:ObjectNummering-e" nillable="true" minOccurs="0"/>
+							<element name="gor.openbareRuimteNaam" type="BG:NaamgevingObject-e" nillable="true" minOccurs="0"/>
+							<element name="gor.straatnaam" type="BG:Straatnaam-e" nillable="true" minOccurs="0"/>
+							<element name="aoa.huisnummer" type="BG:Huisnummering-e" nillable="true" minOccurs="0"/>
+							<element name="aoa.huisletter" type="BG:Huislettering-e" nillable="true" minOccurs="0"/>
+							<element name="aoa.huisnummertoevoeging" type="BG:Huisnummertoevoeging-e" nillable="true" minOccurs="0"/>
+						</sequence>
+						<sequence>
+							<element name="sub.postadresType" type="BG:PostadresType-e" nillable="true" minOccurs="0"/>
+							<element name="sub.postadresNummer" type="BG:PostadresNummer-e" nillable="true" minOccurs="0"/>
+						</sequence>
+					</choice>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="CorrespondentieAdrGrp-woz-kerngegevens">
+		<complexContent>
+			<restriction base="BG:CorrespondentieAdrGrp-woz-basis">
+				<sequence>
+					<element name="wpl.woonplaatsNaam" type="BG:NaamgevingObject-e" nillable="true" minOccurs="0"/>
+					<element name="postcode" type="BG:Postcode-e" nillable="true" minOccurs="0"/>
+					<choice minOccurs="0">
+						<sequence>
+							<element name="aoa.identificatie" type="BG:ObjectNummering-e" nillable="true" minOccurs="0"/>
+							<element name="gor.openbareRuimteNaam" type="BG:NaamgevingObject-e" nillable="true" minOccurs="0"/>
+							<element name="aoa.huisnummer" type="BG:Huisnummering-e" nillable="true" minOccurs="0"/>
+							<element name="aoa.huisletter" type="BG:Huislettering-e" nillable="true" minOccurs="0"/>
+							<element name="aoa.huisnummertoevoeging" type="BG:Huisnummertoevoeging-e" nillable="true" minOccurs="0"/>
+						</sequence>
+						<sequence>
+							<element name="sub.postadresType" type="BG:PostadresType-e" nillable="true"/>
+							<element name="sub.postadresNummer" type="BG:PostadresNummer-e" nillable="true"/>
+						</sequence>
+					</choice>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="CorrespondentieAdrGrp-woz-kerngegevensVerplicht">
+		<complexContent>
+			<restriction base="BG:CorrespondentieAdrGrp-woz-kerngegevens">
+				<sequence>
+					<element name="wpl.woonplaatsNaam" type="BG:NaamgevingObject-e" nillable="true"/>
+					<element name="postcode" type="BG:Postcode-e" nillable="true"/>
+					<choice>
+						<sequence>
+							<element name="aoa.identificatie" type="BG:ObjectNummering-e" nillable="true"/>
+							<element name="gor.openbareRuimteNaam" type="BG:NaamgevingObject-e" nillable="true"/>
+							<element name="aoa.huisnummer" type="BG:Huisnummering-e" nillable="true"/>
+							<element name="aoa.huisletter" type="BG:Huislettering-e" nillable="true"/>
+							<element name="aoa.huisnummertoevoeging" type="BG:Huisnummertoevoeging-e" nillable="true"/>
+						</sequence>
+						<sequence>
+							<element name="sub.postadresType" type="BG:PostadresType-e" nillable="true"/>
+							<element name="sub.postadresNummer" type="BG:PostadresNummer-e" nillable="true"/>
+						</sequence>
+					</choice>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="VerantwoordelijkeGemeenteGrp">
+		<sequence>
+			<element name="gemeenteCode" type="BG:Gemeentecodering-e" nillable="true" minOccurs="0"/>
+			<element name="gemeenteNaam" type="BG:Gemeentenaam-e" nillable="true" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<complexType name="VerblijfBuitenlandGrp-woz-kerngegevensVerplicht">
+		<complexContent>
+			<restriction base="BG:VerblijfBuitenlandGrp">
+				<sequence>
+					<element name="lnd.landcode" type="BG:Landcode-e" nillable="true"/>
+					<element name="lnd.landnaam" type="BG:Landnaam-e" nillable="true"/>
+					<element name="sub.adresBuitenland1" type="BG:AdresBuitenland-e" nillable="true"/>
+					<element name="sub.adresBuitenland2" type="BG:AdresBuitenland-e" nillable="true"/>
+					<element name="sub.adresBuitenland3" type="BG:AdresBuitenland-e" nillable="true"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="VerblijfsadresGrp-woz-basis">
+		<complexContent>
+			<restriction base="BG:VerblijfsadresGrp-basis">
+				<sequence minOccurs="0">
+					<element name="aoa.identificatie" type="BG:ObjectNummering-e" nillable="true" minOccurs="0"/>
+					<element name="wpl.woonplaatsNaam" type="BG:WoonplaatsNaam-e" nillable="true" minOccurs="0"/>
+					<element name="gor.openbareRuimteNaam" type="BG:NaamgevingObject-e" nillable="true" minOccurs="0"/>
+					<element name="gor.straatnaam" type="BG:Straatnaam-e" nillable="true" minOccurs="0"/>
+					<element name="aoa.postcode" type="BG:Postcode-e" nillable="true" minOccurs="0"/>
+					<element name="aoa.huisnummer" type="BG:Huisnummering-e" nillable="true" minOccurs="0"/>
+					<element name="aoa.huisletter" type="BG:Huislettering-e" nillable="true" minOccurs="0"/>
+					<element name="aoa.huisnummertoevoeging" type="BG:Huisnummertoevoeging-e" nillable="true" minOccurs="0"/>
+					<element name="inp.locatiebeschrijving" type="BG:Locatiebeschrijving-e" nillable="true" minOccurs="0"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="VerblijfsadresGrp-woz-kerngegevens">
+		<complexContent>
+			<restriction base="BG:VerblijfsadresGrp-woz-basis">
+				<sequence minOccurs="0">
+					<element name="aoa.identificatie" type="BG:ObjectNummering-e" nillable="true" minOccurs="0"/>
+					<element name="wpl.woonplaatsNaam" type="BG:WoonplaatsNaam-e" nillable="true" minOccurs="0"/>
+					<element name="gor.openbareRuimteNaam" type="BG:NaamgevingObject-e" nillable="true" minOccurs="0"/>
+					<element name="aoa.postcode" type="BG:Postcode-e" nillable="true" minOccurs="0"/>
+					<element name="aoa.huisnummer" type="BG:Huisnummering-e" nillable="true" minOccurs="0"/>
+					<element name="aoa.huisletter" type="BG:Huislettering-e" nillable="true" minOccurs="0"/>
+					<element name="aoa.huisnummertoevoeging" type="BG:Huisnummertoevoeging-e" nillable="true" minOccurs="0"/>
+					<element name="inp.locatiebeschrijving" type="BG:Locatiebeschrijving-e" nillable="true" minOccurs="0"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="VerblijfsadresGrp-woz-kerngegevensVerplicht">
+		<complexContent>
+			<restriction base="BG:VerblijfsadresGrp-woz-kerngegevens">
+				<sequence>
+					<element name="aoa.identificatie" type="BG:ObjectNummering-e" nillable="true"/>
+					<element name="wpl.woonplaatsNaam" type="BG:WoonplaatsNaam-e" nillable="true"/>
+					<element name="gor.openbareRuimteNaam" type="BG:NaamgevingObject-e" nillable="true"/>
+					<element name="aoa.postcode" type="BG:Postcode-e" nillable="true"/>
+					<element name="aoa.huisnummer" type="BG:Huisnummering-e" nillable="true"/>
+					<element name="aoa.huisletter" type="BG:Huislettering-e" nillable="true"/>
+					<element name="aoa.huisnummertoevoeging" type="BG:Huisnummertoevoeging-e" nillable="true"/>
+					<element name="inp.locatiebeschrijving" type="BG:Locatiebeschrijving-e" nillable="true"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<!--ComplexTypes voor entiteittypen-->
+	<complexType name="AOA-woz-basis">
+		<complexContent>
+			<restriction base="BG:AOA-basis">
+				<sequence>
+					<element name="identificatie" type="BG:ObjectNummering-e" nillable="true" minOccurs="0"/>
+					<element name="wpl.woonplaatsNaam" type="BG:NaamgevingObject-e" nillable="true" minOccurs="0"/>
+					<element name="gor.openbareRuimteNaam" type="BG:NaamgevingObject-e" nillable="true" minOccurs="0"/>
+					<element name="huisnummer" type="BG:Huisnummering-e" nillable="true" minOccurs="0"/>
+					<element name="huisletter" type="BG:Huislettering-e" nillable="true" minOccurs="0"/>
+					<element name="huisnummertoevoeging" type="BG:Huisnummertoevoeging-e" nillable="true" minOccurs="0"/>
+					<element name="postcode" type="BG:Postcode-e" nillable="true" minOccurs="0"/>
+					<element name="gor.straatnaam" type="BG:Straatnaam-e" nillable="true" minOccurs="0"/>
+					<element name="ingangsdatumObject" type="StUF:DatumMetIndicator" nillable="true" minOccurs="0"/>
+					<element name="einddatumObject" type="StUF:DatumMetIndicator" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="AOA"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="AOA-woz-kerngegevens">
+		<complexContent>
+			<restriction base="BG:AOA-woz-basis">
+				<sequence>
+					<element name="identificatie" type="BG:ObjectNummering-e" nillable="true" minOccurs="0"/>
+					<element name="wpl.woonplaatsNaam" type="BG:NaamgevingObject-e" nillable="true" minOccurs="0"/>
+					<element name="gor.openbareRuimteNaam" type="BG:NaamgevingObject-e" nillable="true" minOccurs="0"/>
+					<element name="huisnummer" type="BG:Huisnummering-e" nillable="true" minOccurs="0"/>
+					<element name="huisletter" type="BG:Huislettering-e" nillable="true" minOccurs="0"/>
+					<element name="huisnummertoevoeging" type="BG:Huisnummertoevoeging-e" nillable="true" minOccurs="0"/>
+					<element name="postcode" type="BG:Postcode-e" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:scope" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="AOT-woz-basis">
+		<choice minOccurs="0">
+			<sequence minOccurs="0">
+				<element name="identificatie" type="BG:ObjectNummering-e" nillable="true" minOccurs="0"/>
+				<element name="adresAanduidingGrp" type="BG:AdrGrp-woz-basis" minOccurs="0"/>
+			</sequence>
+			<choice minOccurs="0" maxOccurs="3">
+				<element name="ligplaats" type="BG:LIG-woz-basis" minOccurs="0"/>
+				<element name="standplaats" type="BG:STA-woz-basis" minOccurs="0"/>
+				<element name="verblijfsobject" type="BG:VBO-woz-basis" minOccurs="0"/>
+			</choice>
+		</choice>
+		<attribute ref="StUF:entiteittype" fixed="AOT"/>
+	</complexType>
+	<complexType name="AOT-woz-kerngegevens">
+		<complexContent>
+			<restriction base="BG:AOT-woz-basis">
+				<choice minOccurs="0">
+					<choice minOccurs="0">
+						<element name="ligplaats" type="BG:LIG-woz-kerngegevens" minOccurs="0"/>
+						<element name="standplaats" type="BG:STA-woz-kerngegevens" minOccurs="0"/>
+						<element name="verblijfsobject" type="BG:VBO-woz-kerngegevens" minOccurs="0"/>
+					</choice>
+				</choice>
+				<attribute ref="StUF:entiteittype" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="KOZ-woz-basis">
+		<complexContent>
+			<restriction base="BG:KOZ-basis">
+				<sequence minOccurs="0">
+					<element name="kadastraleIdentificatie" type="BG:KadastraleIdentificatie-e" nillable="true" minOccurs="0"/>
+					<element name="kadastraleAanduiding" type="BG:KadastraleAanduidingGrp" nillable="true" minOccurs="0"/>
+					<choice minOccurs="0">
+						<sequence minOccurs="0">
+							<element name="kdp.grootte" type="BG:Maateenheid8-2-neg-e" nillable="true" minOccurs="0"/>
+						</sequence>
+						<sequence minOccurs="0"/>
+					</choice>
+					<element name="ingangsdatumObject" type="StUF:DatumMetIndicator" nillable="true" minOccurs="0"/>
+					<element name="einddatumObject" type="StUF:DatumMetIndicator" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="KOZ"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="KOZ-woz-kerngegevens">
+		<complexContent>
+			<restriction base="BG:KOZ-woz-basis">
+				<sequence minOccurs="0">
+					<element name="kadastraleIdentificatie" type="BG:KadastraleIdentificatie-e" nillable="true" minOccurs="0"/>
+					<element name="kadastraleAanduiding" type="BG:KadastraleAanduidingGrp-basis" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:scope" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="LIG-woz-basis">
+		<complexContent>
+			<restriction base="BG:TGOAOT-basis">
+				<sequence>
+					<element name="identificatie" type="BG:ObjectNummering-e" nillable="true" minOccurs="0"/>
+					<element name="adresAanduidingGrp" type="BG:AdrGrp-woz-basis" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="LIG"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="LIG-woz-kerngegevens">
+		<complexContent>
+			<restriction base="BG:LIG-woz-basis">
+				<sequence>
+					<element name="identificatie" type="BG:ObjectNummering-e" nillable="true" minOccurs="0"/>
+					<element name="adresAanduidingGrp" type="BG:AdrGrp-woz-kerngegevens" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:scope" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="NNP-woz-basis">
+		<annotation>
+			<documentation>Niet-natuurlijk persoon zoals gebruikt binnen de WOZ</documentation>
+		</annotation>
+		<complexContent>
+			<restriction base="BG:NNPINN-basis">
+				<sequence>
+					<choice minOccurs="0" maxOccurs="2">
+						<sequence minOccurs="0">
+							<element name="inn.nnpId" type="BG:BSN-e" nillable="true" minOccurs="0"/>
+							<element name="authentiek" type="BG:Authentiek" nillable="true" minOccurs="0"/>
+						</sequence>
+						<element name="ann.identificatie" type="BG:IdentificatieRPSBTL-e" nillable="true" minOccurs="0"/>
+					</choice>
+					<element name="statutaireNaam" type="BG:StatutaireNaam-e" nillable="true" minOccurs="0"/>
+					<element name="sub.correspondentieAdres" type="BG:CorrespondentieAdrGrp-woz-basis" minOccurs="0"/>
+					<choice minOccurs="0">
+						<element name="sub.verblijfBuitenland" type="BG:VerblijfBuitenlandGrp" minOccurs="0"/>
+					</choice>
+					<element name="rps.isEigenaarVan" type="BG:NNPMAC-basis" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="NNP"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="NNP-woz-kerngegevens">
+		<complexContent>
+			<restriction base="BG:NNP-woz-basis">
+				<sequence>
+					<choice minOccurs="0">
+						<sequence minOccurs="0">
+							<element name="inn.nnpId" type="BG:BSN-e" nillable="true" minOccurs="0"/>
+						</sequence>
+						<element name="ann.identificatie" type="BG:IdentificatieRPSBTL-e" nillable="true" minOccurs="0"/>
+					</choice>
+					<element name="statutaireNaam" type="BG:StatutaireNaam-e" nillable="true" minOccurs="0"/>
+					<element name="sub.correspondentieAdres" type="BG:CorrespondentieAdrGrp-woz-basis" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:scope" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="NNP-woz-kerngegevensVerplicht">
+		<complexContent>
+			<restriction base="BG:NNP-woz-kerngegevens">
+				<sequence>
+					<choice>
+						<sequence>
+							<element name="inn.nnpId" type="BG:BSN-e" nillable="true"/>
+						</sequence>
+						<element name="ann.identificatie" type="BG:IdentificatieRPSBTL-e" nillable="true"/>
+					</choice>
+					<element name="statutaireNaam" type="BG:StatutaireNaam-e" nillable="true"/>
+					<element name="sub.correspondentieAdres" type="BG:CorrespondentieAdrGrp-woz-kerngegevensVerplicht"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="NPS-woz-basis">
+		<annotation>
+			<documentation>Natuurlijk persoon zoals gebruikt binnen de WOZ</documentation>
+		</annotation>
+		<complexContent>
+			<restriction base="BG:NPSNINING-basis">
+				<sequence>
+					<choice minOccurs="0" maxOccurs="2">
+						<sequence minOccurs="0">
+							<element name="inp.bsn" type="BG:BSN-e" nillable="true" minOccurs="0"/>
+							<element name="authentiek" type="BG:Authentiek" nillable="true" minOccurs="0"/>
+						</sequence>
+						<element name="anp.identificatie" type="BG:IdentificatieRPSBTL-e" nillable="true" minOccurs="0"/>
+					</choice>
+					<element name="geslachtsnaam" type="BG:Geslachtsnaam-e" nillable="true" minOccurs="0"/>
+					<element name="voorvoegselGeslachtsnaam" type="BG:VoorvoegselGeslachtsnaam-e" nillable="true" minOccurs="0"/>
+					<element name="voorletters" type="BG:Voorletters-e" nillable="true" minOccurs="0"/>
+					<element name="aanduidingNaamgebruik" type="BG:AanduidingNaamgebruik-e" nillable="true" minOccurs="0"/>
+					<element name="geslachtsnaamPartner" type="BG:Geslachtsnaam-e" nillable="true" minOccurs="0"/>
+					<element name="voorvoegselGeslachtsnaamPartner" type="BG:VoorvoegselGeslachtsnaam-e" nillable="true" minOccurs="0"/>
+					<element name="aanhefAanschrijving" type="BG:Aanhef-e" nillable="true" minOccurs="0"/>
+					<element name="geslachtsnaamAanschrijving" type="BG:Geslachtsnaam-e" nillable="true" minOccurs="0"/>
+					<element name="geslachtsaanduiding" type="BG:Geslachtsaanduiding-e" nillable="true" minOccurs="0"/>
+					<element name="geboortedatum" type="StUF:DatumMetIndicator" nillable="true" minOccurs="0"/>
+					<element name="inp.verblijftIn" type="BG:NPSTGO-woz-basis" nillable="true" minOccurs="0"/>
+					<choice minOccurs="0" maxOccurs="2">
+						<element name="verblijfsadres" type="BG:VerblijfsadresGrp-woz-basis" minOccurs="0"/>
+						<element name="sub.verblijfBuitenland" type="BG:VerblijfBuitenlandGrp" minOccurs="0"/>
+					</choice>
+					<element name="sub.correspondentieAdres" type="BG:CorrespondentieAdrGrp-woz-basis" minOccurs="0"/>
+					<element name="inp.indicatieGeheim" type="BG:IndicatieGeheim-e" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="NPS"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="NPS-woz-kerngegevens">
+		<complexContent>
+			<restriction base="BG:NPS-woz-basis">
+				<sequence>
+					<choice minOccurs="0">
+						<sequence minOccurs="0">
+							<element name="inp.bsn" type="BG:BSN-e" nillable="true" minOccurs="0"/>
+							<element name="authentiek" type="BG:Authentiek" nillable="true" minOccurs="0"/>
+						</sequence>
+						<element name="anp.identificatie" type="BG:IdentificatieRPSBTL-e" nillable="true" minOccurs="0"/>
+					</choice>
+					<element name="geslachtsnaam" type="BG:Geslachtsnaam-e" nillable="true" minOccurs="0"/>
+					<element name="voorvoegselGeslachtsnaam" type="BG:VoorvoegselGeslachtsnaam-e" nillable="true" minOccurs="0"/>
+					<element name="voorletters" type="BG:Voorletters-e" nillable="true" minOccurs="0"/>
+					<element name="geslachtsaanduiding" type="BG:Geslachtsaanduiding-e" nillable="true" minOccurs="0"/>
+					<element name="geboortedatum" type="StUF:DatumMetIndicator" nillable="true" minOccurs="0"/>
+					<choice minOccurs="0">
+						<element name="verblijfsadres" type="BG:VerblijfsadresGrp-woz-kerngegevens"/>
+						<element name="sub.verblijfBuitenland" type="BG:VerblijfBuitenlandGrp"/>
+					</choice>
+					<element name="sub.correspondentieAdres" type="BG:CorrespondentieAdrGrp-woz-kerngegevens" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:scope" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="NPS-woz-kerngegevensVerplicht">
+		<complexContent>
+			<restriction base="BG:NPS-woz-kerngegevens">
+				<sequence>
+					<choice>
+						<sequence>
+							<element name="inp.bsn" type="BG:BSN-e" nillable="true"/>
+							<element name="authentiek" type="BG:Authentiek" nillable="true" minOccurs="0"/>
+						</sequence>
+						<element name="anp.identificatie" type="BG:IdentificatieRPSBTL-e" nillable="true"/>
+					</choice>
+					<element name="geslachtsnaam" type="BG:Geslachtsnaam-e" nillable="true"/>
+					<element name="voorvoegselGeslachtsnaam" type="BG:VoorvoegselGeslachtsnaam-e" nillable="true"/>
+					<element name="voorletters" type="BG:Voorletters-e" nillable="true"/>
+					<element name="geslachtsaanduiding" type="BG:Geslachtsaanduiding-e" nillable="true"/>
+					<element name="geboortedatum" type="StUF:DatumMetIndicator" nillable="true"/>
+					<choice>
+						<element name="verblijfsadres" type="BG:VerblijfsadresGrp-woz-kerngegevensVerplicht"/>
+						<element name="sub.verblijfBuitenland" type="BG:VerblijfBuitenlandGrp-woz-kerngegevensVerplicht"/>
+					</choice>
+					<element name="sub.correspondentieAdres" type="BG:CorrespondentieAdrGrp-woz-kerngegevens" minOccurs="0"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="NPSTGO-woz-basis">
+		<complexContent>
+			<restriction base="BG:NPSTGO-basis">
+				<sequence>
+					<element name="gerelateerde" type="BG:TGO-woz-basis" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="NPSTGO"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="NPSTGO-woz-kerngegevens">
+		<complexContent>
+			<restriction base="BG:NPSTGO-woz-basis">
+				<sequence>
+					<element name="gerelateerde" type="BG:TGO-woz-kerngegevens" nillable="true"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="NUM-woz-basis">
+		<complexContent>
+			<restriction base="BG:AOANUM-basis">
+				<sequence>
+					<element name="identificatie" type="BG:ObjectNummering-e" nillable="true" minOccurs="0"/>
+					<element name="wpl.woonplaatsNaam" type="BG:NaamgevingObject-e" nillable="true" minOccurs="0"/>
+					<element name="gor.openbareRuimteNaam" type="BG:NaamgevingObject-e" nillable="true" minOccurs="0"/>
+					<element name="huisnummer" type="BG:Huisnummering-e" nillable="true" minOccurs="0"/>
+					<element name="huisletter" type="BG:Huislettering-e" nillable="true" minOccurs="0"/>
+					<element name="huisnummertoevoeging" type="BG:Huisnummertoevoeging-e" nillable="true" minOccurs="0"/>
+					<element name="postcode" type="BG:Postcode-e" nillable="true" minOccurs="0"/>
+					<element name="gor.straatnaam" type="BG:Straatnaam-e" nillable="true" minOccurs="0"/>
+					<element name="ingangsdatumObject" type="StUF:DatumMetIndicator" nillable="true" minOccurs="0"/>
+					<element name="einddatumObject" type="StUF:DatumMetIndicator" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="NUM"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="NUM-woz-kerngegevens">
+		<complexContent>
+			<restriction base="BG:NUM-woz-basis">
+				<sequence>
+					<element name="identificatie" type="BG:ObjectNummering-e" nillable="true" minOccurs="0"/>
+					<element name="wpl.woonplaatsNaam" type="BG:NaamgevingObject-e" nillable="true" minOccurs="0"/>
+					<element name="gor.openbareRuimteNaam" type="BG:NaamgevingObject-e" nillable="true" minOccurs="0"/>
+					<element name="huisnummer" type="BG:Huisnummering-e" nillable="true" minOccurs="0"/>
+					<element name="huisletter" type="BG:Huislettering-e" nillable="true" minOccurs="0"/>
+					<element name="huisnummertoevoeging" type="BG:Huisnummertoevoeging-e" nillable="true" minOccurs="0"/>
+					<element name="postcode" type="BG:Postcode-e" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:scope" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="PND-woz-basis">
+		<complexContent>
+			<restriction base="BG:PND-basis">
+				<sequence minOccurs="0">
+					<element name="identificatie" type="BG:ObjectNummering-e" nillable="true" minOccurs="0"/>
+					<element name="ingangsdatumObject" type="StUF:DatumMetIndicator" nillable="true" minOccurs="0"/>
+					<element name="einddatumObject" type="StUF:DatumMetIndicator" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="PND"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="PND-woz-kerngegevens">
+		<complexContent>
+			<restriction base="BG:PND-woz-basis">
+				<sequence>
+					<element name="identificatie" type="BG:ObjectNummering-e" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:scope" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="STA-woz-basis">
+		<complexContent>
+			<restriction base="BG:TGOAOT-basis">
+				<sequence>
+					<element name="identificatie" type="BG:ObjectNummering-e" nillable="true" minOccurs="0"/>
+					<element name="adresAanduidingGrp" type="BG:AdrGrp-woz-basis" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="STA"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="STA-woz-kerngegevens">
+		<complexContent>
+			<restriction base="BG:STA-woz-basis">
+				<sequence>
+					<element name="identificatie" type="BG:ObjectNummering-e" nillable="true" minOccurs="0"/>
+					<element name="adresAanduidingGrp" type="BG:AdrGrp-woz-kerngegevens" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:scope" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TGOAOT-woz-basis">
+		<complexContent>
+			<restriction base="BG:TGOAOT-basis">
+				<sequence>
+					<element name="identificatie" type="BG:ObjectNummering-e" nillable="true" minOccurs="0"/>
+					<element name="adresAanduidingGrp" type="BG:AdrGrp-woz-basis" minOccurs="0"/>
+					<element name="gbo.puntGeometrie" type="BG:GeometriePunt-e" nillable="true" minOccurs="0"/>
+					<element name="vlakGeometrie" type="BG:GeometrieVlak-e" nillable="true" minOccurs="0"/>
+					<element name="type" type="BG:TypeOGOofOTR-e" nillable="true" minOccurs="0"/>
+					<element name="vbo.soortWoonobject" type="BG:SoortWoonobject-e" nillable="true" minOccurs="0"/>
+					<element name="gbo.bouwkundigeBestemming" type="BG:BouwkundigeBestemming-e" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="gebruiksdoel" type="BG:Gebruiksdoeleinden-e" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="gbo.brutoInhoud" type="BG:Maateenheid6-e" nillable="true" minOccurs="0"/>
+					<element name="gbo.oppervlakte" type="BG:Maateenheid6-e" nillable="true" minOccurs="0"/>
+					<element name="ogo.bouwjaar" type="BG:Jaar-e" nillable="true" minOccurs="0"/>
+					<element name="vbo.toegangBouwlaag" type="BG:Bouwlaag-e" nillable="true" minOccurs="0"/>
+					<element name="vbo.aantalKamers" type="BG:Maateenheid2-e" nillable="true" minOccurs="0"/>
+					<element name="vbo.ontsluitingVerdieping" type="BG:OntsluitingVerdieping-e" nillable="true" minOccurs="0"/>
+					<element name="aot.status" type="BG:StatusTGO-e" nillable="true" minOccurs="0"/>
+					<element name="gbo.statusVoortgangBouw" type="BG:StatusVoortgangBouw-e" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TGO-woz-basis">
+		<complexContent>
+			<restriction base="BG:TGO-basis">
+				<sequence>
+					<element name="identificatie" type="BG:ObjectNummering-e" nillable="true" minOccurs="0"/>
+					<element name="adresAanduidingGrp" type="BG:AdrGrp-woz-basis" minOccurs="0"/>
+					<element name="gbo.puntGeometrie" type="BG:GeometriePunt-e" nillable="true" minOccurs="0"/>
+					<element name="vlakGeometrie" type="BG:GeometrieVlak-e" nillable="true" minOccurs="0"/>
+					<element name="type" type="BG:TypeOGOofOTR-e" nillable="true" minOccurs="0"/>
+					<element name="vbo.soortWoonobject" type="BG:SoortWoonobject-e" nillable="true" minOccurs="0"/>
+					<element name="gbo.bouwkundigeBestemming" type="BG:BouwkundigeBestemming-e" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="gebruiksdoel" type="BG:Gebruiksdoeleinden-e" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="gbo.brutoInhoud" type="BG:Maateenheid6-e" nillable="true" minOccurs="0"/>
+					<element name="gbo.oppervlakte" type="BG:Maateenheid6-e" nillable="true" minOccurs="0"/>
+					<element name="ogo.bouwjaar" type="BG:Jaar-e" nillable="true" minOccurs="0"/>
+					<element name="vbo.toegangBouwlaag" type="BG:Bouwlaag-e" nillable="true" minOccurs="0"/>
+					<element name="vbo.aantalKamers" type="BG:Maateenheid2-e" nillable="true" minOccurs="0"/>
+					<element name="vbo.ontsluitingVerdieping" type="BG:OntsluitingVerdieping-e" nillable="true" minOccurs="0"/>
+					<element name="aot.status" type="BG:StatusTGO-e" nillable="true" minOccurs="0"/>
+					<element name="gbo.statusVoortgangBouw" type="BG:StatusVoortgangBouw-e" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="TGO"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TGO-woz-kerngegevens">
+		<complexContent>
+			<restriction base="BG:TGO-woz-basis">
+				<sequence>
+					<element name="identificatie" type="BG:ObjectNummering-e" nillable="true" minOccurs="0"/>
+					<element name="adresAanduidingGrp" type="BG:AdrGrp-woz-kerngegevens" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:scope" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="VBO-woz-basis">
+		<complexContent>
+			<restriction base="BG:TGOAOT-basis">
+				<sequence>
+					<element name="identificatie" type="BG:ObjectNummering-e" nillable="true" minOccurs="0"/>
+					<element name="adresAanduidingGrp" type="BG:AdrGrp-woz-basis" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="VBO"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="VBO-woz-kerngegevens">
+		<complexContent>
+			<restriction base="BG:VBO-woz-basis">
+				<sequence>
+					<element name="identificatie" type="BG:ObjectNummering-e" nillable="true" minOccurs="0"/>
+					<element name="adresAanduidingGrp" type="BG:AdrGrp-woz-kerngegevens" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:scope" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="VES-woz-basis">
+		<annotation>
+			<documentation>Vestiging binnen de WOZ</documentation>
+		</annotation>
+		<complexContent>
+			<restriction base="BG:VES-basis">
+				<sequence>
+					<element name="vestigingsNummer" type="BG:VestigingsNummer-e" nillable="true" minOccurs="0"/>
+					<element name="authentiek" type="BG:Authentiek" default="N" nillable="true" minOccurs="0"/>
+					<sequence minOccurs="0">
+						<element name="handelsnaam" type="BG:Handelsnaam-e" nillable="true" minOccurs="0"/>
+					</sequence>
+					<choice minOccurs="0" maxOccurs="2">
+						<element name="verblijfsadres" type="BG:VerblijfsadresGrp-woz-basis" minOccurs="0"/>
+						<element name="sub.verblijfBuitenland" type="BG:VerblijfBuitenlandGrp" minOccurs="0"/>
+					</choice>
+					<element name="sub.correspondentieAdres" type="BG:CorrespondentieAdresGrp-basis" minOccurs="0"/>
+					<element name="oefentActiviteitenUitVoor" type="BG:VESMAC-basis" nillable="true" minOccurs="0"/>
+					<element name="heeftAlsHoofdLocatie" type="BG:VESTGOHFD-woz-basis" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="VES"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="VES-woz-kerngegevens">
+		<complexContent>
+			<restriction base="BG:VES-woz-basis">
+				<sequence>
+					<element name="vestigingsNummer" type="BG:VestigingsNummer-e" nillable="true" minOccurs="0"/>
+					<sequence minOccurs="0">
+						<element name="handelsnaam" type="BG:Handelsnaam-e" nillable="true" minOccurs="0"/>
+					</sequence>
+					<choice minOccurs="0">
+						<element name="verblijfsadres" type="BG:VerblijfsadresGrp-woz-basis" minOccurs="0"/>
+						<element name="sub.verblijfBuitenland" type="BG:VerblijfBuitenlandGrp" minOccurs="0"/>
+					</choice>
+				</sequence>
+				<attribute ref="StUF:scope" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="VES-woz-kerngegevensVerplicht">
+		<complexContent>
+			<restriction base="BG:VES-woz-kerngegevens">
+				<sequence>
+					<element name="vestigingsNummer" type="BG:VestigingsNummer-e" nillable="true"/>
+					<sequence>
+						<element name="handelsnaam" type="BG:Handelsnaam-e" nillable="true"/>
+					</sequence>
+					<choice>
+						<element name="verblijfsadres" type="BG:VerblijfsadresGrp-woz-kerngegevensVerplicht"/>
+						<element name="sub.verblijfBuitenland" type="BG:VerblijfBuitenlandGrp-woz-kerngegevensVerplicht"/>
+					</choice>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="VESTGOHFD-woz-basis">
+		<complexContent>
+			<restriction base="BG:VESTGOHFD-basis">
+				<sequence>
+					<element name="gerelateerde" type="BG:TGO-woz-basis" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="VESTGOHFD"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="VESTGOHFD-woz-kerngegevens">
+		<complexContent>
+			<restriction base="BG:VESTGOHFD-woz-basis">
+				<sequence>
+					<element name="gerelateerde" type="BG:TGO-woz-kerngegevens" nillable="true"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<!--Restrictions simpleTypes-->
+	<complexType name="AanduidingEigenaarGebruikerBSKMB-r">
+		<simpleContent>
+			<restriction base="BG:AanduidingEigenaarGebruiker-e">
+				<simpleType>
+					<restriction base="BG:AanduidingEigenaarGebruiker">
+						<enumeration value="M"/>
+					</restriction>
+				</simpleType>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+			</restriction>
+		</simpleContent>
+	</complexType>
+	<complexType name="AanduidingEigenaarGebruikerMBE-r">
+		<simpleContent>
+			<restriction base="BG:AanduidingEigenaarGebruiker-e">
+				<simpleType>
+					<restriction base="BG:AanduidingEigenaarGebruiker">
+						<enumeration value="B"/>
+						<enumeration value="E"/>
+					</restriction>
+				</simpleType>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+			</restriction>
+		</simpleContent>
+	</complexType>
+	<complexType name="AanduidingEigenaarGebruikerMBG-r">
+		<simpleContent>
+			<restriction base="BG:AanduidingEigenaarGebruiker-e">
+				<simpleType>
+					<restriction base="BG:AanduidingEigenaarGebruiker">
+						<enumeration value="B"/>
+						<enumeration value="G"/>
+					</restriction>
+				</simpleType>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+			</restriction>
+		</simpleContent>
+	</complexType>
+	<!--Restriction van "-e" complexTypes tot "-r" complexTypes zonder attributes-->
+	<complexType name="AanduidingEigenaarGebruiker-r">
+		<simpleContent>
+			<restriction base="BG:AanduidingEigenaarGebruiker-e">
+				<attribute ref="StUF:noValue" use="prohibited"/>
+			</restriction>
+		</simpleContent>
+	</complexType>
+	<complexType name="Appartementsindex-r">
+		<simpleContent>
+			<restriction base="BG:Appartementsindex-e">
+				<attribute ref="StUF:noValue" use="prohibited"/>
+			</restriction>
+		</simpleContent>
+	</complexType>
+	<complexType name="BSN-r">
+		<simpleContent>
+			<restriction base="BG:BSN-e">
+				<attribute ref="StUF:noValue" use="prohibited"/>
+			</restriction>
+		</simpleContent>
+	</complexType>
+	<complexType name="DeelperceelNummer-r">
+		<simpleContent>
+			<restriction base="BG:DeelperceelNummer-e">
+				<attribute ref="StUF:noValue" use="prohibited"/>
+			</restriction>
+		</simpleContent>
+	</complexType>
+	<complexType name="DocumentNummering-r">
+		<simpleContent>
+			<restriction base="BG:DocumentNummering-e">
+				<attribute ref="StUF:noValue" use="prohibited"/>
+			</restriction>
+		</simpleContent>
+	</complexType>
+	<complexType name="Gemeentecodering-r">
+		<simpleContent>
+			<restriction base="BG:Gemeentecodering-e">
+				<attribute ref="StUF:noValue" use="prohibited"/>
+			</restriction>
+		</simpleContent>
+	</complexType>
+	<complexType name="Geslachtsaanduiding-r">
+		<simpleContent>
+			<restriction base="BG:Geslachtsaanduiding-e">
+				<attribute ref="StUF:noValue" use="prohibited"/>
+			</restriction>
+		</simpleContent>
+	</complexType>
+	<complexType name="Geslachtsnaam-r">
+		<simpleContent>
+			<restriction base="BG:Geslachtsnaam-e">
+				<attribute ref="StUF:noValue" use="prohibited"/>
+			</restriction>
+		</simpleContent>
+	</complexType>
+	<complexType name="Handelsnaam-r">
+		<simpleContent>
+			<restriction base="BG:Handelsnaam-e">
+				<attribute ref="StUF:noValue" use="prohibited"/>
+			</restriction>
+		</simpleContent>
+	</complexType>
+	<complexType name="Huisnummering-r">
+		<simpleContent>
+			<restriction base="BG:Huisnummering-e">
+				<attribute ref="StUF:noValue" use="prohibited"/>
+			</restriction>
+		</simpleContent>
+	</complexType>
+	<complexType name="KadastraleGemeenteCode-r">
+		<simpleContent>
+			<restriction base="BG:KadastraleGemeentecode-e">
+				<attribute ref="StUF:noValue" use="prohibited"/>
+			</restriction>
+		</simpleContent>
+	</complexType>
+	<complexType name="KadastraleSectie-r">
+		<simpleContent>
+			<restriction base="BG:KadastraleSectie-e">
+				<attribute ref="StUF:noValue" use="prohibited"/>
+			</restriction>
+		</simpleContent>
+	</complexType>
+	<complexType name="KadastraalPerceelnummer-r">
+		<simpleContent>
+			<restriction base="BG:KadastraalPerceelnummer-e">
+				<attribute ref="StUF:noValue" use="prohibited"/>
+			</restriction>
+		</simpleContent>
+	</complexType>
+	<complexType name="KvKNummer-r">
+		<simpleContent>
+			<restriction base="BG:KvKNummer-e">
+				<attribute ref="StUF:noValue" use="prohibited"/>
+			</restriction>
+		</simpleContent>
+	</complexType>
+	<complexType name="NaamgevingObject-r">
+		<simpleContent>
+			<restriction base="BG:NaamgevingObject-e">
+				<attribute ref="StUF:noValue" use="prohibited"/>
+			</restriction>
+		</simpleContent>
+	</complexType>
+	<complexType name="ObjectNummeringLIG-e">
+		<simpleContent>
+			<restriction base="BG:ObjectNummering-e">
+				<pattern value="[0-9]{4}02[0-9]{10}"/>
+			</restriction>
+		</simpleContent>
+	</complexType>
+	<complexType name="ObjectNummeringLIG-r">
+		<simpleContent>
+			<restriction base="BG:ObjectNummeringLIG-e">
+				<attribute ref="StUF:noValue" use="prohibited"/>
+			</restriction>
+		</simpleContent>
+	</complexType>
+	<complexType name="ObjectNummeringNUM-e">
+		<simpleContent>
+			<restriction base="BG:ObjectNummering-e">
+				<pattern value="[0-9]{4}20[0-9]{10}"/>
+			</restriction>
+		</simpleContent>
+	</complexType>
+	<complexType name="ObjectNummeringPND-r">
+		<simpleContent>
+			<restriction base="BG:ObjectNummering-e">
+				<pattern value="[0-9]{4}10[0-9]{10}"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+			</restriction>
+		</simpleContent>
+	</complexType>
+	<complexType name="ObjectNummeringSTA-e">
+		<simpleContent>
+			<restriction base="BG:ObjectNummering-e">
+				<pattern value="[0-9]{4}03[0-9]{10}"/>
+			</restriction>
+		</simpleContent>
+	</complexType>
+	<complexType name="ObjectNummeringSTA-r">
+		<simpleContent>
+			<restriction base="BG:ObjectNummeringSTA-e">
+				<attribute ref="StUF:noValue" use="prohibited"/>
+			</restriction>
+		</simpleContent>
+	</complexType>
+	<complexType name="ObjectNummeringVBO-e">
+		<simpleContent>
+			<restriction base="BG:ObjectNummering-e">
+				<pattern value="[0-9]{4}01[0-9]{10}"/>
+			</restriction>
+		</simpleContent>
+	</complexType>
+	<complexType name="ObjectNummeringVBO-r">
+		<simpleContent>
+			<restriction base="BG:ObjectNummeringVBO-e">
+				<attribute ref="StUF:noValue" use="prohibited"/>
+			</restriction>
+		</simpleContent>
+	</complexType>
+	<complexType name="PostadresNummer-r">
+		<simpleContent>
+			<restriction base="BG:PostadresNummer-e">
+				<attribute ref="StUF:noValue" use="prohibited"/>
+			</restriction>
+		</simpleContent>
+	</complexType>
+	<complexType name="PostadresType-r">
+		<simpleContent>
+			<restriction base="BG:PostadresType-e">
+				<attribute ref="StUF:noValue" use="prohibited"/>
+			</restriction>
+		</simpleContent>
+	</complexType>
+	<complexType name="Postcode-r">
+		<simpleContent>
+			<restriction base="BG:Postcode-e">
+				<attribute ref="StUF:noValue" use="prohibited"/>
+			</restriction>
+		</simpleContent>
+	</complexType>
+	<complexType name="StatusBelang-r">
+		<simpleContent>
+			<restriction base="BG:StatusBelang-e">
+				<attribute ref="StUF:noValue" use="prohibited"/>
+			</restriction>
+		</simpleContent>
+	</complexType>
+	<complexType name="StatutaireNaam-r">
+		<simpleContent>
+			<restriction base="BG:StatutaireNaam-e">
+				<attribute ref="StUF:noValue" use="prohibited"/>
+			</restriction>
+		</simpleContent>
+	</complexType>
+</schema>

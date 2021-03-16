@@ -1,0 +1,1549 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2015 rel. 3 (x64) (http://www.altova.com) by Maarten van den Broek (messageDesign B.V.) -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:StUF="http://www.egem.nl/StUF/StUF0301" xmlns:WOZ="http://www.waarderingskamer.nl/StUF/0312" xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310" targetNamespace="http://www.waarderingskamer.nl/StUF/0312" elementFormDefault="qualified" attributeFormDefault="unqualified" version="031205">
+	<include schemaLocation="woz0312_ent_proces.xsd"/>
+	<include schemaLocation="../lv_mutatieMetFo01/woz0312_ent_lv_mutatie.xsd"/>
+	<import namespace="http://www.egem.nl/StUF/StUF0301" schemaLocation="woz0312_stuf_proces.xsd"/>
+	<import namespace="http://www.egem.nl/StUF/sector/bg/0310" schemaLocation="woz0312_bg0310_proces.xsd"/>
+	<annotation>
+		<documentation xml:lang="nl">
+			Dit schema bevat de definities van de berichtelementen voor de vrije berichten ter ondersteuning van de WOZ processen in de gemeenten.
+			
+			Wijzigingen vergeleken met version 031204:
+			- De elementen vraagVolgnummerMarktgegeven en nieuwVolgnummerMarktgegeven toegevoegd
+		</documentation>
+	</annotation>
+	<!--Asynchrone dienstberichten-->
+	<element name="analyseerMarktgegeven">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi01-analyseerMarktgegeven"/>
+				<element name="parameters" type="WOZ:ParametersToelichting" minOccurs="0"/>
+				<element name="kadastraleOnroerendeZaak" type="WOZ:UpdateLeverKOZ" maxOccurs="unbounded"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="analyseerMarktgegeven-synchroon">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi02-analyseerMarktgegeven"/>
+				<element name="parameters" type="WOZ:ParametersToelichting" minOccurs="0"/>
+				<element name="kadastraleOnroerendeZaak" type="WOZ:UpdateLeverKOZ" maxOccurs="unbounded"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bakenAf">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi01-bakenAf"/>
+				<element name="parameters" type="WOZ:ParametersToelichting" minOccurs="0"/>
+				<element name="wozObject" minOccurs="0" maxOccurs="unbounded">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:WOZ-kerngegevensVerplicht">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+				<element name="kadastraleOnroerendeZaak" minOccurs="0" maxOccurs="unbounded">
+					<complexType>
+						<complexContent>
+							<extension base="BG:KOZ-woz-afbakening">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+				<element name="pand" minOccurs="0" maxOccurs="unbounded">
+					<complexType>
+						<complexContent>
+							<extension base="BG:PND-woz-afbakening">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+				<element name="terreinGebouwdObject" minOccurs="0" maxOccurs="unbounded">
+					<complexType>
+						<complexContent>
+							<extension base="BG:TGO-woz-afbakening">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bakenAf-synchroon">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi02-bakenAf"/>
+				<element name="parameters" type="WOZ:ParametersToelichting" minOccurs="0"/>
+				<element name="wozObject" minOccurs="0" maxOccurs="unbounded">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:WOZ-kerngegevensVerplicht">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+				<element name="kadastraleOnroerendeZaak" minOccurs="0" maxOccurs="unbounded">
+					<complexType>
+						<complexContent>
+							<extension base="BG:KOZ-woz-afbakening">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+				<element name="pand" minOccurs="0" maxOccurs="unbounded">
+					<complexType>
+						<complexContent>
+							<extension base="BG:PND-woz-afbakening">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+				<element name="terreinGebouwdObject" minOccurs="0" maxOccurs="unbounded">
+					<complexType>
+						<complexContent>
+							<extension base="BG:TGO-woz-afbakening">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bakenAfGereed">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDu01-bakenAfGereed"/>
+				<element name="parameters" type="WOZ:ParametersToelichting" minOccurs="0"/>
+				<element name="wozObject" minOccurs="0" maxOccurs="unbounded">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:WOZ-kerngegevensVerplicht">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="beoordeelAnalyse">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi01-beoordeelAnalyse"/>
+				<choice>
+					<element name="resultaatMarktAnalyse" maxOccurs="unbounded">
+						<complexType>
+							<complexContent>
+								<extension base="WOZ:RMA-kerngegevensVerplicht">
+									<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+								</extension>
+							</complexContent>
+						</complexType>
+					</element>
+					<element name="transactie">
+						<complexType>
+							<complexContent>
+								<extension base="WOZ:TRN-kerngegevensVerplicht">
+									<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+								</extension>
+							</complexContent>
+						</complexType>
+					</element>
+				</choice>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="beoordeelAnalyse-synchroon">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi02-beoordeelAnalyse"/>
+				<choice>
+					<element name="resultaatMarktAnalyse" maxOccurs="unbounded">
+						<complexType>
+							<complexContent>
+								<extension base="WOZ:RMA-kerngegevensVerplicht">
+									<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+								</extension>
+							</complexContent>
+						</complexType>
+					</element>
+					<element name="transactie">
+						<complexType>
+							<complexContent>
+								<extension base="WOZ:TRN-kerngegevensVerplicht">
+									<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+								</extension>
+							</complexContent>
+						</complexType>
+					</element>
+				</choice>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="beoordeelMassaleTaxatie">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi01-beoordeelMassaleTaxatie"/>
+				<element name="wozObject" maxOccurs="unbounded">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:WOZ-wozObjectnummer">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="beoordeelMassaleTaxatie-synchroon">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi02-beoordeelMassaleTaxatie"/>
+				<element name="wozObject" maxOccurs="unbounded">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:WOZ-wozObjectnummer">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="resultaatMassaleBeoordeling">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDu01-resultaatMassaleBeoordeling"/>
+				<element name="parameters" type="WOZ:ParametersToelichting" minOccurs="0"/>
+				<element name="wozObjectOntbrekendeGegevens" minOccurs="0" maxOccurs="unbounded">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:WOZ-ontbrekendeGegevens">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+				<element name="wozObjectOntbrekendeTaxatie" minOccurs="0" maxOccurs="unbounded">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:WOZ-wozObjectnummer">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="beschikObject">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi01-beschikObject"/>
+				<element name="parameters" type="WOZ:WaardeEnToestandsPeildatum"/>
+				<element name="wozObject">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:WOZ-kerngegevensVerplicht">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+				<element name="taxatieVerslag" minOccurs="0">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:TVS-kerngegevensVerplicht">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+				<element name="teBeschikkenSubject" minOccurs="0" maxOccurs="unbounded">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:SUB-woz-kerngegevensVerplicht">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="beschikObject-synchroon">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi02-beschikObject"/>
+				<element name="parameters" type="WOZ:WaardeEnToestandsPeildatum"/>
+				<element name="wozObject">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:WOZ-kerngegevensVerplicht">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+				<element name="taxatieVerslag" minOccurs="0">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:TVS-kerngegevensVerplicht">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+				<element name="teBeschikkenSubject" minOccurs="0" maxOccurs="unbounded">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:SUB-woz-kerngegevensVerplicht">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="controleerVrijstelling">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi01-controleerVrijstelling"/>
+				<element name="parameters" type="WOZ:ParametersToelichting" minOccurs="0"/>
+				<element name="wozObject">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:WOZ-controleerVrijstelling">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="controleerVrijstelling-synchroon">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi02-controleerVrijstelling"/>
+				<element name="parameters" type="WOZ:ParametersToelichting" minOccurs="0"/>
+				<element name="wozObject">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:WOZ-controleerVrijstelling">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="vrijstellingGecontroleerd">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDu01-vrijstellingGecontroleerd"/>
+				<element name="update" type="WOZ:UpdateWOZ-wijzigVrijstelling" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="herTaxeer">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi01-herTaxeer"/>
+				<element name="parameters" type="WOZ:HerTaxatie"/>
+				<element name="taxatieVerslag">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:TVS-kerngegevensVerplicht">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+				<element name="controle" minOccurs="0">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:CTL-specificatieControle">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="herTaxeer-synchroon">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi02-herTaxeer"/>
+				<element name="parameters" type="WOZ:HerTaxatie"/>
+				<element name="taxatieVerslag">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:TVS-kerngegevensVerplicht">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+				<element name="controle" minOccurs="0">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:CTL-specificatieControle">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="herTaxatieGereed">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDu01-herTaxatieGereed"/>
+				<element name="taxatieverslag">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:TVS-kerngegevensVerplicht">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="herTaxeerBezwaar">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi01-herTaxeerBezwaar"/>
+				<element name="parameters" type="WOZ:HerTaxatie"/>
+				<element name="taxatieVerslag" minOccurs="0">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:TVS-kerngegevensVerplicht">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+				<element name="beschikking">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:BSK-kerngegevensVerplicht">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+				<element name="controle" minOccurs="0">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:CTL-specificatieControle">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="herTaxeerBezwaar-synchroon">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi02-herTaxeerBezwaar"/>
+				<element name="parameters" type="WOZ:HerTaxatie"/>
+				<element name="taxatieVerslag" minOccurs="0">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:TVS-kerngegevensVerplicht">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+				<element name="beschikking">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:BSK-kerngegevensVerplicht">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+				<element name="controle" minOccurs="0">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:CTL-specificatieControle">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="taxatieBezwaarGereed">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDu01-taxatieBezwaarGereed"/>
+				<element name="taxatieverslag">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:TVS-kerngegevensVerplicht">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+				<element name="beschikking">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:BSK-kerngegevensVerplicht">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="herzieAnalyse">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi01-herzieAnalyse"/>
+				<element name="parameters" type="WOZ:ParametersToelichting"/>
+				<choice>
+					<element name="resultaatMarktAnalyse" maxOccurs="unbounded">
+						<complexType>
+							<complexContent>
+								<extension base="WOZ:RMA-kerngegevensVerplicht">
+									<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+								</extension>
+							</complexContent>
+						</complexType>
+					</element>
+					<element name="transactie">
+						<complexType>
+							<complexContent>
+								<extension base="WOZ:TRN-kerngegevensVerplicht">
+									<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+								</extension>
+							</complexContent>
+						</complexType>
+					</element>
+				</choice>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="herzieAnalyse-synchroon">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi02-herzieAnalyse"/>
+				<element name="parameters" type="WOZ:ParametersToelichting"/>
+				<choice>
+					<element name="resultaatMarktAnalyse" maxOccurs="unbounded">
+						<complexType>
+							<complexContent>
+								<extension base="WOZ:RMA-kerngegevensVerplicht">
+									<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+								</extension>
+							</complexContent>
+						</complexType>
+					</element>
+					<element name="transactie">
+						<complexType>
+							<complexContent>
+								<extension base="WOZ:TRN-kerngegevensVerplicht">
+									<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+								</extension>
+							</complexContent>
+						</complexType>
+					</element>
+				</choice>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="muteerAfbakening">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi01-muteerAfbakening"/>
+				<element name="parameters" type="WOZ:ParametersToelichting" minOccurs="0"/>
+				<element name="update" type="WOZ:UpdateWOZ-muteerAfbakening" maxOccurs="unbounded"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="muteerAfbakening-synchroon">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi02-muteerAfbakening"/>
+				<element name="parameters" type="WOZ:ParametersToelichting" minOccurs="0"/>
+				<element name="update" type="WOZ:UpdateWOZ-muteerAfbakening" maxOccurs="unbounded"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="afbakeningGemuteerd">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDu01-afbakeningGemuteerd"/>
+				<element name="parameters" type="WOZ:ParametersToelichting" minOccurs="0"/>
+				<element name="wozObject" maxOccurs="unbounded">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:WOZ-kerngegevensVerplicht">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="muteerBelanghebbende">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi01-muteerBelanghebbende"/>
+				<element name="parameters" type="WOZ:ParametersToelichting" minOccurs="0"/>
+				<element name="update" type="WOZ:UpdateWOZ-muteerBelanghebbende"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="muteerBelanghebbende-synchroon">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi02-muteerBelanghebbende"/>
+				<element name="parameters" type="WOZ:ParametersToelichting" minOccurs="0"/>
+				<element name="update" type="WOZ:UpdateWOZ-muteerBelanghebbende"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="belanghebbendeGemuteerd">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDu01-belanghebbendeGemuteerd"/>
+				<element name="parameters" type="WOZ:ParametersToelichting" minOccurs="0"/>
+				<element name="wozObject">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:WOZ-kerngegevensVerplicht">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="muteerKenmerkenDeelobjecten">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi01-muteerKenmerkenDeelobjecten"/>
+				<element name="parameters" type="WOZ:ParametersToelichting" minOccurs="0"/>
+				<element name="wozObject">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:WOZ-specificatieControle">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+				<element name="controle" minOccurs="0">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:CTL-specificatieControle">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="muteerKenmerkenDeelobjecten-synchroon">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi02-muteerKenmerkenDeelobjecten"/>
+				<element name="parameters" type="WOZ:ParametersToelichting" minOccurs="0"/>
+				<element name="wozObject">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:WOZ-specificatieControle">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+				<element name="controle" minOccurs="0">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:CTL-specificatieControle">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="kenmerkenDeelobjectenGemuteerd">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDu01-kenmerkenDeelobjectenGemuteerd"/>
+				<element name="parameters" type="WOZ:ParametersToelichting" minOccurs="0"/>
+				<element name="wozObject">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:WOZ-specificatieControle">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+				<element name="controle">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:CTL-kerngegevensVerplicht">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="muteerPND">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi01-muteerPND"/>
+				<element name="parameters" type="WOZ:ParametersToelichting" minOccurs="0"/>
+				<element name="update" type="WOZ:UpdatePND"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="muteerPND-synchroon">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi02-muteerPND"/>
+				<element name="parameters" type="WOZ:ParametersToelichting" minOccurs="0"/>
+				<element name="update" type="WOZ:UpdatePND"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="muteerStatusBeschikking">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi01-muteerStatusBeschikking"/>
+				<element name="beschikking">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:BSK-nieuweStatusBeschikking">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="muteerStatusBeschikking-synchroon">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi02-muteerStatusBeschikking"/>
+				<element name="beschikking">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:BSK-nieuweStatusBeschikking">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="muteerTGO">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi01-muteerTGO"/>
+				<element name="parameters" type="WOZ:ParametersToelichting" minOccurs="0"/>
+				<element name="update" type="WOZ:UpdateTGO"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="muteerTGO-synchroon">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi02-muteerTGO"/>
+				<element name="parameters" type="WOZ:ParametersToelichting" minOccurs="0"/>
+				<element name="update" type="WOZ:UpdateTGO"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="muteerVrijstelling">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi01-muteerVrijstelling"/>
+				<element name="parameters" type="WOZ:ParametersToelichting" minOccurs="0"/>
+				<element name="update" type="WOZ:UpdateWOZ-wijzigVrijstelling"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="muteerVrijstelling-synchroon">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi02-muteerVrijstelling"/>
+				<element name="parameters" type="WOZ:ParametersToelichting" minOccurs="0"/>
+				<element name="update" type="WOZ:UpdateWOZ-wijzigVrijstelling"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="onderbouwTaxatie">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi01-onderbouwTaxatie"/>
+				<element name="parameters" type="WOZ:ParametersToelichting" minOccurs="0"/>
+				<element name="taxatieVerslag">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:TVS-kerngegevensVerplicht">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="onderbouwTaxatie-synchroon">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi02-onderbouwTaxatie"/>
+				<element name="parameters" type="WOZ:ParametersToelichting" minOccurs="0"/>
+				<element name="taxatieVerslag">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:TVS-kerngegevensVerplicht">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="onderbouwingGereed">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDu01-onderbouwingGereed"/>
+				<element name="taxatieVerslag">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:TVS-kerngegevensVerplicht">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="onderzoekDominoEffecten">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi01-onderzoekDominoEffecten"/>
+				<element name="parameters" type="WOZ:ParametersToelichting" minOccurs="0"/>
+				<element name="update" type="WOZ:UpdateWOZ-muteerAfbakening" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="controle" minOccurs="0">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:CTL-kerngegevensVerplicht">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+				<element name="taxatie" minOccurs="0">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:TAX-kerngegevensVerplicht">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+				<element name="marktanalyse" minOccurs="0">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:RMA-kerngegevensVerplicht">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="onderzoekDominoEffecten-synchroon">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi02-onderzoekDominoEffecten"/>
+				<element name="parameters" type="WOZ:ParametersToelichting" minOccurs="0"/>
+				<element name="update" type="WOZ:UpdateWOZ-muteerAfbakening" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="controle" minOccurs="0">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:CTL-kerngegevensVerplicht">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+				<element name="taxatie" minOccurs="0">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:TAX-kerngegevensVerplicht">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+				<element name="marktanalyse" minOccurs="0">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:RMA-kerngegevensVerplicht">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="plaatsBeschikkingenOpBiljet">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi01-plaatsBeschikkingenOpBiljet"/>
+				<element name="beschikking" maxOccurs="unbounded">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:BSK-opBLJ">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="plaatsBeschikkingenOpBiljet-synchroon">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi02-plaatsBeschikkingenOpBiljet"/>
+				<element name="beschikking" maxOccurs="unbounded">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:BSK-opBLJ">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="plaatsOpBiljet">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi01-plaatsOpBiljet"/>
+				<element name="parameters" type="WOZ:PrintBiljet"/>
+				<element name="beschikking" type="WOZ:BSK-opBLJ"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="plaatsOpBiljet-synchroon">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi02-plaatsOpBiljet"/>
+				<element name="parameters" type="WOZ:PrintBiljet"/>
+				<element name="beschikking" type="WOZ:BSK-opBLJ"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="beschikkingOpBiljet">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDu01-beschikkingOpBiljet"/>
+				<element name="update" type="WOZ:UpdateBSK-aanvullingBrondocument"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="taxeer">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi01-taxeer"/>
+				<element name="parameters" type="WOZ:WaardeEnToestandsPeildatum"/>
+				<element name="wozObject">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:WOZ-kerngegevensVerplicht">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+				<element name="controle" minOccurs="0">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:CTL-specificatieControle">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="taxeer-synchroon">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi02-taxeer"/>
+				<element name="parameters" type="WOZ:WaardeEnToestandsPeildatum"/>
+				<element name="wozObject">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:WOZ-kerngegevensVerplicht">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+				<element name="controle" minOccurs="0">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:CTL-specificatieControle">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="taxatieGereed">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDu01-taxatieGereed"/>
+				<element name="taxatieverslag">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:TVS-kerngegevensVerplicht">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="taxeerMassaal">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi01-taxeerMassaal"/>
+				<element name="wozObject" maxOccurs="unbounded">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:WOZ-wozObjectnummer">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="taxeerMassaal-synchroon">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi02-taxeerMassaal"/>
+				<element name="wozObject" maxOccurs="unbounded">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:WOZ-wozObjectnummer">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wijzigBeschikking">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi01-wijzigBeschikking"/>
+				<element name="parameters" type="WOZ:ParametersToelichting" minOccurs="0"/>
+				<element name="update" type="WOZ:UpdateBSK-wijzigBeschikking"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wijzigBeschikking-synchroon">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi02-wijzigBeschikking"/>
+				<element name="parameters" type="WOZ:ParametersToelichting" minOccurs="0"/>
+				<element name="update" type="WOZ:UpdateBSK-wijzigBeschikking"/>
+			</sequence>
+		</complexType>
+	</element>
+	<!--Synchrone inkomende dienstberichten-->
+	<element name="controleerBskActueel">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi02-controleerBskActueel"/>
+				<element name="bskObject">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:BSK-kerngegevensVerplicht">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="controleerBskHistorisch">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi02-controleerBskHistorisch"/>
+				<element name="bskObject">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:BSK-kerngegevensVerplicht">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="controleerWozActueel">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi02-controleerWozActueel"/>
+				<element name="wozObject">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:WOZ-kerngegevensVerplicht">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="controleerWozHistorisch">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi02-controleerWozHistorisch"/>
+				<element name="wozObject">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:WOZ-kerngegevensVerplicht">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="leverLVbsk">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi02-leverLVbsk"/>
+				<element name="update" type="WOZ:UpdateLeverBSK"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="leverLVkoz">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi02-leverLVkoz"/>
+				<element name="update" type="WOZ:UpdateLeverKOZ"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="leverLVlig">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi02-leverLVlig"/>
+				<element name="update" type="WOZ:UpdateLeverLIG"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="leverLVnnp">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi02-leverLVnnp"/>
+				<element name="update" type="WOZ:UpdateLeverNNP"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="leverLVnps">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi02-leverLVnps"/>
+				<element name="update" type="WOZ:UpdateLeverNPS"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="leverLVnum">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi02-leverLVnum"/>
+				<element name="update" type="WOZ:UpdateLeverNUM"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="leverLVpnd">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi02-leverLVpnd"/>
+				<element name="update" type="WOZ:UpdateLeverPND"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="leverLVsta">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi02-leverLVsta"/>
+				<element name="update" type="WOZ:UpdateLeverSTA"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="leverLVswo">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi02-leverLVswo"/>
+				<element name="update" type="WOZ:UpdateLeverSWO"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="leverLVvbo">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi02-leverLVvbo"/>
+				<element name="update" type="WOZ:UpdateLeverVBO"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="leverLVves">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi02-leverLVves"/>
+				<element name="update" type="WOZ:UpdateLeverVES"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="leverLVwoz">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi02-leverLVwoz"/>
+				<element name="update" type="WOZ:UpdateLeverWOZ"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="vraagVolgnummerMarktgegeven">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi02-vraagVolgnummerMarktgegeven"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="vraagWozObjectnummer">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi02-vraagWOZObjectnummer"/>
+			</sequence>
+		</complexType>
+	</element>
+	<!--Synchrone respons dienstberichten-->
+	<element name="bskGecontroleerdActueel">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDu02-bskGecontroleerdActueel"/>
+				<element ref="StUF:melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="update" type="WOZ:UpdateBSK-gecontroleerd" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bskGecontroleerdHistorisch">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDu02-bskGecontroleerdHistorisch"/>
+				<element ref="StUF:melding" minOccurs="0" maxOccurs="unbounded"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="nieuwVolgnummerMarktgegeven">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDu02-nieuwVolgnummerMarktgegeven"/>
+				<element name="transactie">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:TRN-nieuwVolgnummerMarktgegeven">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="nieuwWozObjectnummer">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDu02-nieuwWOZObjectnummer"/>
+				<element name="wozObject">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:WOZ-wozObjectnummer">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wozGecontroleerdActueel">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDu02-wozGecontroleerdActueel"/>
+				<element ref="StUF:melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="update" type="WOZ:UpdateWOZ-gecontroleerd" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wozGecontroleerdHistorisch">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDu02-wozGecontroleerdHistorisch"/>
+				<element ref="StUF:melding" minOccurs="0" maxOccurs="unbounded"/>
+			</sequence>
+		</complexType>
+	</element>
+	<!--ComplexTypes tbv dienstberichten-->
+	<complexType name="HerTaxatie">
+		<sequence>
+			<element name="peiltijdstipMaterieel" type="StUF:Tijdstip"/>
+			<element name="peiltijdstipFormeel" type="StUF:Tijdstip"/>
+			<element name="toelichting" type="WOZ:Omschrijving1000" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<complexType name="ParametersToelichting">
+		<sequence>
+			<element name="toelichting" type="WOZ:Omschrijving1000"/>
+		</sequence>
+	</complexType>
+	<complexType name="PrintBiljet">
+		<sequence>
+			<element name="printBiljet" type="BG:Indicatie"/>
+		</sequence>
+	</complexType>
+	<complexType name="UpdateBSK-aanvullingBrondocument">
+		<sequence>
+			<element name="parameters" type="StUF:BSK-aanvullingBrondocument"/>
+			<element name="object" type="WOZ:BSK-aanvullingBrondocument" minOccurs="2" maxOccurs="2"/>
+		</sequence>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+		<attribute ref="StUF:entiteittype" use="required" fixed="BSK"/>
+	</complexType>
+	<complexType name="UpdateBSK-gecontroleerd">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk02"/>
+			<element name="object" type="WOZ:BSK-kennisgeving" minOccurs="2" maxOccurs="2"/>
+		</sequence>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+		<attribute ref="StUF:entiteittype" use="required" fixed="BSK"/>
+	</complexType>
+	<complexType name="UpdateBSK-wijzigBeschikking">
+		<sequence>
+			<element name="parameters" type="StUF:BSK-aanvullingBrondocument"/>
+			<element name="object" type="WOZ:BSK-wijzigBeschikking" minOccurs="2" maxOccurs="2"/>
+		</sequence>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+		<attribute ref="StUF:entiteittype" use="required" fixed="BSK"/>
+	</complexType>
+	<complexType name="UpdateLeverBSK">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk02"/>
+			<element name="object" type="WOZ:BSK-kennisgeving" maxOccurs="2"/>
+		</sequence>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+		<attribute ref="StUF:entiteittype" use="required" fixed="BSK"/>
+	</complexType>
+	<complexType name="UpdateLeverKOZ">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk02"/>
+			<element name="object" type="BG:KOZ-woz-kennisgeving" maxOccurs="2"/>
+		</sequence>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+		<attribute ref="StUF:entiteittype" use="required" fixed="KOZ"/>
+	</complexType>
+	<complexType name="UpdateLeverLIG">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk02"/>
+			<element name="object" type="BG:LIG-woz-kennisgeving" maxOccurs="2"/>
+		</sequence>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+		<attribute ref="StUF:entiteittype" use="required" fixed="LIG"/>
+	</complexType>
+	<complexType name="UpdateLeverNNP">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk02"/>
+			<element name="object" type="WOZ:NNP-lv-kennisgeving" maxOccurs="2"/>
+		</sequence>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+		<attribute ref="StUF:entiteittype" use="required" fixed="NNP"/>
+	</complexType>
+	<complexType name="UpdateLeverNPS">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk02"/>
+			<element name="object" type="WOZ:NPS-lv-kennisgeving" maxOccurs="2"/>
+		</sequence>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+		<attribute ref="StUF:entiteittype" use="required" fixed="NPS"/>
+	</complexType>
+	<complexType name="UpdateLeverNUM">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk02"/>
+			<element name="object" type="BG:NUM-woz-kennisgeving" maxOccurs="2"/>
+		</sequence>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+		<attribute ref="StUF:entiteittype" use="required" fixed="NUM"/>
+	</complexType>
+	<complexType name="UpdateLeverPND">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk02"/>
+			<element name="object" type="BG:PND-woz-kennisgeving" maxOccurs="2"/>
+		</sequence>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+		<attribute ref="StUF:entiteittype" use="required" fixed="PND"/>
+	</complexType>
+	<complexType name="UpdateLeverSTA">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk02"/>
+			<element name="object" type="BG:STA-woz-kennisgeving" maxOccurs="2"/>
+		</sequence>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+		<attribute ref="StUF:entiteittype" use="required" fixed="STA"/>
+	</complexType>
+	<complexType name="UpdateLeverSWO">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk02"/>
+			<element name="object" type="WOZ:SWO-lv-kennisgeving" maxOccurs="2"/>
+		</sequence>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+		<attribute ref="StUF:entiteittype" use="required" fixed="SWO"/>
+	</complexType>
+	<complexType name="UpdateLeverVBO">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk02"/>
+			<element name="object" type="BG:VBO-woz-kennisgeving" maxOccurs="2"/>
+		</sequence>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+		<attribute ref="StUF:entiteittype" use="required" fixed="VBO"/>
+	</complexType>
+	<complexType name="UpdateLeverVES">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk02"/>
+			<element name="object" type="WOZ:VES-lv-kennisgeving" maxOccurs="2"/>
+		</sequence>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+		<attribute ref="StUF:entiteittype" use="required" fixed="VES"/>
+	</complexType>
+	<complexType name="UpdateLeverWOZ">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk02"/>
+			<element name="object" type="WOZ:WOZ-lv-kennisgeving" maxOccurs="2"/>
+		</sequence>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+		<attribute ref="StUF:entiteittype" use="required" fixed="WOZ"/>
+	</complexType>
+	<complexType name="UpdatePND">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk02"/>
+			<element name="object" type="BG:PND-woz-kennisgeving" maxOccurs="2"/>
+		</sequence>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+		<attribute ref="StUF:entiteittype" use="required" fixed="PND"/>
+	</complexType>
+	<complexType name="UpdateTGO">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk02"/>
+			<element name="object" type="BG:TGO-woz-kennisgeving" maxOccurs="2"/>
+		</sequence>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+		<attribute ref="StUF:entiteittype" use="required" fixed="TGO"/>
+	</complexType>
+	<complexType name="UpdateWOZ-gecontroleerd">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk02"/>
+			<element name="object" type="WOZ:WOZ-kennisgeving" minOccurs="2" maxOccurs="2"/>
+		</sequence>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+		<attribute ref="StUF:entiteittype" use="required" fixed="WOZ"/>
+	</complexType>
+	<complexType name="UpdateWOZ-muteerAfbakening">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk02"/>
+			<element name="object" type="WOZ:WOZ-muteerAfbakening" maxOccurs="2"/>
+		</sequence>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+		<attribute ref="StUF:entiteittype" use="required" fixed="WOZ"/>
+	</complexType>
+	<complexType name="UpdateWOZ-muteerBelanghebbende">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk02"/>
+			<element name="object" type="WOZ:WOZ-muteerBelanghebbende" minOccurs="2" maxOccurs="2"/>
+		</sequence>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+		<attribute ref="StUF:entiteittype" use="required" fixed="WOZ"/>
+	</complexType>
+	<complexType name="UpdateWOZ-wijzigVrijstelling">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk02"/>
+			<element name="object" type="WOZ:WOZ-wijzigVrijstelling" maxOccurs="2"/>
+		</sequence>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+		<attribute ref="StUF:entiteittype" use="required" fixed="WOZ"/>
+	</complexType>
+	<complexType name="WaardeEnToestandsPeildatum">
+		<sequence>
+			<element name="waardepeildatum" type="BG:Peildatum"/>
+			<element name="toestandspeildatum" type="BG:Peildatum" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

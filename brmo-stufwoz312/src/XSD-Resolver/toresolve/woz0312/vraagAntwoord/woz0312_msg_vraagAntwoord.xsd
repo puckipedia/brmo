@@ -1,0 +1,3179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2012 (http://www.altova.com) by Maarten van den Broek (messageDesign) -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:StUF="http://www.egem.nl/StUF/StUF0301" xmlns:WOZ="http://www.waarderingskamer.nl/StUF/0312" xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310" targetNamespace="http://www.waarderingskamer.nl/StUF/0312" elementFormDefault="qualified" attributeFormDefault="unqualified" version="031202">
+	<annotation>
+		<documentation xml:lang="nl">
+			Dit schema bevat de berichtelementen tbv de vraag- en antwoordberichten ter ondersteuning van de gemeentelijke WOZ-processen
+			
+			Wijzigingen vergeleken met versie 031201:
+			- De groups nnpVraagBody, npsVraagBody en vesVraagBody toegevoegd
+			- De elementen nnpLa01, nnpLa02, nnpLv01, nnpLv02, npsLa01, npsLa02, npsLv01, npsLv02, vesLa01, vesLa02, vesLv01 en vesLv02 toegevoegd
+		</documentation>
+	</annotation>
+	<include schemaLocation="woz0312_ent_vraagAntwoord.xsd"/>
+	<import namespace="http://www.egem.nl/StUF/StUF0301" schemaLocation="woz0312_msg_stuf_vraagAntwoord.xsd"/>
+	<import namespace="http://www.egem.nl/StUF/sector/bg/0310" schemaLocation="woz0312_bg0310_vraagAntwoord.xsd"/>
+	<element name="aslLa01">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:ASL-StuurgegevensLa01"/>
+				<element name="parameters" type="StUF:ParametersAntwoordSynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:ASL-antwoord" maxOccurs="unbounded"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="aslLa02">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:ASL-StuurgegevensLa02"/>
+				<element name="parameters" type="StUF:ParametersAntwoordAsynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:ASL-antwoord"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="aslLa03">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:ASL-StuurgegevensLa03"/>
+				<element name="parameters" type="StUF:ParametersAntwoordSynchroonMaterieel"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:ASL-antwoord" maxOccurs="unbounded"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="aslLa04">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:ASL-StuurgegevensLa04"/>
+				<element name="parameters" type="StUF:ParametersAntwoordAsynchroonMaterieel"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:ASL-antwoord"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="aslLa07">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:ASL-StuurgegevensLa07"/>
+				<element name="parameters" type="StUF:ParametersAntwoordSynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:ASL-antwoord" maxOccurs="unbounded"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="aslLa08">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:ASL-StuurgegevensLa08"/>
+				<element name="parameters" type="StUF:ParametersAntwoordAsynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:ASL-antwoord"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="aslLv01">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:ASL-StuurgegevensLv01"/>
+				<element name="parameters" type="StUF:ASL-parametersVraagSynchroon"/>
+				<group ref="WOZ:aslVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="aslLv02">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:ASL-StuurgegevensLv02"/>
+				<element name="parameters" type="StUF:ASL-parametersVraagAsynchroon"/>
+				<group ref="WOZ:aslVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="aslLv03">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:ASL-StuurgegevensLv03"/>
+				<element name="parameters" type="StUF:ASL-parametersVraagSynchroonMaterieel"/>
+				<group ref="WOZ:aslVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="aslLv04">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:ASL-StuurgegevensLv04"/>
+				<element name="parameters" type="StUF:ASL-parametersVraagAsynchroonMaterieel"/>
+				<group ref="WOZ:aslVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="aslLv07">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:ASL-StuurgegevensLv07"/>
+				<element name="parameters" type="StUF:ASL-parametersVraagSynchroon"/>
+				<group ref="WOZ:aslVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="aslLv08">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:ASL-StuurgegevensLv08"/>
+				<element name="parameters" type="StUF:ASL-parametersVraagAsynchroon"/>
+				<group ref="WOZ:aslVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bljLa01">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BLJ-StuurgegevensLa01"/>
+				<element name="parameters" type="StUF:ParametersAntwoordSynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:BLJ-antwoord" maxOccurs="unbounded"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bljLa02">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BLJ-StuurgegevensLa02"/>
+				<element name="parameters" type="StUF:ParametersAntwoordAsynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:BLJ-antwoord"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bljLa03">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BLJ-StuurgegevensLa03"/>
+				<element name="parameters" type="StUF:ParametersAntwoordSynchroonMaterieel"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:BLJ-antwoord" maxOccurs="unbounded"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bljLa04">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BLJ-StuurgegevensLa04"/>
+				<element name="parameters" type="StUF:ParametersAntwoordAsynchroonMaterieel"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:BLJ-antwoord"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bljLa07">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BLJ-StuurgegevensLa07"/>
+				<element name="parameters" type="StUF:ParametersAntwoordSynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:BLJ-antwoord" maxOccurs="unbounded"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bljLa08">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BLJ-StuurgegevensLa08"/>
+				<element name="parameters" type="StUF:ParametersAntwoordAsynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:BLJ-antwoord"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bljLv01">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BLJ-StuurgegevensLv01"/>
+				<element name="parameters" type="StUF:BLJ-parametersVraagSynchroon"/>
+				<group ref="WOZ:bljVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bljLv02">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BLJ-StuurgegevensLv02"/>
+				<element name="parameters" type="StUF:BLJ-parametersVraagAsynchroon"/>
+				<group ref="WOZ:bljVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bljLv03">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BLJ-StuurgegevensLv03"/>
+				<element name="parameters" type="StUF:BLJ-parametersVraagSynchroonMaterieel"/>
+				<group ref="WOZ:bljVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bljLv04">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BLJ-StuurgegevensLv04"/>
+				<element name="parameters" type="StUF:BLJ-parametersVraagAsynchroonMaterieel"/>
+				<group ref="WOZ:bljVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bljLv07">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BLJ-StuurgegevensLv07"/>
+				<element name="parameters" type="StUF:BLJ-parametersVraagSynchroon"/>
+				<group ref="WOZ:bljVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bljLv08">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BLJ-StuurgegevensLv08"/>
+				<element name="parameters" type="StUF:BLJ-parametersVraagAsynchroon"/>
+				<group ref="WOZ:bljVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bskLa01">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BSK-StuurgegevensLa01"/>
+				<element name="parameters" type="StUF:ParametersAntwoordSynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:BSK-antwoord" maxOccurs="unbounded"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bskLa02">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BSK-StuurgegevensLa02"/>
+				<element name="parameters" type="StUF:ParametersAntwoordAsynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:BSK-antwoord"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bskLa03">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BSK-StuurgegevensLa03"/>
+				<element name="parameters" type="StUF:ParametersAntwoordSynchroonMaterieel"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:BSK-antwoord" maxOccurs="unbounded"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bskLa04">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BSK-StuurgegevensLa04"/>
+				<element name="parameters" type="StUF:ParametersAntwoordAsynchroonMaterieel"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:BSK-antwoord"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bskLa05">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BSK-StuurgegevensLa05"/>
+				<element name="parameters" type="StUF:ParametersAntwoordSynchroonFormeel"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:BSK-antwoord" maxOccurs="unbounded"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bskLa06">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BSK-StuurgegevensLa06"/>
+				<element name="parameters" type="StUF:ParametersAntwoordAsynchroonFormeel"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:BSK-antwoord"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bskLa07">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BSK-StuurgegevensLa07"/>
+				<element name="parameters" type="StUF:ParametersAntwoordSynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:BSK-antwoord" maxOccurs="unbounded"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bskLa08">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BSK-StuurgegevensLa08"/>
+				<element name="parameters" type="StUF:ParametersAntwoordAsynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:BSK-antwoord"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bskLa09">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BSK-StuurgegevensLa09"/>
+				<element name="parameters" type="StUF:ParametersAntwoordSynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:BSK-antwoord" maxOccurs="unbounded"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bskLa10">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BSK-StuurgegevensLa10"/>
+				<element name="parameters" type="StUF:ParametersAntwoordAsynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:BSK-antwoord"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bskLv01">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BSK-StuurgegevensLv01"/>
+				<element name="parameters" type="StUF:BSK-parametersVraagSynchroon"/>
+				<group ref="WOZ:bskVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bskLv02">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BSK-StuurgegevensLv02"/>
+				<element name="parameters" type="StUF:BSK-parametersVraagAsynchroon"/>
+				<group ref="WOZ:bskVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bskLv03">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BSK-StuurgegevensLv03"/>
+				<element name="parameters" type="StUF:BSK-parametersVraagSynchroonMaterieel"/>
+				<group ref="WOZ:bskVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bskLv04">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BSK-StuurgegevensLv04"/>
+				<element name="parameters" type="StUF:BSK-parametersVraagAsynchroonMaterieel"/>
+				<group ref="WOZ:bskVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bskLv05">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BSK-StuurgegevensLv05"/>
+				<element name="parameters" type="StUF:BSK-parametersVraagSynchroonFormeel"/>
+				<group ref="WOZ:bskVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bskLv06">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BSK-StuurgegevensLv06"/>
+				<element name="parameters" type="StUF:BSK-parametersVraagAsynchroonFormeel"/>
+				<group ref="WOZ:bskVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bskLv07">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BSK-StuurgegevensLv07"/>
+				<element name="parameters" type="StUF:BSK-parametersVraagSynchroon"/>
+				<group ref="WOZ:bskVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bskLv08">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BSK-StuurgegevensLv08"/>
+				<element name="parameters" type="StUF:BSK-parametersVraagAsynchroon"/>
+				<group ref="WOZ:bskVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bskLv09">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BSK-StuurgegevensLv09"/>
+				<element name="parameters" type="StUF:BSK-parametersVraagSynchroon"/>
+				<group ref="WOZ:bskVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bskLv10">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BSK-StuurgegevensLv10"/>
+				<element name="parameters" type="StUF:BSK-parametersVraagAsynchroon"/>
+				<group ref="WOZ:bskVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bzwLa01">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BZW-StuurgegevensLa01"/>
+				<element name="parameters" type="StUF:ParametersAntwoordSynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:BZW-antwoord" maxOccurs="unbounded"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bzwLa02">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BZW-StuurgegevensLa02"/>
+				<element name="parameters" type="StUF:ParametersAntwoordAsynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:BZW-antwoord"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bzwLa03">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BZW-StuurgegevensLa03"/>
+				<element name="parameters" type="StUF:ParametersAntwoordSynchroonMaterieel"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:BZW-antwoord" maxOccurs="unbounded"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bzwLa04">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BZW-StuurgegevensLa04"/>
+				<element name="parameters" type="StUF:ParametersAntwoordAsynchroonMaterieel"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:BZW-antwoord"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bzwLa07">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BZW-StuurgegevensLa07"/>
+				<element name="parameters" type="StUF:ParametersAntwoordSynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:BZW-antwoord" maxOccurs="unbounded"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bzwLa08">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BZW-StuurgegevensLa08"/>
+				<element name="parameters" type="StUF:ParametersAntwoordAsynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:BZW-antwoord"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bzwLv01">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BZW-StuurgegevensLv01"/>
+				<element name="parameters" type="StUF:BZW-parametersVraagSynchroon"/>
+				<group ref="WOZ:bzwVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bzwLv02">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BZW-StuurgegevensLv02"/>
+				<element name="parameters" type="StUF:BZW-parametersVraagAsynchroon"/>
+				<group ref="WOZ:bzwVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bzwLv03">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BZW-StuurgegevensLv03"/>
+				<element name="parameters" type="StUF:BZW-parametersVraagSynchroonMaterieel"/>
+				<group ref="WOZ:bzwVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bzwLv04">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BZW-StuurgegevensLv04"/>
+				<element name="parameters" type="StUF:BZW-parametersVraagAsynchroonMaterieel"/>
+				<group ref="WOZ:bzwVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bzwLv07">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BZW-StuurgegevensLv07"/>
+				<element name="parameters" type="StUF:BZW-parametersVraagSynchroon"/>
+				<group ref="WOZ:bzwVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bzwLv08">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BZW-StuurgegevensLv08"/>
+				<element name="parameters" type="StUF:BZW-parametersVraagAsynchroon"/>
+				<group ref="WOZ:bzwVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="ctlLa01">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:CTL-StuurgegevensLa01"/>
+				<element name="parameters" type="StUF:ParametersAntwoordSynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:CTL-antwoord" maxOccurs="unbounded"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="ctlLa02">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:CTL-StuurgegevensLa02"/>
+				<element name="parameters" type="StUF:ParametersAntwoordAsynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:CTL-antwoord"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="ctlLa03">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:CTL-StuurgegevensLa03"/>
+				<element name="parameters" type="StUF:ParametersAntwoordSynchroonMaterieel"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:CTL-antwoord" maxOccurs="unbounded"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="ctlLa04">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:CTL-StuurgegevensLa04"/>
+				<element name="parameters" type="StUF:ParametersAntwoordAsynchroonMaterieel"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:CTL-antwoord"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="ctlLa07">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:CTL-StuurgegevensLa07"/>
+				<element name="parameters" type="StUF:ParametersAntwoordSynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:CTL-antwoord" maxOccurs="unbounded"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="ctlLa08">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:CTL-StuurgegevensLa08"/>
+				<element name="parameters" type="StUF:ParametersAntwoordAsynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:CTL-antwoord"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="ctlLv01">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:CTL-StuurgegevensLv01"/>
+				<element name="parameters" type="StUF:CTL-parametersVraagSynchroon"/>
+				<group ref="WOZ:ctlVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="ctlLv02">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:CTL-StuurgegevensLv02"/>
+				<element name="parameters" type="StUF:CTL-parametersVraagAsynchroon"/>
+				<group ref="WOZ:ctlVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="ctlLv03">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:CTL-StuurgegevensLv03"/>
+				<element name="parameters" type="StUF:CTL-parametersVraagSynchroonMaterieel"/>
+				<group ref="WOZ:ctlVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="ctlLv04">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:CTL-StuurgegevensLv04"/>
+				<element name="parameters" type="StUF:CTL-parametersVraagAsynchroonMaterieel"/>
+				<group ref="WOZ:ctlVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="ctlLv07">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:CTL-StuurgegevensLv07"/>
+				<element name="parameters" type="StUF:CTL-parametersVraagSynchroon"/>
+				<group ref="WOZ:ctlVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="ctlLv08">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:CTL-StuurgegevensLv08"/>
+				<element name="parameters" type="StUF:CTL-parametersVraagAsynchroon"/>
+				<group ref="WOZ:ctlVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="kpaLa01">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:KPA-StuurgegevensLa01"/>
+				<element name="parameters" type="StUF:ParametersAntwoordSynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:KPA-antwoord" maxOccurs="unbounded"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="kpaLa02">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:KPA-StuurgegevensLa02"/>
+				<element name="parameters" type="StUF:ParametersAntwoordAsynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:KPA-antwoord"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="kpaLv01">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:KPA-StuurgegevensLv01"/>
+				<element name="parameters" type="StUF:KPA-parametersVraagSynchroon"/>
+				<group ref="WOZ:kpaVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="kpaLv02">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:KPA-StuurgegevensLv02"/>
+				<element name="parameters" type="StUF:KPA-parametersVraagAsynchroon"/>
+				<group ref="WOZ:kpaVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="nnpLa01">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:NNP-StuurgegevensLa01"/>
+				<element name="parameters" type="StUF:ParametersAntwoordSynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:NNP-woz-antwoord" maxOccurs="unbounded"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="nnpLa02">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:NNP-StuurgegevensLa02"/>
+				<element name="parameters" type="StUF:ParametersAntwoordAsynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:NNP-woz-antwoord"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="nnpLv01">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:NNP-StuurgegevensLv01"/>
+				<element name="parameters" type="StUF:NNP-woz-parametersVraagSynchroon"/>
+				<group ref="WOZ:nnpVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="nnpLv02">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:NNP-StuurgegevensLv02"/>
+				<element name="parameters" type="StUF:NNP-woz-parametersVraagAsynchroon"/>
+				<group ref="WOZ:nnpVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="npsLa01">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:NPS-StuurgegevensLa01"/>
+				<element name="parameters" type="StUF:ParametersAntwoordSynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:NPS-woz-antwoord" maxOccurs="unbounded"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="npsLa02">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:NPS-StuurgegevensLa02"/>
+				<element name="parameters" type="StUF:ParametersAntwoordAsynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:NPS-woz-antwoord"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="npsLv01">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:NPS-StuurgegevensLv01"/>
+				<element name="parameters" type="StUF:NPS-woz-parametersVraagSynchroon"/>
+				<group ref="WOZ:npsVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="npsLv02">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:NPS-StuurgegevensLv02"/>
+				<element name="parameters" type="StUF:NPS-woz-parametersVraagAsynchroon"/>
+				<group ref="WOZ:npsVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="rmaLa01">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:RMA-StuurgegevensLa01"/>
+				<element name="parameters" type="StUF:ParametersAntwoordSynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:RMA-antwoord" maxOccurs="unbounded"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="rmaLa02">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:RMA-StuurgegevensLa02"/>
+				<element name="parameters" type="StUF:ParametersAntwoordAsynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:RMA-antwoord"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="rmaLv01">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:RMA-StuurgegevensLv01"/>
+				<element name="parameters" type="StUF:RMA-parametersVraagSynchroon"/>
+				<group ref="WOZ:rmaVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="rmaLv02">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:RMA-StuurgegevensLv02"/>
+				<element name="parameters" type="StUF:RMA-parametersVraagAsynchroon"/>
+				<group ref="WOZ:rmaVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="socLa01">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:SOC-StuurgegevensLa01"/>
+				<element name="parameters" type="StUF:ParametersAntwoordSynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:SOC-antwoord" maxOccurs="unbounded"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="socLa02">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:SOC-StuurgegevensLa02"/>
+				<element name="parameters" type="StUF:ParametersAntwoordAsynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:SOC-antwoord"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="socLv01">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:SOC-StuurgegevensLv01"/>
+				<element name="parameters" type="StUF:SOC-parametersVraagSynchroon"/>
+				<group ref="WOZ:socVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="socLv02">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:SOC-StuurgegevensLv02"/>
+				<element name="parameters" type="StUF:SOC-parametersVraagAsynchroon"/>
+				<group ref="WOZ:socVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="swoLa01">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:SWO-StuurgegevensLa01"/>
+				<element name="parameters" type="StUF:ParametersAntwoordSynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:SWO-antwoord" maxOccurs="unbounded"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="swoLa02">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:SWO-StuurgegevensLa02"/>
+				<element name="parameters" type="StUF:ParametersAntwoordAsynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:SWO-antwoord"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="swoLa03">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:SWO-StuurgegevensLa03"/>
+				<element name="parameters" type="StUF:ParametersAntwoordSynchroonMaterieel"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:SWO-antwoord" maxOccurs="unbounded"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="swoLa04">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:SWO-StuurgegevensLa04"/>
+				<element name="parameters" type="StUF:ParametersAntwoordAsynchroonMaterieel"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:SWO-antwoord"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="swoLa05">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:SWO-StuurgegevensLa05"/>
+				<element name="parameters" type="StUF:ParametersAntwoordSynchroonFormeel"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:SWO-antwoord" maxOccurs="unbounded"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="swoLa06">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:SWO-StuurgegevensLa06"/>
+				<element name="parameters" type="StUF:ParametersAntwoordAsynchroonFormeel"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:SWO-antwoord"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="swoLa07">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:SWO-StuurgegevensLa07"/>
+				<element name="parameters" type="StUF:ParametersAntwoordSynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:SWO-antwoord" maxOccurs="unbounded"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="swoLa08">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:SWO-StuurgegevensLa08"/>
+				<element name="parameters" type="StUF:ParametersAntwoordAsynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:SWO-antwoord"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="swoLa09">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:SWO-StuurgegevensLa09"/>
+				<element name="parameters" type="StUF:ParametersAntwoordSynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:SWO-antwoord" maxOccurs="unbounded"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="swoLa10">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:SWO-StuurgegevensLa10"/>
+				<element name="parameters" type="StUF:ParametersAntwoordAsynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:SWO-antwoord"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="swoLv01">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:SWO-StuurgegevensLv01"/>
+				<element name="parameters" type="StUF:SWO-parametersVraagSynchroon"/>
+				<group ref="WOZ:swoVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="swoLv02">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:SWO-StuurgegevensLv02"/>
+				<element name="parameters" type="StUF:SWO-parametersVraagAsynchroon"/>
+				<group ref="WOZ:swoVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="swoLv03">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:SWO-StuurgegevensLv03"/>
+				<element name="parameters" type="StUF:SWO-parametersVraagSynchroonMaterieel"/>
+				<group ref="WOZ:swoVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="swoLv04">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:SWO-StuurgegevensLv04"/>
+				<element name="parameters" type="StUF:SWO-parametersVraagAsynchroonMaterieel"/>
+				<group ref="WOZ:swoVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="swoLv05">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:SWO-StuurgegevensLv05"/>
+				<element name="parameters" type="StUF:SWO-parametersVraagSynchroonFormeel"/>
+				<group ref="WOZ:swoVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="swoLv06">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:SWO-StuurgegevensLv06"/>
+				<element name="parameters" type="StUF:SWO-parametersVraagAsynchroonFormeel"/>
+				<group ref="WOZ:swoVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="swoLv07">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:SWO-StuurgegevensLv07"/>
+				<element name="parameters" type="StUF:SWO-parametersVraagSynchroon"/>
+				<group ref="WOZ:swoVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="swoLv08">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:SWO-StuurgegevensLv08"/>
+				<element name="parameters" type="StUF:SWO-parametersVraagAsynchroon"/>
+				<group ref="WOZ:swoVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="swoLv09">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:SWO-StuurgegevensLv09"/>
+				<element name="parameters" type="StUF:SWO-parametersVraagSynchroon"/>
+				<group ref="WOZ:swoVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="swoLv10">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:SWO-StuurgegevensLv10"/>
+				<element name="parameters" type="StUF:SWO-parametersVraagAsynchroon"/>
+				<group ref="WOZ:swoVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="taxLa01">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:TAX-StuurgegevensLa01"/>
+				<element name="parameters" type="StUF:ParametersAntwoordSynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:TAX-antwoord" maxOccurs="unbounded"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="taxLa02">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:TAX-StuurgegevensLa02"/>
+				<element name="parameters" type="StUF:ParametersAntwoordAsynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:TAX-antwoord"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="taxLa03">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:TAX-StuurgegevensLa03"/>
+				<element name="parameters" type="StUF:ParametersAntwoordSynchroonMaterieel"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:TAX-antwoord" maxOccurs="unbounded"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="taxLa04">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:TAX-StuurgegevensLa04"/>
+				<element name="parameters" type="StUF:ParametersAntwoordAsynchroonMaterieel"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:TAX-antwoord"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="taxLa07">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:TAX-StuurgegevensLa07"/>
+				<element name="parameters" type="StUF:ParametersAntwoordSynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:TAX-antwoord" maxOccurs="unbounded"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="taxLa08">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:TAX-StuurgegevensLa08"/>
+				<element name="parameters" type="StUF:ParametersAntwoordAsynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:TAX-antwoord"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="taxLv01">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:TAX-StuurgegevensLv01"/>
+				<element name="parameters" type="StUF:TAX-parametersVraagSynchroon"/>
+				<group ref="WOZ:taxVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="taxLv02">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:TAX-StuurgegevensLv02"/>
+				<element name="parameters" type="StUF:TAX-parametersVraagAsynchroon"/>
+				<group ref="WOZ:taxVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="taxLv03">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:TAX-StuurgegevensLv03"/>
+				<element name="parameters" type="StUF:TAX-parametersVraagSynchroonMaterieel"/>
+				<group ref="WOZ:taxVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="taxLv04">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:TAX-StuurgegevensLv04"/>
+				<element name="parameters" type="StUF:TAX-parametersVraagAsynchroonMaterieel"/>
+				<group ref="WOZ:taxVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="taxLv07">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:TAX-StuurgegevensLv07"/>
+				<element name="parameters" type="StUF:TAX-parametersVraagSynchroon"/>
+				<group ref="WOZ:taxVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="taxLv08">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:TAX-StuurgegevensLv08"/>
+				<element name="parameters" type="StUF:TAX-parametersVraagAsynchroon"/>
+				<group ref="WOZ:taxVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="trnLa01">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:TRN-StuurgegevensLa01"/>
+				<element name="parameters" type="StUF:ParametersAntwoordSynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:TRN-antwoord" maxOccurs="unbounded"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="trnLa02">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:TRN-StuurgegevensLa02"/>
+				<element name="parameters" type="StUF:ParametersAntwoordAsynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:TRN-antwoord"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="trnLv01">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:TRN-StuurgegevensLv01"/>
+				<element name="parameters" type="StUF:TRN-parametersVraagSynchroon"/>
+				<group ref="WOZ:trnVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="trnLv02">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:TRN-StuurgegevensLv02"/>
+				<element name="parameters" type="StUF:TRN-parametersVraagAsynchroon"/>
+				<group ref="WOZ:trnVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="tvnLa01">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:TVN-StuurgegevensLa01"/>
+				<element name="parameters" type="StUF:ParametersAntwoordSynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:TVN-antwoord" maxOccurs="unbounded"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="tvnLa02">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:TVN-StuurgegevensLa02"/>
+				<element name="parameters" type="StUF:ParametersAntwoordAsynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:TVN-antwoord"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="tvnLv01">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:TVN-StuurgegevensLv01"/>
+				<element name="parameters" type="StUF:TVN-parametersVraagSynchroon"/>
+				<group ref="WOZ:tvnVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="tvnLv02">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:TVN-StuurgegevensLv02"/>
+				<element name="parameters" type="StUF:TVN-parametersVraagAsynchroon"/>
+				<group ref="WOZ:tvnVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="tvwLa01">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:TVW-StuurgegevensLa01"/>
+				<element name="parameters" type="StUF:ParametersAntwoordSynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:TVW-antwoord" maxOccurs="unbounded"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="tvwLa02">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:TVW-StuurgegevensLa02"/>
+				<element name="parameters" type="StUF:ParametersAntwoordAsynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:TVW-antwoord"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="tvwLv01">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:TVW-StuurgegevensLv01"/>
+				<element name="parameters" type="StUF:TVW-parametersVraagSynchroon"/>
+				<group ref="WOZ:tvwVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="tvwLv02">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:TVW-StuurgegevensLv02"/>
+				<element name="parameters" type="StUF:TVW-parametersVraagAsynchroon"/>
+				<group ref="WOZ:tvwVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="vesLa01">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:VES-StuurgegevensLa01"/>
+				<element name="parameters" type="StUF:ParametersAntwoordSynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:VES-woz-antwoord" maxOccurs="unbounded"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="vesLa02">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:VES-StuurgegevensLa02"/>
+				<element name="parameters" type="StUF:ParametersAntwoordAsynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:VES-woz-antwoord"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="vesLv01">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:VES-StuurgegevensLv01"/>
+				<element name="parameters" type="StUF:VES-woz-parametersVraagSynchroon"/>
+				<group ref="WOZ:vesVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="vesLv02">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:VES-StuurgegevensLv02"/>
+				<element name="parameters" type="StUF:VES-woz-parametersVraagAsynchroon"/>
+				<group ref="WOZ:vesVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wbpLa01">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WBP-StuurgegevensLa01"/>
+				<element name="parameters" type="StUF:ParametersAntwoordSynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:WBP-antwoord" maxOccurs="unbounded"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wbpLa02">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WBP-StuurgegevensLa02"/>
+				<element name="parameters" type="StUF:ParametersAntwoordAsynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:WBP-antwoord"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wbpLa03">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WBP-StuurgegevensLa03"/>
+				<element name="parameters" type="StUF:ParametersAntwoordSynchroonMaterieel"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:WBP-antwoord" maxOccurs="unbounded"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wbpLa04">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WBP-StuurgegevensLa04"/>
+				<element name="parameters" type="StUF:ParametersAntwoordAsynchroonMaterieel"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:WBP-antwoord"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wbpLa07">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WBP-StuurgegevensLa07"/>
+				<element name="parameters" type="StUF:ParametersAntwoordSynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:WBP-antwoord" maxOccurs="unbounded"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wbpLa08">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WBP-StuurgegevensLa08"/>
+				<element name="parameters" type="StUF:ParametersAntwoordAsynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:WBP-antwoord"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wbpLv01">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WBP-StuurgegevensLv01"/>
+				<element name="parameters" type="StUF:WBP-parametersVraagSynchroon"/>
+				<group ref="WOZ:wbpVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wbpLv02">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WBP-StuurgegevensLv02"/>
+				<element name="parameters" type="StUF:WBP-parametersVraagAsynchroon"/>
+				<group ref="WOZ:wbpVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wbpLv03">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WBP-StuurgegevensLv03"/>
+				<element name="parameters" type="StUF:WBP-parametersVraagSynchroonMaterieel"/>
+				<group ref="WOZ:wbpVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wbpLv04">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WBP-StuurgegevensLv04"/>
+				<element name="parameters" type="StUF:WBP-parametersVraagAsynchroonMaterieel"/>
+				<group ref="WOZ:wbpVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wbpLv07">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WBP-StuurgegevensLv07"/>
+				<element name="parameters" type="StUF:WBP-parametersVraagSynchroon"/>
+				<group ref="WOZ:wbpVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wbpLv08">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WBP-StuurgegevensLv08"/>
+				<element name="parameters" type="StUF:WBP-parametersVraagAsynchroon"/>
+				<group ref="WOZ:wbpVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wdcLa01">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WDC-StuurgegevensLa01"/>
+				<element name="parameters" type="StUF:ParametersAntwoordSynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:WDC-antwoord" maxOccurs="unbounded"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wdcLa02">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WDC-StuurgegevensLa02"/>
+				<element name="parameters" type="StUF:ParametersAntwoordAsynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:WDC-antwoord"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wdcLv01">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WDC-StuurgegevensLv01"/>
+				<element name="parameters" type="StUF:WDC-parametersVraagSynchroon"/>
+				<group ref="WOZ:wdcVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wdcLv02">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WDC-StuurgegevensLv02"/>
+				<element name="parameters" type="StUF:WDC-parametersVraagAsynchroon"/>
+				<group ref="WOZ:wdcVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wdoLa01">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WDO-StuurgegevensLa01"/>
+				<element name="parameters" type="StUF:ParametersAntwoordSynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:WDO-antwoord" maxOccurs="unbounded"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wdoLa02">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WDO-StuurgegevensLa02"/>
+				<element name="parameters" type="StUF:ParametersAntwoordAsynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:WDO-antwoord"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wdoLa03">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WDO-StuurgegevensLa03"/>
+				<element name="parameters" type="StUF:ParametersAntwoordSynchroonMaterieel"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:WDO-antwoord" maxOccurs="unbounded"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wdoLa04">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WDO-StuurgegevensLa04"/>
+				<element name="parameters" type="StUF:ParametersAntwoordAsynchroonMaterieel"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:WDO-antwoord"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wdoLa05">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WDO-StuurgegevensLa05"/>
+				<element name="parameters" type="StUF:ParametersAntwoordSynchroonFormeel"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:WDO-antwoord" maxOccurs="unbounded"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wdoLa06">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WDO-StuurgegevensLa06"/>
+				<element name="parameters" type="StUF:ParametersAntwoordAsynchroonFormeel"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:WDO-antwoord"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wdoLa07">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WDO-StuurgegevensLa07"/>
+				<element name="parameters" type="StUF:ParametersAntwoordSynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:WDO-antwoord" maxOccurs="unbounded"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wdoLa08">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WDO-StuurgegevensLa08"/>
+				<element name="parameters" type="StUF:ParametersAntwoordAsynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:WDO-antwoord"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wdoLa09">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WDO-StuurgegevensLa09"/>
+				<element name="parameters" type="StUF:ParametersAntwoordSynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:WDO-antwoord" maxOccurs="unbounded"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wdoLa10">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WDO-StuurgegevensLa10"/>
+				<element name="parameters" type="StUF:ParametersAntwoordAsynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:WDO-antwoord"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wdoLv01">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WDO-StuurgegevensLv01"/>
+				<element name="parameters" type="StUF:WDO-woz-parametersVraagSynchroon"/>
+				<group ref="WOZ:wdoVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wdoLv02">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WDO-StuurgegevensLv02"/>
+				<element name="parameters" type="StUF:WDO-woz-parametersVraagAsynchroon"/>
+				<group ref="WOZ:wdoVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wdoLv03">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WDO-StuurgegevensLv03"/>
+				<element name="parameters" type="StUF:WDO-woz-parametersVraagSynchroonMaterieel"/>
+				<group ref="WOZ:wdoVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wdoLv04">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WDO-StuurgegevensLv04"/>
+				<element name="parameters" type="StUF:WDO-woz-parametersVraagAsynchroonMaterieel"/>
+				<group ref="WOZ:wdoVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wdoLv05">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WDO-StuurgegevensLv05"/>
+				<element name="parameters" type="StUF:WDO-woz-parametersVraagSynchroonFormeel"/>
+				<group ref="WOZ:wdoVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wdoLv06">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WDO-StuurgegevensLv06"/>
+				<element name="parameters" type="StUF:WDO-woz-parametersVraagAsynchroonFormeel"/>
+				<group ref="WOZ:wdoVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wdoLv07">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WDO-StuurgegevensLv07"/>
+				<element name="parameters" type="StUF:WDO-woz-parametersVraagSynchroon"/>
+				<group ref="WOZ:wdoVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wdoLv08">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WDO-StuurgegevensLv08"/>
+				<element name="parameters" type="StUF:WDO-woz-parametersVraagAsynchroon"/>
+				<group ref="WOZ:wdoVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wdoLv09">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WDO-StuurgegevensLv09"/>
+				<element name="parameters" type="StUF:WDO-woz-parametersVraagSynchroon"/>
+				<group ref="WOZ:wdoVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wdoLv10">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WDO-StuurgegevensLv10"/>
+				<element name="parameters" type="StUF:WDO-woz-parametersVraagAsynchroon"/>
+				<group ref="WOZ:wdoVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wozLa01">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WOZ-StuurgegevensLa01"/>
+				<element name="parameters" type="StUF:ParametersAntwoordSynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:WOZ-antwoord" maxOccurs="unbounded"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wozLa02">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WOZ-StuurgegevensLa02"/>
+				<element name="parameters" type="StUF:ParametersAntwoordAsynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:WOZ-antwoord"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wozLa03">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WOZ-StuurgegevensLa03"/>
+				<element name="parameters" type="StUF:ParametersAntwoordSynchroonMaterieel"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:WOZ-antwoord" maxOccurs="unbounded"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wozLa04">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WOZ-StuurgegevensLa04"/>
+				<element name="parameters" type="StUF:ParametersAntwoordAsynchroonMaterieel"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:WOZ-antwoord"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wozLa05">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WOZ-StuurgegevensLa05"/>
+				<element name="parameters" type="StUF:ParametersAntwoordSynchroonFormeel"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:WOZ-antwoord" maxOccurs="unbounded"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wozLa06">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WOZ-StuurgegevensLa06"/>
+				<element name="parameters" type="StUF:ParametersAntwoordAsynchroonFormeel"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:WOZ-antwoord"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wozLa07">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WOZ-StuurgegevensLa07"/>
+				<element name="parameters" type="StUF:ParametersAntwoordSynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:WOZ-antwoord" maxOccurs="unbounded"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wozLa08">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WOZ-StuurgegevensLa08"/>
+				<element name="parameters" type="StUF:ParametersAntwoordAsynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:WOZ-antwoord"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wozLa09">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WOZ-StuurgegevensLa09"/>
+				<element name="parameters" type="StUF:ParametersAntwoordSynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:WOZ-antwoord" maxOccurs="unbounded"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wozLa10">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WOZ-StuurgegevensLa10"/>
+				<element name="parameters" type="StUF:ParametersAntwoordAsynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:WOZ-antwoord"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wozLv01">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WOZ-StuurgegevensLv01"/>
+				<element name="parameters" type="StUF:WOZ-woz-parametersVraagSynchroon"/>
+				<group ref="WOZ:wozVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wozLv02">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WOZ-StuurgegevensLv02"/>
+				<element name="parameters" type="StUF:WOZ-woz-parametersVraagAsynchroon"/>
+				<group ref="WOZ:wozVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wozLv03">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WOZ-StuurgegevensLv03"/>
+				<element name="parameters" type="StUF:WOZ-woz-parametersVraagSynchroonMaterieel"/>
+				<group ref="WOZ:wozVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wozLv04">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WOZ-StuurgegevensLv04"/>
+				<element name="parameters" type="StUF:WOZ-woz-parametersVraagAsynchroonMaterieel"/>
+				<group ref="WOZ:wozVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wozLv05">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WOZ-StuurgegevensLv05"/>
+				<element name="parameters" type="StUF:WOZ-woz-parametersVraagSynchroonFormeel"/>
+				<group ref="WOZ:wozVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wozLv06">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WOZ-StuurgegevensLv06"/>
+				<element name="parameters" type="StUF:WOZ-woz-parametersVraagAsynchroonFormeel"/>
+				<group ref="WOZ:wozVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wozLv07">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WOZ-StuurgegevensLv07"/>
+				<element name="parameters" type="StUF:WOZ-woz-parametersVraagSynchroon"/>
+				<group ref="WOZ:wozVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wozLv08">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WOZ-StuurgegevensLv08"/>
+				<element name="parameters" type="StUF:WOZ-woz-parametersVraagAsynchroon"/>
+				<group ref="WOZ:wozVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wozLv09">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WOZ-StuurgegevensLv09"/>
+				<element name="parameters" type="StUF:WOZ-woz-parametersVraagSynchroon"/>
+				<group ref="WOZ:wozVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wozLv10">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WOZ-StuurgegevensLv10"/>
+				<element name="parameters" type="StUF:WOZ-woz-parametersVraagAsynchroon"/>
+				<group ref="WOZ:wozVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wrdLa01">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WRD-StuurgegevensLa01"/>
+				<element name="parameters" type="StUF:ParametersAntwoordSynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:WRD-antwoord" maxOccurs="unbounded"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wrdLa02">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WRD-StuurgegevensLa02"/>
+				<element name="parameters" type="StUF:ParametersAntwoordAsynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:WRD-antwoord"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wrdLa03">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WRD-StuurgegevensLa03"/>
+				<element name="parameters" type="StUF:ParametersAntwoordSynchroonMaterieel"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:WRD-antwoord" maxOccurs="unbounded"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wrdLa04">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WRD-StuurgegevensLa04"/>
+				<element name="parameters" type="StUF:ParametersAntwoordAsynchroonMaterieel"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:WRD-antwoord"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wrdLa05">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WRD-StuurgegevensLa05"/>
+				<element name="parameters" type="StUF:ParametersAntwoordSynchroonFormeel"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:WRD-antwoord" maxOccurs="unbounded"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wrdLa06">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WRD-StuurgegevensLa06"/>
+				<element name="parameters" type="StUF:ParametersAntwoordAsynchroonFormeel"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:WRD-antwoord"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wrdLa07">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WRD-StuurgegevensLa07"/>
+				<element name="parameters" type="StUF:ParametersAntwoordSynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:WRD-antwoord" maxOccurs="unbounded"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wrdLa08">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WRD-StuurgegevensLa08"/>
+				<element name="parameters" type="StUF:ParametersAntwoordAsynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:WRD-antwoord"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wrdLa09">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WRD-StuurgegevensLa09"/>
+				<element name="parameters" type="StUF:ParametersAntwoordSynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:WRD-antwoord" maxOccurs="unbounded"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wrdLa10">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WRD-StuurgegevensLa10"/>
+				<element name="parameters" type="StUF:ParametersAntwoordAsynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:WRD-antwoord"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wrdLv01">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WRD-StuurgegevensLv01"/>
+				<element name="parameters" type="StUF:WRD-woz-parametersVraagSynchroon"/>
+				<group ref="WOZ:wrdVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wrdLv02">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WRD-StuurgegevensLv02"/>
+				<element name="parameters" type="StUF:WRD-woz-parametersVraagAsynchroon"/>
+				<group ref="WOZ:wrdVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wrdLv03">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WRD-StuurgegevensLv03"/>
+				<element name="parameters" type="StUF:WRD-woz-parametersVraagSynchroonMaterieel"/>
+				<group ref="WOZ:wrdVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wrdLv04">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WRD-StuurgegevensLv04"/>
+				<element name="parameters" type="StUF:WRD-woz-parametersVraagAsynchroonMaterieel"/>
+				<group ref="WOZ:wrdVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wrdLv05">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WRD-StuurgegevensLv05"/>
+				<element name="parameters" type="StUF:WRD-woz-parametersVraagSynchroonFormeel"/>
+				<group ref="WOZ:wrdVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wrdLv06">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WRD-StuurgegevensLv06"/>
+				<element name="parameters" type="StUF:WRD-woz-parametersVraagAsynchroonFormeel"/>
+				<group ref="WOZ:wrdVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wrdLv07">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WRD-StuurgegevensLv07"/>
+				<element name="parameters" type="StUF:WRD-woz-parametersVraagSynchroon"/>
+				<group ref="WOZ:wrdVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wrdLv08">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WRD-StuurgegevensLv08"/>
+				<element name="parameters" type="StUF:WRD-woz-parametersVraagAsynchroon"/>
+				<group ref="WOZ:wrdVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wrdLv09">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WRD-StuurgegevensLv09"/>
+				<element name="parameters" type="StUF:WRD-woz-parametersVraagSynchroon"/>
+				<group ref="WOZ:wrdVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wrdLv10">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WRD-StuurgegevensLv10"/>
+				<element name="parameters" type="StUF:WRD-woz-parametersVraagAsynchroon"/>
+				<group ref="WOZ:wrdVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wspLa01">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WSP-StuurgegevensLa01"/>
+				<element name="parameters" type="StUF:ParametersAntwoordSynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:WSP-antwoord" maxOccurs="unbounded"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wspLa02">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WSP-StuurgegevensLa02"/>
+				<element name="parameters" type="StUF:ParametersAntwoordAsynchroon"/>
+				<element name="melding" type="StUF:Melding" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="object" type="WOZ:WSP-antwoord"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wspLv01">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WSP-StuurgegevensLv01"/>
+				<element name="parameters" type="StUF:WSP-parametersVraagSynchroon"/>
+				<group ref="WOZ:wspVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wspLv02">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WSP-StuurgegevensLv02"/>
+				<element name="parameters" type="StUF:WSP-parametersVraagAsynchroon"/>
+				<group ref="WOZ:wspVraagBody"/>
+			</sequence>
+		</complexType>
+	</element>
+	<!--group met vraagbody per entiteittype-->
+	<group name="aslVraagBody">
+		<sequence>
+			<element name="gelijk" type="WOZ:ASL-vraagSelectie" minOccurs="0"/>
+			<element name="vanaf" type="WOZ:ASL-vraagSelectie" minOccurs="0"/>
+			<element name="totEnMet" type="WOZ:ASL-vraagSelectie" minOccurs="0"/>
+			<element name="scope" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="object" type="WOZ:ASL-vraagScope"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="start" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="object" type="WOZ:ASL-antwoord"/>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</group>
+	<group name="bljVraagBody">
+		<sequence>
+			<element name="gelijk" type="WOZ:BLJ-vraagSelectie" minOccurs="0"/>
+			<element name="vanaf" type="WOZ:BLJ-vraagSelectie" minOccurs="0"/>
+			<element name="totEnMet" type="WOZ:BLJ-vraagSelectie" minOccurs="0"/>
+			<element name="scope" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="object" type="WOZ:BLJ-vraagScope"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="start" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="object" type="WOZ:BLJ-antwoord"/>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</group>
+	<group name="bskVraagBody">
+		<sequence>
+			<element name="gelijk" type="WOZ:BSK-vraagSelectie" minOccurs="0"/>
+			<element name="vanaf" type="WOZ:BSK-vraagSelectie" minOccurs="0"/>
+			<element name="totEnMet" type="WOZ:BSK-vraagSelectie" minOccurs="0"/>
+			<element name="scope" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="object" type="WOZ:BSK-vraagScope"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="start" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="object" type="WOZ:BSK-antwoord"/>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</group>
+	<group name="bzwVraagBody">
+		<sequence>
+			<element name="gelijk" type="WOZ:BZW-vraagSelectie" minOccurs="0"/>
+			<element name="vanaf" type="WOZ:BZW-vraagSelectie" minOccurs="0"/>
+			<element name="totEnMet" type="WOZ:BZW-vraagSelectie" minOccurs="0"/>
+			<element name="scope" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="object" type="WOZ:BZW-vraagScope"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="start" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="object" type="WOZ:BZW-antwoord"/>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</group>
+	<group name="ctlVraagBody">
+		<sequence>
+			<element name="gelijk" type="WOZ:CTL-vraag" minOccurs="0"/>
+			<element name="vanaf" type="WOZ:CTL-vraag" minOccurs="0"/>
+			<element name="totEnMet" type="WOZ:CTL-vraag" minOccurs="0"/>
+			<element name="scope" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="object" type="WOZ:CTL-vraag"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="start" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="object" type="WOZ:CTL-antwoord"/>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</group>
+	<group name="kpaVraagBody">
+		<sequence>
+			<element name="gelijk" type="WOZ:KPA-vraag" minOccurs="0"/>
+			<element name="vanaf" type="WOZ:KPA-vraag" minOccurs="0"/>
+			<element name="totEnMet" type="WOZ:KPA-vraag" minOccurs="0"/>
+			<element name="scope" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="object" type="WOZ:KPA-vraag"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="start" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="object" type="WOZ:KPA-antwoord"/>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</group>
+	<group name="nnpVraagBody">
+		<sequence>
+			<element name="gelijk" type="WOZ:NNP-woz-vraagSelectie" minOccurs="0"/>
+			<element name="vanaf" type="WOZ:NNP-woz-vraagSelectie" minOccurs="0"/>
+			<element name="totEnMet" type="WOZ:NNP-woz-vraagSelectie" minOccurs="0"/>
+			<element name="scope" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="object" type="WOZ:NNP-woz-vraagScope"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="start" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="object" type="WOZ:NNP-woz-antwoord"/>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</group>
+	<group name="npsVraagBody">
+		<sequence>
+			<element name="gelijk" type="WOZ:NPS-woz-vraagSelectie" minOccurs="0"/>
+			<element name="vanaf" type="WOZ:NPS-woz-vraagSelectie" minOccurs="0"/>
+			<element name="totEnMet" type="WOZ:NPS-woz-vraagSelectie" minOccurs="0"/>
+			<element name="scope" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="object" type="WOZ:NPS-woz-vraagScope"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="start" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="object" type="WOZ:NPS-woz-antwoord"/>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</group>
+	<group name="rmaVraagBody">
+		<sequence>
+			<element name="gelijk" type="WOZ:RMA-vraagSelectie" minOccurs="0"/>
+			<element name="vanaf" type="WOZ:RMA-vraagSelectie" minOccurs="0"/>
+			<element name="totEnMet" type="WOZ:RMA-vraagSelectie" minOccurs="0"/>
+			<element name="scope" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="object" type="WOZ:RMA-vraagScope"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="start" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="object" type="WOZ:RMA-antwoord"/>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</group>
+	<group name="socVraagBody">
+		<sequence>
+			<element name="gelijk" type="WOZ:SOC-vraag" minOccurs="0"/>
+			<element name="vanaf" type="WOZ:SOC-vraag" minOccurs="0"/>
+			<element name="totEnMet" type="WOZ:SOC-vraag" minOccurs="0"/>
+			<element name="scope" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="object" type="WOZ:SOC-vraag"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="start" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="object" type="WOZ:SOC-antwoord"/>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</group>
+	<group name="swoVraagBody">
+		<sequence>
+			<element name="gelijk" type="WOZ:SWO-vraagSelectie" minOccurs="0"/>
+			<element name="vanaf" type="WOZ:SWO-vraagSelectie" minOccurs="0"/>
+			<element name="totEnMet" type="WOZ:SWO-vraagSelectie" minOccurs="0"/>
+			<element name="scope" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="object" type="WOZ:SWO-vraagScope"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="start" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="object" type="WOZ:SWO-antwoord"/>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</group>
+	<group name="taxVraagBody">
+		<sequence>
+			<element name="gelijk" type="WOZ:TAX-vraagSelectie" minOccurs="0"/>
+			<element name="vanaf" type="WOZ:TAX-vraagSelectie" minOccurs="0"/>
+			<element name="totEnMet" type="WOZ:TAX-vraagSelectie" minOccurs="0"/>
+			<element name="scope" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="object" type="WOZ:TAX-vraagScope"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="start" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="object" type="WOZ:TAX-antwoord"/>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</group>
+	<group name="trnVraagBody">
+		<sequence>
+			<element name="gelijk" type="WOZ:TRN-vraagSelectie" minOccurs="0"/>
+			<element name="vanaf" type="WOZ:TRN-vraagSelectie" minOccurs="0"/>
+			<element name="totEnMet" type="WOZ:TRN-vraagSelectie" minOccurs="0"/>
+			<element name="scope" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="object" type="WOZ:TRN-vraagScope"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="start" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="object" type="WOZ:TRN-antwoord"/>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</group>
+	<group name="tvnVraagBody">
+		<sequence>
+			<element name="gelijk" type="WOZ:TVN-vraagSelectie" minOccurs="0"/>
+			<element name="vanaf" type="WOZ:TVN-vraagSelectie" minOccurs="0"/>
+			<element name="totEnMet" type="WOZ:TVN-vraagSelectie" minOccurs="0"/>
+			<element name="scope" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="object" type="WOZ:TVN-vraagScope"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="start" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="object" type="WOZ:TVN-antwoord"/>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</group>
+	<group name="tvwVraagBody">
+		<sequence>
+			<element name="gelijk" type="WOZ:TVW-vraagSelectie" minOccurs="0"/>
+			<element name="vanaf" type="WOZ:TVW-vraagSelectie" minOccurs="0"/>
+			<element name="totEnMet" type="WOZ:TVW-vraagSelectie" minOccurs="0"/>
+			<element name="scope" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="object" type="WOZ:TVW-vraagScope"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="start" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="object" type="WOZ:TVW-antwoord"/>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</group>
+	<group name="vesVraagBody">
+		<sequence>
+			<element name="gelijk" type="WOZ:VES-woz-vraagSelectie" minOccurs="0"/>
+			<element name="vanaf" type="WOZ:VES-woz-vraagSelectie" minOccurs="0"/>
+			<element name="totEnMet" type="WOZ:VES-woz-vraagSelectie" minOccurs="0"/>
+			<element name="scope" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="object" type="WOZ:VES-woz-vraagScope"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="start" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="object" type="WOZ:VES-woz-antwoord"/>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</group>
+	<group name="wbpVraagBody">
+		<sequence>
+			<element name="gelijk" type="WOZ:WBP-vraagSelectie" minOccurs="0"/>
+			<element name="vanaf" type="WOZ:WBP-vraagSelectie" minOccurs="0"/>
+			<element name="totEnMet" type="WOZ:WBP-vraagSelectie" minOccurs="0"/>
+			<element name="scope" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="object" type="WOZ:WBP-vraagScope"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="start" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="object" type="WOZ:WBP-antwoord"/>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</group>
+	<group name="wdcVraagBody">
+		<sequence>
+			<element name="gelijk" type="WOZ:WDC-vraag" minOccurs="0"/>
+			<element name="vanaf" type="WOZ:WDC-vraag" minOccurs="0"/>
+			<element name="totEnMet" type="WOZ:WDC-vraag" minOccurs="0"/>
+			<element name="scope" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="object" type="WOZ:WDC-vraag"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="start" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="object" type="WOZ:WDC-antwoord"/>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</group>
+	<group name="wdoVraagBody">
+		<sequence>
+			<element name="gelijk" type="WOZ:WDO-vraagSelectie" minOccurs="0"/>
+			<element name="vanaf" type="WOZ:WDO-vraagSelectie" minOccurs="0"/>
+			<element name="totEnMet" type="WOZ:WDO-vraagSelectie" minOccurs="0"/>
+			<element name="scope" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="object" type="WOZ:WDO-vraagScope"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="start" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="object" type="WOZ:WDO-antwoord"/>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</group>
+	<group name="wozVraagBody">
+		<sequence>
+			<element name="gelijk" type="WOZ:WOZ-vraagSelectie" minOccurs="0"/>
+			<element name="vanaf" type="WOZ:WOZ-vraagSelectie" minOccurs="0"/>
+			<element name="totEnMet" type="WOZ:WOZ-vraagSelectie" minOccurs="0"/>
+			<element name="scope" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="object" type="WOZ:WOZ-vraagScope"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="start" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="object" type="WOZ:WOZ-antwoord"/>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</group>
+	<group name="wrdVraagBody">
+		<sequence>
+			<element name="gelijk" type="WOZ:WRD-vraagSelectie" minOccurs="0"/>
+			<element name="vanaf" type="WOZ:WRD-vraagSelectie" minOccurs="0"/>
+			<element name="totEnMet" type="WOZ:WRD-vraagSelectie" minOccurs="0"/>
+			<element name="scope" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="object" type="WOZ:WRD-vraagScope"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="start" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="object" type="WOZ:WRD-antwoord"/>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</group>
+	<group name="wspVraagBody">
+		<sequence>
+			<element name="gelijk" type="WOZ:WSP-vraag" minOccurs="0"/>
+			<element name="vanaf" type="WOZ:WSP-vraag" minOccurs="0"/>
+			<element name="totEnMet" type="WOZ:WSP-vraag" minOccurs="0"/>
+			<element name="scope" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="object" type="WOZ:WSP-vraag"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="start" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="object" type="WOZ:WSP-antwoord"/>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</group>
+</schema>

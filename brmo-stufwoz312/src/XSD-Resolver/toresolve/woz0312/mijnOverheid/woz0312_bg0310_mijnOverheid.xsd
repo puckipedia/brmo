@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2012 sp1 (http://www.altova.com) by Maarten van den Broek (messageDesign) -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:StUF="http://www.egem.nl/StUF/StUF0301" xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310" targetNamespace="http://www.egem.nl/StUF/sector/bg/0310" elementFormDefault="qualified" attributeFormDefault="unqualified" version="031202">
+	<annotation>
+		<documentation>
+			Dit schema bevat de restricties van BG-types tbv het LV WOZ deel van het sectormodel WOZ.
+			
+			Wijzigingen vergeleken met versie 031201:
+			- Overal waar binnen een attribute de combinatie fixed="waarde" en prohibited voorkomt fixed verwijderd
+ 		</documentation>
+	</annotation>
+	<include schemaLocation="../entiteiten/woz0312_bg0310_lv_basis.xsd"/>
+	<import namespace="http://www.egem.nl/StUF/StUF0301" schemaLocation="../entiteiten/woz0312_stuf_simpleTypes.xsd"/>
+	<complexType name="AOT-mijnOverheid-vraagAntwoord">
+		<complexContent>
+			<restriction base="BG:AOT-lv-basis">
+				<choice minOccurs="0">
+					<choice minOccurs="0">
+						<element name="ligplaats" type="BG:LIG-mijnOverheid-vraagAntwoord"/>
+						<element name="standplaats" type="BG:STA-mijnOverheid-vraagAntwoord"/>
+						<element name="verblijfsobject" type="BG:VBO-mijnOverheid-vraagAntwoord"/>
+					</choice>
+				</choice>
+				<attribute ref="StUF:entiteittype" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="LIG-mijnOverheid-vraagAntwoord">
+		<complexContent>
+			<restriction base="BG:LIG-lv-basis">
+				<sequence>
+					<element name="identificatie" type="BG:ObjectNummeringLIG-e" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="PND-mijnOverheid-vraagAntwoord">
+		<complexContent>
+			<restriction base="BG:PND-woz-basis">
+				<sequence>
+					<element name="identificatie" type="BG:ObjectNummering-e" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="STA-mijnOverheid-vraagAntwoord">
+		<complexContent>
+			<restriction base="BG:STA-lv-basis">
+				<sequence>
+					<element name="identificatie" type="BG:ObjectNummeringSTA-e" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="VBO-mijnOverheid-vraagAntwoord">
+		<complexContent>
+			<restriction base="BG:VBO-lv-basis">
+				<sequence>
+					<element name="identificatie" type="BG:ObjectNummeringVBO-e" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<!--ComplexTypes voor groepen-->
+	<complexType name="AanduidingWOZobjectGrp-mijnOverheid-vraagAntwoord">
+		<complexContent>
+			<restriction base="BG:AanduidingWOZobjectGrp-woz">
+				<sequence>
+					<element name="aoa.identificatie" type="BG:ObjectNummering-e" nillable="true"/>
+					<element name="wpl.woonplaatsNaam" type="BG:WoonplaatsNaam-e" nillable="true"/>
+					<element name="aoa.postcode" type="BG:Postcode-e" nillable="true"/>
+					<element name="gor.openbareRuimteNaam" type="BG:NaamgevingObject-e" nillable="true"/>
+					<element name="gor.straatnaam" type="BG:Straatnaam-e" nillable="true"/>
+					<element name="aoa.huisnummer" type="BG:Huisnummering-e" nillable="true"/>
+					<element name="aoa.huisletter" type="BG:Huislettering-e" nillable="true"/>
+					<element name="aoa.huisnummertoevoeging" type="BG:Huisnummertoevoeging-e" nillable="true"/>
+					<element name="locatieOmschrijving" type="BG:LocatieOmschrijving-e" nillable="true"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="VerantwoordelijkeGemeenteGrp-mijnOverheid-selectie">
+		<complexContent>
+			<restriction base="BG:VerantwoordelijkeGemeenteGrp">
+				<sequence>
+					<element name="gemeenteCode" type="BG:Gemeentecodering-e" nillable="true"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+</schema>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2015 rel. 3 sp1 (x64) (http://www.altova.com) by Maarten van den Broek (messageDesign B.V.) -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:StUF="http://www.egem.nl/StUF/StUF0301" xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310" targetNamespace="http://www.egem.nl/StUF/sector/bg/0310" elementFormDefault="qualified" attributeFormDefault="unqualified" version="031202">
+	<annotation>
+		<documentation>
+			Dit schema bevat de restricties van BG-types tbv de proces berichtencatalogus van het sectormodel WOZ.
+			
+			Wijzigingen vergeleken met versie 0312001:
+			- In complexType KOZ-woz-afbakening het type van het element kdp.grootte in overeenstemming gebracht met de nieuwe definitie in bg0310 per 1-4-2015
+ 		</documentation>
+	</annotation>
+	<include schemaLocation="../entiteiten/woz0312_bg0310_ent_basis.xsd"/>
+	<import namespace="http://www.egem.nl/StUF/StUF0301" schemaLocation="../entiteiten/woz0312_stuf_simpleTypes.xsd"/>
+	<complexType name="PND-woz-afbakening">
+		<complexContent>
+			<restriction base="BG:PND-woz-basis">
+				<sequence minOccurs="0">
+					<element name="identificatie" type="BG:ObjectNummering-e" nillable="true"/>
+					<element name="ingangsdatumObject" type="StUF:DatumMetIndicator" nillable="true" minOccurs="0"/>
+					<element name="einddatumObject" type="StUF:DatumMetIndicator" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TGO-woz-afbakening">
+		<complexContent>
+			<restriction base="BG:TGO-woz-basis">
+				<sequence>
+					<element name="identificatie" type="BG:ObjectNummering-e" nillable="true"/>
+					<element name="adresAanduidingGrp" type="BG:AdrGrp-woz-kerngegevensVerplicht"/>
+					<element name="gbo.puntGeometrie" type="BG:GeometriePunt-e" nillable="true" minOccurs="0"/>
+					<element name="vlakGeometrie" type="BG:GeometrieVlak-e" nillable="true" minOccurs="0"/>
+					<element name="type" type="BG:TypeOGOofOTR-e" nillable="true" minOccurs="0"/>
+					<element name="vbo.soortWoonobject" type="BG:SoortWoonobject-e" nillable="true" minOccurs="0"/>
+					<element name="gbo.bouwkundigeBestemming" type="BG:BouwkundigeBestemming-e" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="gebruiksdoel" type="BG:Gebruiksdoeleinden-e" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="gbo.brutoInhoud" type="BG:Maateenheid6-e" nillable="true" minOccurs="0"/>
+					<element name="gbo.oppervlakte" type="BG:Maateenheid6-e" nillable="true" minOccurs="0"/>
+					<element name="ogo.bouwjaar" type="BG:Jaar-e" nillable="true" minOccurs="0"/>
+					<element name="vbo.toegangBouwlaag" type="BG:Bouwlaag-e" nillable="true" minOccurs="0"/>
+					<element name="vbo.aantalKamers" type="BG:Maateenheid2-e" nillable="true" minOccurs="0"/>
+					<element name="vbo.ontsluitingVerdieping" type="BG:OntsluitingVerdieping-e" nillable="true" minOccurs="0"/>
+					<element name="aot.status" type="BG:StatusTGO-e" nillable="true" minOccurs="0"/>
+					<element name="gbo.statusVoortgangBouw" type="BG:StatusVoortgangBouw-e" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:entiteittype" use="required" fixed="TGO"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TGO-woz-specificatieControle">
+		<complexContent>
+			<restriction base="BG:TGO-woz-basis">
+				<sequence>
+					<element name="identificatie" type="BG:ObjectNummering-e" nillable="true"/>
+					<element name="adresAanduidingGrp" type="BG:AdrGrp-woz-kerngegevensVerplicht"/>
+					<element name="vbo.soortWoonobject" type="BG:SoortWoonobject-e" nillable="true" minOccurs="0"/>
+					<element name="gbo.brutoInhoud" type="BG:Maateenheid6-e" nillable="true" minOccurs="0"/>
+					<element name="gbo.oppervlakte" type="BG:Maateenheid6-e" nillable="true" minOccurs="0"/>
+					<element name="vbo.toegangBouwlaag" type="BG:Bouwlaag-e" nillable="true" minOccurs="0"/>
+					<element name="vbo.aantalKamers" type="BG:Maateenheid2-e" nillable="true" minOccurs="0"/>
+					<element name="vbo.ontsluitingVerdieping" type="BG:OntsluitingVerdieping-e" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:entiteittype" use="required" fixed="TGO"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="KOZ-woz-afbakening">
+		<complexContent>
+			<restriction base="BG:KOZ-woz-basis">
+				<sequence minOccurs="0">
+					<element name="kadastraleIdentificatie" type="BG:KadastraleIdentificatie-e" nillable="true"/>
+					<element name="kadastraleAanduiding" type="BG:KadastraleAanduidingGrp-verplicht"/>
+					<choice minOccurs="0">
+						<sequence minOccurs="0">
+							<element name="kdp.grootte" type="BG:Maateenheid8-2-neg-e" nillable="true" minOccurs="0"/>
+						</sequence>
+						<sequence minOccurs="0"/>
+					</choice>
+					<element name="ingangsdatumObject" type="StUF:DatumMetIndicator" nillable="true" minOccurs="0"/>
+					<element name="einddatumObject" type="StUF:DatumMetIndicator" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+</schema>

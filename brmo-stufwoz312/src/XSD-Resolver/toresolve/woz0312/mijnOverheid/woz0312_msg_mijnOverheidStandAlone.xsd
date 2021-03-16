@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2012 sp1 (http://www.altova.com) by Maarten van den Broek (messageDesign) -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:StUF="http://www.egem.nl/StUF/StUF0301" xmlns:WOZ="http://www.waarderingskamer.nl/StUF/0312" xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310" targetNamespace="http://www.waarderingskamer.nl/StUF/0312" elementFormDefault="qualified" attributeFormDefault="unqualified" version="031200">
+	<annotation>
+		<documentation>
+			Dit schema bevat de definitie van de complexTypes gebruikt in de vrije berichten voor de communicatie met mijnOverheid</documentation>
+	</annotation>
+	<import namespace="http://www.egem.nl/StUF/StUF0301" schemaLocation="woz0312_msg_stuf_mijnOverheidStandAlone.xsd"/>
+	<import namespace="http://www.egem.nl/StUF/sector/bg/0310" schemaLocation="woz0312_bg0310_mijnOverheidStandAlone.xsd"/>
+	<element name="mijnOverheid-antwTaxatieverslag">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:Stuurgegevens-mijnOverheid-antwTaxatieverslag"/>
+				<element name="parameters" type="WOZ:Parameters-taxatieVerslag"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="mijnOverheid-antwWRDDetails">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:Stuurgegevens-mijnOverheid-antwWRDDetails"/>
+				<element name="parameters" type="WOZ:Parameters-Url"/>
+				<element name="wrd">
+					<complexType>
+						<sequence>
+							<element name="parameters" type="StUF:ParametersAntwoord-mijnOverheid"/>
+							<element name="antwoord" minOccurs="0">
+								<complexType>
+									<sequence>
+										<element name="wrd" type="WOZ:WRD-mijnOverheid-antwoord2"/>
+									</sequence>
+								</complexType>
+							</element>
+						</sequence>
+						<attribute ref="StUF:functie" use="required" fixed="antwoord"/>
+						<attribute ref="StUF:entiteittype" use="required" fixed="WRD"/>
+					</complexType>
+				</element>
+				<element name="soc">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:SOC-mijnOverheid-entiteit">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="mijnOverheid-antwWRDPerBsn">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:Stuurgegevens-mijnOverheid-antwWRDPerBsn"/>
+				<element name="parameters" type="StUF:ParametersAntwoord-mijnOverheid"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="wrd" type="WOZ:WRD-mijnOverheid-antwoord" minOccurs="0" maxOccurs="unbounded"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="mijnOverheid-vraagTaxatieverslag">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:Stuurgegevens-mijnOverheid-vraagTaxatieverslag"/>
+				<element name="selectie">
+					<complexType>
+						<sequence>
+							<element name="parameters" type="StUF:WRD-mijnOverheid-parametersVraagTaxVerslag"/>
+							<element name="gelijk" type="WOZ:WRD-mijnOverheid-selectieWOZPeildatum"/>
+						</sequence>
+						<attribute ref="StUF:entiteittype" use="required" fixed="WRD"/>
+						<attribute ref="StUF:functie" use="required" fixed="selectie"/>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="mijnOverheid-vraagWRDDetails">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:Stuurgegevens-mijnOverheid-vraagWRDDetails"/>
+				<element name="selectie">
+					<complexType>
+						<sequence>
+							<element name="parameters" type="StUF:WRD-mijnOverheid-parametersVraagSynchroon2"/>
+							<element name="gelijk" type="WOZ:WRD-mijnOverheid-selectieWOZPeildatum"/>
+							<element name="scope">
+								<complexType>
+									<sequence>
+										<element name="wrd" type="WOZ:WRD-mijnOverheid-scope2"/>
+									</sequence>
+								</complexType>
+							</element>
+						</sequence>
+						<attribute ref="StUF:functie" use="required" fixed="selectie"/>
+						<attribute ref="StUF:entiteittype" use="required" fixed="WRD"/>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="mijnOverheid-vraagWRDPerBsn">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:Stuurgegevens-mijnOverheid-vraagWRDPerBsn"/>
+				<element name="parameters" type="StUF:WRD-mijnOverheid-parametersVraagSynchroon"/>
+				<element name="gelijk" type="WOZ:WRD-mijnOverheid-selectieBsnEnGemeente"/>
+				<element name="vanaf" type="WOZ:WRD-mijnOverheid-selectiePeildatum"/>
+				<element name="totEnMet" type="WOZ:WRD-mijnOverheid-selectiePeildatum"/>
+				<element name="scope">
+					<complexType>
+						<sequence>
+							<element name="wrd" type="WOZ:WRD-mijnOverheid-scope"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<!--Definitie parameters complexType-->
+	<complexType name="Parameters-taxatieVerslag">
+		<sequence>
+			<element name="pdfTaxatieVerslag" type="StUF:BinaireInhoud-basis"/>
+		</sequence>
+	</complexType>
+	<complexType name="Parameters-Url">
+		<sequence>
+			<element name="url" type="WOZ:DiepUrl-e"/>
+		</sequence>
+	</complexType>
+	<!--Definitie entiteit complexTypes-->
+	<complexType name="SOC-mijnOverheid-entiteit">
+		<sequence>
+			<element name="omschrijvingSoortObject" type="WOZ:Omschrijving50-e" nillable="true"/>
+			<element name="omschrijvingSoortObjectVerkort" type="WOZ:Omschrijving12-e" nillable="true"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="SOC"/>
+	</complexType>
+	<complexType name="SUB-mijnOverheid-selectieBsn">
+		<sequence>
+			<element name="bsVesNummerOfId" type="BG:BsVesNummerOfId-e" nillable="true"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="SUB"/>
+	</complexType>
+	<complexType name="WOZ-mijnOverheid-antwoord-inWRD">
+		<sequence>
+			<element name="wozObjectNummer" type="WOZ:WOZObjectNummer-e" nillable="true"/>
+			<element name="aanduidingWOZobject" type="BG:AanduidingWOZobjectGrp-mijnOverheid-vraagAntwoord"/>
+			<element name="grondoppervlakte" type="WOZ:Maateenheid11-neg-e" nillable="true"/>
+			<element name="isVerbondenMet" type="WOZ:WOZAOTOND-mijnOverheid-vraagAntwoord" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="heeftPand" type="WOZ:WOZPND-mijnOverheid-vraagAntwoord" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="WOZ"/>
+	</complexType>
+	<complexType name="WOZ-mijnOverheid-antwoord-inWRD2">
+		<sequence>
+			<element name="wozObjectNummer" type="WOZ:WOZObjectNummer-e" nillable="true"/>
+			<element name="soortObjectCode" type="WOZ:SoortObjectCode-e" nillable="true"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="WOZ"/>
+	</complexType>
+	<complexType name="WOZ-mijnOverheid-scope-inWRD">
+		<sequence>
+			<element name="wozObjectNummer" type="WOZ:WOZObjectNummer-e" nillable="true"/>
+			<element name="aanduidingWOZobject" type="BG:AanduidingWOZobjectGrp-mijnOverheid-vraagAntwoord"/>
+			<element name="grondoppervlakte" type="WOZ:Maateenheid11-neg-e" nillable="true"/>
+			<element name="isVerbondenMet" type="WOZ:WOZAOTOND-mijnOverheid-vraagAntwoord" nillable="true"/>
+			<element name="heeftPand" type="WOZ:WOZPND-mijnOverheid-vraagAntwoord" nillable="true"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="WOZ"/>
+	</complexType>
+	<complexType name="WOZ-mijnOverheid-scope-inWRD2">
+		<sequence>
+			<element name="wozObjectNummer" type="WOZ:WOZObjectNummer-e" nillable="true"/>
+			<element name="soortObjectCode" type="WOZ:SoortObjectCode-e" nillable="true"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="WOZ"/>
+	</complexType>
+	<complexType name="WOZ-mijnOverheid-selectieWOZObjectnr">
+		<sequence>
+			<element name="wozObjectNummer" type="WOZ:WOZObjectNummer-e" nillable="true"/>
+			<element name="verantwoordelijkeGemeente" type="BG:VerantwoordelijkeGemeenteGrp-mijnOverheid-selectie"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="WOZ"/>
+	</complexType>
+	<complexType name="WOZ-mijnOverheid-selectieVerantwGem">
+		<sequence>
+			<element name="verantwoordelijkeGemeente" type="BG:VerantwoordelijkeGemeenteGrp-mijnOverheid-selectie"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="WOZ"/>
+	</complexType>
+	<complexType name="WOZAOTOND-mijnOverheid-vraagAntwoord">
+		<sequence>
+			<element name="gerelateerde" type="BG:AOT-mijnOverheid-vraagAntwoord"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="WOZAOTOND"/>
+	</complexType>
+	<complexType name="WOZPND-mijnOverheid-vraagAntwoord">
+		<sequence>
+			<element name="gerelateerde" type="BG:PND-mijnOverheid-vraagAntwoord"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="WOZPND"/>
+	</complexType>
+	<complexType name="WOZSUB-mijnOverheid-selectieBsn">
+		<sequence>
+			<element name="gerelateerde" type="WOZ:SUB-mijnOverheid-selectieBsn"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="WOZSUB"/>
+	</complexType>
+	<complexType name="WRD-mijnOverheid-antwoord">
+		<sequence>
+			<element name="waardepeildatum" type="WOZ:Peildatum-e" nillable="true"/>
+			<element name="vastgesteldeWaarde" type="WOZ:Maateenheid11-e" nillable="true"/>
+			<element name="isVoor" type="WOZ:WRDWOZ-mijnOverheid-antwoord" nillable="true"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="WRD"/>
+	</complexType>
+	<complexType name="WRD-mijnOverheid-antwoord2">
+		<sequence>
+			<element name="waardepeildatum" type="WOZ:Peildatum-e" nillable="true"/>
+			<element name="isVoor" type="WOZ:WRDWOZ-mijnOverheid-antwoord2" nillable="true"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="WRD"/>
+	</complexType>
+	<complexType name="WRD-mijnOverheid-scope">
+		<sequence>
+			<element name="waardepeildatum" type="WOZ:Peildatum-e" nillable="true"/>
+			<element name="vastgesteldeWaarde" type="WOZ:Maateenheid11-e" nillable="true"/>
+			<element name="isVoor" type="WOZ:WRDWOZ-mijnOverheid-scope" nillable="true"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="WRD"/>
+	</complexType>
+	<complexType name="WRD-mijnOverheid-scope2">
+		<sequence>
+			<element name="waardepeildatum" type="WOZ:Peildatum-e" nillable="true"/>
+			<element name="isVoor" type="WOZ:WRDWOZ-mijnOverheid-scope2" nillable="true"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="WRD"/>
+	</complexType>
+	<complexType name="WRD-mijnOverheid-selectiePeildatum">
+		<sequence>
+			<element name="waardepeildatum" type="WOZ:Peildatum-e" nillable="true"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="WRD"/>
+	</complexType>
+	<complexType name="WRD-mijnOverheid-selectieWOZ">
+		<sequence>
+			<element name="isVoor" type="WOZ:WRDWOZ-mijnOverheid-selectieVerantwGemeente" nillable="true"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="WRD"/>
+	</complexType>
+	<complexType name="WRD-mijnOverheid-selectieWOZPeildatum">
+		<sequence>
+			<element name="waardepeildatum" type="WOZ:Peildatum-e" nillable="true"/>
+			<element name="isVoor" type="WOZ:WRDWOZ-mijnOverheid-selectieWOZ" nillable="true"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="WRD"/>
+	</complexType>
+	<complexType name="WRD-mijnOverheid-selectieBsnEnGemeente">
+		<sequence>
+			<element name="isVoor" type="WOZ:WRDWOZ-mijnOverheid-selectieVerantwGemeente" nillable="true"/>
+			<element name="isBeschiktVoor" type="WOZ:WRDSUB-mijnOverheid-selectieBsn" nillable="true"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="WRD"/>
+	</complexType>
+	<complexType name="WRDSUB-mijnOverheid-selectieBsn">
+		<sequence>
+			<element name="gerelateerde" type="WOZ:SUB-mijnOverheid-selectieBsn"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="WRDSUB"/>
+	</complexType>
+	<complexType name="WRDWOZ-mijnOverheid-antwoord">
+		<sequence>
+			<element name="gerelateerde" type="WOZ:WOZ-mijnOverheid-antwoord-inWRD" nillable="true"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="WRDWOZ"/>
+	</complexType>
+	<complexType name="WRDWOZ-mijnOverheid-antwoord2">
+		<sequence>
+			<element name="gerelateerde" type="WOZ:WOZ-mijnOverheid-antwoord-inWRD2" nillable="true"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="WRDWOZ"/>
+	</complexType>
+	<complexType name="WRDWOZ-mijnOverheid-scope">
+		<sequence>
+			<element name="gerelateerde" type="WOZ:WOZ-mijnOverheid-scope-inWRD" nillable="true"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="WRDWOZ"/>
+	</complexType>
+	<complexType name="WRDWOZ-mijnOverheid-scope2">
+		<sequence>
+			<element name="gerelateerde" type="WOZ:WOZ-mijnOverheid-scope-inWRD2" nillable="true"/>
+		</sequence>
+	</complexType>
+	<complexType name="WRDWOZ-mijnOverheid-selectieWOZ">
+		<sequence>
+			<element name="gerelateerde" type="WOZ:WOZ-mijnOverheid-selectieWOZObjectnr" nillable="true"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="WRDWOZ"/>
+	</complexType>
+	<complexType name="WRDWOZ-mijnOverheid-selectieVerantwGemeente">
+		<sequence>
+			<element name="gerelateerde" type="WOZ:WOZ-mijnOverheid-selectieVerantwGem" nillable="true"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="WRDWOZ"/>
+	</complexType>
+	<!---e ComplexTypes-->
+	<complexType name="DiepUrl-e">
+		<simpleContent>
+			<extension base="WOZ:DiepUrl">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="Maateenheid11-e">
+		<simpleContent>
+			<extension base="WOZ:Maateenheid11">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="Maateenheid11-neg-e">
+		<simpleContent>
+			<extension base="WOZ:Maateenheid11-neg">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="Omschrijving12-e">
+		<simpleContent>
+			<extension base="WOZ:Omschrijving12">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="Omschrijving50-e">
+		<simpleContent>
+			<extension base="WOZ:Omschrijving50">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="Peildatum-e">
+		<simpleContent>
+			<extension base="WOZ:Peildatum">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="SoortObjectCode-e">
+		<simpleContent>
+			<extension base="WOZ:SoortObjectCode">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="WOZObjectNummer-e">
+		<simpleContent>
+			<extension base="WOZ:WOZObjectNummer">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<!--SimpleTypes-->
+	<simpleType name="DiepUrl">
+		<restriction base="string">
+			<maxLength value="512"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Maateenheid11">
+		<restriction base="nonNegativeInteger">
+			<totalDigits value="11"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Maateenheid11-neg">
+		<restriction base="integer">
+			<totalDigits value="11"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Omschrijving12">
+		<restriction base="string">
+			<maxLength value="12"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Omschrijving50">
+		<restriction base="string">
+			<maxLength value="50"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Peildatum">
+		<restriction base="StUF:Datum">
+			<pattern value="[1-2][0-9]{3}0101"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="SoortObjectCode">
+		<restriction base="string">
+			<length value="4"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="WOZObjectNummer">
+		<restriction base="nonNegativeInteger">
+			<pattern value="[0-9]{12}"/>
+		</restriction>
+	</simpleType>
+</schema>

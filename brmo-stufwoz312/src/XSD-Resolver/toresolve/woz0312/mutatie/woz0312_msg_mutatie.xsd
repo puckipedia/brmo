@@ -1,0 +1,2322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2014 rel. 2 sp1 (x64) (http://www.altova.com) by Maarten van den Broek (messageDesign B.V.) -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:StUF="http://www.egem.nl/StUF/StUF0301" xmlns:WOZ="http://www.waarderingskamer.nl/StUF/0312" xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310" targetNamespace="http://www.waarderingskamer.nl/StUF/0312" elementFormDefault="qualified" attributeFormDefault="unqualified" version="031203">
+	<include schemaLocation="woz0312_ent_mutatie.xsd"/>
+	<import namespace="http://www.egem.nl/StUF/StUF0301" schemaLocation="woz0312_msg_stuf_mutatie.xsd"/>
+	<import namespace="http://www.egem.nl/StUF/sector/bg/0310" schemaLocation="woz0312_bg0310_mutatie.xsd"/>
+	<annotation>
+		<documentation xml:lang="nl">
+			Dit schema bevat de berichtelementen voor de mutatieberichtcatalogus tbv de procesapplicaties
+			
+			Wijzigingen vergeleken met versie 031202:
+			- Kennisgeving en synchronisatie actueel berichten voor NNP/NPS/VES toegevoegd (inclusief de daarvoor benodigde complexTypes)
+		</documentation>
+	</annotation>
+	<element name="aslLk01" type="WOZ:ASL-Lk01"/>
+	<element name="aslLk02" type="WOZ:ASL-Lk02"/>
+	<element name="aslSa01" type="WOZ:ASL-Sa01"/>
+	<element name="aslSa02" type="WOZ:ASL-Sa02"/>
+	<element name="aslSa03">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:ASL-StuurgegevensSa03"/>
+				<element name="object" type="WOZ:ASL-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="aslSa04">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:ASL-StuurgegevensSa04"/>
+				<element name="object" type="WOZ:ASL-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="aslSh01">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:ASL-StuurgegevensSh01"/>
+				<element name="actueel" type="WOZ:ASL-Sa01"/>
+				<element name="historie" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="oudste" type="WOZ:ASL-Lk01T"/>
+							<sequence minOccurs="0" maxOccurs="unbounded">
+								<element name="wijziging" type="WOZ:ASL-Lk01W"/>
+							</sequence>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="aslSh02">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:ASL-StuurgegevensSh02"/>
+				<element name="actueel" type="WOZ:ASL-Sa02"/>
+				<element name="historie" minOccurs="0">
+					<complexType>
+						<sequence minOccurs="0">
+							<element name="oudste" type="WOZ:ASL-Lk02T"/>
+							<sequence minOccurs="0" maxOccurs="unbounded">
+								<element name="wijziging" type="WOZ:ASL-Lk02W"/>
+							</sequence>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="aslSh03">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:ASL-StuurgegevensSh03"/>
+				<element name="object" type="WOZ:ASL-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="aslSh04">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:ASL-StuurgegevensSh04"/>
+				<element name="object" type="WOZ:ASL-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bljLk01" type="WOZ:BLJ-Lk01"/>
+	<element name="bljLk02" type="WOZ:BLJ-Lk02"/>
+	<element name="bljSa01" type="WOZ:BLJ-Sa01"/>
+	<element name="bljSa02" type="WOZ:BLJ-Sa02"/>
+	<element name="bljSa03">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BLJ-StuurgegevensSa03"/>
+				<element name="object" type="WOZ:BLJ-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bljSa04">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BLJ-StuurgegevensSa04"/>
+				<element name="object" type="WOZ:BLJ-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bljSh01">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BLJ-StuurgegevensSh01"/>
+				<element name="actueel" type="WOZ:BLJ-Sa01"/>
+				<element name="historie" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="oudste" type="WOZ:BLJ-Lk01T"/>
+							<sequence minOccurs="0" maxOccurs="unbounded">
+								<element name="wijziging" type="WOZ:BLJ-Lk01W"/>
+							</sequence>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bljSh02">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BLJ-StuurgegevensSh02"/>
+				<element name="actueel" type="WOZ:BLJ-Sa02"/>
+				<element name="historie" minOccurs="0">
+					<complexType>
+						<sequence minOccurs="0">
+							<element name="oudste" type="WOZ:BLJ-Lk02T"/>
+							<sequence minOccurs="0" maxOccurs="unbounded">
+								<element name="wijziging" type="WOZ:BLJ-Lk02W"/>
+							</sequence>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bljSh03">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BLJ-StuurgegevensSh03"/>
+				<element name="object" type="WOZ:BLJ-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bljSh04">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BLJ-StuurgegevensSh04"/>
+				<element name="object" type="WOZ:BLJ-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bskLk01" type="WOZ:BSK-Lk01"/>
+	<element name="bskLk02" type="WOZ:BSK-Lk02"/>
+	<element name="bskSa01" type="WOZ:BSK-Sa01"/>
+	<element name="bskSa02" type="WOZ:BSK-Sa02"/>
+	<element name="bskSa03">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BSK-StuurgegevensSa03"/>
+				<element name="object" type="WOZ:BSK-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bskSa04">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BSK-StuurgegevensSa04"/>
+				<element name="object" type="WOZ:BSK-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bskSh01">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BSK-StuurgegevensSh01"/>
+				<element name="actueel" type="WOZ:BSK-Sa01"/>
+				<element name="historie" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="oudste" type="WOZ:BSK-Lk01T"/>
+							<sequence minOccurs="0" maxOccurs="unbounded">
+								<element name="wijziging" type="WOZ:BSK-Lk01W"/>
+							</sequence>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bskSh02">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BSK-StuurgegevensSh02"/>
+				<element name="actueel" type="WOZ:BSK-Sa02"/>
+				<element name="historie" minOccurs="0">
+					<complexType>
+						<sequence minOccurs="0">
+							<element name="oudste" type="WOZ:BSK-Lk02T"/>
+							<sequence minOccurs="0" maxOccurs="unbounded">
+								<element name="wijziging" type="WOZ:BSK-Lk02W"/>
+							</sequence>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bskSh03">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BSK-StuurgegevensSh03"/>
+				<element name="object" type="WOZ:BSK-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bskSh04">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BSK-StuurgegevensSh04"/>
+				<element name="object" type="WOZ:BSK-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bzwLk01" type="WOZ:BZW-Lk01"/>
+	<element name="bzwLk02" type="WOZ:BZW-Lk02"/>
+	<element name="bzwSa01" type="WOZ:BZW-Sa01"/>
+	<element name="bzwSa02" type="WOZ:BZW-Sa02"/>
+	<element name="bzwSa03">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BZW-StuurgegevensSa03"/>
+				<element name="object" type="WOZ:BZW-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bzwSa04">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BZW-StuurgegevensSa04"/>
+				<element name="object" type="WOZ:BZW-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bzwSh01">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BZW-StuurgegevensSh01"/>
+				<element name="actueel" type="WOZ:BZW-Sa01"/>
+				<element name="historie" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="oudste" type="WOZ:BZW-Lk01T"/>
+							<sequence minOccurs="0" maxOccurs="unbounded">
+								<element name="wijziging" type="WOZ:BZW-Lk01W"/>
+							</sequence>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bzwSh02">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BZW-StuurgegevensSh02"/>
+				<element name="actueel" type="WOZ:BZW-Sa02"/>
+				<element name="historie" minOccurs="0">
+					<complexType>
+						<sequence minOccurs="0">
+							<element name="oudste" type="WOZ:BZW-Lk02T"/>
+							<sequence minOccurs="0" maxOccurs="unbounded">
+								<element name="wijziging" type="WOZ:BZW-Lk02W"/>
+							</sequence>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bzwSh03">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BZW-StuurgegevensSh03"/>
+				<element name="object" type="WOZ:BZW-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="bzwSh04">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:BZW-StuurgegevensSh04"/>
+				<element name="object" type="WOZ:BZW-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="ctlLk01" type="WOZ:CTL-Lk01"/>
+	<element name="ctlLk02" type="WOZ:CTL-Lk02"/>
+	<element name="ctlSa01" type="WOZ:CTL-Sa01"/>
+	<element name="ctlSa02" type="WOZ:CTL-Sa02"/>
+	<element name="ctlSa03">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:CTL-StuurgegevensSa03"/>
+				<element name="object" type="WOZ:CTL-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="ctlSa04">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:CTL-StuurgegevensSa04"/>
+				<element name="object" type="WOZ:CTL-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="ctlSh01">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:CTL-StuurgegevensSh01"/>
+				<element name="actueel" type="WOZ:CTL-Sa01"/>
+				<element name="historie" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="oudste" type="WOZ:CTL-Lk01T"/>
+							<sequence minOccurs="0" maxOccurs="unbounded">
+								<element name="wijziging" type="WOZ:CTL-Lk01W"/>
+							</sequence>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="ctlSh02">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:CTL-StuurgegevensSh02"/>
+				<element name="actueel" type="WOZ:CTL-Sa02"/>
+				<element name="historie" minOccurs="0">
+					<complexType>
+						<sequence minOccurs="0">
+							<element name="oudste" type="WOZ:CTL-Lk02T"/>
+							<sequence minOccurs="0" maxOccurs="unbounded">
+								<element name="wijziging" type="WOZ:CTL-Lk02W"/>
+							</sequence>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="ctlSh03">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:CTL-StuurgegevensSh03"/>
+				<element name="object" type="WOZ:CTL-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="ctlSh04">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:CTL-StuurgegevensSh04"/>
+				<element name="object" type="WOZ:CTL-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="kpaLk01" type="WOZ:KPA-Lk01"/>
+	<element name="kpaLk02" type="WOZ:KPA-Lk02"/>
+	<element name="kpaSa01" type="WOZ:KPA-Sa01"/>
+	<element name="kpaSa02" type="WOZ:KPA-Sa02"/>
+	<element name="kpaSa03">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:KPA-StuurgegevensSa03"/>
+				<element name="object" type="WOZ:KPA-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="kpaSa04">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:KPA-StuurgegevensSa04"/>
+				<element name="object" type="WOZ:KPA-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="nnpLk01" type="WOZ:NNP-Lk01"/>
+	<element name="nnpLk02" type="WOZ:NNP-Lk02"/>
+	<element name="nnpSa01" type="WOZ:NNP-Sa01"/>
+	<element name="nnpSa02" type="WOZ:NNP-Sa02"/>
+	<element name="nnpSa03">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:NNP-StuurgegevensSa03"/>
+				<element name="object" type="WOZ:NNP-woz-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="nnpSa04">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:NNP-StuurgegevensSa04"/>
+				<element name="object" type="WOZ:NNP-woz-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="npsLk01" type="WOZ:NPS-Lk01"/>
+	<element name="npsLk02" type="WOZ:NPS-Lk02"/>
+	<element name="npsSa01" type="WOZ:NPS-Sa01"/>
+	<element name="npsSa02" type="WOZ:NPS-Sa02"/>
+	<element name="npsSa03">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:NPS-StuurgegevensSa03"/>
+				<element name="object" type="WOZ:NPS-woz-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="npsSa04">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:NPS-StuurgegevensSa04"/>
+				<element name="object" type="WOZ:NPS-woz-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="rmaLk01" type="WOZ:RMA-Lk01"/>
+	<element name="rmaLk02" type="WOZ:RMA-Lk02"/>
+	<element name="rmaSa01" type="WOZ:RMA-Sa01"/>
+	<element name="rmaSa02" type="WOZ:RMA-Sa02"/>
+	<element name="rmaSa03">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:RMA-StuurgegevensSa03"/>
+				<element name="object" type="WOZ:RMA-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="rmaSa04">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:RMA-StuurgegevensSa04"/>
+				<element name="object" type="WOZ:RMA-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="socLk01" type="WOZ:SOC-Lk01"/>
+	<element name="socLk02" type="WOZ:SOC-Lk02"/>
+	<element name="socSa01" type="WOZ:SOC-Sa01"/>
+	<element name="socSa02" type="WOZ:SOC-Sa02"/>
+	<element name="socSa03">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:SOC-StuurgegevensSa03"/>
+				<element name="object" type="WOZ:SOC-kennisgeving"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="socSa04">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:SOC-StuurgegevensSa04"/>
+				<element name="object" type="WOZ:SOC-kennisgeving"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="swoLk01" type="WOZ:SWO-Lk01"/>
+	<element name="swoLk02" type="WOZ:SWO-Lk02"/>
+	<element name="swoSa01" type="WOZ:SWO-Sa01"/>
+	<element name="swoSa02" type="WOZ:SWO-Sa02"/>
+	<element name="swoSa03">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:SWO-StuurgegevensSa03"/>
+				<element name="object" type="WOZ:SWO-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="swoSa04">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:SWO-StuurgegevensSa04"/>
+				<element name="object" type="WOZ:SWO-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="swoSh01">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:SWO-StuurgegevensSh01"/>
+				<element name="actueel" type="WOZ:SWO-Sa01"/>
+				<element name="historie" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="oudste" type="WOZ:SWO-Lk01T"/>
+							<sequence minOccurs="0" maxOccurs="unbounded">
+								<element name="wijziging" type="WOZ:SWO-Lk01W"/>
+							</sequence>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="swoSh02">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:SWO-StuurgegevensSh02"/>
+				<element name="actueel" type="WOZ:SWO-Sa02"/>
+				<element name="historie" minOccurs="0">
+					<complexType>
+						<sequence minOccurs="0">
+							<element name="oudste" type="WOZ:SWO-Lk02T"/>
+							<sequence minOccurs="0" maxOccurs="unbounded">
+								<element name="wijziging" type="WOZ:SWO-Lk02W"/>
+							</sequence>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="swoSh03">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:SWO-StuurgegevensSh03"/>
+				<element name="object" type="WOZ:SWO-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="swoSh04">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:SWO-StuurgegevensSh04"/>
+				<element name="object" type="WOZ:SWO-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="taxLk01" type="WOZ:TAX-Lk01"/>
+	<element name="taxLk02" type="WOZ:TAX-Lk02"/>
+	<element name="taxSa01" type="WOZ:TAX-Sa01"/>
+	<element name="taxSa02" type="WOZ:TAX-Sa02"/>
+	<element name="taxSa03">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:TAX-StuurgegevensSa03"/>
+				<element name="object" type="WOZ:TAX-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="taxSa04">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:TAX-StuurgegevensSa04"/>
+				<element name="object" type="WOZ:TAX-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="taxSh01">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:TAX-StuurgegevensSh01"/>
+				<element name="actueel" type="WOZ:TAX-Sa01"/>
+				<element name="historie" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="oudste" type="WOZ:TAX-Lk01T"/>
+							<sequence minOccurs="0" maxOccurs="unbounded">
+								<element name="wijziging" type="WOZ:TAX-Lk01W"/>
+							</sequence>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="taxSh02">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:TAX-StuurgegevensSh02"/>
+				<element name="actueel" type="WOZ:TAX-Sa02"/>
+				<element name="historie" minOccurs="0">
+					<complexType>
+						<sequence minOccurs="0">
+							<element name="oudste" type="WOZ:TAX-Lk02T"/>
+							<sequence minOccurs="0" maxOccurs="unbounded">
+								<element name="wijziging" type="WOZ:TAX-Lk02W"/>
+							</sequence>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="taxSh03">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:TAX-StuurgegevensSh03"/>
+				<element name="object" type="WOZ:TAX-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="taxSh04">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:TAX-StuurgegevensSh04"/>
+				<element name="object" type="WOZ:TAX-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="trnLk01" type="WOZ:TRN-Lk01"/>
+	<element name="trnLk02" type="WOZ:TRN-Lk02"/>
+	<element name="trnSa01" type="WOZ:TRN-Sa01"/>
+	<element name="trnSa02" type="WOZ:TRN-Sa02"/>
+	<element name="trnSa03">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:TRN-StuurgegevensSa03"/>
+				<element name="object" type="WOZ:TRN-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="trnSa04">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:TRN-StuurgegevensSa04"/>
+				<element name="object" type="WOZ:TRN-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="tvnLk01" type="WOZ:TVN-Lk01"/>
+	<element name="tvnLk02" type="WOZ:TVN-Lk02"/>
+	<element name="tvnSa01" type="WOZ:TVN-Sa01"/>
+	<element name="tvnSa02" type="WOZ:TVN-Sa02"/>
+	<element name="tvnSa03">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:TVN-StuurgegevensSa03"/>
+				<element name="object" type="WOZ:TVN-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="tvnSa04">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:TVN-StuurgegevensSa04"/>
+				<element name="object" type="WOZ:TVN-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="tvwLk01" type="WOZ:TVW-Lk01"/>
+	<element name="tvwLk02" type="WOZ:TVW-Lk02"/>
+	<element name="tvwSa01" type="WOZ:TVW-Sa01"/>
+	<element name="tvwSa02" type="WOZ:TVW-Sa02"/>
+	<element name="tvwSa03">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:TVW-StuurgegevensSa03"/>
+				<element name="object" type="WOZ:TVW-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="tvwSa04">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:TVW-StuurgegevensSa04"/>
+				<element name="object" type="WOZ:TVW-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="vesLk01" type="WOZ:VES-Lk01"/>
+	<element name="vesLk02" type="WOZ:VES-Lk02"/>
+	<element name="vesSa01" type="WOZ:VES-Sa01"/>
+	<element name="vesSa02" type="WOZ:VES-Sa02"/>
+	<element name="vesSa03">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:VES-StuurgegevensSa03"/>
+				<element name="object" type="WOZ:VES-woz-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="vesSa04">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:VES-StuurgegevensSa04"/>
+				<element name="object" type="WOZ:VES-woz-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wbpLk01" type="WOZ:WBP-Lk01"/>
+	<element name="wbpLk02" type="WOZ:WBP-Lk02"/>
+	<element name="wbpSa01" type="WOZ:WBP-Sa01"/>
+	<element name="wbpSa02" type="WOZ:WBP-Sa02"/>
+	<element name="wbpSa03">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WBP-StuurgegevensSa03"/>
+				<element name="object" type="WOZ:WBP-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wbpSa04">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WBP-StuurgegevensSa04"/>
+				<element name="object" type="WOZ:WBP-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wbpSh01">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WBP-StuurgegevensSh01"/>
+				<element name="actueel" type="WOZ:WBP-Sa01"/>
+				<element name="historie" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="oudste" type="WOZ:WBP-Lk01T"/>
+							<sequence minOccurs="0" maxOccurs="unbounded">
+								<element name="wijziging" type="WOZ:WBP-Lk01W"/>
+							</sequence>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wbpSh02">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WBP-StuurgegevensSh02"/>
+				<element name="actueel" type="WOZ:WBP-Sa02"/>
+				<element name="historie" minOccurs="0">
+					<complexType>
+						<sequence minOccurs="0">
+							<element name="oudste" type="WOZ:WBP-Lk02T"/>
+							<sequence minOccurs="0" maxOccurs="unbounded">
+								<element name="wijziging" type="WOZ:WBP-Lk02W"/>
+							</sequence>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wbpSh03">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WBP-StuurgegevensSh03"/>
+				<element name="object" type="WOZ:WBP-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wbpSh04">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WBP-StuurgegevensSh04"/>
+				<element name="object" type="WOZ:WBP-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wdcLk01" type="WOZ:WDC-Lk01"/>
+	<element name="wdcLk02" type="WOZ:WDC-Lk02"/>
+	<element name="wdcSa01" type="WOZ:WDC-Sa01"/>
+	<element name="wdcSa02" type="WOZ:WDC-Sa02"/>
+	<element name="wdcSa03">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WDC-StuurgegevensSa03"/>
+				<element name="object" type="WOZ:WDC-kennisgeving"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wdcSa04">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WDC-StuurgegevensSa04"/>
+				<element name="object" type="WOZ:WDC-kennisgeving"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wdoLk01" type="WOZ:WDO-Lk01"/>
+	<element name="wdoLk02" type="WOZ:WDO-Lk02"/>
+	<element name="wdoSa01" type="WOZ:WDO-Sa01"/>
+	<element name="wdoSa02" type="WOZ:WDO-Sa02"/>
+	<element name="wdoSa03">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WDO-StuurgegevensSa03"/>
+				<element name="object" type="WOZ:WDO-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wdoSa04">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WDO-StuurgegevensSa04"/>
+				<element name="object" type="WOZ:WDO-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wdoSh01">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WDO-StuurgegevensSh01"/>
+				<element name="actueel" type="WOZ:WDO-Sa01"/>
+				<element name="historie" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="oudste" type="WOZ:WDO-Lk01T"/>
+							<sequence minOccurs="0" maxOccurs="unbounded">
+								<element name="wijziging" type="WOZ:WDO-Lk01W"/>
+							</sequence>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wdoSh02">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WDO-StuurgegevensSh02"/>
+				<element name="actueel" type="WOZ:WDO-Sa02"/>
+				<element name="historie" minOccurs="0">
+					<complexType>
+						<sequence minOccurs="0">
+							<element name="oudste" type="WOZ:WDO-Lk02T"/>
+							<sequence minOccurs="0" maxOccurs="unbounded">
+								<element name="wijziging" type="WOZ:WDO-Lk02W"/>
+							</sequence>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wdoSh03">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WDO-StuurgegevensSh03"/>
+				<element name="object" type="WOZ:WDO-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wdoSh04">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WDO-StuurgegevensSh04"/>
+				<element name="object" type="WOZ:WDO-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wozLk01" type="WOZ:WOZ-Lk01"/>
+	<element name="wozLk02" type="WOZ:WOZ-Lk02"/>
+	<element name="wozSa01" type="WOZ:WOZ-Sa01"/>
+	<element name="wozSa02" type="WOZ:WOZ-Sa02"/>
+	<element name="wozSa03">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WOZ-StuurgegevensSa03"/>
+				<element name="object" type="WOZ:WOZ-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wozSa04">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WOZ-StuurgegevensSa04"/>
+				<element name="object" type="WOZ:WOZ-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wozSh01">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WOZ-StuurgegevensSh01"/>
+				<element name="actueel" type="WOZ:WOZ-Sa01"/>
+				<element name="historie" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="oudste" type="WOZ:WOZ-Lk01T"/>
+							<sequence minOccurs="0" maxOccurs="unbounded">
+								<element name="wijziging" type="WOZ:WOZ-Lk01W"/>
+							</sequence>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wozSh02">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WOZ-StuurgegevensSh02"/>
+				<element name="actueel" type="WOZ:WOZ-Sa02"/>
+				<element name="historie" minOccurs="0">
+					<complexType>
+						<sequence minOccurs="0">
+							<element name="oudste" type="WOZ:WOZ-Lk02T"/>
+							<sequence minOccurs="0" maxOccurs="unbounded">
+								<element name="wijziging" type="WOZ:WOZ-Lk02W"/>
+							</sequence>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wozSh03">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WOZ-StuurgegevensSh03"/>
+				<element name="object" type="WOZ:WOZ-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wozSh04">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WOZ-StuurgegevensSh04"/>
+				<element name="object" type="WOZ:WOZ-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wrdLk01" type="WOZ:WRD-Lk01"/>
+	<element name="wrdLk02" type="WOZ:WRD-Lk02"/>
+	<element name="wrdSa01" type="WOZ:WRD-Sa01"/>
+	<element name="wrdSa02" type="WOZ:WRD-Sa02"/>
+	<element name="wrdSa03">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WRD-StuurgegevensSa03"/>
+				<element name="object" type="WOZ:WRD-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wrdSa04">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WRD-StuurgegevensSa04"/>
+				<element name="object" type="WOZ:WRD-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wrdSh01">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WRD-StuurgegevensSh01"/>
+				<element name="actueel" type="WOZ:WRD-Sa01"/>
+				<element name="historie" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="oudste" type="WOZ:WRD-Lk01T"/>
+							<sequence minOccurs="0" maxOccurs="unbounded">
+								<element name="wijziging" type="WOZ:WRD-Lk01W"/>
+							</sequence>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wrdSh02">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WRD-StuurgegevensSh02"/>
+				<element name="actueel" type="WOZ:WRD-Sa02"/>
+				<element name="historie" minOccurs="0">
+					<complexType>
+						<sequence minOccurs="0">
+							<element name="oudste" type="WOZ:WRD-Lk02T"/>
+							<sequence minOccurs="0" maxOccurs="unbounded">
+								<element name="wijziging" type="WOZ:WRD-Lk02W"/>
+							</sequence>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wrdSh03">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WRD-StuurgegevensSh03"/>
+				<element name="object" type="WOZ:WRD-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wrdSh04">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WRD-StuurgegevensSh04"/>
+				<element name="object" type="WOZ:WRD-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wspLk01" type="WOZ:WSP-Lk01"/>
+	<element name="wspLk02" type="WOZ:WSP-Lk02"/>
+	<element name="wspSa01" type="WOZ:WSP-Sa01"/>
+	<element name="wspSa02" type="WOZ:WSP-Sa02"/>
+	<element name="wspSa03">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WSP-StuurgegevensSa03"/>
+				<element name="object" type="WOZ:WSP-kennisgeving"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wspSa04">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WSP-StuurgegevensSa04"/>
+				<element name="object" type="WOZ:WSP-kennisgeving"/>
+			</sequence>
+		</complexType>
+	</element>
+	<!--ComplexTypes tbv kennisgevingen en synchronisatie-->
+	<complexType name="ASL-Lk01">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:ASL-StuurgegevensLk01"/>
+			<element name="parameters" type="StUF:ParametersLk01"/>
+			<element name="object" type="WOZ:ASL-kennisgeving" nillable="true" maxOccurs="2"/>
+		</sequence>
+	</complexType>
+	<complexType name="ASL-Lk01T">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:ASL-StuurgegevensLk01"/>
+			<element name="parameters" type="StUF:ParametersLk01TInSx01"/>
+			<element name="object" type="WOZ:ASL-kennisgeving_Sh"/>
+		</sequence>
+	</complexType>
+	<complexType name="ASL-Lk01W">
+		<complexContent>
+			<restriction base="WOZ:ASL-Lk01">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:ASL-StuurgegevensLk01"/>
+					<element name="parameters" type="StUF:ParametersLk01WInSx01"/>
+					<element name="object" type="WOZ:ASL-kennisgeving_Sh" minOccurs="2" maxOccurs="2"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="ASL-Lk02">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:ASL-StuurgegevensLk02"/>
+			<element name="parameters" type="StUF:ParametersLk02"/>
+			<element name="object" type="WOZ:ASL-kennisgeving" nillable="true" maxOccurs="2"/>
+		</sequence>
+	</complexType>
+	<complexType name="ASL-Lk02T">
+		<complexContent>
+			<restriction base="WOZ:ASL-Lk02">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:ASL-StuurgegevensLk02"/>
+					<element name="parameters" type="StUF:ParametersLk02TInSx02"/>
+					<element name="object" type="WOZ:ASL-kennisgeving_Sh"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="ASL-Lk02W">
+		<complexContent>
+			<restriction base="WOZ:ASL-Lk02">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:ASL-StuurgegevensLk02"/>
+					<element name="parameters" type="StUF:ParametersLk02WInSx02"/>
+					<element name="object" type="WOZ:ASL-kennisgeving_Sh" minOccurs="2" maxOccurs="2"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="ASL-Sa01">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:ASL-StuurgegevensSa01"/>
+			<element name="actueel" type="WOZ:ASL-Lk01T"/>
+		</sequence>
+	</complexType>
+	<complexType name="ASL-Sa02">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:ASL-StuurgegevensSa02"/>
+			<element name="actueel" type="WOZ:ASL-Lk02T"/>
+		</sequence>
+	</complexType>
+	<complexType name="BLJ-Lk01">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:BLJ-StuurgegevensLk01"/>
+			<element name="parameters" type="StUF:ParametersLk01"/>
+			<element name="object" type="WOZ:BLJ-kennisgeving" nillable="true" maxOccurs="2"/>
+		</sequence>
+	</complexType>
+	<complexType name="BLJ-Lk01T">
+		<complexContent>
+			<restriction base="WOZ:BLJ-Lk01">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:BLJ-StuurgegevensLk01"/>
+					<element name="parameters" type="StUF:ParametersLk01TInSx01"/>
+					<element name="object" type="WOZ:BLJ-kennisgeving_Sh"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="BLJ-Lk01W">
+		<complexContent>
+			<restriction base="WOZ:BLJ-Lk01">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:BLJ-StuurgegevensLk01"/>
+					<element name="parameters" type="StUF:ParametersLk01WInSx01"/>
+					<element name="object" type="WOZ:BLJ-kennisgeving_Sh" minOccurs="2" maxOccurs="2"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="BLJ-Lk02">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:BLJ-StuurgegevensLk02"/>
+			<element name="parameters" type="StUF:ParametersLk02"/>
+			<element name="object" type="WOZ:BLJ-kennisgeving" nillable="true" maxOccurs="2"/>
+		</sequence>
+	</complexType>
+	<complexType name="BLJ-Lk02T">
+		<complexContent>
+			<restriction base="WOZ:BLJ-Lk02">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:BLJ-StuurgegevensLk02"/>
+					<element name="parameters" type="StUF:ParametersLk02TInSx02"/>
+					<element name="object" type="WOZ:BLJ-kennisgeving_Sh"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="BLJ-Lk02W">
+		<complexContent>
+			<restriction base="WOZ:BLJ-Lk02">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:BLJ-StuurgegevensLk02"/>
+					<element name="parameters" type="StUF:ParametersLk02WInSx02"/>
+					<element name="object" type="WOZ:BLJ-kennisgeving_Sh" minOccurs="2" maxOccurs="2"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="BLJ-Sa01">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:BLJ-StuurgegevensSa01"/>
+			<element name="actueel" type="WOZ:BLJ-Lk01T"/>
+		</sequence>
+	</complexType>
+	<complexType name="BLJ-Sa02">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:BLJ-StuurgegevensSa02"/>
+			<element name="actueel" type="WOZ:BLJ-Lk02T"/>
+		</sequence>
+	</complexType>
+	<complexType name="BSK-Lk01">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:BSK-StuurgegevensLk01"/>
+			<element name="parameters" type="StUF:ParametersLk01"/>
+			<element name="object" type="WOZ:BSK-kennisgeving" nillable="true" maxOccurs="2"/>
+		</sequence>
+	</complexType>
+	<complexType name="BSK-Lk01T">
+		<complexContent>
+			<restriction base="WOZ:BSK-Lk01">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:BSK-StuurgegevensLk01"/>
+					<element name="parameters" type="StUF:ParametersLk01TInSx01"/>
+					<element name="object" type="WOZ:BSK-kennisgeving_Sh"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="BSK-Lk01W">
+		<complexContent>
+			<restriction base="WOZ:BSK-Lk01">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:BSK-StuurgegevensLk01"/>
+					<element name="parameters" type="StUF:ParametersLk01WInSx01"/>
+					<element name="object" type="WOZ:BSK-kennisgeving_Sh" minOccurs="2" maxOccurs="2"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="BSK-Lk02">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:BSK-StuurgegevensLk02"/>
+			<element name="parameters" type="StUF:ParametersLk02"/>
+			<element name="object" type="WOZ:BSK-kennisgeving" nillable="true" maxOccurs="2"/>
+		</sequence>
+	</complexType>
+	<complexType name="BSK-Lk02T">
+		<complexContent>
+			<restriction base="WOZ:BSK-Lk02">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:BSK-StuurgegevensLk02"/>
+					<element name="parameters" type="StUF:ParametersLk02TInSx02"/>
+					<element name="object" type="WOZ:BSK-kennisgeving_Sh"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="BSK-Lk02W">
+		<complexContent>
+			<restriction base="WOZ:BSK-Lk02">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:BSK-StuurgegevensLk02"/>
+					<element name="parameters" type="StUF:ParametersLk02WInSx02"/>
+					<element name="object" type="WOZ:BSK-kennisgeving_Sh" minOccurs="2" maxOccurs="2"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="BSK-Sa01">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:BSK-StuurgegevensSa01"/>
+			<element name="actueel" type="WOZ:BSK-Lk01T"/>
+		</sequence>
+	</complexType>
+	<complexType name="BSK-Sa02">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:BSK-StuurgegevensSa02"/>
+			<element name="actueel" type="WOZ:BSK-Lk02T"/>
+		</sequence>
+	</complexType>
+	<complexType name="BZW-Lk01">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:BZW-StuurgegevensLk01"/>
+			<element name="parameters" type="StUF:ParametersLk01"/>
+			<element name="object" type="WOZ:BZW-kennisgeving" nillable="true" maxOccurs="2"/>
+		</sequence>
+	</complexType>
+	<complexType name="BZW-Lk01T">
+		<complexContent>
+			<restriction base="WOZ:BZW-Lk01">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:BZW-StuurgegevensLk01"/>
+					<element name="parameters" type="StUF:ParametersLk01TInSx01"/>
+					<element name="object" type="WOZ:BZW-kennisgeving_Sh"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="BZW-Lk01W">
+		<complexContent>
+			<restriction base="WOZ:BZW-Lk01">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:BZW-StuurgegevensLk01"/>
+					<element name="parameters" type="StUF:ParametersLk01WInSx01"/>
+					<element name="object" type="WOZ:BZW-kennisgeving_Sh" minOccurs="2" maxOccurs="2"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="BZW-Lk02">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:BZW-StuurgegevensLk02"/>
+			<element name="parameters" type="StUF:ParametersLk02"/>
+			<element name="object" type="WOZ:BZW-kennisgeving" nillable="true" maxOccurs="2"/>
+		</sequence>
+	</complexType>
+	<complexType name="BZW-Lk02T">
+		<complexContent>
+			<restriction base="WOZ:BZW-Lk02">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:BZW-StuurgegevensLk02"/>
+					<element name="parameters" type="StUF:ParametersLk02TInSx02"/>
+					<element name="object" type="WOZ:BZW-kennisgeving_Sh"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="BZW-Lk02W">
+		<complexContent>
+			<restriction base="WOZ:BZW-Lk02">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:BZW-StuurgegevensLk02"/>
+					<element name="parameters" type="StUF:ParametersLk02WInSx02"/>
+					<element name="object" type="WOZ:BZW-kennisgeving_Sh" minOccurs="2" maxOccurs="2"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="BZW-Sa01">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:BZW-StuurgegevensSa01"/>
+			<element name="actueel" type="WOZ:BZW-Lk01T"/>
+		</sequence>
+	</complexType>
+	<complexType name="BZW-Sa02">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:BZW-StuurgegevensSa02"/>
+			<element name="actueel" type="WOZ:BZW-Lk02T"/>
+		</sequence>
+	</complexType>
+	<complexType name="CTL-Lk01">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:CTL-StuurgegevensLk01"/>
+			<element name="parameters" type="StUF:ParametersLk01"/>
+			<element name="object" type="WOZ:CTL-kennisgeving" nillable="true" maxOccurs="2"/>
+		</sequence>
+	</complexType>
+	<complexType name="CTL-Lk01T">
+		<complexContent>
+			<restriction base="WOZ:CTL-Lk01">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:CTL-StuurgegevensLk01"/>
+					<element name="parameters" type="StUF:ParametersLk01TInSx01"/>
+					<element name="object" type="WOZ:CTL-kennisgeving_Sh"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="CTL-Lk01W">
+		<complexContent>
+			<restriction base="WOZ:CTL-Lk01">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:CTL-StuurgegevensLk01"/>
+					<element name="parameters" type="StUF:ParametersLk01WInSx01"/>
+					<element name="object" type="WOZ:CTL-kennisgeving_Sh" minOccurs="2" maxOccurs="2"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="CTL-Lk02">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:CTL-StuurgegevensLk02"/>
+			<element name="parameters" type="StUF:ParametersLk02"/>
+			<element name="object" type="WOZ:CTL-kennisgeving" nillable="true" maxOccurs="2"/>
+		</sequence>
+	</complexType>
+	<complexType name="CTL-Lk02T">
+		<complexContent>
+			<restriction base="WOZ:CTL-Lk02">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:CTL-StuurgegevensLk02"/>
+					<element name="parameters" type="StUF:ParametersLk02TInSx02"/>
+					<element name="object" type="WOZ:CTL-kennisgeving_Sh"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="CTL-Lk02W">
+		<complexContent>
+			<restriction base="WOZ:CTL-Lk02">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:CTL-StuurgegevensLk02"/>
+					<element name="parameters" type="StUF:ParametersLk02WInSx02"/>
+					<element name="object" type="WOZ:CTL-kennisgeving_Sh" minOccurs="2" maxOccurs="2"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="CTL-Sa01">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:CTL-StuurgegevensSa01"/>
+			<element name="actueel" type="WOZ:CTL-Lk01T"/>
+		</sequence>
+	</complexType>
+	<complexType name="CTL-Sa02">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:CTL-StuurgegevensSa02"/>
+			<element name="actueel" type="WOZ:CTL-Lk02T"/>
+		</sequence>
+	</complexType>
+	<complexType name="KPA-Lk01">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:KPA-StuurgegevensLk01"/>
+			<element name="parameters" type="StUF:ParametersLk01"/>
+			<element name="object" type="WOZ:KPA-kennisgeving" nillable="true" maxOccurs="2"/>
+		</sequence>
+	</complexType>
+	<complexType name="KPA-Lk01T">
+		<complexContent>
+			<restriction base="WOZ:KPA-Lk01">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:KPA-StuurgegevensLk01"/>
+					<element name="parameters" type="StUF:ParametersLk01TInSx01"/>
+					<element name="object" type="WOZ:KPA-kennisgeving_Sh"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="KPA-Lk02">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:KPA-StuurgegevensLk02"/>
+			<element name="parameters" type="StUF:ParametersLk02"/>
+			<element name="object" type="WOZ:KPA-kennisgeving" nillable="true" maxOccurs="2"/>
+		</sequence>
+	</complexType>
+	<complexType name="KPA-Lk02T">
+		<complexContent>
+			<restriction base="WOZ:KPA-Lk02">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:KPA-StuurgegevensLk02"/>
+					<element name="parameters" type="StUF:ParametersLk02TInSx02"/>
+					<element name="object" type="WOZ:KPA-kennisgeving_Sh"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="KPA-Sa01">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:KPA-StuurgegevensSa01"/>
+			<element name="actueel" type="WOZ:KPA-Lk01T"/>
+		</sequence>
+	</complexType>
+	<complexType name="KPA-Sa02">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:KPA-StuurgegevensSa02"/>
+			<element name="actueel" type="WOZ:KPA-Lk02T"/>
+		</sequence>
+	</complexType>
+	<complexType name="NNP-Lk01">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:NNP-StuurgegevensLk01"/>
+			<element name="parameters" type="StUF:ParametersLk01"/>
+			<element name="object" type="WOZ:NNP-woz-kennisgeving" nillable="true" maxOccurs="2"/>
+		</sequence>
+	</complexType>
+	<complexType name="NNP-Lk01T">
+		<complexContent>
+			<restriction base="WOZ:NNP-Lk01">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:NNP-StuurgegevensLk01"/>
+					<element name="parameters" type="StUF:ParametersLk01TInSx01"/>
+					<element name="object" type="WOZ:NNP-woz-kennisgeving_Sh"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="NNP-Lk02">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:NNP-StuurgegevensLk02"/>
+			<element name="parameters" type="StUF:ParametersLk02"/>
+			<element name="object" type="WOZ:NNP-woz-kennisgeving" nillable="true" maxOccurs="2"/>
+		</sequence>
+	</complexType>
+	<complexType name="NNP-Lk02T">
+		<complexContent>
+			<restriction base="WOZ:NNP-Lk02">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:NNP-StuurgegevensLk02"/>
+					<element name="parameters" type="StUF:ParametersLk02TInSx02"/>
+					<element name="object" type="WOZ:NNP-woz-kennisgeving_Sh"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="NNP-Sa01">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:NNP-StuurgegevensSa01"/>
+			<element name="actueel" type="WOZ:NNP-Lk01T"/>
+		</sequence>
+	</complexType>
+	<complexType name="NNP-Sa02">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:NNP-StuurgegevensSa02"/>
+			<element name="actueel" type="WOZ:NNP-Lk02T"/>
+		</sequence>
+	</complexType>
+	<complexType name="NPS-Lk01">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:NPS-StuurgegevensLk01"/>
+			<element name="parameters" type="StUF:ParametersLk01"/>
+			<element name="object" type="WOZ:NPS-woz-kennisgeving" nillable="true" maxOccurs="2"/>
+		</sequence>
+	</complexType>
+	<complexType name="NPS-Lk01T">
+		<complexContent>
+			<restriction base="WOZ:NPS-Lk01">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:NPS-StuurgegevensLk01"/>
+					<element name="parameters" type="StUF:ParametersLk01TInSx01"/>
+					<element name="object" type="WOZ:NPS-woz-kennisgeving_Sh"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="NPS-Lk02">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:NPS-StuurgegevensLk02"/>
+			<element name="parameters" type="StUF:ParametersLk02"/>
+			<element name="object" type="WOZ:NPS-woz-kennisgeving" nillable="true" maxOccurs="2"/>
+		</sequence>
+	</complexType>
+	<complexType name="NPS-Lk02T">
+		<complexContent>
+			<restriction base="WOZ:NPS-Lk02">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:NPS-StuurgegevensLk02"/>
+					<element name="parameters" type="StUF:ParametersLk02TInSx02"/>
+					<element name="object" type="WOZ:NPS-woz-kennisgeving_Sh"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="NPS-Sa01">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:NPS-StuurgegevensSa01"/>
+			<element name="actueel" type="WOZ:NPS-Lk01T"/>
+		</sequence>
+	</complexType>
+	<complexType name="NPS-Sa02">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:NPS-StuurgegevensSa02"/>
+			<element name="actueel" type="WOZ:NPS-Lk02T"/>
+		</sequence>
+	</complexType>
+	<complexType name="RMA-Lk01">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:RMA-StuurgegevensLk01"/>
+			<element name="parameters" type="StUF:ParametersLk01"/>
+			<element name="object" type="WOZ:RMA-kennisgeving" nillable="true" maxOccurs="2"/>
+		</sequence>
+	</complexType>
+	<complexType name="RMA-Lk01T">
+		<complexContent>
+			<restriction base="WOZ:RMA-Lk01">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:RMA-StuurgegevensLk01"/>
+					<element name="parameters" type="StUF:ParametersLk01TInSx01"/>
+					<element name="object" type="WOZ:RMA-kennisgeving_Sh"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="RMA-Lk02">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:RMA-StuurgegevensLk02"/>
+			<element name="parameters" type="StUF:ParametersLk02"/>
+			<element name="object" type="WOZ:RMA-kennisgeving" nillable="true" maxOccurs="2"/>
+		</sequence>
+	</complexType>
+	<complexType name="RMA-Lk02T">
+		<complexContent>
+			<restriction base="WOZ:RMA-Lk02">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:RMA-StuurgegevensLk02"/>
+					<element name="parameters" type="StUF:ParametersLk02TInSx02"/>
+					<element name="object" type="WOZ:RMA-kennisgeving_Sh"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="RMA-Sa01">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:RMA-StuurgegevensSa01"/>
+			<element name="actueel" type="WOZ:RMA-Lk01T"/>
+		</sequence>
+	</complexType>
+	<complexType name="RMA-Sa02">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:RMA-StuurgegevensSa02"/>
+			<element name="actueel" type="WOZ:RMA-Lk02T"/>
+		</sequence>
+	</complexType>
+	<complexType name="SOC-Lk01">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:SOC-StuurgegevensLk01"/>
+			<element name="parameters" type="StUF:ParametersLk01"/>
+			<element name="object" type="WOZ:SOC-kennisgeving" nillable="true" maxOccurs="2"/>
+		</sequence>
+	</complexType>
+	<complexType name="SOC-Lk01T">
+		<complexContent>
+			<restriction base="WOZ:SOC-Lk01">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:SOC-StuurgegevensLk01"/>
+					<element name="parameters" type="StUF:ParametersLk01TInSx01"/>
+					<element name="object" type="WOZ:SOC-kennisgeving_Sh"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="SOC-Lk02">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:SOC-StuurgegevensLk02"/>
+			<element name="parameters" type="StUF:ParametersLk02"/>
+			<element name="object" type="WOZ:SOC-kennisgeving" nillable="true" maxOccurs="2"/>
+		</sequence>
+	</complexType>
+	<complexType name="SOC-Lk02T">
+		<complexContent>
+			<restriction base="WOZ:SOC-Lk02">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:SOC-StuurgegevensLk02"/>
+					<element name="parameters" type="StUF:ParametersLk02TInSx02"/>
+					<element name="object" type="WOZ:SOC-kennisgeving_Sh"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="SOC-Sa01">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:SOC-StuurgegevensSa01"/>
+			<element name="actueel" type="WOZ:SOC-Lk01T"/>
+		</sequence>
+	</complexType>
+	<complexType name="SOC-Sa02">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:SOC-StuurgegevensSa02"/>
+			<element name="actueel" type="WOZ:SOC-Lk02T"/>
+		</sequence>
+	</complexType>
+	<complexType name="SWO-Lk01">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:SWO-StuurgegevensLk01"/>
+			<element name="parameters" type="StUF:ParametersLk01"/>
+			<element name="object" type="WOZ:SWO-kennisgeving" nillable="true" maxOccurs="2"/>
+		</sequence>
+	</complexType>
+	<complexType name="SWO-Lk01T">
+		<complexContent>
+			<restriction base="WOZ:SWO-Lk01">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:SWO-StuurgegevensLk01"/>
+					<element name="parameters" type="StUF:ParametersLk01TInSx01"/>
+					<element name="object" type="WOZ:SWO-kennisgeving_Sh"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="SWO-Lk01W">
+		<complexContent>
+			<restriction base="WOZ:SWO-Lk01">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:SWO-StuurgegevensLk01"/>
+					<element name="parameters" type="StUF:ParametersLk01WInSx01"/>
+					<element name="object" type="WOZ:SWO-kennisgeving_Sh" minOccurs="2" maxOccurs="2"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="SWO-Lk02">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:SWO-StuurgegevensLk02"/>
+			<element name="parameters" type="StUF:ParametersLk02"/>
+			<element name="object" type="WOZ:SWO-kennisgeving" nillable="true" maxOccurs="2"/>
+		</sequence>
+	</complexType>
+	<complexType name="SWO-Lk02T">
+		<complexContent>
+			<restriction base="WOZ:SWO-Lk02">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:SWO-StuurgegevensLk02"/>
+					<element name="parameters" type="StUF:ParametersLk02TInSx02"/>
+					<element name="object" type="WOZ:SWO-kennisgeving_Sh"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="SWO-Lk02W">
+		<complexContent>
+			<restriction base="WOZ:SWO-Lk02">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:SWO-StuurgegevensLk02"/>
+					<element name="parameters" type="StUF:ParametersLk02WInSx02"/>
+					<element name="object" type="WOZ:SWO-kennisgeving_Sh" minOccurs="2" maxOccurs="2"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="SWO-Sa01">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:SWO-StuurgegevensSa01"/>
+			<element name="actueel" type="WOZ:SWO-Lk01T"/>
+		</sequence>
+	</complexType>
+	<complexType name="SWO-Sa02">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:SWO-StuurgegevensSa02"/>
+			<element name="actueel" type="WOZ:SWO-Lk02T"/>
+		</sequence>
+	</complexType>
+	<complexType name="TAX-Lk01">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:TAX-StuurgegevensLk01"/>
+			<element name="parameters" type="StUF:ParametersLk01"/>
+			<element name="object" type="WOZ:TAX-kennisgeving" nillable="true" maxOccurs="2"/>
+		</sequence>
+	</complexType>
+	<complexType name="TAX-Lk01T">
+		<complexContent>
+			<restriction base="WOZ:TAX-Lk01">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:TAX-StuurgegevensLk01"/>
+					<element name="parameters" type="StUF:ParametersLk01TInSx01"/>
+					<element name="object" type="WOZ:TAX-kennisgeving_Sh"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TAX-Lk01W">
+		<complexContent>
+			<restriction base="WOZ:TAX-Lk01">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:TAX-StuurgegevensLk01"/>
+					<element name="parameters" type="StUF:ParametersLk01WInSx01"/>
+					<element name="object" type="WOZ:TAX-kennisgeving_Sh" minOccurs="2" maxOccurs="2"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TAX-Lk02">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:TAX-StuurgegevensLk02"/>
+			<element name="parameters" type="StUF:ParametersLk02"/>
+			<element name="object" type="WOZ:TAX-kennisgeving" nillable="true" maxOccurs="2"/>
+		</sequence>
+	</complexType>
+	<complexType name="TAX-Lk02T">
+		<complexContent>
+			<restriction base="WOZ:TAX-Lk02">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:TAX-StuurgegevensLk02"/>
+					<element name="parameters" type="StUF:ParametersLk02TInSx02"/>
+					<element name="object" type="WOZ:TAX-kennisgeving_Sh"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TAX-Lk02W">
+		<complexContent>
+			<restriction base="WOZ:TAX-Lk02">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:TAX-StuurgegevensLk02"/>
+					<element name="parameters" type="StUF:ParametersLk02WInSx02"/>
+					<element name="object" type="WOZ:TAX-kennisgeving_Sh" minOccurs="2" maxOccurs="2"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TAX-Sa01">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:TAX-StuurgegevensSa01"/>
+			<element name="actueel" type="WOZ:TAX-Lk01T"/>
+		</sequence>
+	</complexType>
+	<complexType name="TAX-Sa02">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:TAX-StuurgegevensSa02"/>
+			<element name="actueel" type="WOZ:TAX-Lk02T"/>
+		</sequence>
+	</complexType>
+	<complexType name="TRN-Lk01">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:TRN-StuurgegevensLk01"/>
+			<element name="parameters" type="StUF:ParametersLk01"/>
+			<element name="object" type="WOZ:TRN-kennisgeving" nillable="true" maxOccurs="2"/>
+		</sequence>
+	</complexType>
+	<complexType name="TRN-Lk01T">
+		<complexContent>
+			<restriction base="WOZ:TRN-Lk01">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:TRN-StuurgegevensLk01"/>
+					<element name="parameters" type="StUF:ParametersLk01TInSx01"/>
+					<element name="object" type="WOZ:TRN-kennisgeving_Sh"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TRN-Lk02">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:TRN-StuurgegevensLk02"/>
+			<element name="parameters" type="StUF:ParametersLk02"/>
+			<element name="object" type="WOZ:TRN-kennisgeving" nillable="true" maxOccurs="2"/>
+		</sequence>
+	</complexType>
+	<complexType name="TRN-Lk02T">
+		<complexContent>
+			<restriction base="WOZ:TRN-Lk02">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:TRN-StuurgegevensLk02"/>
+					<element name="parameters" type="StUF:ParametersLk02TInSx02"/>
+					<element name="object" type="WOZ:TRN-kennisgeving_Sh"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TRN-Sa01">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:TRN-StuurgegevensSa01"/>
+			<element name="actueel" type="WOZ:TRN-Lk01T"/>
+		</sequence>
+	</complexType>
+	<complexType name="TRN-Sa02">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:TRN-StuurgegevensSa02"/>
+			<element name="actueel" type="WOZ:TRN-Lk02T"/>
+		</sequence>
+	</complexType>
+	<complexType name="TVN-Lk01">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:TVN-StuurgegevensLk01"/>
+			<element name="parameters" type="StUF:ParametersLk01"/>
+			<element name="object" type="WOZ:TVN-kennisgeving" nillable="true" maxOccurs="2"/>
+		</sequence>
+	</complexType>
+	<complexType name="TVN-Lk01T">
+		<complexContent>
+			<restriction base="WOZ:TVN-Lk01">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:TVN-StuurgegevensLk01"/>
+					<element name="parameters" type="StUF:ParametersLk01TInSx01"/>
+					<element name="object" type="WOZ:TVN-kennisgeving_Sh"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TVN-Lk02">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:TVN-StuurgegevensLk02"/>
+			<element name="parameters" type="StUF:ParametersLk02"/>
+			<element name="object" type="WOZ:TVN-kennisgeving" nillable="true" maxOccurs="2"/>
+		</sequence>
+	</complexType>
+	<complexType name="TVN-Lk02T">
+		<complexContent>
+			<restriction base="WOZ:TVN-Lk02">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:TVN-StuurgegevensLk02"/>
+					<element name="parameters" type="StUF:ParametersLk02TInSx02"/>
+					<element name="object" type="WOZ:TVN-kennisgeving_Sh"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TVN-Sa01">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:TVN-StuurgegevensSa01"/>
+			<element name="actueel" type="WOZ:TVN-Lk01T"/>
+		</sequence>
+	</complexType>
+	<complexType name="TVN-Sa02">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:TVN-StuurgegevensSa02"/>
+			<element name="actueel" type="WOZ:TVN-Lk02T"/>
+		</sequence>
+	</complexType>
+	<complexType name="TVW-Lk01">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:TVW-StuurgegevensLk01"/>
+			<element name="parameters" type="StUF:ParametersLk01"/>
+			<element name="object" type="WOZ:TVW-kennisgeving" nillable="true" maxOccurs="2"/>
+		</sequence>
+	</complexType>
+	<complexType name="TVW-Lk01T">
+		<complexContent>
+			<restriction base="WOZ:TVW-Lk01">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:TVW-StuurgegevensLk01"/>
+					<element name="parameters" type="StUF:ParametersLk01TInSx01"/>
+					<element name="object" type="WOZ:TVW-kennisgeving_Sh"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TVW-Lk02">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:TVW-StuurgegevensLk02"/>
+			<element name="parameters" type="StUF:ParametersLk02"/>
+			<element name="object" type="WOZ:TVW-kennisgeving" nillable="true" maxOccurs="2"/>
+		</sequence>
+	</complexType>
+	<complexType name="TVW-Lk02T">
+		<complexContent>
+			<restriction base="WOZ:TVW-Lk02">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:TVW-StuurgegevensLk02"/>
+					<element name="parameters" type="StUF:ParametersLk02TInSx02"/>
+					<element name="object" type="WOZ:TVW-kennisgeving_Sh"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TVW-Sa01">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:TVW-StuurgegevensSa01"/>
+			<element name="actueel" type="WOZ:TVW-Lk01T"/>
+		</sequence>
+	</complexType>
+	<complexType name="TVW-Sa02">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:TVW-StuurgegevensSa02"/>
+			<element name="actueel" type="WOZ:TVW-Lk02T"/>
+		</sequence>
+	</complexType>
+	<complexType name="VES-Lk01">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:VES-StuurgegevensLk01"/>
+			<element name="parameters" type="StUF:ParametersLk01"/>
+			<element name="object" type="WOZ:VES-woz-kennisgeving" nillable="true" maxOccurs="2"/>
+		</sequence>
+	</complexType>
+	<complexType name="VES-Lk01T">
+		<complexContent>
+			<restriction base="WOZ:VES-Lk01">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:VES-StuurgegevensLk01"/>
+					<element name="parameters" type="StUF:ParametersLk01TInSx01"/>
+					<element name="object" type="WOZ:VES-woz-kennisgeving_Sh"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="VES-Lk02">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:VES-StuurgegevensLk02"/>
+			<element name="parameters" type="StUF:ParametersLk02"/>
+			<element name="object" type="WOZ:VES-woz-kennisgeving" nillable="true" maxOccurs="2"/>
+		</sequence>
+	</complexType>
+	<complexType name="VES-Lk02T">
+		<complexContent>
+			<restriction base="WOZ:VES-Lk02">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:VES-StuurgegevensLk02"/>
+					<element name="parameters" type="StUF:ParametersLk02TInSx02"/>
+					<element name="object" type="WOZ:VES-woz-kennisgeving_Sh"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="VES-Sa01">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:VES-StuurgegevensSa01"/>
+			<element name="actueel" type="WOZ:VES-Lk01T"/>
+		</sequence>
+	</complexType>
+	<complexType name="VES-Sa02">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:VES-StuurgegevensSa02"/>
+			<element name="actueel" type="WOZ:VES-Lk02T"/>
+		</sequence>
+	</complexType>
+	<complexType name="WBP-Lk01">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:WBP-StuurgegevensLk01"/>
+			<element name="parameters" type="StUF:ParametersLk01"/>
+			<element name="object" type="WOZ:WBP-kennisgeving" nillable="true" maxOccurs="2"/>
+		</sequence>
+	</complexType>
+	<complexType name="WBP-Lk01T">
+		<complexContent>
+			<restriction base="WOZ:WBP-Lk01">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:WBP-StuurgegevensLk01"/>
+					<element name="parameters" type="StUF:ParametersLk01TInSx01"/>
+					<element name="object" type="WOZ:WBP-kennisgeving_Sh"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WBP-Lk01W">
+		<complexContent>
+			<restriction base="WOZ:WBP-Lk01">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:WBP-StuurgegevensLk01"/>
+					<element name="parameters" type="StUF:ParametersLk01WInSx01"/>
+					<element name="object" type="WOZ:WBP-kennisgeving_Sh" minOccurs="2" maxOccurs="2"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WBP-Lk02">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:WBP-StuurgegevensLk02"/>
+			<element name="parameters" type="StUF:ParametersLk02"/>
+			<element name="object" type="WOZ:WBP-kennisgeving" nillable="true" maxOccurs="2"/>
+		</sequence>
+	</complexType>
+	<complexType name="WBP-Lk02T">
+		<complexContent>
+			<restriction base="WOZ:WBP-Lk02">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:WBP-StuurgegevensLk02"/>
+					<element name="parameters" type="StUF:ParametersLk02TInSx02"/>
+					<element name="object" type="WOZ:WBP-kennisgeving_Sh"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WBP-Lk02W">
+		<complexContent>
+			<restriction base="WOZ:WBP-Lk02">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:WBP-StuurgegevensLk02"/>
+					<element name="parameters" type="StUF:ParametersLk02WInSx02"/>
+					<element name="object" type="WOZ:WBP-kennisgeving_Sh" minOccurs="2" maxOccurs="2"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WBP-Sa01">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:WBP-StuurgegevensSa01"/>
+			<element name="actueel" type="WOZ:WBP-Lk01T"/>
+		</sequence>
+	</complexType>
+	<complexType name="WBP-Sa02">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:WBP-StuurgegevensSa02"/>
+			<element name="actueel" type="WOZ:WBP-Lk02T"/>
+		</sequence>
+	</complexType>
+	<complexType name="WDC-Lk01">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:WDC-StuurgegevensLk01"/>
+			<element name="parameters" type="StUF:ParametersLk01"/>
+			<element name="object" type="WOZ:WDC-kennisgeving" nillable="true" maxOccurs="2"/>
+		</sequence>
+	</complexType>
+	<complexType name="WDC-Lk01T">
+		<complexContent>
+			<restriction base="WOZ:WDC-Lk01">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:WDC-StuurgegevensLk01"/>
+					<element name="parameters" type="StUF:ParametersLk01TInSx01"/>
+					<element name="object" type="WOZ:WDC-kennisgeving_Sh"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WDC-Lk02">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:WDC-StuurgegevensLk02"/>
+			<element name="parameters" type="StUF:ParametersLk02"/>
+			<element name="object" type="WOZ:WDC-kennisgeving" nillable="true" maxOccurs="2"/>
+		</sequence>
+	</complexType>
+	<complexType name="WDC-Lk02T">
+		<complexContent>
+			<restriction base="WOZ:WDC-Lk02">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:WDC-StuurgegevensLk02"/>
+					<element name="parameters" type="StUF:ParametersLk02TInSx02"/>
+					<element name="object" type="WOZ:WDC-kennisgeving_Sh"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WDC-Sa01">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:WDC-StuurgegevensSa01"/>
+			<element name="actueel" type="WOZ:WDC-Lk01T"/>
+		</sequence>
+	</complexType>
+	<complexType name="WDC-Sa02">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:WDC-StuurgegevensSa02"/>
+			<element name="actueel" type="WOZ:WDC-Lk02T"/>
+		</sequence>
+	</complexType>
+	<complexType name="WDO-Lk01">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:WDO-StuurgegevensLk01"/>
+			<element name="parameters" type="StUF:ParametersLk01"/>
+			<element name="object" type="WOZ:WDO-kennisgeving" nillable="true" maxOccurs="2"/>
+		</sequence>
+	</complexType>
+	<complexType name="WDO-Lk01T">
+		<complexContent>
+			<restriction base="WOZ:WDO-Lk01">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:WDO-StuurgegevensLk01"/>
+					<element name="parameters" type="StUF:ParametersLk01TInSx01"/>
+					<element name="object" type="WOZ:WDO-kennisgeving_Sh"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WDO-Lk01W">
+		<complexContent>
+			<restriction base="WOZ:WDO-Lk01">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:WDO-StuurgegevensLk01"/>
+					<element name="parameters" type="StUF:ParametersLk01WInSx01"/>
+					<element name="object" type="WOZ:WDO-kennisgeving_Sh" minOccurs="2" maxOccurs="2"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WDO-Lk02">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:WDO-StuurgegevensLk02"/>
+			<element name="parameters" type="StUF:ParametersLk02"/>
+			<element name="object" type="WOZ:WDO-kennisgeving" nillable="true" maxOccurs="2"/>
+		</sequence>
+	</complexType>
+	<complexType name="WDO-Lk02T">
+		<complexContent>
+			<restriction base="WOZ:WDO-Lk02">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:WDO-StuurgegevensLk02"/>
+					<element name="parameters" type="StUF:ParametersLk02TInSx02"/>
+					<element name="object" type="WOZ:WDO-kennisgeving_Sh"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WDO-Lk02W">
+		<complexContent>
+			<restriction base="WOZ:WDO-Lk02">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:WDO-StuurgegevensLk02"/>
+					<element name="parameters" type="StUF:ParametersLk02WInSx02"/>
+					<element name="object" type="WOZ:WDO-kennisgeving_Sh" minOccurs="2" maxOccurs="2"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WDO-Sa01">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:WDO-StuurgegevensSa01"/>
+			<element name="actueel" type="WOZ:WDO-Lk01T"/>
+		</sequence>
+	</complexType>
+	<complexType name="WDO-Sa02">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:WDO-StuurgegevensSa02"/>
+			<element name="actueel" type="WOZ:WDO-Lk02T"/>
+		</sequence>
+	</complexType>
+	<complexType name="WOZ-Lk01">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:WOZ-StuurgegevensLk01"/>
+			<element name="parameters" type="StUF:ParametersLk01"/>
+			<element name="object" type="WOZ:WOZ-kennisgeving" nillable="true" maxOccurs="2"/>
+		</sequence>
+	</complexType>
+	<complexType name="WOZ-Lk01T">
+		<complexContent>
+			<restriction base="WOZ:WOZ-Lk01">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:WOZ-StuurgegevensLk01"/>
+					<element name="parameters" type="StUF:ParametersLk01TInSx01"/>
+					<element name="object" type="WOZ:WOZ-kennisgeving_Sh"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZ-Lk01W">
+		<complexContent>
+			<restriction base="WOZ:WOZ-Lk01">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:WOZ-StuurgegevensLk01"/>
+					<element name="parameters" type="StUF:ParametersLk01WInSx01"/>
+					<element name="object" type="WOZ:WOZ-kennisgeving_Sh" minOccurs="2" maxOccurs="2"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZ-Lk02">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:WOZ-StuurgegevensLk02"/>
+			<element name="parameters" type="StUF:ParametersLk02"/>
+			<element name="object" type="WOZ:WOZ-kennisgeving" nillable="true" maxOccurs="2"/>
+		</sequence>
+	</complexType>
+	<complexType name="WOZ-Lk02T">
+		<complexContent>
+			<restriction base="WOZ:WOZ-Lk02">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:WOZ-StuurgegevensLk02"/>
+					<element name="parameters" type="StUF:ParametersLk02TInSx02"/>
+					<element name="object" type="WOZ:WOZ-kennisgeving_Sh"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZ-Lk02W">
+		<complexContent>
+			<restriction base="WOZ:WOZ-Lk02">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:WOZ-StuurgegevensLk02"/>
+					<element name="parameters" type="StUF:ParametersLk02WInSx02"/>
+					<element name="object" type="WOZ:WOZ-kennisgeving_Sh" minOccurs="2" maxOccurs="2"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZ-Sa01">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:WOZ-StuurgegevensSa01"/>
+			<element name="actueel" type="WOZ:WOZ-Lk01T"/>
+		</sequence>
+	</complexType>
+	<complexType name="WOZ-Sa02">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:WOZ-StuurgegevensSa02"/>
+			<element name="actueel" type="WOZ:WOZ-Lk02T"/>
+		</sequence>
+	</complexType>
+	<complexType name="WRD-Lk01">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:WRD-StuurgegevensLk01"/>
+			<element name="parameters" type="StUF:ParametersLk01"/>
+			<element name="object" type="WOZ:WRD-kennisgeving" nillable="true" maxOccurs="2"/>
+		</sequence>
+	</complexType>
+	<complexType name="WRD-Lk01T">
+		<complexContent>
+			<restriction base="WOZ:WRD-Lk01">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:WRD-StuurgegevensLk01"/>
+					<element name="parameters" type="StUF:ParametersLk01TInSx01"/>
+					<element name="object" type="WOZ:WRD-kennisgeving_Sh"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WRD-Lk01W">
+		<complexContent>
+			<restriction base="WOZ:WRD-Lk01">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:WRD-StuurgegevensLk01"/>
+					<element name="parameters" type="StUF:ParametersLk01WInSx01"/>
+					<element name="object" type="WOZ:WRD-kennisgeving_Sh" minOccurs="2" maxOccurs="2"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WRD-Lk02">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:WRD-StuurgegevensLk02"/>
+			<element name="parameters" type="StUF:ParametersLk02"/>
+			<element name="object" type="WOZ:WRD-kennisgeving" nillable="true" maxOccurs="2"/>
+		</sequence>
+	</complexType>
+	<complexType name="WRD-Lk02T">
+		<complexContent>
+			<restriction base="WOZ:WRD-Lk02">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:WRD-StuurgegevensLk02"/>
+					<element name="parameters" type="StUF:ParametersLk02TInSx02"/>
+					<element name="object" type="WOZ:WRD-kennisgeving_Sh"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WRD-Lk02W">
+		<complexContent>
+			<restriction base="WOZ:WRD-Lk02">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:WRD-StuurgegevensLk02"/>
+					<element name="parameters" type="StUF:ParametersLk02WInSx02"/>
+					<element name="object" type="WOZ:WRD-kennisgeving_Sh" minOccurs="2" maxOccurs="2"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WRD-Sa01">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:WRD-StuurgegevensSa01"/>
+			<element name="actueel" type="WOZ:WRD-Lk01T"/>
+		</sequence>
+	</complexType>
+	<complexType name="WRD-Sa02">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:WRD-StuurgegevensSa02"/>
+			<element name="actueel" type="WOZ:WRD-Lk02T"/>
+		</sequence>
+	</complexType>
+	<complexType name="WSP-Lk01">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:WSP-StuurgegevensLk01"/>
+			<element name="parameters" type="StUF:ParametersLk01"/>
+			<element name="object" type="WOZ:WSP-kennisgeving" nillable="true" maxOccurs="2"/>
+		</sequence>
+	</complexType>
+	<complexType name="WSP-Lk01T">
+		<complexContent>
+			<restriction base="WOZ:WSP-Lk01">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:WSP-StuurgegevensLk01"/>
+					<element name="parameters" type="StUF:ParametersLk01TInSx01"/>
+					<element name="object" type="WOZ:WSP-kennisgeving_Sh"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WSP-Lk02">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:WSP-StuurgegevensLk02"/>
+			<element name="parameters" type="StUF:ParametersLk02"/>
+			<element name="object" type="WOZ:WSP-kennisgeving" nillable="true" maxOccurs="2"/>
+		</sequence>
+	</complexType>
+	<complexType name="WSP-Lk02T">
+		<complexContent>
+			<restriction base="WOZ:WSP-Lk02">
+				<sequence>
+					<element name="stuurgegevens" type="StUF:WSP-StuurgegevensLk02"/>
+					<element name="parameters" type="StUF:ParametersLk02TInSx02"/>
+					<element name="object" type="WOZ:WSP-kennisgeving_Sh"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WSP-Sa01">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:WSP-StuurgegevensSa01"/>
+			<element name="actueel" type="WOZ:WSP-Lk01T"/>
+		</sequence>
+	</complexType>
+	<complexType name="WSP-Sa02">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:WSP-StuurgegevensSa02"/>
+			<element name="actueel" type="WOZ:WSP-Lk02T"/>
+		</sequence>
+	</complexType>
+</schema>

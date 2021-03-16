@@ -1,0 +1,794 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2015 rel. 4 (x64) (http://www.altova.com) by Maarten van den Broek (messageDesign B.V.) -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:StUF="http://www.egem.nl/StUF/StUF0301" xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310" targetNamespace="http://www.egem.nl/StUF/sector/bg/0310" elementFormDefault="qualified" attributeFormDefault="unqualified" version="031208">
+	<annotation>
+		<documentation>
+			Dit schema bevat de restricties van BG-types tbv de vraag- en antwoordberichten gericht aan de LV WOZ.
+			
+			Wijzigingen vergeleken met versie 031207:
+			- Binnen NNPMAC-lv-antwoord, VESMAC-lv-antwoord en VESTGOHFD-lv-antwoord het attribute StUF:noValue toegevoegd. Daarnaast overal de attributes scherper gedefinieerd.
+ 		</documentation>
+	</annotation>
+	<include schemaLocation="../entiteiten/woz0312_bg0310_lv_basis.xsd"/>
+	<import namespace="http://www.egem.nl/StUF/StUF0301" schemaLocation="../entiteiten/woz0312_stuf_simpleTypes.xsd"/>
+	<!--ComplexTypes voor groepen-->
+	<complexType name="AanduidingWOZobjectGrp-lv-vraagSelectie">
+		<complexContent>
+			<restriction base="BG:AanduidingWOZobjectGrp-woz">
+				<sequence minOccurs="0">
+					<element name="aoa.identificatie" type="BG:ObjectNummering-e" nillable="true" minOccurs="0"/>
+					<element name="wpl.woonplaatsNaam" type="BG:WoonplaatsNaam-e" nillable="true" minOccurs="0"/>
+					<element name="aoa.postcode" type="BG:Postcode-e" nillable="true" minOccurs="0"/>
+					<element name="gor.openbareRuimteNaam" type="BG:NaamgevingObject-e" nillable="true" minOccurs="0"/>
+					<element name="aoa.huisnummer" type="BG:Huisnummering-e" nillable="true" minOccurs="0"/>
+					<element name="aoa.huisletter" type="BG:Huislettering-e" nillable="true" minOccurs="0"/>
+					<element name="aoa.huisnummertoevoeging" type="BG:Huisnummertoevoeging-e" nillable="true" minOccurs="0"/>
+					<element name="locatieOmschrijving" type="BG:LocatieOmschrijving-e" nillable="true" minOccurs="0"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="AanduidingWOZobjectGrp-lv-inWRD-vraagSelectie">
+		<complexContent>
+			<restriction base="BG:AanduidingWOZobjectGrp-woz">
+				<sequence minOccurs="0">
+					<element name="wpl.woonplaatsNaam" type="BG:WoonplaatsNaam-e" nillable="true" minOccurs="0"/>
+					<element name="aoa.postcode" type="BG:Postcode-e" nillable="true" minOccurs="0"/>
+					<element name="gor.openbareRuimteNaam" type="BG:NaamgevingObject-e" nillable="true" minOccurs="0"/>
+					<element name="aoa.huisnummer" type="BG:Huisnummering-e" nillable="true" minOccurs="0"/>
+					<element name="aoa.huisletter" type="BG:Huislettering-e" nillable="true" minOccurs="0"/>
+					<element name="aoa.huisnummertoevoeging" type="BG:Huisnummertoevoeging-e" nillable="true" minOccurs="0"/>
+					<element name="locatieOmschrijving" type="BG:LocatieOmschrijving-e" nillable="true" minOccurs="0"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="CorrespondentieAdrGrp-lv-antwoord">
+		<complexContent>
+			<restriction base="BG:CorrespondentieAdrGrp-woz-basis">
+				<sequence>
+					<element name="wpl.woonplaatsNaam" type="BG:NaamgevingObject-e" nillable="true" minOccurs="0"/>
+					<element name="postcode" type="BG:Postcode-e" nillable="true" minOccurs="0"/>
+					<choice minOccurs="0">
+						<sequence>
+							<element name="aoa.identificatie" type="BG:ObjectNummering-e" nillable="true" minOccurs="0"/>
+							<element name="gor.openbareRuimteNaam" type="BG:NaamgevingObject-e" nillable="true" minOccurs="0"/>
+							<element name="gor.straatnaam" type="BG:Straatnaam-e" nillable="true" minOccurs="0"/>
+							<element name="aoa.huisnummer" type="BG:Huisnummering-e" nillable="true" minOccurs="0"/>
+							<element name="aoa.huisletter" type="BG:Huislettering-e" nillable="true" minOccurs="0"/>
+							<element name="aoa.huisnummertoevoeging" type="BG:Huisnummertoevoeging-e" nillable="true" minOccurs="0"/>
+						</sequence>
+						<sequence>
+							<element name="sub.postadresType" type="BG:PostadresType-e" nillable="true"/>
+							<element name="sub.postadresNummer" type="BG:PostadresNummer-e" nillable="true"/>
+						</sequence>
+					</choice>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="CorrespondentieAdrGrp-lv-vraagScope">
+		<complexContent>
+			<restriction base="BG:CorrespondentieAdrGrp-woz-basis">
+				<sequence>
+					<element name="wpl.woonplaatsNaam" type="BG:NaamgevingObject-e" nillable="true" minOccurs="0"/>
+					<element name="postcode" type="BG:Postcode-e" nillable="true" minOccurs="0"/>
+					<choice minOccurs="0" maxOccurs="2">
+						<sequence>
+							<element name="aoa.identificatie" type="BG:ObjectNummering-e" nillable="true" minOccurs="0"/>
+							<element name="gor.openbareRuimteNaam" type="BG:NaamgevingObject-e" nillable="true" minOccurs="0"/>
+							<element name="gor.straatnaam" type="BG:Straatnaam-e" nillable="true" minOccurs="0"/>
+							<element name="aoa.huisnummer" type="BG:Huisnummering-e" nillable="true" minOccurs="0"/>
+							<element name="aoa.huisletter" type="BG:Huislettering-e" nillable="true" minOccurs="0"/>
+							<element name="aoa.huisnummertoevoeging" type="BG:Huisnummertoevoeging-e" nillable="true" minOccurs="0"/>
+						</sequence>
+						<sequence>
+							<element name="sub.postadresType" type="BG:PostadresType-e" nillable="true"/>
+							<element name="sub.postadresNummer" type="BG:PostadresNummer-e" nillable="true"/>
+						</sequence>
+					</choice>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="CorrespondentieAdrGrp-lv-vraagSelectie">
+		<complexContent>
+			<restriction base="BG:CorrespondentieAdrGrp-woz-basis">
+				<sequence>
+					<element name="postcode" type="BG:Postcode-e" nillable="true" minOccurs="0"/>
+					<choice minOccurs="0">
+						<sequence>
+							<element name="aoa.huisnummer" type="BG:Huisnummering-e" nillable="true" minOccurs="0"/>
+							<element name="aoa.huisletter" type="BG:Huislettering-e" nillable="true" minOccurs="0"/>
+							<element name="aoa.huisnummertoevoeging" type="BG:Huisnummertoevoeging-e" nillable="true" minOccurs="0"/>
+						</sequence>
+						<sequence>
+							<element name="sub.postadresType" type="BG:PostadresType-e" nillable="true"/>
+							<element name="sub.postadresNummer" type="BG:PostadresNummer-e" nillable="true"/>
+						</sequence>
+					</choice>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="VerantwoordelijkeGemeenteGrp-vraagSelectie">
+		<complexContent>
+			<restriction base="BG:VerantwoordelijkeGemeenteGrp">
+				<sequence>
+					<element name="gemeenteCode" type="BG:Gemeentecodering-e" nillable="true" minOccurs="0"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<!--ComplexTypes voor entiteittypen-->
+	<complexType name="AOT-lv-antwoord">
+		<complexContent>
+			<restriction base="BG:AOT-woz-basis">
+				<choice minOccurs="0">
+					<choice minOccurs="0">
+						<element name="ligplaats" type="BG:LIG-lv-antwoord" minOccurs="0"/>
+						<element name="standplaats" type="BG:STA-lv-antwoord" minOccurs="0"/>
+						<element name="verblijfsobject" type="BG:VBO-lv-antwoord" minOccurs="0"/>
+					</choice>
+				</choice>
+				<attribute ref="StUF:entiteittype" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="AOT-lv-vraagScope">
+		<complexContent>
+			<restriction base="BG:AOT-woz-basis">
+				<choice minOccurs="0">
+					<choice minOccurs="0" maxOccurs="3">
+						<element name="ligplaats" type="BG:LIG-lv-vraag" minOccurs="0"/>
+						<element name="standplaats" type="BG:STA-lv-vraag" minOccurs="0"/>
+						<element name="verblijfsobject" type="BG:VBO-lv-vraag" minOccurs="0"/>
+					</choice>
+				</choice>
+				<attribute ref="StUF:entiteittype" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="AOT-lv-vraagSelectie">
+		<complexContent>
+			<restriction base="BG:AOT-woz-basis">
+				<choice minOccurs="0">
+					<sequence minOccurs="0">
+						<element name="identificatie" type="BG:ObjectNummeringAOT-e" nillable="true" minOccurs="0"/>
+					</sequence>
+				</choice>
+				<attribute ref="StUF:entiteittype" use="required" fixed="AOT"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="KOZ-lv-antwoord">
+		<complexContent>
+			<restriction base="BG:KOZ-woz-basis">
+				<sequence>
+					<element name="kadastraleIdentificatie" type="BG:KadastraleIdentificatie-e" nillable="true" minOccurs="0"/>
+					<element name="kadastraleAanduiding" type="BG:KadastraleAanduidingGrp-basis" minOccurs="0"/>
+					<element name="ingangsdatumObject" type="StUF:DatumMetIndicator" nillable="true" minOccurs="0"/>
+					<element name="einddatumObject" type="StUF:DatumMetIndicator" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+				<attribute ref="StUF:sleutelVerzendend" use="prohibited"/>
+				<attribute ref="StUF:sleutelOntvangend" use="prohibited"/>
+				<attribute ref="StUF:sleutelGegevensbeheer" use="prohibited"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="KOZ-lv-vraagScope">
+		<complexContent>
+			<restriction base="BG:KOZ-woz-basis">
+				<sequence>
+					<element name="kadastraleIdentificatie" type="BG:KadastraleIdentificatie-e" nillable="true" minOccurs="0"/>
+					<element name="kadastraleAanduiding" type="BG:KadastraleAanduidingGrp" minOccurs="0"/>
+					<element name="ingangsdatumObject" type="StUF:DatumMetIndicator" nillable="true" minOccurs="0"/>
+					<element name="einddatumObject" type="StUF:DatumMetIndicator" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:sleutelVerzendend" use="prohibited"/>
+				<attribute ref="StUF:sleutelOntvangend" use="prohibited"/>
+				<attribute ref="StUF:sleutelGegevensbeheer" use="prohibited"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="KOZ-lv-vraagSelectie">
+		<complexContent>
+			<restriction base="BG:KOZ-woz-basis">
+				<sequence minOccurs="0">
+					<element name="kadastraleIdentificatie" type="BG:KadastraleIdentificatie-e" nillable="true" minOccurs="0"/>
+					<element name="kadastraleAanduiding" type="BG:KadastraleAanduidingGrp-basis" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:sleutelVerzendend" use="prohibited"/>
+				<attribute ref="StUF:sleutelOntvangend" use="prohibited"/>
+				<attribute ref="StUF:sleutelGegevensbeheer" use="prohibited"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="LIG-lv-antwoord">
+		<complexContent>
+			<restriction base="BG:LIG-woz-basis">
+				<sequence>
+					<element name="identificatie" type="BG:ObjectNummeringLIG-e" nillable="true" minOccurs="0"/>
+					<element name="adresAanduidingGrp" type="BG:AdrGrp-lv-AOT" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+				<attribute ref="StUF:sleutelVerzendend" use="prohibited"/>
+				<attribute ref="StUF:sleutelOntvangend" use="prohibited"/>
+				<attribute ref="StUF:sleutelGegevensbeheer" use="prohibited"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="LIG-lv-vraag">
+		<complexContent>
+			<restriction base="BG:LIG-woz-basis">
+				<sequence>
+					<element name="identificatie" type="BG:ObjectNummeringLIG-e" nillable="true" minOccurs="0"/>
+					<element name="adresAanduidingGrp" type="BG:AdrGrp-lv-AOT" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:sleutelVerzendend" use="prohibited"/>
+				<attribute ref="StUF:sleutelOntvangend" use="prohibited"/>
+				<attribute ref="StUF:sleutelGegevensbeheer" use="prohibited"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="MAC-lv-antwoord">
+		<complexContent>
+			<restriction base="BG:MAC-basis">
+				<sequence>
+					<element name="kvkNummer" type="BG:KvKNummer-e" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="MAC"/>
+				<attribute ref="StUF:sleutelVerzendend" use="prohibited"/>
+				<attribute ref="StUF:sleutelOntvangend" use="prohibited"/>
+				<attribute ref="StUF:sleutelGegevensbeheer" use="prohibited"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="MAC-lv-vraag">
+		<complexContent>
+			<restriction base="BG:MAC-basis">
+				<sequence>
+					<element name="kvkNummer" type="BG:KvKNummer-e" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="MAC"/>
+				<attribute ref="StUF:sleutelVerzendend" use="prohibited"/>
+				<attribute ref="StUF:sleutelOntvangend" use="prohibited"/>
+				<attribute ref="StUF:sleutelGegevensbeheer" use="prohibited"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="NNP-lv-antwoord">
+		<complexContent>
+			<restriction base="BG:NNP-lv-basis">
+				<sequence>
+					<choice minOccurs="0">
+						<sequence minOccurs="0">
+							<element name="inn.nnpId" type="BG:BSN-e" nillable="true" minOccurs="0"/>
+						</sequence>
+						<element name="ann.identificatie" type="BG:IdentificatieRPSBTL-e" nillable="true" minOccurs="0"/>
+					</choice>
+					<element name="statutaireNaam" type="BG:StatutaireNaam-e" nillable="true" minOccurs="0"/>
+					<element name="sub.correspondentieAdres" type="BG:CorrespondentieAdrGrp-woz-basis" minOccurs="0"/>
+					<choice minOccurs="0">
+						<element name="sub.verblijfBuitenland" type="BG:VerblijfBuitenlandGrp" minOccurs="0"/>
+					</choice>
+					<element name="rps.isEigenaarVan" type="BG:NNPMAC-lv-antwoord" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="NNP-lv-vraagScope">
+		<complexContent>
+			<restriction base="BG:NNP-lv-basis">
+				<sequence>
+					<choice minOccurs="0" maxOccurs="2">
+						<sequence minOccurs="0">
+							<element name="inn.nnpId" type="BG:BSN-e" nillable="true" minOccurs="0"/>
+						</sequence>
+						<element name="ann.identificatie" type="BG:IdentificatieRPSBTL-e" nillable="true" minOccurs="0"/>
+					</choice>
+					<element name="statutaireNaam" type="BG:StatutaireNaam-e" nillable="true" minOccurs="0"/>
+					<element name="sub.correspondentieAdres" type="BG:CorrespondentieAdrGrp-woz-basis" minOccurs="0"/>
+					<choice minOccurs="0">
+						<element name="sub.verblijfBuitenland" type="BG:VerblijfBuitenlandGrp" minOccurs="0"/>
+					</choice>
+					<element name="rps.isEigenaarVan" type="BG:NNPMAC-lv-vraag" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="NNP-lv-vraagSelectie">
+		<complexContent>
+			<restriction base="BG:NNP-lv-basis">
+				<sequence>
+					<choice minOccurs="0">
+						<sequence minOccurs="0">
+							<element name="inn.nnpId" type="BG:BSN-e" nillable="true" minOccurs="0"/>
+						</sequence>
+						<element name="ann.identificatie" type="BG:IdentificatieRPSBTL-e" nillable="true" minOccurs="0"/>
+					</choice>
+					<element name="rps.isEigenaarVan" type="BG:NNPMAC-lv-vraag" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="NNPMAC-lv-antwoord">
+		<complexContent>
+			<restriction base="BG:NNPMAC-basis">
+				<sequence>
+					<element name="gerelateerde" type="BG:MAC-lv-antwoord" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="NNPMAC"/>
+				<attribute ref="StUF:sleutelVerzendend" use="prohibited"/>
+				<attribute ref="StUF:sleutelOntvangend" use="prohibited"/>
+				<attribute ref="StUF:sleutelGegevensbeheer" use="prohibited"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="NNPMAC-lv-vraag">
+		<complexContent>
+			<restriction base="BG:NNPMAC-basis">
+				<sequence>
+					<element name="gerelateerde" type="BG:MAC-lv-antwoord" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="NNPMAC"/>
+				<attribute ref="StUF:sleutelVerzendend" use="prohibited"/>
+				<attribute ref="StUF:sleutelOntvangend" use="prohibited"/>
+				<attribute ref="StUF:sleutelGegevensbeheer" use="prohibited"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="NPS-lv-antwoord">
+		<complexContent>
+			<restriction base="BG:NPS-lv-basis">
+				<sequence>
+					<choice minOccurs="0">
+						<sequence minOccurs="0">
+							<element name="inp.bsn" type="BG:BSN-e" nillable="true" minOccurs="0"/>
+						</sequence>
+						<element name="anp.identificatie" type="BG:IdentificatieRPSBTL-e" nillable="true" minOccurs="0"/>
+					</choice>
+					<element name="geslachtsnaam" type="BG:Geslachtsnaam-e" nillable="true" minOccurs="0"/>
+					<element name="voorvoegselGeslachtsnaam" type="BG:VoorvoegselGeslachtsnaam-e" nillable="true" minOccurs="0"/>
+					<element name="voorletters" type="BG:Voorletters-e" nillable="true" minOccurs="0"/>
+					<element name="aanduidingNaamgebruik" type="BG:AanduidingNaamgebruik-e" nillable="true" minOccurs="0"/>
+					<element name="geslachtsnaamPartner" type="BG:Geslachtsnaam-e" nillable="true" minOccurs="0"/>
+					<element name="voorvoegselGeslachtsnaamPartner" type="BG:VoorvoegselGeslachtsnaam-e" nillable="true" minOccurs="0"/>
+					<element name="aanhefAanschrijving" type="BG:Aanhef-e" nillable="true" minOccurs="0"/>
+					<element name="geslachtsnaamAanschrijving" type="BG:Geslachtsnaam-e" nillable="true" minOccurs="0"/>
+					<element name="geslachtsaanduiding" type="BG:Geslachtsaanduiding-e" nillable="true" minOccurs="0"/>
+					<element name="geboortedatum" type="StUF:DatumMetIndicator" nillable="true" minOccurs="0"/>
+					<element name="inp.verblijftIn" type="BG:NPSTGO-lv-antwoord" nillable="true" minOccurs="0"/>
+					<choice minOccurs="0">
+						<element name="verblijfsadres" type="BG:VerblijfsadresGrp-woz-basis"/>
+						<element name="sub.verblijfBuitenland" type="BG:VerblijfBuitenlandGrp"/>
+					</choice>
+					<element name="sub.correspondentieAdres" type="BG:CorrespondentieAdrGrp-lv-antwoord" minOccurs="0"/>
+					<element name="inp.indicatieGeheim" type="BG:IndicatieGeheim-e" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="NPS-lv-vraagScope">
+		<complexContent>
+			<restriction base="BG:NPS-lv-basis">
+				<sequence>
+					<choice minOccurs="0" maxOccurs="2">
+						<sequence minOccurs="0">
+							<element name="inp.bsn" type="BG:BSN-e" nillable="true" minOccurs="0"/>
+						</sequence>
+						<element name="anp.identificatie" type="BG:IdentificatieRPSBTL-e" nillable="true" minOccurs="0"/>
+					</choice>
+					<element name="geslachtsnaam" type="BG:Geslachtsnaam-e" nillable="true" minOccurs="0"/>
+					<element name="voorvoegselGeslachtsnaam" type="BG:VoorvoegselGeslachtsnaam-e" nillable="true" minOccurs="0"/>
+					<element name="voorletters" type="BG:Voorletters-e" nillable="true" minOccurs="0"/>
+					<element name="aanduidingNaamgebruik" type="BG:AanduidingNaamgebruik-e" nillable="true" minOccurs="0"/>
+					<element name="geslachtsnaamPartner" type="BG:Geslachtsnaam-e" nillable="true" minOccurs="0"/>
+					<element name="voorvoegselGeslachtsnaamPartner" type="BG:VoorvoegselGeslachtsnaam-e" nillable="true" minOccurs="0"/>
+					<element name="aanhefAanschrijving" type="BG:Aanhef-e" nillable="true" minOccurs="0"/>
+					<element name="geslachtsnaamAanschrijving" type="BG:Geslachtsnaam-e" nillable="true" minOccurs="0"/>
+					<element name="geslachtsaanduiding" type="BG:Geslachtsaanduiding-e" nillable="true" minOccurs="0"/>
+					<element name="geboortedatum" type="StUF:DatumMetIndicator" nillable="true" minOccurs="0"/>
+					<element name="inp.verblijftIn" type="BG:NPSTGO-lv-vraag" nillable="true" minOccurs="0"/>
+					<choice minOccurs="0" maxOccurs="2">
+						<element name="verblijfsadres" type="BG:VerblijfsadresGrp-woz-basis"/>
+						<element name="sub.verblijfBuitenland" type="BG:VerblijfBuitenlandGrp"/>
+					</choice>
+					<element name="sub.correspondentieAdres" type="BG:CorrespondentieAdrGrp-lv-vraagScope" minOccurs="0"/>
+					<element name="inp.indicatieGeheim" type="BG:IndicatieGeheim-e" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="NPS-lv-vraagSelectie">
+		<complexContent>
+			<restriction base="BG:NPS-lv-basis">
+				<sequence>
+					<choice minOccurs="0">
+						<sequence minOccurs="0">
+							<element name="inp.bsn" type="BG:BSN-e" nillable="true" minOccurs="0"/>
+						</sequence>
+						<element name="anp.identificatie" type="BG:IdentificatieRPSBTL-e" nillable="true" minOccurs="0"/>
+					</choice>
+					<element name="geslachtsnaam" type="BG:Geslachtsnaam-e" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="NPSTGO-lv-antwoord">
+		<complexContent>
+			<restriction base="BG:NPSTGO-lv-basis">
+				<sequence>
+					<element name="gerelateerde" type="BG:TGO-lv-antwoord" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="NPSTGO-lv-vraag">
+		<complexContent>
+			<restriction base="BG:NPSTGO-lv-basis">
+				<sequence>
+					<element name="gerelateerde" type="BG:TGO-lv-vraag" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="NUM-lv-antwoord">
+		<complexContent>
+			<restriction base="BG:NUM-woz-basis">
+				<sequence>
+					<element name="identificatie" type="BG:ObjectNummering-e" nillable="true" minOccurs="0"/>
+					<element name="wpl.woonplaatsNaam" type="BG:NaamgevingObject-e" nillable="true" minOccurs="0"/>
+					<element name="gor.openbareRuimteNaam" type="BG:NaamgevingObject-e" nillable="true" minOccurs="0"/>
+					<element name="huisnummer" type="BG:Huisnummering-e" nillable="true" minOccurs="0"/>
+					<element name="huisletter" type="BG:Huislettering-e" nillable="true" minOccurs="0"/>
+					<element name="huisnummertoevoeging" type="BG:Huisnummertoevoeging-e" nillable="true" minOccurs="0"/>
+					<element name="postcode" type="BG:Postcode-e" nillable="true" minOccurs="0"/>
+					<element name="gor.straatnaam" type="BG:Straatnaam-e" nillable="true" minOccurs="0"/>
+					<element name="ingangsdatumObject" type="StUF:DatumMetIndicator" nillable="true" minOccurs="0"/>
+					<element name="einddatumObject" type="StUF:DatumMetIndicator" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+				<attribute ref="StUF:sleutelVerzendend" use="prohibited"/>
+				<attribute ref="StUF:sleutelOntvangend" use="prohibited"/>
+				<attribute ref="StUF:sleutelGegevensbeheer" use="prohibited"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="NUM-lv-vraagScope">
+		<complexContent>
+			<restriction base="BG:NUM-woz-basis">
+				<sequence>
+					<element name="identificatie" type="BG:ObjectNummering-e" nillable="true" minOccurs="0"/>
+					<element name="wpl.woonplaatsNaam" type="BG:NaamgevingObject-e" nillable="true" minOccurs="0"/>
+					<element name="gor.openbareRuimteNaam" type="BG:NaamgevingObject-e" nillable="true" minOccurs="0"/>
+					<element name="huisnummer" type="BG:Huisnummering-e" nillable="true" minOccurs="0"/>
+					<element name="huisletter" type="BG:Huislettering-e" nillable="true" minOccurs="0"/>
+					<element name="huisnummertoevoeging" type="BG:Huisnummertoevoeging-e" nillable="true" minOccurs="0"/>
+					<element name="postcode" type="BG:Postcode-e" nillable="true" minOccurs="0"/>
+					<element name="gor.straatnaam" type="BG:Straatnaam-e" nillable="true" minOccurs="0"/>
+					<element name="ingangsdatumObject" type="StUF:DatumMetIndicator" nillable="true" minOccurs="0"/>
+					<element name="einddatumObject" type="StUF:DatumMetIndicator" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:sleutelVerzendend" use="prohibited"/>
+				<attribute ref="StUF:sleutelOntvangend" use="prohibited"/>
+				<attribute ref="StUF:sleutelGegevensbeheer" use="prohibited"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="NUM-lv-vraagSelectie">
+		<complexContent>
+			<restriction base="BG:NUM-woz-basis">
+				<sequence>
+					<element name="identificatie" type="BG:ObjectNummering-e" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:sleutelVerzendend" use="prohibited"/>
+				<attribute ref="StUF:sleutelOntvangend" use="prohibited"/>
+				<attribute ref="StUF:sleutelGegevensbeheer" use="prohibited"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="PND-lv-antwoord">
+		<complexContent>
+			<restriction base="BG:PND-woz-basis">
+				<sequence minOccurs="0">
+					<element name="identificatie" type="BG:ObjectNummering-e" nillable="true" minOccurs="0"/>
+					<element name="ingangsdatumObject" type="StUF:DatumMetIndicator" nillable="true" minOccurs="0"/>
+					<element name="einddatumObject" type="StUF:DatumMetIndicator" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:sleutelVerzendend" use="prohibited"/>
+				<attribute ref="StUF:sleutelOntvangend" use="prohibited"/>
+				<attribute ref="StUF:sleutelGegevensbeheer" use="prohibited"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="PND-lv-vraagScope">
+		<complexContent>
+			<restriction base="BG:PND-woz-basis">
+				<sequence minOccurs="0">
+					<element name="identificatie" type="BG:ObjectNummering-e" nillable="true" minOccurs="0"/>
+					<element name="ingangsdatumObject" type="StUF:DatumMetIndicator" nillable="true" minOccurs="0"/>
+					<element name="einddatumObject" type="StUF:DatumMetIndicator" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:sleutelVerzendend" use="prohibited"/>
+				<attribute ref="StUF:sleutelOntvangend" use="prohibited"/>
+				<attribute ref="StUF:sleutelGegevensbeheer" use="prohibited"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="PND-lv-vraagSelectie">
+		<complexContent>
+			<restriction base="BG:PND-woz-basis">
+				<sequence>
+					<element name="identificatie" type="BG:ObjectNummering-e" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:sleutelVerzendend" use="prohibited"/>
+				<attribute ref="StUF:sleutelOntvangend" use="prohibited"/>
+				<attribute ref="StUF:sleutelGegevensbeheer" use="prohibited"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="STA-lv-antwoord">
+		<complexContent>
+			<restriction base="BG:STA-lv-basis">
+				<sequence>
+					<element name="identificatie" type="BG:ObjectNummeringSTA-e" nillable="true" minOccurs="0"/>
+					<element name="adresAanduidingGrp" type="BG:AdrGrp-lv-AOT" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="STA-lv-vraag">
+		<complexContent>
+			<restriction base="BG:STA-lv-basis">
+				<sequence>
+					<element name="identificatie" type="BG:ObjectNummeringSTA-e" nillable="true" minOccurs="0"/>
+					<element name="adresAanduidingGrp" type="BG:AdrGrp-lv-AOT" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TGO-lv-antwoord">
+		<complexContent>
+			<restriction base="BG:TGO-lv-basis">
+				<sequence>
+					<element name="identificatie" type="BG:ObjectNummeringAOT-e" nillable="true" minOccurs="0"/>
+					<element name="adresAanduidingGrp" type="BG:AdrGrp-lv-AOT" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TGO-lv-vraag">
+		<complexContent>
+			<restriction base="BG:TGO-lv-basis">
+				<sequence>
+					<element name="identificatie" type="BG:ObjectNummeringAOT-e" nillable="true" minOccurs="0"/>
+					<element name="adresAanduidingGrp" type="BG:AdrGrp-lv-AOT" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="VBO-lv-antwoord">
+		<complexContent>
+			<restriction base="BG:VBO-lv-basis">
+				<sequence>
+					<element name="identificatie" type="BG:ObjectNummeringVBO-e" nillable="true" minOccurs="0"/>
+					<element name="adresAanduidingGrp" type="BG:AdrGrp-lv-AOT" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="VBO-lv-vraag">
+		<complexContent>
+			<restriction base="BG:VBO-lv-basis">
+				<sequence>
+					<element name="identificatie" type="BG:ObjectNummeringVBO-e" nillable="true" minOccurs="0"/>
+					<element name="adresAanduidingGrp" type="BG:AdrGrp-lv-AOT" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="VES-lv-antwoord">
+		<complexContent>
+			<restriction base="BG:VES-lv-basis">
+				<sequence>
+					<element name="vestigingsNummer" type="BG:VestigingsNummer-e" nillable="true" minOccurs="0"/>
+					<sequence minOccurs="0">
+						<element name="handelsnaam" type="BG:Handelsnaam-e" nillable="true" minOccurs="0"/>
+					</sequence>
+					<choice minOccurs="0">
+						<element name="verblijfsadres" type="BG:VerblijfsadresGrp-woz-basis" minOccurs="0"/>
+						<element name="sub.verblijfBuitenland" type="BG:VerblijfBuitenlandGrp" minOccurs="0"/>
+					</choice>
+					<element name="sub.correspondentieAdres" type="BG:CorrespondentieAdrGrp-lv-antwoord" minOccurs="0"/>
+					<element name="oefentActiviteitenUitVoor" type="BG:VESMAC-lv-antwoord" nillable="true" minOccurs="0"/>
+					<element name="heeftAlsHoofdLocatie" type="BG:VESTGOHFD-lv-antwoord" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="VES-lv-vraagScope">
+		<complexContent>
+			<restriction base="BG:VES-lv-basis">
+				<sequence>
+					<element name="vestigingsNummer" type="BG:VestigingsNummer-e" nillable="true" minOccurs="0"/>
+					<sequence minOccurs="0">
+						<element name="handelsnaam" type="BG:Handelsnaam-e" nillable="true" minOccurs="0"/>
+					</sequence>
+					<choice minOccurs="0" maxOccurs="2">
+						<element name="verblijfsadres" type="BG:VerblijfsadresGrp-woz-basis" minOccurs="0"/>
+						<element name="sub.verblijfBuitenland" type="BG:VerblijfBuitenlandGrp" minOccurs="0"/>
+					</choice>
+					<element name="sub.correspondentieAdres" type="BG:CorrespondentieAdrGrp-lv-vraagScope" minOccurs="0"/>
+					<element name="oefentActiviteitenUitVoor" type="BG:VESMAC-lv-vraag" nillable="true" minOccurs="0"/>
+					<element name="heeftAlsHoofdLocatie" type="BG:VESTGOHFD-lv-vraag" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="VES-lv-vraagSelectie">
+		<complexContent>
+			<restriction base="BG:VES-lv-basis">
+				<sequence>
+					<element name="vestigingsNummer" type="BG:VestigingsNummer-e" nillable="true" minOccurs="0"/>
+					<element name="oefentActiviteitenUitVoor" type="BG:VESMAC-lv-vraag" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="VESMAC-lv-antwoord">
+		<complexContent>
+			<restriction base="BG:VESMAC-basis">
+				<sequence>
+					<element name="gerelateerde" type="BG:MAC-lv-antwoord" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="VESMAC"/>
+				<attribute ref="StUF:sleutelVerzendend" use="prohibited"/>
+				<attribute ref="StUF:sleutelOntvangend" use="prohibited"/>
+				<attribute ref="StUF:sleutelGegevensbeheer" use="prohibited"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="VESMAC-lv-vraag">
+		<complexContent>
+			<restriction base="BG:VESMAC-basis">
+				<sequence>
+					<element name="gerelateerde" type="BG:MAC-lv-vraag" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="VESMAC"/>
+				<attribute ref="StUF:sleutelVerzendend" use="prohibited"/>
+				<attribute ref="StUF:sleutelOntvangend" use="prohibited"/>
+				<attribute ref="StUF:sleutelGegevensbeheer" use="prohibited"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="VESTGOHFD-lv-antwoord">
+		<complexContent>
+			<restriction base="BG:VESTGOHFD-lv-basis">
+				<sequence>
+					<element name="gerelateerde" type="BG:TGO-lv-antwoord" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="VESTGOHFD-lv-vraag">
+		<complexContent>
+			<restriction base="BG:VESTGOHFD-lv-basis">
+				<sequence>
+					<element name="gerelateerde" type="BG:TGO-lv-vraag" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+</schema>

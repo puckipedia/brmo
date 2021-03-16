@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:WOZ="http://www.waarderingskamer.nl/StUF/0312" xmlns:StUF="http://www.egem.nl/StUF/StUF0301" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wsi="http://ws-i.org/schemas/conformanceClaim/" name="StUF-WOZ0312" targetNamespace="http://www.waarderingskamer.nl/StUF/0312">
+	<import namespace="http://www.egem.nl/StUF/StUF0301" location="../../0301/stuf0301_types.wsdl"/>
+	<documentation>
+		Deze wsdl definieert de beantwoordVraag webservice ten behoeve van mijnOverheid
+		
+		Versie 031201:
+		- De import van de namespace "http://www.egem.nl/StUF/StUF0301" is verbeterd nav een bugfix in stuf0301
+	</documentation>
+	<types>
+		<xs:schema>
+			<xs:import namespace="http://www.waarderingskamer.nl/StUF/0312" schemaLocation="woz0312_msg_mijnOverheidStandAlone.xsd"/>
+		</xs:schema>
+	</types>
+	<message name="mijnOverheid-antwWRDPerBsn">
+		<part name="body" element="WOZ:mijnOverheid-antwWRDPerBsn"/>
+	</message>
+	<message name="mijnOverheid-vraagWRDPerBsn">
+		<part name="body" element="WOZ:mijnOverheid-vraagWRDPerBsn"/>
+	</message>
+	<portType name="BeantwoordVraag">
+		<operation name="mijnOverheid-vraagWRDPerBsn">
+			<input message="WOZ:mijnOverheid-vraagWRDPerBsn"/>
+			<output message="WOZ:mijnOverheid-antwWRDPerBsn"/>
+			<fault name="fout" message="StUF:Fo02"/>
+		</operation>
+	</portType>
+	<binding name="SOAPBeantwoordVraag" type="WOZ:BeantwoordVraag">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="mijnOverheid-vraagWRDPerBsn">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/mijnOverheid-vraagWRDPerBsn"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+	</binding>
+	<service name="BeantwoordVraag">
+		<documentation>
+	Hieronder wordt de concreet aan te roepen service voor het verwerken van synchrone WOZ0312-vraagberichten gedefinieerd. In het attribute location in het element soap:address dient nog de correcte URL te worden ingevuld.
+		</documentation>
+		<port name="BeantwoordVraag" binding="WOZ:SOAPBeantwoordVraag">
+			<soap:address location="http://example.com/BeantwoordVraag"/>
+			<documentation>
+				<wsi:Claim conformsTo="http://ws-i.org/profiles/basic/1.1"/>
+			</documentation>
+		</port>
+	</service>
+</definitions>

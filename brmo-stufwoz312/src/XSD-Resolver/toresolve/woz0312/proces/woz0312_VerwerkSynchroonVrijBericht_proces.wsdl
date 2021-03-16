@@ -1,0 +1,882 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:WOZ="http://www.waarderingskamer.nl/StUF/0312" xmlns:StUF="http://www.egem.nl/StUF/StUF0301" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wsi="http://ws-i.org/schemas/conformanceClaim/" name="StUF-WOZ0312" targetNamespace="http://www.waarderingskamer.nl/StUF/0312">
+	<documentation>
+		Deze wsdl definieert voor de VerwerkSynchroonVrijBericht webservice van een WOZ procesapplicatie de operations voor het verwerken van synchrone vrije berichten
+		
+		Versie 031201, Wijziging vergeleken met versie 031200:
+		- De elementen vraagVolgnummerMarktgegeven en nieuwVolgnummerMarktgegeven toegevoegd tezamen met de operation vraagVolgnummerMarktgegeven
+		</documentation>
+	<import namespace="http://www.egem.nl/StUF/StUF0301" location="../../0301/stuf0301_types.wsdl"/>
+	<types>
+		<xs:schema>
+			<xs:import namespace="http://www.waarderingskamer.nl/StUF/0312" schemaLocation="woz0312_msg_proces.xsd"/>
+		</xs:schema>
+	</types>
+	<message name="bakenAf">
+		<part name="body" element="WOZ:bakenAf"/>
+	</message>
+	<message name="beoordeelMassaleTaxatie">
+		<part name="body" element="WOZ:beoordeelMassaleTaxatie"/>
+	</message>
+	<message name="controleerVrijstelling">
+		<part name="body" element="WOZ:controleerVrijstelling"/>
+	</message>
+	<message name="herTaxeer">
+		<part name="body" element="WOZ:herTaxeer"/>
+	</message>
+	<message name="herTaxeerBezwaar">
+		<part name="body" element="WOZ:herTaxeerBezwaar"/>
+	</message>
+	<message name="muteerAfbakening">
+		<part name="body" element="WOZ:muteerAfbakening"/>
+	</message>
+	<message name="muteerBelanghebbende">
+		<part name="body" element="WOZ:muteerBelanghebbende"/>
+	</message>
+	<message name="muteerKenmerkenDeelobjecten">
+		<part name="body" element="WOZ:muteerKenmerkenDeelobjecten"/>
+	</message>
+	<message name="onderbouwTaxatie">
+		<part name="body" element="WOZ:onderbouwTaxatie"/>
+	</message>
+	<message name="plaatsOpBiljet">
+		<part name="body" element="WOZ:plaatsOpBiljet"/>
+	</message>
+	<message name="taxeer">
+		<part name="body" element="WOZ:taxeer"/>
+	</message>
+	<message name="analyseerMarktgegeven">
+		<part name="body" element="WOZ:analyseerMarktgegeven"/>
+	</message>
+	<message name="beoordeelAnalyse">
+		<part name="body" element="WOZ:beoordeelAnalyse"/>
+	</message>
+	<message name="beschikObject">
+		<part name="body" element="WOZ:beschikObject"/>
+	</message>
+	<message name="herzieAnalyse">
+		<part name="body" element="WOZ:herzieAnalyse"/>
+	</message>
+	<message name="muteerPND">
+		<part name="body" element="WOZ:muteerPND"/>
+	</message>
+	<message name="muteerStatusBeschikking">
+		<part name="body" element="WOZ:muteerStatusBeschikking"/>
+	</message>
+	<message name="muteerTGO">
+		<part name="body" element="WOZ:muteerTGO"/>
+	</message>
+	<message name="muteerVrijstelling">
+		<part name="body" element="WOZ:muteerVrijstelling"/>
+	</message>
+	<message name="onderzoekDominoEffecten">
+		<part name="body" element="WOZ:onderzoekDominoEffecten"/>
+	</message>
+	<message name="plaatsBeschikkingenOpBiljet">
+		<part name="body" element="WOZ:plaatsBeschikkingenOpBiljet"/>
+	</message>
+	<message name="taxeerMassaal">
+		<part name="body" element="WOZ:taxeerMassaal"/>
+	</message>
+	<message name="wijzigBeschikking">
+		<part name="body" element="WOZ:wijzigBeschikking"/>
+	</message>
+	<message name="controleerBskActueel">
+		<part name="body" element="WOZ:controleerBskActueel"/>
+	</message>
+	<message name="bskGecontroleerdActueel">
+		<part name="body" element="WOZ:bskGecontroleerdActueel"/>
+	</message>
+	<message name="controleerBskHistorisch">
+		<part name="body" element="WOZ:controleerBskHistorisch"/>
+	</message>
+	<message name="bskGecontroleerdHistorisch">
+		<part name="body" element="WOZ:bskGecontroleerdHistorisch"/>
+	</message>
+	<message name="controleerWozActueel">
+		<part name="body" element="WOZ:controleerWozActueel"/>
+	</message>
+	<message name="wozGecontroleerdActueel">
+		<part name="body" element="WOZ:wozGecontroleerdActueel"/>
+	</message>
+	<message name="controleerWozHistorisch">
+		<part name="body" element="WOZ:controleerWozHistorisch"/>
+	</message>
+	<message name="wozGecontroleerdHistorisch">
+		<part name="body" element="WOZ:wozGecontroleerdHistorisch"/>
+	</message>
+	<message name="vraagVolgnummerMarktgegeven">
+		<part name="body" element="WOZ:vraagVolgnummerMarktgegeven"/>
+	</message>
+	<message name="nieuwVolgnummerMarktgegeven">
+		<part name="body" element="WOZ:nieuwVolgnummerMarktgegeven"/>
+	</message>
+	<message name="vraagWozObjectnummer">
+		<part name="body" element="WOZ:vraagWozObjectnummer"/>
+	</message>
+	<message name="nieuwWozObjectnummer">
+		<part name="body" element="WOZ:nieuwWozObjectnummer"/>
+	</message>
+	<message name="leverLVbsk">
+		<part name="body" element="WOZ:leverLVbsk"/>
+	</message>
+	<message name="leverLVkoz">
+		<part name="body" element="WOZ:leverLVkoz"/>
+	</message>
+	<message name="leverLVlig">
+		<part name="body" element="WOZ:leverLVlig"/>
+	</message>
+	<message name="leverLVnnp">
+		<part name="body" element="WOZ:leverLVnnp"/>
+	</message>
+	<message name="leverLVnps">
+		<part name="body" element="WOZ:leverLVnps"/>
+	</message>
+	<message name="leverLVnum">
+		<part name="body" element="WOZ:leverLVnum"/>
+	</message>
+	<message name="leverLVpnd">
+		<part name="body" element="WOZ:leverLVpnd"/>
+	</message>
+	<message name="leverLVsta">
+		<part name="body" element="WOZ:leverLVsta"/>
+	</message>
+	<message name="leverLVswo">
+		<part name="body" element="WOZ:leverLVswo"/>
+	</message>
+	<message name="leverLVvbo">
+		<part name="body" element="WOZ:leverLVvbo"/>
+	</message>
+	<message name="leverLVves">
+		<part name="body" element="WOZ:leverLVves"/>
+	</message>
+	<message name="leverLVwoz">
+		<part name="body" element="WOZ:leverLVwoz"/>
+	</message>
+	<portType name="VerwerkSynchroonVrijBericht">
+		<documentation>
+		Dit portType ondersteunt als operaties de synchrone vrije berichten gedefinieerd voor de proces berichtencatalogus
+	</documentation>
+		<operation name="analyseerMarktgegeven">
+			<input message="WOZ:analyseerMarktgegeven"/>
+			<output message="StUF:Bv02"/>
+			<fault name="fout" message="StUF:Fo02"/>
+		</operation>
+		<operation name="bakenAf">
+			<input message="WOZ:bakenAf"/>
+			<output message="StUF:Bv02"/>
+			<fault name="fout" message="StUF:Fo02"/>
+		</operation>
+		<operation name="beoordeelAnalyse">
+			<input message="WOZ:beoordeelAnalyse"/>
+			<output message="StUF:Bv02"/>
+			<fault name="fout" message="StUF:Fo02"/>
+		</operation>
+		<operation name="beoordeelMassaleTaxatie">
+			<input message="WOZ:beoordeelMassaleTaxatie"/>
+			<output message="StUF:Bv02"/>
+			<fault name="fout" message="StUF:Fo02"/>
+		</operation>
+		<operation name="beschikObject">
+			<input message="WOZ:beschikObject"/>
+			<output message="StUF:Bv02"/>
+			<fault name="fout" message="StUF:Fo02"/>
+		</operation>
+		<operation name="controleerBskActueel">
+			<input message="WOZ:controleerBskActueel"/>
+			<output message="WOZ:bskGecontroleerdActueel"/>
+			<fault name="fout" message="StUF:Fo02"/>
+		</operation>
+		<operation name="controleerBskHistorisch">
+			<input message="WOZ:controleerBskHistorisch"/>
+			<output message="WOZ:bskGecontroleerdHistorisch"/>
+			<fault name="fout" message="StUF:Fo02"/>
+		</operation>
+		<operation name="controleerVrijstelling">
+			<input message="WOZ:controleerVrijstelling"/>
+			<output message="StUF:Bv02"/>
+			<fault name="fout" message="StUF:Fo02"/>
+		</operation>
+		<operation name="controleerWozActueel">
+			<input message="WOZ:controleerWozActueel"/>
+			<output message="WOZ:wozGecontroleerdActueel"/>
+			<fault name="fout" message="StUF:Fo02"/>
+		</operation>
+		<operation name="controleerWozHistorisch">
+			<input message="WOZ:controleerWozHistorisch"/>
+			<output message="WOZ:wozGecontroleerdHistorisch"/>
+			<fault name="fout" message="StUF:Fo02"/>
+		</operation>
+		<operation name="herTaxeer">
+			<input message="WOZ:herTaxeer"/>
+			<output message="StUF:Bv02"/>
+			<fault name="fout" message="StUF:Fo02"/>
+		</operation>
+		<operation name="herTaxeerBezwaar">
+			<input message="WOZ:herTaxeerBezwaar"/>
+			<output message="StUF:Bv02"/>
+			<fault name="fout" message="StUF:Fo02"/>
+		</operation>
+		<operation name="herzieAnalyse">
+			<input message="WOZ:herzieAnalyse"/>
+			<output message="StUF:Bv02"/>
+			<fault name="fout" message="StUF:Fo02"/>
+		</operation>
+		<operation name="leverLVbsk">
+			<input message="WOZ:leverLVbsk"/>
+			<output message="StUF:Bv02"/>
+			<fault name="fout" message="StUF:Fo02"/>
+		</operation>
+		<operation name="leverLVkoz">
+			<input message="WOZ:leverLVkoz"/>
+			<output message="StUF:Bv02"/>
+			<fault name="fout" message="StUF:Fo02"/>
+		</operation>
+		<operation name="leverLVlig">
+			<input message="WOZ:leverLVlig"/>
+			<output message="StUF:Bv02"/>
+			<fault name="fout" message="StUF:Fo02"/>
+		</operation>
+		<operation name="leverLVnnp">
+			<input message="WOZ:leverLVnnp"/>
+			<output message="StUF:Bv02"/>
+			<fault name="fout" message="StUF:Fo02"/>
+		</operation>
+		<operation name="leverLVnps">
+			<input message="WOZ:leverLVnps"/>
+			<output message="StUF:Bv02"/>
+			<fault name="fout" message="StUF:Fo02"/>
+		</operation>
+		<operation name="leverLVnum">
+			<input message="WOZ:leverLVnum"/>
+			<output message="StUF:Bv02"/>
+			<fault name="fout" message="StUF:Fo02"/>
+		</operation>
+		<operation name="leverLVpnd">
+			<input message="WOZ:leverLVpnd"/>
+			<output message="StUF:Bv02"/>
+			<fault name="fout" message="StUF:Fo02"/>
+		</operation>
+		<operation name="leverLVsta">
+			<input message="WOZ:leverLVsta"/>
+			<output message="StUF:Bv02"/>
+			<fault name="fout" message="StUF:Fo02"/>
+		</operation>
+		<operation name="leverLVswo">
+			<input message="WOZ:leverLVswo"/>
+			<output message="StUF:Bv02"/>
+			<fault name="fout" message="StUF:Fo02"/>
+		</operation>
+		<operation name="leverLVvbo">
+			<input message="WOZ:leverLVvbo"/>
+			<output message="StUF:Bv02"/>
+			<fault name="fout" message="StUF:Fo02"/>
+		</operation>
+		<operation name="leverLVves">
+			<input message="WOZ:leverLVves"/>
+			<output message="StUF:Bv02"/>
+			<fault name="fout" message="StUF:Fo02"/>
+		</operation>
+		<operation name="leverLVwoz">
+			<input message="WOZ:leverLVwoz"/>
+			<output message="StUF:Bv02"/>
+			<fault name="fout" message="StUF:Fo02"/>
+		</operation>
+		<operation name="muteerAfbakening">
+			<input message="WOZ:muteerAfbakening"/>
+			<output message="StUF:Bv02"/>
+			<fault name="fout" message="StUF:Fo02"/>
+		</operation>
+		<operation name="muteerBelanghebbende">
+			<input message="WOZ:muteerBelanghebbende"/>
+			<output message="StUF:Bv02"/>
+			<fault name="fout" message="StUF:Fo02"/>
+		</operation>
+		<operation name="muteerKenmerkenDeelobjecten">
+			<input message="WOZ:muteerKenmerkenDeelobjecten"/>
+			<output message="StUF:Bv02"/>
+			<fault name="fout" message="StUF:Fo02"/>
+		</operation>
+		<operation name="muteerPND">
+			<input message="WOZ:muteerPND"/>
+			<output message="StUF:Bv02"/>
+			<fault name="fout" message="StUF:Fo02"/>
+		</operation>
+		<operation name="muteerStatusBeschikking">
+			<input message="WOZ:muteerStatusBeschikking"/>
+			<output message="StUF:Bv02"/>
+			<fault name="fout" message="StUF:Fo02"/>
+		</operation>
+		<operation name="muteerTGO">
+			<input message="WOZ:muteerTGO"/>
+			<output message="StUF:Bv02"/>
+			<fault name="fout" message="StUF:Fo02"/>
+		</operation>
+		<operation name="muteerVrijstelling">
+			<input message="WOZ:muteerVrijstelling"/>
+			<output message="StUF:Bv02"/>
+			<fault name="fout" message="StUF:Fo02"/>
+		</operation>
+		<operation name="onderbouwTaxatie">
+			<input message="WOZ:onderbouwTaxatie"/>
+			<output message="StUF:Bv02"/>
+			<fault name="fout" message="StUF:Fo02"/>
+		</operation>
+		<operation name="onderzoekDominoEffecten">
+			<input message="WOZ:onderzoekDominoEffecten"/>
+			<output message="StUF:Bv02"/>
+			<fault name="fout" message="StUF:Fo02"/>
+		</operation>
+		<operation name="plaatsBeschikkingenOpBiljet">
+			<input message="WOZ:plaatsBeschikkingenOpBiljet"/>
+			<output message="StUF:Bv02"/>
+			<fault name="fout" message="StUF:Fo02"/>
+		</operation>
+		<operation name="plaatsOpBiljet">
+			<input message="WOZ:plaatsOpBiljet"/>
+			<output message="StUF:Bv02"/>
+			<fault name="fout" message="StUF:Fo02"/>
+		</operation>
+		<operation name="taxeer">
+			<input message="WOZ:taxeer"/>
+			<output message="StUF:Bv02"/>
+			<fault name="fout" message="StUF:Fo02"/>
+		</operation>
+		<operation name="taxeerMassaal">
+			<input message="WOZ:taxeerMassaal"/>
+			<output message="StUF:Bv02"/>
+			<fault name="fout" message="StUF:Fo02"/>
+		</operation>
+		<operation name="vraagVolgnummerMarktgegeven">
+			<input message="WOZ:vraagVolgnummerMarktgegeven"/>
+			<output message="WOZ:nieuwVolgnummerMarktgegeven"/>
+			<fault name="fout" message="StUF:Fo02"/>
+		</operation>
+		<operation name="vraagWozObjectnummer">
+			<input message="WOZ:vraagWozObjectnummer"/>
+			<output message="WOZ:nieuwWozObjectnummer"/>
+			<fault name="fout" message="StUF:Fo02"/>
+		</operation>
+		<operation name="wijzigBeschikking">
+			<input message="WOZ:wijzigBeschikking"/>
+			<output message="StUF:Bv02"/>
+			<fault name="fout" message="StUF:Fo02"/>
+		</operation>
+	</portType>
+	<binding name="SOAPVerwerkSynchroonVrijBericht" type="WOZ:VerwerkSynchroonVrijBericht">
+		<documentation>
+			Omdat de uit te wisselen berichten volledig gedefinieerd zijn in het sectormodel cq de StUF-standaard, kunnen we ze zonder verdere encoding (“literal”) opnemen in de body.
+Niet ondersteunde berichten kunnen uit de binding en portType worden verwijderd.
+		</documentation>
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="analyseerMarktgegeven">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/analyseerMarktgegeven"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="bakenAf">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/bakenAf"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="beoordeelAnalyse">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/beoordeelAnalyse"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="beoordeelMassaleTaxatie">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/beoordeelMassaleTaxatie"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="beschikObject">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/beschikObject"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="controleerBskActueel">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/controleerBskActueel"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="controleerBskHistorisch">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/controleerBskHistorisch"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="controleerVrijstelling">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/controleerVrijstelling"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="controleerWozActueel">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/controleerWozActueel"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="controleerWozHistorisch">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/controleerWozHistorisch"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="herTaxeer">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/herTaxeer"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="herTaxeerBezwaar">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/herTaxeerBezwaar"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="herzieAnalyse">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/herzieAnalyse"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="leverLVbsk">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/leverLVbsk"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="leverLVkoz">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/leverLVkoz"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="leverLVlig">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/leverLVlig"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="leverLVnnp">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/leverLVnnp"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="leverLVnps">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/leverLVnps"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="leverLVnum">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/leverLVnum"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="leverLVpnd">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/leverLVpnd"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="leverLVsta">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/leverLVsta"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="leverLVswo">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/leverLVswo"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="leverLVvbo">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/leverLVvbo"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="leverLVves">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/leverLVves"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="leverLVwoz">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/leverLVwoz"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="muteerAfbakening">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/muteerAfbakening"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="muteerBelanghebbende">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/muteerBelanghebbende"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="muteerKenmerkenDeelobjecten">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/muteerKenmerkenDeelobjecten"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="muteerPND">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/muteerPND"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="muteerStatusBeschikking">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/muteerStatusBeschikking"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="muteerTGO">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/muteerTGO"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="muteerVrijstelling">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/muteerVrijstelling"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="onderbouwTaxatie">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/onderbouwTaxatie"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="onderzoekDominoEffecten">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/onderzoekDominoEffecten"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="plaatsBeschikkingenOpBiljet">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/plaatsBeschikkingenOpBiljet"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="plaatsOpBiljet">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/plaatsOpBiljet"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="taxeer">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/taxeer"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="taxeerMassaal">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/taxeerMassaal"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="vraagVolgnummerMarktgegeven">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/vraagVolgnummerMarktgegeven"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="vraagWozObjectnummer">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/vraagWozObjectnummer"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="wijzigBeschikking">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/wijzigBeschikking"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+	</binding>
+	<service name="VerwerkSynchroonVrijBericht">
+		<documentation>
+	Hieronder wordt de concreet aan te roepen service voor het ontvangen van asynchrone berichten uit de proces berichtencatalogus gedefinieerd.
+	In het attribute location binnen het element soap:address dient nog wel de correcte URL te worden ingevuld.
+		</documentation>
+		<port name="VerwerkSynchroonVrijBericht" binding="WOZ:SOAPVerwerkSynchroonVrijBericht">
+			<documentation>
+				<wsi:Claim conformsTo="http://ws-i.org/profiles/basic/1.1"/>
+			</documentation>
+			<soap:address location="http://example.com/OntvangAsynchroon"/>
+		</port>
+	</service>
+	<!-- De synchrone vrije berichten die een pendant zijn van een asynchroon vrij bericht met hun functionele respons.
+NB: de functionele respons wordt als -->
+	<!-- De synchrone vrije berichten die de pendant zijn van een asynchroon vrij bericht met een Bv02-bericht als respons -->
+	<!-- De synchrone vrije berichten die alleen als synchroon vrij bericht voorkomen met hun functionele respons -->
+	<!-- De alleen als synchroon vrij berricht voorkomende berichten met een Bv02-bericht als respons -->
+</definitions>

@@ -1,0 +1,1489 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2013 rel. 2 sp2 (x64) (http://www.altova.com) by Maarten van den Broek (messageDesign B.V.) -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:StUF="http://www.egem.nl/StUF/StUF0301" targetNamespace="http://www.egem.nl/StUF/StUF0301" elementFormDefault="qualified" attributeFormDefault="unqualified" version="031208">
+	<include schemaLocation="../mutatie/woz0312_msg_stuf_mutatie.xsd"/>
+	<annotation>
+		<documentation>
+			Dit schema bevat de restricties van StUF-types tbv de vraag- en antwoordberichten voor de LV WOZ.
+			
+			Wijzigingen vergeleken met versie 031207:
+			- Voor SWO is sortering 8 op verantwoordelijkeGemeente/gemeenteCode toegevoegd
+			- Voor WRD is in sortering 5 toestandspeildatum vervangen door ingangsdatumWaarde
+			- Voor WRD is aan sortering 6 waardepeildatum (DESC), ingangsdatumWaarde (DESC) toegevoegd
+		</documentation>
+	</annotation>
+	<!--Restricties op ParametersVraag voor fundamentele entiteittypen-->
+	<complexType name="NNP-woz-lv-parametersVraagSynchroon">
+		<complexContent>
+			<restriction base="StUF:ParametersVraag">
+				<sequence>
+					<element name="sortering" type="StUF:NNP-woz-lv-sortering"/>
+					<element name="indicatorVervolgvraag" type="boolean" default="false"/>
+					<element name="maximumAantal" type="StUF:MaximumAantal" default="15" minOccurs="0"/>
+					<element name="indicatorAfnemerIndicatie" type="boolean" default="false" minOccurs="0"/>
+					<element name="indicatorAantal" type="boolean" default="false" minOccurs="0"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="NNP-woz-lv-parametersVraagAsynchroon">
+		<complexContent>
+			<restriction base="StUF:ParametersVraag">
+				<sequence>
+					<element name="sortering" type="StUF:NNP-woz-lv-sortering"/>
+					<element name="indicatorVervolgvraag" type="boolean" default="false"/>
+					<element name="maximumAantal" type="StUF:MaximumAantal" default="15" minOccurs="0"/>
+					<element name="indicatorAfnemerIndicatie" type="boolean" default="false" minOccurs="0"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="NPS-woz-lv-parametersVraagSynchroon">
+		<complexContent>
+			<restriction base="StUF:ParametersVraag">
+				<sequence>
+					<element name="sortering" type="StUF:NPS-woz-lv-sortering"/>
+					<element name="indicatorVervolgvraag" type="boolean" default="false"/>
+					<element name="maximumAantal" type="StUF:MaximumAantal" default="15" minOccurs="0"/>
+					<element name="indicatorAfnemerIndicatie" type="boolean" default="false" minOccurs="0"/>
+					<element name="indicatorAantal" type="boolean" default="false" minOccurs="0"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="NPS-woz-lv-parametersVraagAsynchroon">
+		<complexContent>
+			<restriction base="StUF:ParametersVraag">
+				<sequence>
+					<element name="sortering" type="StUF:NPS-woz-lv-sortering"/>
+					<element name="indicatorVervolgvraag" type="boolean" default="false"/>
+					<element name="maximumAantal" type="StUF:MaximumAantal" default="15" minOccurs="0"/>
+					<element name="indicatorAfnemerIndicatie" type="boolean" default="false" minOccurs="0"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="SWO-parametersVraagSynchroon">
+		<complexContent>
+			<restriction base="StUF:ParametersVraag">
+				<sequence>
+					<element name="sortering" type="StUF:SWO-lv-sortering"/>
+					<element name="indicatorVervolgvraag" type="boolean" default="false"/>
+					<element name="maximumAantal" type="StUF:MaximumAantal" default="15" minOccurs="0"/>
+					<element name="indicatorAfnemerIndicatie" type="boolean" default="false" minOccurs="0"/>
+					<element name="indicatorAantal" type="boolean" default="false" minOccurs="0"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="SWO-parametersVraagSynchroonMaterieel">
+		<complexContent>
+			<restriction base="StUF:ParametersVraag">
+				<sequence>
+					<element name="sortering" type="StUF:SWO-lv-sortering"/>
+					<element name="indicatorVervolgvraag" type="boolean" default="false"/>
+					<element name="maximumAantal" type="StUF:MaximumAantal" default="15" minOccurs="0"/>
+					<element name="peiltijdstipMaterieel" type="StUF:Tijdstip" minOccurs="0"/>
+					<element name="indicatorAfnemerIndicatie" type="boolean" default="false" minOccurs="0"/>
+					<element name="indicatorAantal" type="boolean" default="false" minOccurs="0"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="SWO-parametersVraagSynchroonFormeel">
+		<complexContent>
+			<restriction base="StUF:ParametersVraag">
+				<sequence>
+					<element name="sortering" type="StUF:SWO-lv-sortering"/>
+					<element name="indicatorVervolgvraag" type="boolean" default="false"/>
+					<element name="maximumAantal" type="StUF:MaximumAantal" default="15" minOccurs="0"/>
+					<element name="peiltijdstipMaterieel" type="StUF:Tijdstip" minOccurs="0"/>
+					<element name="peiltijdstipFormeel" type="StUF:Tijdstip" minOccurs="0"/>
+					<element name="indicatorAfnemerIndicatie" type="boolean" default="false" minOccurs="0"/>
+					<element name="indicatorAantal" type="boolean" default="false" minOccurs="0"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="SWO-parametersVraagAsynchroon">
+		<complexContent>
+			<restriction base="StUF:ParametersVraag">
+				<sequence>
+					<element name="sortering" type="StUF:SWO-lv-sortering"/>
+					<element name="indicatorVervolgvraag" type="boolean" default="false"/>
+					<element name="maximumAantal" type="StUF:MaximumAantal" default="15" minOccurs="0"/>
+					<element name="indicatorAfnemerIndicatie" type="boolean" default="false" minOccurs="0"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="SWO-parametersVraagAsynchroonMaterieel">
+		<complexContent>
+			<restriction base="StUF:ParametersVraag">
+				<sequence>
+					<element name="sortering" type="StUF:SWO-lv-sortering"/>
+					<element name="indicatorVervolgvraag" type="boolean" default="false"/>
+					<element name="maximumAantal" type="StUF:MaximumAantal" default="15" minOccurs="0"/>
+					<element name="peiltijdstipMaterieel" type="StUF:Tijdstip" minOccurs="0"/>
+					<element name="indicatorAfnemerIndicatie" type="boolean" default="false" minOccurs="0"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="SWO-parametersVraagAsynchroonFormeel">
+		<complexContent>
+			<restriction base="StUF:ParametersVraag">
+				<sequence>
+					<element name="sortering" type="StUF:SWO-lv-sortering"/>
+					<element name="indicatorVervolgvraag" type="boolean" default="false"/>
+					<element name="maximumAantal" type="StUF:MaximumAantal" default="15" minOccurs="0"/>
+					<element name="peiltijdstipMaterieel" type="StUF:Tijdstip" minOccurs="0"/>
+					<element name="peiltijdstipFormeel" type="StUF:Tijdstip" minOccurs="0"/>
+					<element name="indicatorAfnemerIndicatie" type="boolean" default="false" minOccurs="0"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="VES-woz-lv-parametersVraagSynchroon">
+		<complexContent>
+			<restriction base="StUF:ParametersVraag">
+				<sequence>
+					<element name="sortering" type="StUF:VES-woz-lv-sortering"/>
+					<element name="indicatorVervolgvraag" type="boolean" default="false"/>
+					<element name="maximumAantal" type="StUF:MaximumAantal" default="15" minOccurs="0"/>
+					<element name="indicatorAfnemerIndicatie" type="boolean" default="false" minOccurs="0"/>
+					<element name="indicatorAantal" type="boolean" default="false" minOccurs="0"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="VES-woz-lv-parametersVraagAsynchroon">
+		<complexContent>
+			<restriction base="StUF:ParametersVraag">
+				<sequence>
+					<element name="sortering" type="StUF:VES-woz-lv-sortering"/>
+					<element name="indicatorVervolgvraag" type="boolean" default="false"/>
+					<element name="maximumAantal" type="StUF:MaximumAantal" default="15" minOccurs="0"/>
+					<element name="indicatorAfnemerIndicatie" type="boolean" default="false" minOccurs="0"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZ-lv-parametersVraagSynchroon">
+		<complexContent>
+			<restriction base="StUF:ParametersVraag">
+				<sequence>
+					<element name="sortering" type="StUF:WOZ-lv-sortering"/>
+					<element name="indicatorVervolgvraag" type="boolean" default="false"/>
+					<element name="maximumAantal" type="StUF:MaximumAantal" default="15" minOccurs="0"/>
+					<element name="indicatorAfnemerIndicatie" type="boolean" default="false" minOccurs="0"/>
+					<element name="indicatorAantal" type="boolean" default="false" minOccurs="0"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZ-lv-parametersVraagSynchroonMaterieel">
+		<complexContent>
+			<restriction base="StUF:ParametersVraag">
+				<sequence>
+					<element name="sortering" type="StUF:WOZ-lv-sortering"/>
+					<element name="indicatorVervolgvraag" type="boolean" default="false"/>
+					<element name="maximumAantal" type="StUF:MaximumAantal" default="15" minOccurs="0"/>
+					<element name="peiltijdstipMaterieel" type="StUF:Tijdstip" minOccurs="0"/>
+					<element name="indicatorAfnemerIndicatie" type="boolean" default="false" minOccurs="0"/>
+					<element name="indicatorAantal" type="boolean" default="false" minOccurs="0"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZ-lv-parametersVraagSynchroonFormeel">
+		<complexContent>
+			<restriction base="StUF:ParametersVraag">
+				<sequence>
+					<element name="sortering" type="StUF:WOZ-lv-sortering"/>
+					<element name="indicatorVervolgvraag" type="boolean" default="false"/>
+					<element name="maximumAantal" type="StUF:MaximumAantal" default="15" minOccurs="0"/>
+					<element name="peiltijdstipMaterieel" type="StUF:Tijdstip" minOccurs="0"/>
+					<element name="peiltijdstipFormeel" type="StUF:Tijdstip" minOccurs="0"/>
+					<element name="indicatorAfnemerIndicatie" type="boolean" default="false" minOccurs="0"/>
+					<element name="indicatorAantal" type="boolean" default="false" minOccurs="0"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZ-lv-parametersVraagAsynchroon">
+		<complexContent>
+			<restriction base="StUF:ParametersVraag">
+				<sequence>
+					<element name="sortering" type="StUF:WOZ-lv-sortering"/>
+					<element name="indicatorVervolgvraag" type="boolean" default="false"/>
+					<element name="maximumAantal" type="StUF:MaximumAantal" default="15" minOccurs="0"/>
+					<element name="indicatorAfnemerIndicatie" type="boolean" default="false" minOccurs="0"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZ-lv-parametersVraagAsynchroonMaterieel">
+		<complexContent>
+			<restriction base="StUF:ParametersVraag">
+				<sequence>
+					<element name="sortering" type="StUF:WOZ-lv-sortering"/>
+					<element name="indicatorVervolgvraag" type="boolean" default="false"/>
+					<element name="maximumAantal" type="StUF:MaximumAantal" default="15" minOccurs="0"/>
+					<element name="peiltijdstipMaterieel" type="StUF:Tijdstip" minOccurs="0"/>
+					<element name="indicatorAfnemerIndicatie" type="boolean" default="false" minOccurs="0"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZ-lv-parametersVraagAsynchroonFormeel">
+		<complexContent>
+			<restriction base="StUF:ParametersVraag">
+				<sequence>
+					<element name="sortering" type="StUF:WOZ-lv-sortering"/>
+					<element name="indicatorVervolgvraag" type="boolean" default="false"/>
+					<element name="maximumAantal" type="StUF:MaximumAantal" default="15" minOccurs="0"/>
+					<element name="peiltijdstipMaterieel" type="StUF:Tijdstip" minOccurs="0"/>
+					<element name="peiltijdstipFormeel" type="StUF:Tijdstip" minOccurs="0"/>
+					<element name="indicatorAfnemerIndicatie" type="boolean" default="false" minOccurs="0"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WRD-lv-parametersVraagSynchroon">
+		<complexContent>
+			<restriction base="StUF:ParametersVraag">
+				<sequence>
+					<element name="sortering" type="StUF:WRD-lv-sortering"/>
+					<element name="indicatorVervolgvraag" type="boolean" default="false"/>
+					<element name="maximumAantal" type="StUF:MaximumAantal" default="15" minOccurs="0"/>
+					<element name="indicatorAfnemerIndicatie" type="boolean" default="false" minOccurs="0"/>
+					<element name="indicatorAantal" type="boolean" default="false" minOccurs="0"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WRD-lv-parametersVraagSynchroonMaterieel">
+		<complexContent>
+			<restriction base="StUF:ParametersVraag">
+				<sequence>
+					<element name="sortering" type="StUF:WRD-lv-sortering"/>
+					<element name="indicatorVervolgvraag" type="boolean" default="false"/>
+					<element name="maximumAantal" type="StUF:MaximumAantal" default="15" minOccurs="0"/>
+					<element name="peiltijdstipMaterieel" type="StUF:Tijdstip" minOccurs="0"/>
+					<element name="indicatorAfnemerIndicatie" type="boolean" default="false" minOccurs="0"/>
+					<element name="indicatorAantal" type="boolean" default="false" minOccurs="0"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WRD-lv-parametersVraagSynchroonFormeel">
+		<complexContent>
+			<restriction base="StUF:ParametersVraag">
+				<sequence>
+					<element name="sortering" type="StUF:WRD-lv-sortering"/>
+					<element name="indicatorVervolgvraag" type="boolean" default="false"/>
+					<element name="maximumAantal" type="StUF:MaximumAantal" default="15" minOccurs="0"/>
+					<element name="peiltijdstipMaterieel" type="StUF:Tijdstip" minOccurs="0"/>
+					<element name="peiltijdstipFormeel" type="StUF:Tijdstip" minOccurs="0"/>
+					<element name="indicatorAfnemerIndicatie" type="boolean" default="false" minOccurs="0"/>
+					<element name="indicatorAantal" type="boolean" default="false" minOccurs="0"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WRD-lv-parametersVraagAsynchroon">
+		<complexContent>
+			<restriction base="StUF:ParametersVraag">
+				<sequence>
+					<element name="sortering" type="StUF:WRD-lv-sortering"/>
+					<element name="indicatorVervolgvraag" type="boolean" default="false"/>
+					<element name="maximumAantal" type="StUF:MaximumAantal" default="15" minOccurs="0"/>
+					<element name="indicatorAfnemerIndicatie" type="boolean" default="false" minOccurs="0"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WRD-lv-parametersVraagAsynchroonMaterieel">
+		<complexContent>
+			<restriction base="StUF:ParametersVraag">
+				<sequence>
+					<element name="sortering" type="StUF:WRD-lv-sortering"/>
+					<element name="indicatorVervolgvraag" type="boolean" default="false"/>
+					<element name="maximumAantal" type="StUF:MaximumAantal" default="15" minOccurs="0"/>
+					<element name="peiltijdstipMaterieel" type="StUF:Tijdstip" minOccurs="0"/>
+					<element name="indicatorAfnemerIndicatie" type="boolean" default="false" minOccurs="0"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WRD-lv-parametersVraagAsynchroonFormeel">
+		<complexContent>
+			<restriction base="StUF:ParametersVraag">
+				<sequence>
+					<element name="sortering" type="StUF:WRD-lv-sortering"/>
+					<element name="indicatorVervolgvraag" type="boolean" default="false"/>
+					<element name="maximumAantal" type="StUF:MaximumAantal" default="15" minOccurs="0"/>
+					<element name="peiltijdstipMaterieel" type="StUF:Tijdstip" minOccurs="0"/>
+					<element name="peiltijdstipFormeel" type="StUF:Tijdstip" minOccurs="0"/>
+					<element name="indicatorAfnemerIndicatie" type="boolean" default="false" minOccurs="0"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<!--Definitie van sortering-->
+	<simpleType name="NNP-woz-lv-sortering">
+		<annotation>
+			<documentation>
+				Sortering 1: isEen/gerelateerde/inn.nnpId, aanvullingSoFiNummer, verantwoordelijkeGemeente
+				Sortering 2: rps.isEigenaarVan/gerelateerde/kvkNummer, verantwoordelijkeGemeente
+				Sortering 17:  isEen/gerelateerde/ann.identificatier, verantwoordelijkeGemeente
+			</documentation>
+		</annotation>
+		<restriction base="StUF:Sortering">
+			<enumeration value="1"/>
+			<enumeration value="2"/>
+			<enumeration value="17"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="NPS-woz-lv-sortering">
+		<annotation>
+			<documentation>
+				Sortering 1: isEen/gerelateerde/inp.bsn, verantwoordelijkeGemeente
+				Sortering 2: soFiNummer, aanvullingSoFiNummer, verantwoordelijkeGemeente
+				Sortering 14: isEen/gerelateerde/anp.identificatie, verantwoordelijkeGemeente
+			</documentation>
+		</annotation>
+		<restriction base="StUF:Sortering">
+			<enumeration value="1"/>
+			<enumeration value="2"/>
+			<enumeration value="14"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="SWO-lv-sortering">
+		<annotation>
+			<documentation>
+				Sortering 1: wozObjectNummer
+				Sortering 2: omvat/gerelateerde/kadastraleIdentificatie
+				Sortering 3: omvat/gerelateerde/kadastraleAanduiding/kadastraleGemeenteCode, omvat/gerelateerde/kadastraleAanduiding/kadastraleSectie, omvat/gerelateerde/kadastraleAanduiding/perceelnummer
+				Sortering 4: omvat/gerelateerde/kadastraleAanduiding/kadastraleGemeenteCode, omvat/gerelateerde/kadastraleAanduiding/kadastraleSectie, omvat/gerelateerde/kadastraleAanduiding/perceelnummer
+				Sortering 5: omvat/gerelateerde/kadastraleAanduiding/kadastraleGemeenteCode, omvat/gerelateerde/kadastraleAanduiding/kadastraleSectie, omvat/gerelateerde/kadastraleAanduiding/perceelnummer, omvat/gerelateerde/kadastraleAanduiding/deelperceelnummer
+				Sortering 6: omvat/gerelateerde/kadastraleAanduiding/kadastraleGemeenteCode, omvat/gerelateerde/kadastraleAanduiding/kadastraleSectie, omvat/gerelateerde/kadastraleAanduiding/perceelnummer, omvat/gerelateerde/kadastraleAanduiding/appartementsindex
+				Sortering 7: ligtIn/gerelateerde/betrokkenWaterschap
+				Sortering 8: verantwoordelijkeGemeente/gemeenteCode
+				Bij de sortering 4, 5 en 6 dienen uitsluitend gehele percelen, deelpercelen c.q. appartementsrechten in de sortering te worden opgenomen. Bij sortering 3 worden alle kadastrale onroerende zaken in de sortering opgenomen.
+			</documentation>
+		</annotation>
+		<restriction base="StUF:Sortering">
+			<minInclusive value="0"/>
+			<maxInclusive value="8"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="VES-woz-lv-sortering">
+		<annotation>
+			<documentation>
+				Sortering 1: vestigingsNummer, verantwoordelijkeGemeente
+				Sortering 2: oefentActiviteitenUitVoor/gerelateerde/kvkNummer, verantwoordelijkeGemeente
+			</documentation>
+		</annotation>
+		<restriction base="StUF:Sortering">
+			<minInclusive value="1"/>
+			<maxInclusive value="2"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="WOZ-lv-sortering">
+		<annotation>
+			<documentation>
+				Sortering 1: wozObjectNummer
+				Sortering 2: ontleentAanduidingAan/gerelateerde/identificatie
+				Sortering 3: aanduidingWOZobject/aoa.identificatie
+				Sortering 4: aanduidingWOZobject/aoa.postcode, aanduidingWOZobject/aoa.huisnummer, aanduidingWOZobject/aoa.huisletter, aanduidingWOZobject/aoa.huisnummertoevoeging
+				Sortering 5: aanduidingWOZobject/wpl.woonplaatsNaam, aanduidingWOZobject/gor.openbareRuimteNaam, aanduidingWOZobject/aoa.huisnummer, aanduidingWOZobject/aoa.huisletter, aanduidingWOZobject/aoa.huisnummertoevoeging
+				Sortering 6: aanduidingWOZobject/wpl.woonplaatsNaam, aanduidingWOZobject/gor.openbareRuimteNaam, aanduidingWOZobject/locatieOmschrijving
+				Sortering 7: bevatKadastraleObjecten/gerelateerde/kadastraleIdentificatie
+				Sortering 8: bevatKadastraleObjecten/gerelateerde/kadastraleAanduiding/kadastraleGemeentecode, bevatKadastraleObjecten/gerelateerde/kadastraleAanduiding/kadastraleSectie, bevatKadastraleObjecten/gerelateerde/kadastraleAanduiding/kadastraalPerceelnummer  (NB: bij keuze voor deze sortering mogen alle soorten kadastrale onroerende zaken worden meegegeven)
+				Sortering 9: bevatKadastraleObjecten/gerelateerde/kadastraleAanduiding/kadastraleGemeentecode, bevatKadastraleObjecten/gerelateerde/kadastraleAanduiding/kadastraleSectie, bevatKadastraleObjecten/gerelateerde/kadastraleAanduiding/kadastraalPerceelnummer  (NB: bij keuze voor deze sortering mogen alleen kadastrale onroerende zaken zonder deelperceelnummer en appartementsindex worden meegenomen)
+				Sortering 10: bevatKadastraleObjecten/gerelateerde/kadastraleAanduiding/kadastraleGemeentecode, bevatKadastraleObjecten/gerelateerde/kadastraleAanduiding/kadastraleSectie, bevatKadastraleObjecten/gerelateerde/kadastraleAanduiding/kadastraalPerceelnummer, bevatKadastraleObjecten/gerelateerde/kadastraleAanduiding/kdp.deelperceelNummer  (NB: bij keuze voor deze sortering mogen alleen kadastrale onroerende zaken met deelperceelnummer worden meegenomen)
+				Sortering 11: bevatKadastraleObjecten/gerelateerde/kadastraleAanduiding/kadastraleGemeentecode, bevatKadastraleObjecten/gerelateerde/kadastraleAanduiding/kadastraleSectie, bevatKadastraleObjecten/gerelateerde/kadastraleAanduiding/kadastraalPerceelnummer, bevatKadastraleObjecten/gerelateerde/kadastraleAanduiding/apr.appartementsindex  (NB: bij keuze voor deze sortering mogen alleen kadastrale onroerende zaken met appartementsindex worden meegenomen)
+				Sortering 12: heeftBelanghebbende/gerelateerde/bsVesNummerOfId, heeftBelanghebbende/aanduidingEigenaarGebruiker, wozObjectnummer
+				Sortering 13: heeftBelanghebbende/gerelateerde/naam, heeftBelanghebbende/aanduidingEigenaarGebruiker, wozObjectnummer
+				Sortering 14: heeftBelanghebbende/gerelateerde/adresNederland/postcode, heeftBelanghebbende/gerelateerde/adresNederland/huisnummer, heeftBelanghebbende/gerelateerde/adresNederland/huisletter, heeftBelanghebbende/gerelateerde/adresNederland/huisnummertoevoeging, heeftBelanghebbende/aanduidingEigenaarGebruiker, wozObjectnummer
+				Sortering 15: heeftBelanghebbende/gerelateerde/adresNederland/postcode, heeftBelanghebbende/gerelateerde/adresNederland/postadresnummer, heeftBelanghebbende/aanduidingEigenaarGebruiker, wozObjectnummer
+				Sortering 16: heeftBelanghebbende/gerelateerde/adresBuitenland/landnaam, heeftBelanghebbende/gerelateerde/adresBuitenland/sub.adresBuitenland1, heeftBelanghebbende/gerelateerde/adresBuitenland/sub.adresBuitenland2, heeftBelanghebbende/gerelateerde/adresBuitenland/sub.adresBuitenland3, heeftBelanghebbende/aanduidingEigenaarGebruiker, wozObjectnummer
+				Sortering 17: heeftBelanghebbende/gerelateerde/adresBuitenland/landcode, heeftBelanghebbende/gerelateerde/adresBuitenland/sub.adresBuitenland1, heeftBelanghebbende/gerelateerde/adresBuitenland/sub.adresBuitenland2, heeftBelanghebbende/gerelateerde/adresBuitenland/sub.adresBuitenland3, heeftBelanghebbende/aanduidingEigenaarGebruiker, wozObjectnummer
+				Sortering 18: gebruikscode, aanduidingWOZObject/wpl.woonplaatsnaam, aanduidingWOZObject/gor.openbareruimteNaam, aanduidingWOZObject/aoa.huisnummer, aanduidingWOZobject/aoa.huisletter, aanduidingWOZobject/aoa.huisnummertoevoeging
+				Sortering 20: heeftSluimerendObject/gerelateerde/wozObjectnummer, wozObjectnummer
+				Sortering 24: isVerbondenMet/gerelateerde/identificatie
+				Sortering 25: heeftPand/gerelateerde/identificatie
+				Sortering 26: heeffAlsAanduiding/gerelateerde/identificatie
+				Sortering 27: verantwoordelijkeGemeente/gemeenteCode
+				Sortering 28: ligtIn/gerelateerde/betrokkenWaterschap
+			</documentation>
+		</annotation>
+		<restriction base="StUF:Sortering">
+			<minInclusive value="0"/>
+			<maxInclusive value="28"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="WRD-lv-sortering">
+		<annotation>
+			<documentation>
+				Sortering 1: isVoor/gerelateerde/wozObjectnummer, waardepeildatum (DESC), toestandspeildatum (DESC)
+				Sortering 2: isVoor/gerelateerde/aanduidingWOZObject/aoa.postcode, isVoor/gerelateerde/aanduidingWOZObject/aoa.huisnummer, aanduidingWOZobject/huisnummerletter, aanduidingWOZobject/huisnummertoevoeging, waardepeildatum (DESC), toestandspeildatum (DESC)
+				Sortering 3: isVoor/gerelateerde/aanduidingWOZObject/wpl.woonplaatsnaam, isVoor/gerelateerde/aanduidingWOZObject/gor.openbareruimteNaam, isVoor/gerelateerde/aanduidingWOZObject/aoa.huisnummer, aanduidingWOZobject/aoa.huisnummerletter, aanduidingWOZobject/aoa.huisnummertoevoeging, waardepeildatum (DESC), toestandspeildatum (DESC)
+				Sortering 4: isVoor/gerelateerde/aanduidingWOZObject/wpl.woonplaatsnaam, isVoor/gerelateerde/aanduidingWOZObject/locatieOmschrijving, isVoor/gerelateerde/aanduidingWOZObject/gor.openbareruimtenaam, isVoor/gerelateerde/aanduidingWOZObject/aoa.huisnummer, aanduidingWOZobject/aoa.huisletter, aanduidingWOZobject/aoa.huisnummertoevoeging, waardepeildatum (DESC), toestandspeildatum (DESC)
+				Sortering 5: isVoor/gerelateerde/verantwoordelijkeGemeente/gemeenteCode, waardepeildatum (DESC), ingangsdatumWaarde (DESC)
+				Sortering 6: isVoor/gerelateerde/ligtIn/gerelateerde/betrokkenWaterschap, waardepeildatum (DESC), ingangsdatumWaarde (DESC)
+			</documentation>
+		</annotation>
+		<restriction base="StUF:Sortering">
+			<minInclusive value="0"/>
+			<maxInclusive value="6"/>
+		</restriction>
+	</simpleType>
+	<!--Definities van stuurgegeven elementen-->
+	<complexType name="NNP-lv-StuurgegevensLa01">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLa01">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLa01"/>
+					<element name="zender" type="StUF:Systeem" minOccurs="0"/>
+					<element name="ontvanger" type="StUF:ZenderNaarLVWOZ" minOccurs="0"/>
+					<element name="referentienummer" type="StUF:Refnummer" minOccurs="0"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip" minOccurs="0"/>
+					<element name="crossRefnummer" type="StUF:Refnummer" minOccurs="0"/>
+					<element name="entiteittype" type="StUF:EntiteittypeNNP"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="NNP-lv-StuurgegevensLa02">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLa02">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLa02"/>
+					<element name="zender" type="StUF:Systeem"/>
+					<element name="ontvanger" type="StUF:ZenderNaarLVWOZ"/>
+					<element name="referentienummer" type="StUF:Refnummer"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip"/>
+					<element name="crossRefnummer" type="StUF:Refnummer"/>
+					<element name="entiteittype" type="StUF:EntiteittypeNNP"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="NNP-lv-StuurgegevensLv01">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLv01">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLv01"/>
+					<element name="zender" type="StUF:ZenderNaarLVWOZ" minOccurs="0"/>
+					<element name="ontvanger" type="StUF:Systeem" minOccurs="0"/>
+					<element name="referentienummer" type="StUF:Refnummer" minOccurs="0"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip" minOccurs="0"/>
+					<element name="entiteittype" type="StUF:EntiteittypeNNP"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="NNP-lv-StuurgegevensLv02">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLv02">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLv02"/>
+					<element name="zender" type="StUF:ZenderNaarLVWOZ"/>
+					<element name="ontvanger" type="StUF:Systeem"/>
+					<element name="referentienummer" type="StUF:Refnummer"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip"/>
+					<element name="entiteittype" type="StUF:EntiteittypeNNP"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="NPS-lv-StuurgegevensLa01">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLa01">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLa01"/>
+					<element name="zender" type="StUF:Systeem" minOccurs="0"/>
+					<element name="ontvanger" type="StUF:ZenderNaarLVWOZ" minOccurs="0"/>
+					<element name="referentienummer" type="StUF:Refnummer" minOccurs="0"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip" minOccurs="0"/>
+					<element name="crossRefnummer" type="StUF:Refnummer" minOccurs="0"/>
+					<element name="entiteittype" type="StUF:EntiteittypeNPS"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="NPS-lv-StuurgegevensLa02">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLa02">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLa02"/>
+					<element name="zender" type="StUF:Systeem"/>
+					<element name="ontvanger" type="StUF:ZenderNaarLVWOZ"/>
+					<element name="referentienummer" type="StUF:Refnummer"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip"/>
+					<element name="crossRefnummer" type="StUF:Refnummer"/>
+					<element name="entiteittype" type="StUF:EntiteittypeNPS"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="NPS-lv-StuurgegevensLv01">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLv01">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLv01"/>
+					<element name="zender" type="StUF:ZenderNaarLVWOZ" minOccurs="0"/>
+					<element name="ontvanger" type="StUF:Systeem" minOccurs="0"/>
+					<element name="referentienummer" type="StUF:Refnummer" minOccurs="0"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip" minOccurs="0"/>
+					<element name="entiteittype" type="StUF:EntiteittypeNPS"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="NPS-lv-StuurgegevensLv02">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLv02">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLv02"/>
+					<element name="zender" type="StUF:ZenderNaarLVWOZ"/>
+					<element name="ontvanger" type="StUF:Systeem"/>
+					<element name="referentienummer" type="StUF:Refnummer"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip"/>
+					<element name="entiteittype" type="StUF:EntiteittypeNPS"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="SWO-lv-StuurgegevensLa01">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLa01">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLa01"/>
+					<element name="zender" type="StUF:Systeem" minOccurs="0"/>
+					<element name="ontvanger" type="StUF:ZenderNaarLVWOZ" minOccurs="0"/>
+					<element name="referentienummer" type="StUF:Refnummer" minOccurs="0"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip" minOccurs="0"/>
+					<element name="crossRefnummer" type="StUF:Refnummer" minOccurs="0"/>
+					<element name="entiteittype" type="StUF:EntiteittypeSWO"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="SWO-lv-StuurgegevensLa02">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLa02">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLa02"/>
+					<element name="zender" type="StUF:Systeem"/>
+					<element name="ontvanger" type="StUF:ZenderNaarLVWOZ"/>
+					<element name="referentienummer" type="StUF:Refnummer"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip"/>
+					<element name="crossRefnummer" type="StUF:Refnummer"/>
+					<element name="entiteittype" type="StUF:EntiteittypeSWO"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="SWO-lv-StuurgegevensLa03">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLa03">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLa03"/>
+					<element name="zender" type="StUF:Systeem" minOccurs="0"/>
+					<element name="ontvanger" type="StUF:ZenderNaarLVWOZ" minOccurs="0"/>
+					<element name="referentienummer" type="StUF:Refnummer" minOccurs="0"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip" minOccurs="0"/>
+					<element name="crossRefnummer" type="StUF:Refnummer" minOccurs="0"/>
+					<element name="entiteittype" type="StUF:EntiteittypeSWO"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="SWO-lv-StuurgegevensLa04">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLa04">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLa04"/>
+					<element name="zender" type="StUF:Systeem"/>
+					<element name="ontvanger" type="StUF:ZenderNaarLVWOZ"/>
+					<element name="referentienummer" type="StUF:Refnummer"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip"/>
+					<element name="crossRefnummer" type="StUF:Refnummer"/>
+					<element name="entiteittype" type="StUF:EntiteittypeSWO"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="SWO-lv-StuurgegevensLa05">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLa05">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLa05"/>
+					<element name="zender" type="StUF:Systeem" minOccurs="0"/>
+					<element name="ontvanger" type="StUF:ZenderNaarLVWOZ" minOccurs="0"/>
+					<element name="referentienummer" type="StUF:Refnummer" minOccurs="0"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip" minOccurs="0"/>
+					<element name="crossRefnummer" type="StUF:Refnummer" minOccurs="0"/>
+					<element name="entiteittype" type="StUF:EntiteittypeSWO"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="SWO-lv-StuurgegevensLa06">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLa06">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLa06"/>
+					<element name="zender" type="StUF:Systeem"/>
+					<element name="ontvanger" type="StUF:ZenderNaarLVWOZ"/>
+					<element name="referentienummer" type="StUF:Refnummer"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip"/>
+					<element name="crossRefnummer" type="StUF:Refnummer"/>
+					<element name="entiteittype" type="StUF:EntiteittypeSWO"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="SWO-lv-StuurgegevensLa07">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLa07">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLa07"/>
+					<element name="zender" type="StUF:Systeem" minOccurs="0"/>
+					<element name="ontvanger" type="StUF:ZenderNaarLVWOZ" minOccurs="0"/>
+					<element name="referentienummer" type="StUF:Refnummer" minOccurs="0"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip" minOccurs="0"/>
+					<element name="crossRefnummer" type="StUF:Refnummer" minOccurs="0"/>
+					<element name="entiteittype" type="StUF:EntiteittypeSWO"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="SWO-lv-StuurgegevensLa08">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLa08">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLa08"/>
+					<element name="zender" type="StUF:Systeem"/>
+					<element name="ontvanger" type="StUF:ZenderNaarLVWOZ"/>
+					<element name="referentienummer" type="StUF:Refnummer"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip"/>
+					<element name="crossRefnummer" type="StUF:Refnummer"/>
+					<element name="entiteittype" type="StUF:EntiteittypeSWO"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="SWO-lv-StuurgegevensLa09">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLa09">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLa09"/>
+					<element name="zender" type="StUF:Systeem" minOccurs="0"/>
+					<element name="ontvanger" type="StUF:ZenderNaarLVWOZ" minOccurs="0"/>
+					<element name="referentienummer" type="StUF:Refnummer" minOccurs="0"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip" minOccurs="0"/>
+					<element name="crossRefnummer" type="StUF:Refnummer" minOccurs="0"/>
+					<element name="entiteittype" type="StUF:EntiteittypeSWO"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="SWO-lv-StuurgegevensLa10">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLa10">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLa10"/>
+					<element name="zender" type="StUF:Systeem"/>
+					<element name="ontvanger" type="StUF:ZenderNaarLVWOZ"/>
+					<element name="referentienummer" type="StUF:Refnummer"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip"/>
+					<element name="crossRefnummer" type="StUF:Refnummer"/>
+					<element name="entiteittype" type="StUF:EntiteittypeSWO"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="SWO-lv-StuurgegevensLv01">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLv01">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLv01"/>
+					<element name="zender" type="StUF:ZenderNaarLVWOZ" minOccurs="0"/>
+					<element name="ontvanger" type="StUF:Systeem" minOccurs="0"/>
+					<element name="referentienummer" type="StUF:Refnummer" minOccurs="0"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip" minOccurs="0"/>
+					<element name="entiteittype" type="StUF:EntiteittypeSWO"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="SWO-lv-StuurgegevensLv02">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLv02">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLv02"/>
+					<element name="zender" type="StUF:ZenderNaarLVWOZ"/>
+					<element name="ontvanger" type="StUF:Systeem"/>
+					<element name="referentienummer" type="StUF:Refnummer"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip"/>
+					<element name="entiteittype" type="StUF:EntiteittypeSWO"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="SWO-lv-StuurgegevensLv03">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLv03">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLv03"/>
+					<element name="zender" type="StUF:ZenderNaarLVWOZ" minOccurs="0"/>
+					<element name="ontvanger" type="StUF:Systeem" minOccurs="0"/>
+					<element name="referentienummer" type="StUF:Refnummer" minOccurs="0"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip" minOccurs="0"/>
+					<element name="entiteittype" type="StUF:EntiteittypeSWO"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="SWO-lv-StuurgegevensLv04">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLv04">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLv04"/>
+					<element name="zender" type="StUF:ZenderNaarLVWOZ"/>
+					<element name="ontvanger" type="StUF:Systeem"/>
+					<element name="referentienummer" type="StUF:Refnummer"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip"/>
+					<element name="entiteittype" type="StUF:EntiteittypeSWO"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="SWO-lv-StuurgegevensLv05">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLv05">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLv05"/>
+					<element name="zender" type="StUF:ZenderNaarLVWOZ" minOccurs="0"/>
+					<element name="ontvanger" type="StUF:Systeem" minOccurs="0"/>
+					<element name="referentienummer" type="StUF:Refnummer" minOccurs="0"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip" minOccurs="0"/>
+					<element name="entiteittype" type="StUF:EntiteittypeSWO"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="SWO-lv-StuurgegevensLv06">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLv06">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLv06"/>
+					<element name="zender" type="StUF:ZenderNaarLVWOZ"/>
+					<element name="ontvanger" type="StUF:Systeem"/>
+					<element name="referentienummer" type="StUF:Refnummer"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip"/>
+					<element name="entiteittype" type="StUF:EntiteittypeSWO"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="SWO-lv-StuurgegevensLv07">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLv07">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLv07"/>
+					<element name="zender" type="StUF:ZenderNaarLVWOZ" minOccurs="0"/>
+					<element name="ontvanger" type="StUF:Systeem" minOccurs="0"/>
+					<element name="referentienummer" type="StUF:Refnummer" minOccurs="0"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip" minOccurs="0"/>
+					<element name="entiteittype" type="StUF:EntiteittypeSWO"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="SWO-lv-StuurgegevensLv08">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLv08">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLv08"/>
+					<element name="zender" type="StUF:ZenderNaarLVWOZ"/>
+					<element name="ontvanger" type="StUF:Systeem"/>
+					<element name="referentienummer" type="StUF:Refnummer"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip"/>
+					<element name="entiteittype" type="StUF:EntiteittypeSWO"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="SWO-lv-StuurgegevensLv09">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLv09">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLv09"/>
+					<element name="zender" type="StUF:ZenderNaarLVWOZ" minOccurs="0"/>
+					<element name="ontvanger" type="StUF:Systeem" minOccurs="0"/>
+					<element name="referentienummer" type="StUF:Refnummer" minOccurs="0"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip" minOccurs="0"/>
+					<element name="entiteittype" type="StUF:EntiteittypeSWO"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="SWO-lv-StuurgegevensLv10">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLv10">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLv10"/>
+					<element name="zender" type="StUF:ZenderNaarLVWOZ"/>
+					<element name="ontvanger" type="StUF:Systeem"/>
+					<element name="referentienummer" type="StUF:Refnummer"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip"/>
+					<element name="entiteittype" type="StUF:EntiteittypeSWO"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="VES-lv-StuurgegevensLa01">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLa01">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLa01"/>
+					<element name="zender" type="StUF:Systeem" minOccurs="0"/>
+					<element name="ontvanger" type="StUF:ZenderNaarLVWOZ" minOccurs="0"/>
+					<element name="referentienummer" type="StUF:Refnummer" minOccurs="0"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip" minOccurs="0"/>
+					<element name="crossRefnummer" type="StUF:Refnummer" minOccurs="0"/>
+					<element name="entiteittype" type="StUF:EntiteittypeVES"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="VES-lv-StuurgegevensLa02">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLa02">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLa02"/>
+					<element name="zender" type="StUF:Systeem"/>
+					<element name="ontvanger" type="StUF:ZenderNaarLVWOZ"/>
+					<element name="referentienummer" type="StUF:Refnummer"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip"/>
+					<element name="crossRefnummer" type="StUF:Refnummer"/>
+					<element name="entiteittype" type="StUF:EntiteittypeVES"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="VES-lv-StuurgegevensLv01">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLv01">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLv01"/>
+					<element name="zender" type="StUF:ZenderNaarLVWOZ" minOccurs="0"/>
+					<element name="ontvanger" type="StUF:Systeem" minOccurs="0"/>
+					<element name="referentienummer" type="StUF:Refnummer" minOccurs="0"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip" minOccurs="0"/>
+					<element name="entiteittype" type="StUF:EntiteittypeVES"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="VES-lv-StuurgegevensLv02">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLv02">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLv02"/>
+					<element name="zender" type="StUF:ZenderNaarLVWOZ"/>
+					<element name="ontvanger" type="StUF:Systeem"/>
+					<element name="referentienummer" type="StUF:Refnummer"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip"/>
+					<element name="entiteittype" type="StUF:EntiteittypeVES"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZ-lv-StuurgegevensLa01">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLa01">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLa01"/>
+					<element name="zender" type="StUF:Systeem" minOccurs="0"/>
+					<element name="ontvanger" type="StUF:ZenderNaarLVWOZ" minOccurs="0"/>
+					<element name="referentienummer" type="StUF:Refnummer" minOccurs="0"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip" minOccurs="0"/>
+					<element name="crossRefnummer" type="StUF:Refnummer" minOccurs="0"/>
+					<element name="entiteittype" type="StUF:EntiteittypeWOZ"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZ-lv-StuurgegevensLa02">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLa02">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLa02"/>
+					<element name="zender" type="StUF:Systeem"/>
+					<element name="ontvanger" type="StUF:ZenderNaarLVWOZ"/>
+					<element name="referentienummer" type="StUF:Refnummer"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip"/>
+					<element name="crossRefnummer" type="StUF:Refnummer"/>
+					<element name="entiteittype" type="StUF:EntiteittypeWOZ"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZ-lv-StuurgegevensLa03">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLa03">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLa03"/>
+					<element name="zender" type="StUF:Systeem" minOccurs="0"/>
+					<element name="ontvanger" type="StUF:ZenderNaarLVWOZ" minOccurs="0"/>
+					<element name="referentienummer" type="StUF:Refnummer" minOccurs="0"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip" minOccurs="0"/>
+					<element name="crossRefnummer" type="StUF:Refnummer" minOccurs="0"/>
+					<element name="entiteittype" type="StUF:EntiteittypeWOZ"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZ-lv-StuurgegevensLa04">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLa04">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLa04"/>
+					<element name="zender" type="StUF:Systeem"/>
+					<element name="ontvanger" type="StUF:ZenderNaarLVWOZ"/>
+					<element name="referentienummer" type="StUF:Refnummer"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip"/>
+					<element name="crossRefnummer" type="StUF:Refnummer"/>
+					<element name="entiteittype" type="StUF:EntiteittypeWOZ"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZ-lv-StuurgegevensLa05">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLa05">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLa05"/>
+					<element name="zender" type="StUF:Systeem" minOccurs="0"/>
+					<element name="ontvanger" type="StUF:ZenderNaarLVWOZ" minOccurs="0"/>
+					<element name="referentienummer" type="StUF:Refnummer" minOccurs="0"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip" minOccurs="0"/>
+					<element name="crossRefnummer" type="StUF:Refnummer" minOccurs="0"/>
+					<element name="entiteittype" type="StUF:EntiteittypeWOZ"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZ-lv-StuurgegevensLa06">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLa06">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLa06"/>
+					<element name="zender" type="StUF:Systeem"/>
+					<element name="ontvanger" type="StUF:ZenderNaarLVWOZ"/>
+					<element name="referentienummer" type="StUF:Refnummer"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip"/>
+					<element name="crossRefnummer" type="StUF:Refnummer"/>
+					<element name="entiteittype" type="StUF:EntiteittypeWOZ"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZ-lv-StuurgegevensLa07">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLa07">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLa07"/>
+					<element name="zender" type="StUF:Systeem" minOccurs="0"/>
+					<element name="ontvanger" type="StUF:ZenderNaarLVWOZ" minOccurs="0"/>
+					<element name="referentienummer" type="StUF:Refnummer" minOccurs="0"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip" minOccurs="0"/>
+					<element name="crossRefnummer" type="StUF:Refnummer" minOccurs="0"/>
+					<element name="entiteittype" type="StUF:EntiteittypeWOZ"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZ-lv-StuurgegevensLa08">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLa08">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLa08"/>
+					<element name="zender" type="StUF:Systeem"/>
+					<element name="ontvanger" type="StUF:ZenderNaarLVWOZ"/>
+					<element name="referentienummer" type="StUF:Refnummer"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip"/>
+					<element name="crossRefnummer" type="StUF:Refnummer"/>
+					<element name="entiteittype" type="StUF:EntiteittypeWOZ"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZ-lv-StuurgegevensLa09">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLa09">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLa09"/>
+					<element name="zender" type="StUF:Systeem" minOccurs="0"/>
+					<element name="ontvanger" type="StUF:ZenderNaarLVWOZ" minOccurs="0"/>
+					<element name="referentienummer" type="StUF:Refnummer" minOccurs="0"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip" minOccurs="0"/>
+					<element name="crossRefnummer" type="StUF:Refnummer" minOccurs="0"/>
+					<element name="entiteittype" type="StUF:EntiteittypeWOZ"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZ-lv-StuurgegevensLa10">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLa10">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLa10"/>
+					<element name="zender" type="StUF:Systeem"/>
+					<element name="ontvanger" type="StUF:ZenderNaarLVWOZ"/>
+					<element name="referentienummer" type="StUF:Refnummer"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip"/>
+					<element name="crossRefnummer" type="StUF:Refnummer"/>
+					<element name="entiteittype" type="StUF:EntiteittypeWOZ"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZ-lv-StuurgegevensLv01">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLv01">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLv01"/>
+					<element name="zender" type="StUF:ZenderNaarLVWOZ" minOccurs="0"/>
+					<element name="ontvanger" type="StUF:Systeem" minOccurs="0"/>
+					<element name="referentienummer" type="StUF:Refnummer" minOccurs="0"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip" minOccurs="0"/>
+					<element name="entiteittype" type="StUF:EntiteittypeWOZ"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZ-lv-StuurgegevensLv02">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLv02">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLv02"/>
+					<element name="zender" type="StUF:ZenderNaarLVWOZ"/>
+					<element name="ontvanger" type="StUF:Systeem"/>
+					<element name="referentienummer" type="StUF:Refnummer"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip"/>
+					<element name="entiteittype" type="StUF:EntiteittypeWOZ"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZ-lv-StuurgegevensLv03">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLv03">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLv03"/>
+					<element name="zender" type="StUF:ZenderNaarLVWOZ" minOccurs="0"/>
+					<element name="ontvanger" type="StUF:Systeem" minOccurs="0"/>
+					<element name="referentienummer" type="StUF:Refnummer" minOccurs="0"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip" minOccurs="0"/>
+					<element name="entiteittype" type="StUF:EntiteittypeWOZ"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZ-lv-StuurgegevensLv04">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLv04">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLv04"/>
+					<element name="zender" type="StUF:ZenderNaarLVWOZ"/>
+					<element name="ontvanger" type="StUF:Systeem"/>
+					<element name="referentienummer" type="StUF:Refnummer"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip"/>
+					<element name="entiteittype" type="StUF:EntiteittypeWOZ"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZ-lv-StuurgegevensLv05">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLv05">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLv05"/>
+					<element name="zender" type="StUF:ZenderNaarLVWOZ" minOccurs="0"/>
+					<element name="ontvanger" type="StUF:Systeem" minOccurs="0"/>
+					<element name="referentienummer" type="StUF:Refnummer" minOccurs="0"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip" minOccurs="0"/>
+					<element name="entiteittype" type="StUF:EntiteittypeWOZ"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZ-lv-StuurgegevensLv06">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLv06">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLv06"/>
+					<element name="zender" type="StUF:ZenderNaarLVWOZ"/>
+					<element name="ontvanger" type="StUF:Systeem"/>
+					<element name="referentienummer" type="StUF:Refnummer"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip"/>
+					<element name="entiteittype" type="StUF:EntiteittypeWOZ"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZ-lv-StuurgegevensLv07">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLv07">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLv07"/>
+					<element name="zender" type="StUF:ZenderNaarLVWOZ" minOccurs="0"/>
+					<element name="ontvanger" type="StUF:Systeem" minOccurs="0"/>
+					<element name="referentienummer" type="StUF:Refnummer" minOccurs="0"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip" minOccurs="0"/>
+					<element name="entiteittype" type="StUF:EntiteittypeWOZ"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZ-lv-StuurgegevensLv08">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLv08">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLv08"/>
+					<element name="zender" type="StUF:ZenderNaarLVWOZ"/>
+					<element name="ontvanger" type="StUF:Systeem"/>
+					<element name="referentienummer" type="StUF:Refnummer"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip"/>
+					<element name="entiteittype" type="StUF:EntiteittypeWOZ"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZ-lv-StuurgegevensLv09">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLv09">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLv09"/>
+					<element name="zender" type="StUF:ZenderNaarLVWOZ" minOccurs="0"/>
+					<element name="ontvanger" type="StUF:Systeem" minOccurs="0"/>
+					<element name="referentienummer" type="StUF:Refnummer" minOccurs="0"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip" minOccurs="0"/>
+					<element name="entiteittype" type="StUF:EntiteittypeWOZ"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZ-lv-StuurgegevensLv10">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLv10">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLv10"/>
+					<element name="zender" type="StUF:ZenderNaarLVWOZ"/>
+					<element name="ontvanger" type="StUF:Systeem"/>
+					<element name="referentienummer" type="StUF:Refnummer"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip"/>
+					<element name="entiteittype" type="StUF:EntiteittypeWOZ"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WRD-lv-StuurgegevensLa01">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLa01">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLa01"/>
+					<element name="zender" type="StUF:Systeem" minOccurs="0"/>
+					<element name="ontvanger" type="StUF:ZenderNaarLVWOZ" minOccurs="0"/>
+					<element name="referentienummer" type="StUF:Refnummer" minOccurs="0"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip" minOccurs="0"/>
+					<element name="crossRefnummer" type="StUF:Refnummer" minOccurs="0"/>
+					<element name="entiteittype" type="StUF:EntiteittypeWRD"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WRD-lv-StuurgegevensLa02">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLa02">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLa02"/>
+					<element name="zender" type="StUF:Systeem"/>
+					<element name="ontvanger" type="StUF:ZenderNaarLVWOZ"/>
+					<element name="referentienummer" type="StUF:Refnummer"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip"/>
+					<element name="crossRefnummer" type="StUF:Refnummer"/>
+					<element name="entiteittype" type="StUF:EntiteittypeWRD"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WRD-lv-StuurgegevensLa03">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLa03">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLa03"/>
+					<element name="zender" type="StUF:Systeem" minOccurs="0"/>
+					<element name="ontvanger" type="StUF:ZenderNaarLVWOZ" minOccurs="0"/>
+					<element name="referentienummer" type="StUF:Refnummer" minOccurs="0"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip" minOccurs="0"/>
+					<element name="crossRefnummer" type="StUF:Refnummer" minOccurs="0"/>
+					<element name="entiteittype" type="StUF:EntiteittypeWRD"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WRD-lv-StuurgegevensLa04">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLa04">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLa04"/>
+					<element name="zender" type="StUF:Systeem"/>
+					<element name="ontvanger" type="StUF:ZenderNaarLVWOZ"/>
+					<element name="referentienummer" type="StUF:Refnummer"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip"/>
+					<element name="crossRefnummer" type="StUF:Refnummer"/>
+					<element name="entiteittype" type="StUF:EntiteittypeWRD"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WRD-lv-StuurgegevensLa05">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLa05">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLa05"/>
+					<element name="zender" type="StUF:Systeem" minOccurs="0"/>
+					<element name="ontvanger" type="StUF:ZenderNaarLVWOZ" minOccurs="0"/>
+					<element name="referentienummer" type="StUF:Refnummer" minOccurs="0"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip" minOccurs="0"/>
+					<element name="crossRefnummer" type="StUF:Refnummer" minOccurs="0"/>
+					<element name="entiteittype" type="StUF:EntiteittypeWRD"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WRD-lv-StuurgegevensLa06">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLa06">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLa06"/>
+					<element name="zender" type="StUF:Systeem"/>
+					<element name="ontvanger" type="StUF:ZenderNaarLVWOZ"/>
+					<element name="referentienummer" type="StUF:Refnummer"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip"/>
+					<element name="crossRefnummer" type="StUF:Refnummer"/>
+					<element name="entiteittype" type="StUF:EntiteittypeWRD"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WRD-lv-StuurgegevensLa07">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLa07">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLa07"/>
+					<element name="zender" type="StUF:Systeem" minOccurs="0"/>
+					<element name="ontvanger" type="StUF:ZenderNaarLVWOZ" minOccurs="0"/>
+					<element name="referentienummer" type="StUF:Refnummer" minOccurs="0"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip" minOccurs="0"/>
+					<element name="crossRefnummer" type="StUF:Refnummer" minOccurs="0"/>
+					<element name="entiteittype" type="StUF:EntiteittypeWRD"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WRD-lv-StuurgegevensLa08">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLa08">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLa08"/>
+					<element name="zender" type="StUF:Systeem"/>
+					<element name="ontvanger" type="StUF:ZenderNaarLVWOZ"/>
+					<element name="referentienummer" type="StUF:Refnummer"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip"/>
+					<element name="crossRefnummer" type="StUF:Refnummer"/>
+					<element name="entiteittype" type="StUF:EntiteittypeWRD"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WRD-lv-StuurgegevensLa09">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLa09">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLa09"/>
+					<element name="zender" type="StUF:Systeem" minOccurs="0"/>
+					<element name="ontvanger" type="StUF:ZenderNaarLVWOZ" minOccurs="0"/>
+					<element name="referentienummer" type="StUF:Refnummer" minOccurs="0"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip" minOccurs="0"/>
+					<element name="crossRefnummer" type="StUF:Refnummer" minOccurs="0"/>
+					<element name="entiteittype" type="StUF:EntiteittypeWRD"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WRD-lv-StuurgegevensLa10">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLa10">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLa10"/>
+					<element name="zender" type="StUF:Systeem"/>
+					<element name="ontvanger" type="StUF:ZenderNaarLVWOZ"/>
+					<element name="referentienummer" type="StUF:Refnummer"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip"/>
+					<element name="crossRefnummer" type="StUF:Refnummer"/>
+					<element name="entiteittype" type="StUF:EntiteittypeWRD"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WRD-lv-StuurgegevensLv01">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLv01">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLv01"/>
+					<element name="zender" type="StUF:ZenderNaarLVWOZ" minOccurs="0"/>
+					<element name="ontvanger" type="StUF:Systeem" minOccurs="0"/>
+					<element name="referentienummer" type="StUF:Refnummer" minOccurs="0"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip" minOccurs="0"/>
+					<element name="entiteittype" type="StUF:EntiteittypeWRD"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WRD-lv-StuurgegevensLv02">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLv02">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLv02"/>
+					<element name="zender" type="StUF:ZenderNaarLVWOZ"/>
+					<element name="ontvanger" type="StUF:Systeem"/>
+					<element name="referentienummer" type="StUF:Refnummer"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip"/>
+					<element name="entiteittype" type="StUF:EntiteittypeWRD"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WRD-lv-StuurgegevensLv03">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLv03">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLv03"/>
+					<element name="zender" type="StUF:ZenderNaarLVWOZ" minOccurs="0"/>
+					<element name="ontvanger" type="StUF:Systeem" minOccurs="0"/>
+					<element name="referentienummer" type="StUF:Refnummer" minOccurs="0"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip" minOccurs="0"/>
+					<element name="entiteittype" type="StUF:EntiteittypeWRD"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WRD-lv-StuurgegevensLv04">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLv04">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLv04"/>
+					<element name="zender" type="StUF:ZenderNaarLVWOZ"/>
+					<element name="ontvanger" type="StUF:Systeem"/>
+					<element name="referentienummer" type="StUF:Refnummer"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip"/>
+					<element name="entiteittype" type="StUF:EntiteittypeWRD"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WRD-lv-StuurgegevensLv05">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLv05">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLv05"/>
+					<element name="zender" type="StUF:ZenderNaarLVWOZ" minOccurs="0"/>
+					<element name="ontvanger" type="StUF:Systeem" minOccurs="0"/>
+					<element name="referentienummer" type="StUF:Refnummer" minOccurs="0"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip" minOccurs="0"/>
+					<element name="entiteittype" type="StUF:EntiteittypeWRD"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WRD-lv-StuurgegevensLv06">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLv06">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLv06"/>
+					<element name="zender" type="StUF:ZenderNaarLVWOZ"/>
+					<element name="ontvanger" type="StUF:Systeem"/>
+					<element name="referentienummer" type="StUF:Refnummer"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip"/>
+					<element name="entiteittype" type="StUF:EntiteittypeWRD"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WRD-lv-StuurgegevensLv07">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLv07">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLv07"/>
+					<element name="zender" type="StUF:ZenderNaarLVWOZ" minOccurs="0"/>
+					<element name="ontvanger" type="StUF:Systeem" minOccurs="0"/>
+					<element name="referentienummer" type="StUF:Refnummer" minOccurs="0"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip" minOccurs="0"/>
+					<element name="entiteittype" type="StUF:EntiteittypeWRD"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WRD-lv-StuurgegevensLv08">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLv08">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLv08"/>
+					<element name="zender" type="StUF:ZenderNaarLVWOZ"/>
+					<element name="ontvanger" type="StUF:Systeem"/>
+					<element name="referentienummer" type="StUF:Refnummer"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip"/>
+					<element name="entiteittype" type="StUF:EntiteittypeWRD"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WRD-lv-StuurgegevensLv09">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLv09">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLv09"/>
+					<element name="zender" type="StUF:ZenderNaarLVWOZ" minOccurs="0"/>
+					<element name="ontvanger" type="StUF:Systeem" minOccurs="0"/>
+					<element name="referentienummer" type="StUF:Refnummer" minOccurs="0"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip" minOccurs="0"/>
+					<element name="entiteittype" type="StUF:EntiteittypeWRD"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WRD-lv-StuurgegevensLv10">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensLv10">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeLv10"/>
+					<element name="zender" type="StUF:ZenderNaarLVWOZ"/>
+					<element name="ontvanger" type="StUF:Systeem"/>
+					<element name="referentienummer" type="StUF:Refnummer"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip"/>
+					<element name="entiteittype" type="StUF:EntiteittypeWRD"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+</schema>

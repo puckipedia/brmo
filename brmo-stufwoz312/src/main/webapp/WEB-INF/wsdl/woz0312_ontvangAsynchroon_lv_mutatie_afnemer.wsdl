@@ -23,7 +23,6 @@
 		</xs:schema>
 	</types>
 
-	<!--
 	<message name="nnpSa01">
 		<part name="body" element="WOZ:nnpSa01"/>
 	</message>
@@ -78,11 +77,9 @@
 	<message name="MHEF_Di01">
 		<part name="body" element="WOZ:MHEF_Di01"/>
 	</message>
-	-->
 	<message name="MKEN_Di01">
 		<part name="body" element="WOZ:MKEN_Di01"/>
 	</message>
-	<!--
 	<message name="MKOZ_Di01">
 		<part name="body" element="WOZ:MKOZ_Di01"/>
 	</message>
@@ -125,7 +122,6 @@
 	<message name="WWSP_Di01">
 		<part name="body" element="WOZ:WWSP_Di01"/>
 	</message>
-	-->
 	<portType name="OntvangAsynchroonPortType">
 		<operation name="Fo01">
 			<input message="StUF:Fo01"/>
@@ -137,7 +133,6 @@
 			<output message="StUF:Fo03"/>
 			<fault name="fout" message="StUF:Fo03"/>
 		</operation>
-		<!--
 		<operation name="nnpSa01">
 			<input message="WOZ:nnpSa01"/>
 			<output message="StUF:Bv03"/>
@@ -228,13 +223,11 @@
 			<output message="StUF:Bv03"/>
 			<fault name="fout" message="StUF:Fo03"/>
 		</operation>
-		-->
 		<operation name="MKEN_Di01">
 			<input message="WOZ:MKEN_Di01"/>
 			<output message="StUF:Bv03"/>
 			<fault name="fout" message="StUF:Fo03"/>
 		</operation>
-		<!--
 		<operation name="MKOZ_Di01">
 			<input message="WOZ:MKOZ_Di01"/>
 			<output message="StUF:Bv03"/>
@@ -305,7 +298,6 @@
 			<output message="StUF:Bv03"/>
 			<fault name="fout" message="StUF:Fo03"/>
 		</operation>
-		-->
 	</portType>
 	<binding name="SOAPOntvangAsynchroonBinding" type="WOZ:OntvangAsynchroonPortType">
 		<documentation>
@@ -337,7 +329,6 @@
 				<soap:fault name="fout" use="literal"/>
 			</fault>
 		</operation>
-		<!--
 		<operation name="nnpSa01">
 			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/nnpSa01"/>
 			<input>
@@ -554,7 +545,6 @@
 				<soap:fault name="fout" use="literal"/>
 			</fault>
 		</operation>
-		-->
 		<operation name="MKEN_Di01">
 			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/MKEN_Di01"/>
 			<input>
@@ -567,7 +557,6 @@
 				<soap:fault name="fout" use="literal"/>
 			</fault>
 		</operation>
-		<!--
 		<operation name="MKOZ_Di01">
 			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/MKOZ_Di01"/>
 			<input>
@@ -736,7 +725,6 @@
 				<soap:fault name="fout" use="literal"/>
 			</fault>
 		</operation>
-		-->
 	</binding>
 	<service name="OntvangAsynchroon">
 		<documentation>

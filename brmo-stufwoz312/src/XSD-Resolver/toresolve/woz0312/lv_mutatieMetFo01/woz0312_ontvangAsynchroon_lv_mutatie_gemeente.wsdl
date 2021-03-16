@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2012 (http://www.altova.com) by Maarten van den Broek (messageDesign) -->
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:WOZ="http://www.waarderingskamer.nl/StUF/0312" xmlns:StUF="http://www.egem.nl/StUF/StUF0301" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wsi="http://ws-i.org/schemas/conformanceClaim/" name="StUF-WOZ0312" targetNamespace="http://www.waarderingskamer.nl/StUF/0312">
+	<import namespace="http://www.egem.nl/StUF/StUF0301" location="../../0301/stuf0301_types.wsdl"/>
+	<documentation>
+		Deze wsdl bevat voor de OntvangAsynchroon webservice van een gemeente die aansluit op de LV WOZ de operations voor het ontvangen van verzoeken om synchronisatie
+		
+		Versie 031203:
+		Wijzigingen vergeleken met versie 031202:
+		- In de operation voor Fo01 is in de fault Fo01 vervangen door Fo03
+	</documentation>
+	<types>
+		<xs:schema>
+			<xs:import namespace="http://www.waarderingskamer.nl/StUF/0312" schemaLocation="woz0312_msg_lv_mutatie.xsd"/>
+		</xs:schema>
+	</types>
+	<message name="nnpSa03">
+		<part name="body" element="WOZ:nnpSa03"/>
+	</message>
+	<message name="npsSa03">
+		<part name="body" element="WOZ:npsSa03"/>
+	</message>
+	<message name="swoSh03-lvwoz">
+		<part name="body" element="WOZ:swoSh03-lvwoz"/>
+	</message>
+	<message name="vesSa03">
+		<part name="body" element="WOZ:vesSa03"/>
+	</message>
+	<message name="wozSh03-lvwoz">
+		<part name="body" element="WOZ:wozSh03-lvwoz"/>
+	</message>
+	<message name="wrdSh03-lvwoz">
+		<part name="body" element="WOZ:wrdSh03-lvwoz"/>
+	</message>
+	<portType name="OntvangAsynchroon">
+		<operation name="nnpSa03">
+			<input message="WOZ:nnpSa03"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="npsSa03">
+			<input message="WOZ:npsSa03"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="swoSh03-lvwoz">
+			<input message="WOZ:swoSh03-lvwoz"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="vesSa03">
+			<input message="WOZ:vesSa03"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="wozSh03-lvwoz">
+			<input message="WOZ:wozSh03-lvwoz"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="wrdSh03-lvwoz">
+			<input message="WOZ:wrdSh03-lvwoz"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="Fo01">
+			<input message="StUF:Fo01"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="Fo03">
+			<input message="StUF:Fo03"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+	</portType>
+	<binding name="SOAPOntvangAsynchroon" type="WOZ:OntvangAsynchroon">
+		<documentation>
+			Omdat de uit te wisselen berichten volledig gedefinieerd zijn in het sectormodel cq de StUF-standaard, kunnen we ze zonder verdere encoding (“literal”) opnemen in de body.
+Niet ondersteunde berichten kunnen uit de binding en portType worden verwijderd.
+		</documentation>
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="nnpSa03">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/nnpSa03"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="npsSa03">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/npsSa03"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="swoSh03-lvwoz">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/swoSh03-lvwoz"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="vesSa03">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/vesSa03"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="wozSh03-lvwoz">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/wozSh03-lvwoz"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="wrdSh03-lvwoz">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/wrdSh03-lvwoz"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="Fo01">
+			<soap:operation soapAction="http://www.egem.nl/StUF/StUF0301/Fo01"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="Fo03">
+			<soap:operation soapAction="http://www.egem.nl/StUF/StUF0301/Fo03"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+	</binding>
+	<service name="OntvangAsynchroon">
+		<documentation>
+	Hieronder wordt de concreet aan te roepen service voor het ontvangen van asynchrone berichten vanuit de LV WOZ gedefinieerd. In het attribute location in het element soap:address dient nog de correcte URL te worden ingevuld.
+		</documentation>
+		<port name="OntvangAsynchroon" binding="WOZ:SOAPOntvangAsynchroon">
+			<documentation>
+				<wsi:Claim conformsTo="http://ws-i.org/profiles/basic/1.1"/>
+			</documentation>
+			<soap:address location="http://example.com/OntvangAsynchroon"/>
+		</port>
+	</service>
+</definitions>

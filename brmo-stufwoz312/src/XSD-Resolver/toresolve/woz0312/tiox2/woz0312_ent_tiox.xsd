@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2013 rel. 2 sp2 (x64) (http://www.altova.com) by Maarten van den Broek (messageDesign B.V.) -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:StUF="http://www.egem.nl/StUF/StUF0301" xmlns:WOZ="http://www.waarderingskamer.nl/StUF/0312" xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310" targetNamespace="http://www.waarderingskamer.nl/StUF/0312" elementFormDefault="qualified" attributeFormDefault="unqualified" version="031204">
+	<annotation>
+		<documentation>
+			Schema met de definities van de complexTypes ten behoeve van het taxeren van incourante objecten in TIOX.
+			
+			Wijzigingen vergeleken met version 031203:
+			- Waar nodig het attribute sleutelSynchronisatie prohibited gemaakt
+		</documentation>
+	</annotation>
+	<import namespace="http://www.egem.nl/StUF/StUF0301" schemaLocation="../entiteiten/woz0312_stuf_simpleTypes.xsd"/>
+	<import namespace="http://www.egem.nl/StUF/sector/bg/0310" schemaLocation="woz0312_bg0310_tiox.xsd"/>
+	<include schemaLocation="../entiteiten/woz0312_ent_basis.xsd"/>
+	<complexType name="KPA-TIOX-antwoordOpWaardepeildatum">
+		<complexContent>
+			<restriction base="WOZ:KPA-TIOX-basis">
+				<sequence>
+					<element name="codeArchetype" type="WOZ:ArchetypeAanduiding-e" nillable="true"/>
+					<element name="naamArchetype" type="WOZ:ArchetypeNaam-e" nillable="true"/>
+					<element name="versieArchetype" type="WOZ:Versie-e" nillable="true"/>
+					<element name="waardepeildatum" type="WOZ:Peildatum-e" nillable="true"/>
+					<element name="objectCategorieNaam" type="WOZ:ObjectCategorieNaam-e" nillable="true"/>
+					<element name="soortObjectCode" type="WOZ:SoortObjectCode-e" nillable="true"/>
+					<element name="codeWOZDeelObject" type="WOZ:CodeWOZDeelObject-e" nillable="true"/>
+					<element name="versieTaxatiewijzer" type="WOZ:VersieMajorMinor-e" nillable="true"/>
+					<element name="kengetalDefinitieSet" type="WOZ:KengetalDefinitieSetWaardepeildatumGrp"/>
+					<element name="ingangsdatumObject" type="StUF:DatumMetIndicator" nillable="true"/>
+					<element name="einddatumObject" type="StUF:DatumMetIndicator" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:sleutelVerzendend" use="required"/>
+				<attribute ref="StUF:sleutelOntvangend" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="KPA-TIOX-basis">
+		<complexContent>
+			<restriction base="WOZ:KPA-basis">
+				<sequence>
+					<element name="codeArchetype" type="WOZ:ArchetypeAanduiding-e" nillable="true" minOccurs="0"/>
+					<element name="naamArchetype" type="WOZ:ArchetypeNaam-e" nillable="true" minOccurs="0"/>
+					<element name="versieArchetype" type="WOZ:Versie-e" nillable="true" minOccurs="0"/>
+					<element name="waardepeildatum" type="WOZ:Peildatum-e" nillable="true" minOccurs="0"/>
+					<element name="objectCategorieNaam" type="WOZ:ObjectCategorieNaam-e" nillable="true" minOccurs="0"/>
+					<element name="soortObjectCode" type="WOZ:SoortObjectCode-e" nillable="true" minOccurs="0"/>
+					<element name="codeWOZDeelObject" type="WOZ:CodeWOZDeelObject-e" nillable="true" minOccurs="0"/>
+					<element name="versieTaxatiewijzer" type="WOZ:VersieMajorMinor-e" nillable="true" minOccurs="0"/>
+					<element name="kengetalDefinitieSet" type="WOZ:KengetalDefinitieSetGrp" minOccurs="0"/>
+					<element name="ingangsdatumObject" type="StUF:DatumMetIndicator" nillable="true" minOccurs="0"/>
+					<element name="einddatumObject" type="StUF:DatumMetIndicator" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:sleutelGegevensbeheer" use="prohibited"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="KPA-TIOX-vraagActueel">
+		<complexContent>
+			<restriction base="WOZ:KPA-TIOX-basis">
+				<sequence>
+					<element name="codeArchetype" type="WOZ:ArchetypeAanduiding-e"/>
+					<element name="waardepeildatum" type="WOZ:Peildatum-e"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="KPA-TIOX-vraagId">
+		<complexContent>
+			<restriction base="WOZ:KPA-TIOX-basis">
+				<attribute ref="StUF:sleutelVerzendend" use="prohibited"/>
+				<attribute ref="StUF:sleutelOntvangend" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="KPA-TIOX-vraagWaardepeildatum">
+		<complexContent>
+			<restriction base="WOZ:KPA-TIOX-basis">
+				<sequence>
+					<element name="waardepeildatum" type="WOZ:Peildatum-e"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="KPA"/>
+				<attribute ref="StUF:sleutelVerzendend" use="prohibited"/>
+				<attribute ref="StUF:sleutelOntvangend" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TAX-TIOX-basis">
+		<annotation>
+			<documentation>Taxatie binnen TIOX</documentation>
+		</annotation>
+		<complexContent>
+			<restriction base="WOZ:TAX-basis">
+				<sequence>
+					<element name="waardepeildatum" type="WOZ:Peildatum-e" minOccurs="0"/>
+					<element name="toestandspeildatum" type="WOZ:Peildatum-e" minOccurs="0"/>
+					<element name="taxatiedatum" type="StUF:Datum-e" nillable="true" minOccurs="0"/>
+					<element name="taxateur" type="WOZ:Taxateur-e" nillable="true" minOccurs="0"/>
+					<element name="nswLandgoedGrp" type="WOZ:NSWLandgoedTAXGrp" minOccurs="0"/>
+					<element name="getaxeerdeWaarde" type="WOZ:Maateenheid11-e" minOccurs="0"/>
+					<element name="bedragBTWInWaarde" type="WOZ:Maateenheid11-neg-e" nillable="true" minOccurs="0"/>
+					<element name="betrokkenWOZobject" type="WOZ:TAXWOZBOB-TIOX" minOccurs="0"/>
+					<element name="beschouwdDeelObject" type="WOZ:TAXWDO-TIOX-basis" minOccurs="0" maxOccurs="unbounded"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="TAX"/>
+				<attribute ref="StUF:sleutelGegevensbeheer" use="prohibited"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TAX-TIOX">
+		<annotation>
+			<documentation>Taxatie binnen TIOX</documentation>
+		</annotation>
+		<complexContent>
+			<restriction base="WOZ:TAX-TIOX-basis">
+				<sequence>
+					<element name="waardepeildatum" type="WOZ:Peildatum-e"/>
+					<element name="toestandspeildatum" type="WOZ:Peildatum-e" minOccurs="0"/>
+					<element name="taxatiedatum" type="StUF:Datum-e" nillable="true" minOccurs="0"/>
+					<element name="taxateur" type="WOZ:Taxateur-e" nillable="true" minOccurs="0"/>
+					<element name="nswLandgoedGrp" type="WOZ:NSWLandgoedTAXGrp" minOccurs="0"/>
+					<element name="getaxeerdeWaarde" type="WOZ:Maateenheid11-e" minOccurs="0"/>
+					<element name="bedragBTWInWaarde" type="WOZ:Maateenheid11-neg-e" nillable="true" minOccurs="0"/>
+					<element name="betrokkenWOZobject" type="WOZ:TAXWOZBOB-TIOX-basis"/>
+					<element name="beschouwdDeelObject" type="WOZ:TAXWDO-TIOX-basis" minOccurs="0" maxOccurs="unbounded"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TAX-TIOX-invoerLijstRespons">
+		<complexContent>
+			<restriction base="WOZ:TAX-TIOX-basis">
+				<sequence>
+					<element name="waardepeildatum" type="WOZ:Peildatum-e"/>
+					<element name="betrokkenWOZobject" type="WOZ:TAXWOZBOB-TIOX-basis"/>
+				</sequence>
+				<attribute ref="StUF:sleutelVerzendend" use="required"/>
+				<attribute ref="StUF:sleutelOntvangend" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TAX-TIOX-lijstVerzoek">
+		<complexContent>
+			<restriction base="WOZ:TAX-TIOX-basis">
+				<sequence>
+					<element name="waardepeildatum" type="WOZ:Peildatum-e" minOccurs="0"/>
+					<element name="betrokkenWOZobject" type="WOZ:TAXWOZBOB-TIOX-vraagSelectie"/>
+				</sequence>
+				<attribute ref="StUF:sleutelVerzendend" use="prohibited"/>
+				<attribute ref="StUF:sleutelOntvangend" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TAX-TIOX-taxatiedatum">
+		<complexContent>
+			<restriction base="WOZ:TAX-TIOX-basis">
+				<sequence>
+					<element name="taxatiedatum" type="StUF:Datum-e"/>
+				</sequence>
+				<attribute ref="StUF:sleutelVerzendend" use="prohibited"/>
+				<attribute ref="StUF:sleutelOntvangend" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TAX-TIOX-uitvoerLijstRespons">
+		<complexContent>
+			<restriction base="WOZ:TAX-TIOX-basis">
+				<sequence>
+					<element name="waardepeildatum" type="WOZ:Peildatum-e"/>
+					<element name="taxatiedatum" type="StUF:Datum-e"/>
+					<element name="betrokkenWOZobject" type="WOZ:TAXWOZBOB-TIOX-basis"/>
+				</sequence>
+				<attribute ref="StUF:sleutelVerzendend" use="required"/>
+				<attribute ref="StUF:sleutelOntvangend" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TAX-TIOX-verantwoordelijkeGemeente">
+		<complexContent>
+			<restriction base="WOZ:TAX-TIOX-basis">
+				<sequence>
+					<element name="betrokkenWOZobject" type="WOZ:TAXWOZBOB-TIOX-verantwoordelijkeGemeente"/>
+				</sequence>
+				<attribute ref="StUF:sleutelVerzendend" use="prohibited"/>
+				<attribute ref="StUF:sleutelOntvangend" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TAX-TIOX-vraagId">
+		<complexContent>
+			<restriction base="WOZ:TAX-TIOX-basis">
+				<attribute ref="StUF:sleutelOntvangend" use="required"/>
+				<attribute ref="StUF:sleutelVerzendend" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TAXWDO-TIOX-basis">
+		<complexContent>
+			<restriction base="WOZ:TAXWDO-basis">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:WDO-TIOX-basis"/>
+					<choice minOccurs="0">
+						<element name="agrarischeAsbestGrp" type="WOZ:AgrarischeAsbestGrp"/>
+						<element name="agrarischeGebouwenGrp" type="WOZ:AgrarischeGebouwenGrp"/>
+						<element name="agrarischeGrondGrp" type="WOZ:AgrarischeGrondGrp"/>
+						<element name="bijzondereOmstandighedenGrp" type="WOZ:BijzondereOmstandighedenGrp" maxOccurs="unbounded"/>
+						<element name="gecorrigeerdeVervangingsWaardeGrp" type="WOZ:GecorrigeerdeVervangingsWaardeGrp"/>
+						<element name="huurwaardeKapitalisatieGrp" type="WOZ:HuurwaardeKapitalisatieGrp"/>
+						<element name="motorbrandstofverkooppuntenGrp" type="WOZ:MotorbrandstofverkooppuntenLocatieWaardeGrp"/>
+						<element name="nswLandgoedGrp" type="WOZ:NSWLandgoedTAXWDOGrp"/>
+						<element name="recRecreatieGrp" type="WOZ:RECRecreatieGrp"/>
+						<element name="stuksprijzenGrp" type="WOZ:StuksprijzenGrp"/>
+					</choice>
+					<element name="bepaaldeWaardeWOZDeelObject" type="WOZ:Maateenheid11-neg-e" minOccurs="0"/>
+					<element name="bedragBTWInWaarde" type="WOZ:Maateenheid11-neg-e" nillable="true" minOccurs="0"/>
+					<element name="bepaaldeWaardeWOZDeelObjectInclusiefBtw" type="WOZ:Maateenheid11-neg-e" nillable="true" minOccurs="0"/>
+					<element name="percentageGereed" type="WOZ:Percentage-e" nillable="true" minOccurs="0"/>
+					<element name="gebruiktArchetypeTaxatiewijzer" type="WOZ:ArchetypeAanduiding-e"/>
+					<element name="codeTaxatiemethodiek" type="WOZ:CodeTaxatiemethodiek-e"/>
+					<element name="gebruikteEenheid" type="WOZ:GebruikteEenheid-e" nillable="true" minOccurs="0"/>
+					<element name="aantekening" type="WOZ:Aantekening-e" nillable="true" minOccurs="0"/>
+					<element name="heeftKengetalDefinitieSet" type="WOZ:TAXWDOKPA-basis" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="TAXWDO"/>
+				<attribute ref="StUF:sleutelOntvangend" use="prohibited"/>
+				<attribute ref="StUF:sleutelVerzendend" use="prohibited"/>
+				<attribute ref="StUF:sleutelGegevensbeheer" use="prohibited"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TAXWDOKPA-TIOX-basis">
+		<complexContent>
+			<restriction base="WOZ:TAXWDOKPA-basis">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:KPA-TIOX-basis" nillable="true"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TAXWOZBOB-TIOX">
+		<complexContent>
+			<restriction base="WOZ:TAXWOZBOB-basis">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:WOZ-TIOX"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="TAXWOZBOB"/>
+				<attribute ref="StUF:sleutelOntvangend" use="prohibited"/>
+				<attribute ref="StUF:sleutelVerzendend" use="prohibited"/>
+				<attribute ref="StUF:sleutelGegevensbeheer" use="prohibited"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TAXWOZBOB-TIOX-basis">
+		<complexContent>
+			<restriction base="WOZ:TAXWOZBOB-TIOX">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:WOZ-TIOX-basis"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TAXWOZBOB-TIOX-verantwoordelijkeGemeente">
+		<annotation>
+			<documentation>Complextype met alleen de gemeentecode in de gerelateerde tbv TIOX verzoek</documentation>
+		</annotation>
+		<complexContent>
+			<restriction base="WOZ:TAXWOZBOB-TIOX">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:WOZ-TIOX-verantwoordelijkeGemeente"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TAXWOZBOB-TIOX-vraagSelectie">
+		<complexContent>
+			<restriction base="WOZ:TAXWOZBOB-TIOX">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:WOZ-TIOX-vraagSelectie"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TRN-TIOX">
+		<complexContent>
+			<restriction base="WOZ:TRN-basis">
+				<sequence>
+					<element name="volgnummerMarktgegeven" type="WOZ:VolgnummerMarktgegeven-e" nillable="true" minOccurs="0"/>
+					<element name="omschrijvingTransactie" type="WOZ:Omschrijving50-e" nillable="true" minOccurs="0"/>
+					<element name="documentNummer" type="BG:DocumentNummering-e" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="aardMarktinformatie" type="WOZ:AardMarktinformatie-e" nillable="true" minOccurs="0"/>
+					<element name="soortTransactie" type="WOZ:SoortTransactie-e" nillable="true" minOccurs="0"/>
+					<element name="aanduidingBruikbaarheid" type="WOZ:AanduidingBruikbaarheid-e" nillable="true" minOccurs="0"/>
+					<element name="datumTransactie" type="StUF:Datum-e" nillable="true" minOccurs="0"/>
+					<element name="transactieprijs" type="WOZ:Maateenheid11-e" nillable="true" minOccurs="0"/>
+					<choice minOccurs="0">
+						<element name="stichtingskosten" type="WOZ:StichtingskostenGrp" minOccurs="0"/>
+					</choice>
+					<element name="heeftBetrekkingOp" type="WOZ:TRNWOZ-TIOX" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TRNWOZ-TIOX">
+		<complexContent>
+			<restriction base="WOZ:TRNWOZ-basis">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:WOZ-TIOX-kerngegevens" nillable="true"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WDO-TIOX-basis">
+		<annotation>
+			<documentation>WOZ-deelobject binnen TIOX</documentation>
+		</annotation>
+		<complexContent>
+			<restriction base="WOZ:WDO-basis">
+				<sequence>
+					<element name="nummerWOZDeelObject" type="WOZ:NummerWOZDeelObject-e"/>
+					<element name="codeOmzetBelasting" type="WOZ:CodeOmzetBelasting-e" nillable="true" minOccurs="0"/>
+					<element name="codeWOZDeelObject" type="WOZ:CodeWOZDeelObject-e" nillable="true" minOccurs="0"/>
+					<choice minOccurs="0">
+						<element name="bouwjaar" type="WOZ:Jaar-e" nillable="true" minOccurs="0"/>
+					</choice>
+					<element name="kwaliteitLuxe" type="WOZ:BeoordelingKenmerk-e" nillable="true" minOccurs="0"/>
+					<element name="inhoud" type="WOZ:Maateenheid11-e" nillable="true" minOccurs="0"/>
+					<element name="codeBrutoNettoInhoud" type="WOZ:BrutoNettoInhoud-e" nillable="true" minOccurs="0"/>
+					<element name="oppervlakte" type="WOZ:Maateenheid11-e" nillable="true" minOccurs="0"/>
+					<element name="codeBrutoNettoOppervlakte" type="WOZ:BrutoNettoOppervlakte-e" nillable="true" minOccurs="0"/>
+					<element name="aantalStuksEenheden" type="WOZ:Maateenheid11-e" minOccurs="0"/>
+					<element name="aantekening" type="WOZ:Aantekening-e" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WDO"/>
+				<attribute ref="StUF:sleutelGegevensbeheer" use="prohibited"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZ-TIOX">
+		<annotation>
+			<documentation>WOZ-object tbv TIOX</documentation>
+		</annotation>
+		<complexContent>
+			<restriction base="WOZ:WOZ-basis">
+				<sequence>
+					<element name="wozObjectNummer" type="WOZ:WOZObjectNummer-e" nillable="true" minOccurs="0"/>
+					<element name="aanduidingWOZobject" type="BG:AanduidingWOZobjectGrp-woz" minOccurs="0"/>
+					<element name="grondoppervlakte" type="WOZ:Maateenheid11-neg-e" nillable="true" minOccurs="0"/>
+					<element name="codeGebouwdOngebouwd" type="WOZ:CodeGebouwdOngebouwd-e" nillable="true" minOccurs="0"/>
+					<element name="meegetaxeerdeOppervlakteGebouwd" type="WOZ:Maateenheid11-neg-e" nillable="true" minOccurs="0"/>
+					<element name="verantwoordelijkeGemeente" type="BG:VerantwoordelijkeGemeenteGrp-TIOX" minOccurs="0"/>
+					<element name="omschrijving" type="WOZ:Omschrijving100-e" nillable="true" minOccurs="0"/>
+					<element name="codeOmzetBelasting" type="WOZ:CodeOmzetBelasting-e" nillable="true" minOccurs="0"/>
+					<element name="soortObjectCode" type="WOZ:SoortObjectCode-e" nillable="true" minOccurs="0"/>
+					<element name="bevatKadastraleObjecten" type="WOZ:WOZKOZ-TIOX-basis" minOccurs="0" maxOccurs="unbounded"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WOZ"/>
+				<attribute ref="StUF:sleutelGegevensbeheer" use="prohibited"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZ-TIOX-basis">
+		<annotation>
+			<documentation>WOZ-object tbv TIOX</documentation>
+		</annotation>
+		<complexContent>
+			<restriction base="WOZ:WOZ-TIOX">
+				<sequence>
+					<element name="wozObjectNummer" type="WOZ:WOZObjectNummer-e" nillable="true" minOccurs="0"/>
+					<element name="aanduidingWOZobject" type="BG:AanduidingWOZobjectGrp-woz" minOccurs="0"/>
+					<element name="grondoppervlakte" type="WOZ:Maateenheid11-neg-e" nillable="true" minOccurs="0"/>
+					<element name="codeGebouwdOngebouwd" type="WOZ:CodeGebouwdOngebouwd-e" nillable="true" minOccurs="0"/>
+					<element name="meegetaxeerdeOppervlakteGebouwd" type="WOZ:Maateenheid11-neg-e" nillable="true" minOccurs="0"/>
+					<element name="verantwoordelijkeGemeente" type="BG:VerantwoordelijkeGemeenteGrp-TIOX" minOccurs="0"/>
+					<element name="omschrijving" type="WOZ:Omschrijving100-e" nillable="true" minOccurs="0"/>
+					<element name="codeOmzetBelasting" type="WOZ:CodeOmzetBelasting-e" nillable="true"/>
+					<element name="soortObjectCode" type="WOZ:SoortObjectCode-e" nillable="true"/>
+					<element name="bevatKadastraleObjecten" type="WOZ:WOZKOZ-TIOX-basis" minOccurs="0" maxOccurs="unbounded"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZ-TIOX-kerngegevens">
+		<complexContent>
+			<restriction base="WOZ:WOZ-TIOX">
+				<sequence>
+					<element name="wozObjectNummer" type="WOZ:WOZObjectNummer-e" nillable="true"/>
+					<element name="aanduidingWOZobject" type="BG:AanduidingWOZobjectGrp-woz-kerngegevensKennisgeving"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZ-TIOX-verantwoordelijkeGemeente">
+		<annotation>
+			<documentation>WOZ-object met alleen de verantwoordelijke gemeente erin</documentation>
+		</annotation>
+		<complexContent>
+			<restriction base="WOZ:WOZ-TIOX">
+				<sequence>
+					<element name="verantwoordelijkeGemeente" type="BG:VerantwoordelijkeGemeenteGrp-TIOX"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZ-TIOX-vraagSelectie">
+		<annotation>
+			<documentation>WOZ-object tbv selectie in TIOX</documentation>
+		</annotation>
+		<complexContent>
+			<restriction base="WOZ:WOZ-TIOX">
+				<sequence>
+					<element name="wozObjectNummer" type="WOZ:WOZObjectNummer-e" nillable="true" minOccurs="0"/>
+					<element name="aanduidingWOZobject" type="BG:AanduidingWOZobjectGrp-woz" minOccurs="0"/>
+					<element name="verantwoordelijkeGemeente" type="BG:VerantwoordelijkeGemeenteGrp-TIOX" minOccurs="0"/>
+					<element name="omschrijving" type="WOZ:Omschrijving100-e" nillable="true" minOccurs="0"/>
+					<element name="soortObjectCode" type="WOZ:SoortObjectCode-e" nillable="true" minOccurs="0"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZKOZ-TIOX-basis">
+		<complexContent>
+			<restriction base="WOZ:WOZKOZ-basis">
+				<sequence>
+					<element name="gerelateerde" type="BG:KOZ-TIOX"/>
+					<element name="toegekendeOppervlakte" type="WOZ:Maateenheid11-neg-e" nillable="true" minOccurs="0"/>
+					<element name="meegetaxeerdeOppervlakte" type="WOZ:Maateenheid11-neg-e" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WOZKOZ"/>
+				<attribute ref="StUF:sleutelOntvangend" use="prohibited"/>
+				<attribute ref="StUF:sleutelVerzendend" use="prohibited"/>
+				<attribute ref="StUF:sleutelGegevensbeheer" use="prohibited"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+</schema>

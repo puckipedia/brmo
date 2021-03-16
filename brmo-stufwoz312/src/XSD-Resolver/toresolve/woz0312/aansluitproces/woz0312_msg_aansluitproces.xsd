@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2013 sp1 (x64) (http://www.altova.com) by M. van den Broek (messageDesign) -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:StUF="http://www.egem.nl/StUF/StUF0301" xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310" xmlns:WOZ="http://www.waarderingskamer.nl/StUF/0312" targetNamespace="http://www.waarderingskamer.nl/StUF/0312" elementFormDefault="qualified" attributeFormDefault="unqualified" version="031202">
+	<annotation>
+		<documentation>
+			Dit schema bevat de definitie van de vrije berichten gebruikt voor de sturing van het aansluitproces van gemeenten op de LV WOZ
+			
+			Wijzigingen vergeleken met versie 031201:
+			- element leegDatabaseDu01 toegevoegd
+		</documentation>
+	</annotation>
+	<import namespace="http://www.egem.nl/StUF/StUF0301" schemaLocation="woz0312_msg_stuf_aansluitproces.xsd"/>
+	<import namespace="http://www.egem.nl/StUF/sector/bg/0310" schemaLocation="../../bg0310/entiteiten/bg0310_simpleTypes.xsd"/>
+	<element name="leegDatabaseDi01">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:Stuurgegevens-aansluitproces-leegDatabaseDi01"/>
+				<element name="parameters" type="WOZ:Parameters-leegDatabase"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="leegDatabaseDu01">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:Stuurgegevens-aansluitproces-leegDatabaseDu01"/>
+			</sequence>
+		</complexType>
+	</element>
+	<!--Definitie parameters complexType-->
+	<complexType name="Parameters-leegDatabase">
+		<sequence>
+			<element name="gemeente" type="BG:Gemeentecodering">
+				<annotation>
+					<documentation>
+						De code van de gemeente waarvoor de records in de gespecificeerde aansluitomgeving dienen te worden verwijderd
+					</documentation>
+				</annotation>
+			</element>
+			<element name="omgeving" type="WOZ:OmgevingAansluiten">
+				<annotation>
+					<documentation>
+						De code van de aansluitomgeving waarin de records voor de gespecificeerde gemeente dienen te worden verwijderd
+					</documentation>
+				</annotation>
+			</element>
+		</sequence>
+	</complexType>
+	<!--Definitie simpleTypes-->
+	<simpleType name="OmgevingAansluiten">
+		<restriction base="string">
+			<enumeration value="ATO">
+				<annotation>
+					<documentation>
+						Aansluittoets Omgeving
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="CTO">
+				<annotation>
+					<documentation>
+						Conformiteitstoets Omgeving
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="ETO">
+				<annotation>
+					<documentation>
+						Externe Test Omgeving
+					</documentation>
+				</annotation>
+			</enumeration>
+		</restriction>
+	</simpleType>
+</schema>

@@ -1,0 +1,591 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2012 rel. 2 sp1 (x64) (http://www.altova.com) by M. van den Broek (messageDesign) -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:StUF="http://www.egem.nl/StUF/StUF0301" xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310" xmlns:WOZ="http://www.waarderingskamer.nl/StUF/0312" targetNamespace="http://www.waarderingskamer.nl/StUF/0312" elementFormDefault="qualified" attributeFormDefault="unqualified" version="031202">
+	<annotation>
+		<documentation>
+			Schema met de definitie van de berichtelementen tbv TIOX
+			
+			Wijzigingen vergeleken met version 031201 in berichtcatalogus TIOX:
+			- binnen het element geefGebruikergegevensRespons is na het element gemeenten het element rollen toegevoegd waarin kan worden aangegeven welke rollen een gebruiker heeft
+		</documentation>
+	</annotation>
+	<include schemaLocation="woz0312_ent_tiox.xsd"/>
+	<import namespace="http://www.egem.nl/StUF/StUF0301" schemaLocation="woz0312_stuf_tiox.xsd"/>
+	<import namespace="http://www.egem.nl/StUF/sector/bg/0310" schemaLocation="woz0312_bg0310_tiox.xsd"/>
+	<element name="geefActueleKengetalSetVerzoek">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi02-geefActueleKengetalSet"/>
+				<element name="vraag">
+					<complexType>
+						<sequence>
+							<element name="gelijk" type="WOZ:KPA-TIOX-vraagActueel"/>
+						</sequence>
+						<attribute ref="StUF:functie" use="required" fixed="selectie"/>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="geefActueleKengetalSetRespons">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDu02-geefActueleKengetalSet"/>
+				<element name="kengetalSet" minOccurs="0">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:KPA-TIOX-basis">
+								<attribute ref="StUF:functie" use="required" fixed="antwoord"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="geefBeschikbareWaardepeildataVerzoek">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi02-geefBeschikbareWaardepeildata"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="geefBeschikbareWaardepeildataRespons">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDu02-geefBeschikbareWaardepeildata"/>
+				<element name="parameters">
+					<complexType>
+						<sequence>
+							<element name="waardepeildatum" type="WOZ:Peildatum-e" minOccurs="0" maxOccurs="unbounded"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="geefGebruikergegevensVerzoek">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi02-geefGebruikergegevens"/>
+				<element name="parameters">
+					<complexType>
+						<sequence>
+							<element name="gebruiker">
+								<complexType>
+									<choice>
+										<element name="login">
+											<complexType>
+												<sequence>
+													<element name="gebruikersnaam" type="WOZ:Gebruikersnaam"/>
+													<element name="wachtwoord" type="WOZ:Wachtwoord"/>
+												</sequence>
+											</complexType>
+										</element>
+										<element name="token" type="WOZ:Token"/>
+									</choice>
+								</complexType>
+							</element>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="geefGebruikergegevensRespons">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDu02-geefGebruikergegevens"/>
+				<element name="parameters">
+					<complexType>
+						<sequence>
+							<element name="gebruiker" minOccurs="0">
+								<complexType>
+									<sequence>
+										<element name="voornaam" type="WOZ:Voornaam"/>
+										<element name="achternaam" type="WOZ:Achternaam"/>
+										<element name="gemeenten">
+											<complexType>
+												<sequence>
+													<element name="gemeente" type="BG:VerantwoordelijkeGemeenteGrp" minOccurs="0" maxOccurs="unbounded"/>
+												</sequence>
+											</complexType>
+										</element>
+										<element name="rollen">
+											<complexType>
+												<sequence>
+													<element name="rol" maxOccurs="unbounded">
+														<simpleType>
+															<restriction base="string">
+																<maxLength value="40"/>
+															</restriction>
+														</simpleType>
+													</element>
+												</sequence>
+											</complexType>
+										</element>
+									</sequence>
+								</complexType>
+							</element>
+							<element name="identificatie" type="StUF:Sleutel-e" minOccurs="0"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="geefKengetalSetOpDatumVerzoek">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi02-geefKengetalSetOpDatum"/>
+				<element name="vraag">
+					<complexType>
+						<sequence>
+							<element name="gelijk" type="WOZ:KPA-TIOX-vraagWaardepeildatum"/>
+						</sequence>
+						<attribute ref="StUF:functie" use="required" fixed="selectie"/>
+						<attribute ref="StUF:entiteittype" use="required" fixed="KPA"/>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="geefKengetalSetOpDatumRespons">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDu02-geefKengetalSetOpDatum"/>
+				<element name="kengetalSet" minOccurs="0" maxOccurs="unbounded">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:KPA-TIOX-antwoordOpWaardepeildatum">
+								<attribute ref="StUF:functie" use="required" fixed="antwoord"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="geefKengetalSetOpIdVerzoek">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi02-geefKengetalSetOpId"/>
+				<element name="vraag">
+					<complexType>
+						<sequence>
+							<element name="gelijk" type="WOZ:KPA-TIOX-vraagId"/>
+						</sequence>
+						<attribute ref="StUF:functie" use="required" fixed="selectie"/>
+						<attribute ref="StUF:entiteittype" use="required" fixed="KPA"/>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="geefKengetalSetOpIdRespons">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDu02-geefKengetalSetOpId"/>
+				<element name="kengetalSet" minOccurs="0">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:KPA-TIOX-basis">
+								<attribute ref="StUF:functie" use="required" fixed="antwoord"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="geefTaxatieInvoerVerzoek">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi02-geefTaxatieInvoer"/>
+				<element name="vraag">
+					<complexType>
+						<sequence>
+							<element name="gelijk" type="WOZ:TAX-TIOX-vraagId"/>
+						</sequence>
+						<attribute ref="StUF:functie" use="required" fixed="selectie"/>
+						<attribute ref="StUF:entiteittype" use="required" fixed="TAX"/>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="geefTaxatieInvoerRespons">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDu02-geefTaxatieInvoer"/>
+				<element name="taxatieInvoer" minOccurs="0">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:TAX-TIOX">
+								<attribute ref="StUF:functie" use="required" fixed="antwoord"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="geefTaxatieInvoerlijstVerzoek">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi02-geefTaxatieInvoerlijst"/>
+				<element name="vraag">
+					<complexType>
+						<sequence>
+							<element name="gelijk" type="WOZ:TAX-TIOX-lijstVerzoek"/>
+						</sequence>
+						<attribute ref="StUF:functie" use="required" fixed="selectie"/>
+						<attribute ref="StUF:entiteittype" use="required" fixed="TAX"/>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="geefTaxatieInvoerlijstRespons">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDu02-geefTaxatieInvoerlijst"/>
+				<element name="taxatieInvoer" minOccurs="0" maxOccurs="unbounded">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:TAX-TIOX-invoerLijstRespons">
+								<attribute ref="StUF:functie" use="required" fixed="antwoord"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="geefTaxatieUitvoerVerzoek">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi02-geefTaxatieUitvoer"/>
+				<element name="vraag">
+					<complexType>
+						<sequence>
+							<element name="gelijk" type="WOZ:TAX-TIOX-vraagId"/>
+						</sequence>
+						<attribute ref="StUF:functie" use="required" fixed="selectie"/>
+						<attribute ref="StUF:entiteittype" use="required" fixed="TAX"/>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="geefTaxatieUitvoerRespons">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDu02-geefTaxatieUitvoer"/>
+				<element name="taxatieUitvoer" minOccurs="0">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:TAX-TIOX">
+								<attribute ref="StUF:functie" use="required" fixed="antwoord"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="geefTaxatieUitvoerlijstVerzoek">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi02-geefTaxatieUitvoerlijst"/>
+				<element name="vraag">
+					<complexType>
+						<sequence>
+							<element name="gelijk" type="WOZ:TAX-TIOX-lijstVerzoek"/>
+						</sequence>
+						<attribute ref="StUF:functie" use="required" fixed="selectie"/>
+						<attribute ref="StUF:entiteittype" use="required" fixed="TAX"/>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="geefTaxatieUitvoerlijstRespons">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDu02-geefTaxatieUitvoerlijst"/>
+				<element name="taxatieUitvoer" minOccurs="0" maxOccurs="unbounded">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:TAX-TIOX-uitvoerLijstRespons">
+								<attribute ref="StUF:functie" use="required" fixed="antwoord"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="geefTaxInvoerlijstGemEnDatumVerzoek">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi02-geefTaxInvoerlijstGemEnDatum"/>
+				<element name="vraag">
+					<complexType>
+						<sequence>
+							<element name="gelijk" type="WOZ:TAX-TIOX-verantwoordelijkeGemeente"/>
+							<element name="vanaf" type="WOZ:TAX-TIOX-taxatiedatum"/>
+						</sequence>
+						<attribute ref="StUF:functie" use="required" fixed="selectie"/>
+						<attribute ref="StUF:entiteittype" use="required" fixed="TAX"/>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="geefTaxUitvoerlijstGemEnDatumVerzoek">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi02-geefTaxUitvoerlijstGemEnDatum"/>
+				<element name="vraag">
+					<complexType>
+						<sequence>
+							<element name="gelijk" type="WOZ:TAX-TIOX-verantwoordelijkeGemeente"/>
+							<element name="vanaf" type="WOZ:TAX-TIOX-taxatiedatum"/>
+						</sequence>
+						<attribute ref="StUF:functie" use="required" fixed="selectie"/>
+						<attribute ref="StUF:entiteittype" use="required" fixed="TAX"/>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="hertaxeerObjectVerzoekAsynchroon">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi01-hertaxeerObject"/>
+				<element name="parameters" type="WOZ:IsProefberekening"/>
+				<element name="taxatie">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:TAX-TIOX">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+				<element name="transactie" minOccurs="0" maxOccurs="unbounded">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:TRN-TIOX">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="hertaxeerObjectResponsAsynchroon">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDu01-hertaxeerObject"/>
+				<element name="taxatie">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:TAX-TIOX">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="hertaxeerObjectVerzoekSynchroon">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi02-hertaxeerObject"/>
+				<element name="parameters" type="WOZ:IsProefberekening"/>
+				<element name="taxatie">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:TAX-TIOX">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+				<element name="transactie" minOccurs="0" maxOccurs="unbounded">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:TRN-TIOX">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="hertaxeerObjectResponsSynchroon">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDu02-hertaxeerObject"/>
+				<element name="taxatie">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:TAX-TIOX">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="taxeerObjectVerzoekAsynchroon">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi01-taxeerObject"/>
+				<element name="parameters" type="WOZ:IsProefberekening"/>
+				<element name="taxatie">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:TAX-TIOX">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+				<element name="transactie" minOccurs="0" maxOccurs="unbounded">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:TRN-TIOX">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="taxeerObjectResponsAsynchroon">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDu01-taxeerObject"/>
+				<element name="taxatie">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:TAX-TIOX">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="taxeerObjectVerzoekSynchroon">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDi02-taxeerObject"/>
+				<element name="parameters" type="WOZ:IsProefberekening"/>
+				<element name="taxatie">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:TAX-TIOX">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+				<element name="transactie" minOccurs="0" maxOccurs="unbounded">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:TRN-TIOX">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="taxeerObjectResponsSynchroon">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensDu02-taxeerObject"/>
+				<element name="taxatie">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:TAX-TIOX">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="taxTIOXLk02T">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:StuurgegevensLk02-TAXTIOX"/>
+				<element name="parametersKennisgeving" type="StUF:ParametersLk02T"/>
+				<element name="taxatie">
+					<complexType>
+						<complexContent>
+							<restriction base="WOZ:TAX-TIOX">
+								<sequence>
+									<element name="waardepeildatum" type="WOZ:Peildatum-e"/>
+									<element name="toestandspeildatum" type="WOZ:Peildatum-e" minOccurs="0"/>
+									<element name="taxatiedatum" type="StUF:Datum-e" nillable="true" minOccurs="0"/>
+									<element name="taxateur" type="WOZ:Taxateur-e" nillable="true" minOccurs="0"/>
+									<element name="nswLandgoedGrp" type="WOZ:NSWLandgoedTAXGrp" minOccurs="0"/>
+									<element name="getaxeerdeWaarde" type="WOZ:Maateenheid11-e" minOccurs="0"/>
+									<element name="bedragBTWInWaarde" type="WOZ:Maateenheid11-neg-e" nillable="true" minOccurs="0"/>
+									<element name="betrokkenWOZobject" type="WOZ:TAXWOZBOB-TIOX-basis"/>
+									<element name="beschouwdDeelObject" type="WOZ:TAXWDO-TIOX-basis" minOccurs="0" maxOccurs="unbounded"/>
+								</sequence>
+								<attribute ref="StUF:verwerkingssoort" use="required"/>
+							</restriction>
+						</complexContent>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<!-- complexTypes tbv parameter elementen -->
+	<complexType name="IsProefberekening">
+		<sequence>
+			<element name="isProefberekening" type="BG:Indicatie"/>
+		</sequence>
+	</complexType>
+	<!--simpleTypes tbv parameter elementen-->
+	<simpleType name="Achternaam">
+		<restriction base="string">
+			<maxLength value="50"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Gebruikersnaam">
+		<restriction base="string">
+			<maxLength value="50"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Token">
+		<restriction base="string">
+			<maxLength value="128"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Voornaam">
+		<restriction base="string">
+			<maxLength value="50"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Wachtwoord">
+		<restriction base="string">
+			<maxLength value="50"/>
+		</restriction>
+	</simpleType>
+</schema>

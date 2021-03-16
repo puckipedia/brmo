@@ -1,0 +1,3300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2018 (x64) (http://www.altova.com) by Maarten van den Broek (messageDesign B.V.) -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:StUF="http://www.egem.nl/StUF/StUF0301" xmlns:WOZ="http://www.waarderingskamer.nl/StUF/0312" xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310" targetNamespace="http://www.waarderingskamer.nl/StUF/0312" elementFormDefault="qualified" attributeFormDefault="unqualified" version="031213">
+	<annotation>
+		<documentation>
+			Dit schema bevat de definitie van de complexTypes voor entiteitttypen ten behoeve van de ondersteuning van de WOZ-processen in de gemeenten.
+			
+			Wijzigingen vergeleken met versie 031212:
+			- In het complexType SWO-kennisgeving is het attribute sleutelSynchronisatie ipv required optional gemaakt (met dank aan Vicrea)
+		</documentation>
+	</annotation>
+	<import namespace="http://www.egem.nl/StUF/StUF0301" schemaLocation="../entiteiten/woz0312_stuf_simpleTypes.xsd"/>
+	<import namespace="http://www.egem.nl/StUF/sector/bg/0310" schemaLocation="woz0312_bg0310_mutatie.xsd"/>
+	<include schemaLocation="../entiteiten/woz0312_ent_basis.xsd"/>
+	<complexType name="ASL-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:ASL-basis">
+				<sequence>
+					<element name="identificatie" type="WOZ:Sleutel-e" nillable="true" minOccurs="0"/>
+					<element name="heffingsTijdvak" type="WOZ:HeffingsTijdvakGrp" minOccurs="0"/>
+					<element name="belastingsoort" type="WOZ:Belastingsoort-e" nillable="true" minOccurs="0"/>
+					<element name="tariefsoort" type="WOZ:Tariefsoort-e" nillable="true" minOccurs="0"/>
+					<element name="statusAanslag" type="WOZ:StatusAanslag-e" nillable="true" minOccurs="0"/>
+					<element name="statusBetaling" type="WOZ:StatusBetaling-e" nillable="true" minOccurs="0"/>
+					<choice minOccurs="0">
+						<sequence>
+							<element name="heffingsmaatstaf" type="WOZ:Maateenheid11-2-e" nillable="true" minOccurs="0"/>
+							<element name="tariefPercentage" type="WOZ:Percentage5DecimalenMin0Max100-e" nillable="true" minOccurs="0"/>
+						</sequence>
+						<sequence>
+							<element name="aantalEenheden" type="WOZ:Maateenheid11-e" nillable="true" minOccurs="0"/>
+							<element name="tariefPerEenheid" type="WOZ:Maateenheid11-2-e" nillable="true" minOccurs="0"/>
+						</sequence>
+					</choice>
+					<element name="bedragAanslag" type="WOZ:Maateenheid11-2-e" nillable="true" minOccurs="0"/>
+					<element ref="StUF:tijdvakGeldigheid" minOccurs="0"/>
+					<element name="isVoor" type="WOZ:ASLSUB-kennisgeving" nillable="true" minOccurs="0"/>
+					<element name="isGebaseerdOp" type="WOZ:ASLBSK-kennisgeving" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="ASL"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="ASL-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:ASL-kennisgeving">
+				<sequence>
+					<element name="identificatie" type="WOZ:Sleutel-e" nillable="true" minOccurs="0"/>
+					<element name="heffingsTijdvak" type="WOZ:HeffingsTijdvakGrp" minOccurs="0"/>
+					<element name="belastingsoort" type="WOZ:Belastingsoort-e" nillable="true" minOccurs="0"/>
+					<element name="tariefsoort" type="WOZ:Tariefsoort-e" nillable="true" minOccurs="0"/>
+					<element name="statusAanslag" type="WOZ:StatusAanslag-e" nillable="true" minOccurs="0"/>
+					<element name="statusBetaling" type="WOZ:StatusBetaling-e" nillable="true" minOccurs="0"/>
+					<choice minOccurs="0">
+						<sequence>
+							<element name="heffingsmaatstaf" type="WOZ:Maateenheid11-2-e" nillable="true" minOccurs="0"/>
+							<element name="tariefPercentage" type="WOZ:Percentage5DecimalenMin0Max100-e" nillable="true" minOccurs="0"/>
+						</sequence>
+						<sequence>
+							<element name="aantalEenheden" type="WOZ:Maateenheid11-e" nillable="true" minOccurs="0"/>
+							<element name="tariefPerEenheid" type="WOZ:Maateenheid11-2-e" nillable="true" minOccurs="0"/>
+						</sequence>
+					</choice>
+					<element name="bedragAanslag" type="WOZ:Maateenheid11-2-e" nillable="true" minOccurs="0"/>
+					<element ref="StUF:tijdvakGeldigheid" minOccurs="0"/>
+					<element name="isVoor" type="WOZ:ASLSUB-kennisgeving_Sh" nillable="true" minOccurs="0"/>
+					<element name="isGebaseerdOp" type="WOZ:ASLBSK-kennisgeving_Sh" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="ASL"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="ASL-kerngegevensKennisgeving">
+		<complexContent>
+			<restriction base="WOZ:ASL-basis">
+				<sequence>
+					<element name="identificatie" type="WOZ:Sleutel-e" nillable="true" minOccurs="0"/>
+					<element name="heffingsTijdvak" type="WOZ:HeffingsTijdvakGrp" minOccurs="0"/>
+					<element name="belastingsoort" type="WOZ:Belastingsoort-e" nillable="true" minOccurs="0"/>
+					<element name="tariefsoort" type="WOZ:Tariefsoort-e" nillable="true" minOccurs="0"/>
+					<element name="isVoor" type="WOZ:ASLSUB-kerngegevens" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="ASL"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="ASLSUB-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:ASLSUB-basis">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:SUB-woz-kerngegevensKennisgeving"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="ASLSUB"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="ASLSUB-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:ASLSUB-kennisgeving">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:SUB-woz-kerngegevensKennisgeving"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="ASLSUB"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="ASLBSK-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:ASLBSK-basis">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:BSK-kerngegevensKennisgeving" nillable="true"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="ASLBSK"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="ASLBSK-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:ASLBSK-kennisgeving">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:BSK-kerngegevensKennisgeving" nillable="true"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="ASLBSK"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="BLJ-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:BLJ-basis">
+				<sequence>
+					<element name="brondocument" type="BG:BrondocumentWOZ" minOccurs="0"/>
+					<element name="statusBiljet" type="WOZ:StatusBiljet-e" nillable="true" minOccurs="0"/>
+					<element name="isVoor" type="WOZ:BLJSUB-kennisgeving" nillable="true" minOccurs="0"/>
+					<element name="heeftAanslagregel" type="WOZ:BLJASL-kennisgeving" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="heeftBeschikkingsregel" type="WOZ:BLJBSK-kennisgeving" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="BLJ"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="BLJ-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:BLJ-kennisgeving">
+				<sequence>
+					<element name="brondocument" type="BG:BrondocumentWOZ" minOccurs="0"/>
+					<element name="statusBiljet" type="WOZ:StatusBiljet-e" nillable="true" minOccurs="0"/>
+					<element name="isVoor" type="WOZ:BLJSUB-kennisgeving_Sh" nillable="true" minOccurs="0"/>
+					<element name="heeftAanslagregel" type="WOZ:BLJASL-kennisgeving_Sh" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="heeftBeschikkingsregel" type="WOZ:BLJBSK-kennisgeving_Sh" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="BLJ"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="BLJ-kerngegevensKennisgeving">
+		<complexContent>
+			<restriction base="WOZ:BLJ-basis">
+				<sequence>
+					<element name="brondocument" type="BG:BrondocumentWOZ-kerngegevens" minOccurs="0"/>
+					<element name="isVoor" type="WOZ:BLJSUB-kerngegevens" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="BLJ"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="BLJASL-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:BLJASL-basis">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:ASL-kerngegevensKennisgeving" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="BLJASL"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="BLJASL-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:BLJASL-kennisgeving">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:ASL-kerngegevensKennisgeving" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:entiteittype" use="required" fixed="BLJASL"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="BLJBSK-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:BLJBSK-basis">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:BSK-kerngegevensKennisgeving" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="BLJBSK"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="BLJBSK-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:BLJBSK-kennisgeving">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:BSK-kerngegevensKennisgeving" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:entiteittype" use="required" fixed="BLJBSK"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="BLJSUB-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:BLJSUB-basis">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:SUB-woz-kerngegevensKennisgeving" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="BLJSUB"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="BLJSUB-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:BLJSUB-kennisgeving">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:SUB-woz-kerngegevensKennisgeving" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:entiteittype" use="required" fixed="BLJSUB"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="BSK-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:BSK-basis">
+				<sequence>
+					<element name="waardepeildatum" type="WOZ:Peildatum-e" nillable="true" minOccurs="0"/>
+					<element name="toestandspeildatum" type="WOZ:Peildatum-e" nillable="true" minOccurs="0"/>
+					<element name="vastgesteldeWaarde" type="WOZ:Maateenheid11-e" nillable="true" minOccurs="0"/>
+					<element name="heffingsmaatstafOZB" type="WOZ:Maateenheid11-e" nillable="true" minOccurs="0"/>
+					<element name="heffingsmaatstafOZBGebruiker" type="WOZ:Maateenheid11-e" nillable="true" minOccurs="0"/>
+					<element name="statusBeschikking" type="WOZ:StatusBeschikking-e" nillable="true" minOccurs="0"/>
+					<element name="inOnderzoek" type="StUF:InOnderzoekBSK" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="brondocument" type="BG:BrondocumentWOZ" minOccurs="0"/>
+					<element ref="StUF:tijdvakGeldigheid" minOccurs="0"/>
+					<element ref="StUF:tijdstipRegistratie" minOccurs="0"/>
+					<element name="heeftBetrekkingOp" type="WOZ:BSKWOZ-kennisgeving" nillable="true" minOccurs="0"/>
+					<element name="isVoor" type="WOZ:BSKSUB-kennisgeving" nillable="true" minOccurs="0"/>
+					<element name="wordtOnderbouwdMet" type="WOZ:BSKTVS-kennisgeving" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="BSK"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="BSK-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:BSK-kennisgeving">
+				<sequence>
+					<element name="waardepeildatum" type="WOZ:Peildatum-e" nillable="true" minOccurs="0"/>
+					<element name="toestandspeildatum" type="WOZ:Peildatum-e" nillable="true" minOccurs="0"/>
+					<element name="vastgesteldeWaarde" type="WOZ:Maateenheid11-e" nillable="true" minOccurs="0"/>
+					<element name="heffingsmaatstafOZB" type="WOZ:Maateenheid11-e" nillable="true" minOccurs="0"/>
+					<element name="heffingsmaatstafOZBGebruiker" type="WOZ:Maateenheid11-e" nillable="true" minOccurs="0"/>
+					<element name="statusBeschikking" type="WOZ:StatusBeschikking-e" nillable="true" minOccurs="0"/>
+					<element name="inOnderzoek" type="StUF:InOnderzoekBSK" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="brondocument" type="BG:BrondocumentWOZ" minOccurs="0"/>
+					<element ref="StUF:tijdvakGeldigheid" minOccurs="0"/>
+					<element ref="StUF:tijdstipRegistratie" minOccurs="0"/>
+					<element name="heeftBetrekkingOp" type="WOZ:BSKWOZ-kennisgeving_Sh" nillable="true" minOccurs="0"/>
+					<element name="isVoor" type="WOZ:BSKSUB-kennisgeving_Sh" nillable="true" minOccurs="0"/>
+					<element name="wordtOnderbouwdMet" type="WOZ:BSKTVS-kennisgeving_Sh" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="BSK"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="BSK-kerngegevensKennisgeving">
+		<complexContent>
+			<restriction base="WOZ:BSK-basis">
+				<sequence>
+					<element name="waardepeildatum" type="WOZ:Peildatum-e" nillable="true" minOccurs="0"/>
+					<element name="heeftBetrekkingOp" type="WOZ:BSKWOZ-kerngegevens" nillable="true" minOccurs="0"/>
+					<element name="isVoor" type="WOZ:BSKSUB-kerngegevens" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="BSK"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="BSKSUB-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:BSKSUB-basis">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:SUB-woz-kerngegevensKennisgeving"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="BSKSUB"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="BSKSUB-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:BSKSUB-kennisgeving">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:SUB-woz-kerngegevensKennisgeving"/>
+				</sequence>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:entiteittype" use="required" fixed="BSKSUB"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="BSKTVS-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:BSKTVS-basis">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:TVS-kerngegevensKennisgeving" nillable="true"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+					<element ref="StUF:tijdstipRegistratie" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="BSKTVS"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="BSKTVS-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:BSKTVS-kennisgeving">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:TVS-kerngegevensKennisgeving" nillable="true"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+					<element ref="StUF:tijdstipRegistratie" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="BSKTVS"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="BSKWOZ-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:BSKWOZ-basis">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:WOZ-kerngegevensKennisgeving" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="BSKWOZ"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="BSKWOZ-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:BSKWOZ-kennisgeving">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:WOZ-kerngegevensKennisgeving" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:entiteittype" use="required" fixed="BSKWOZ"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="BZW-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:BZW-basis">
+				<sequence>
+					<element name="brondocument" type="BG:BrondocumentWOZ" minOccurs="0"/>
+					<element name="statusBezwaar" type="WOZ:StatusBezwaar-e" nillable="true" minOccurs="0"/>
+					<element ref="StUF:tijdvakGeldigheid" minOccurs="0"/>
+					<element name="isIngediendDoor" type="WOZ:BZWSUBANV-kennisgeving" nillable="true" minOccurs="0"/>
+					<element name="wordtBehandeldDoorGemachtigde" type="WOZ:BZWSUBGMC-kennisgeving" nillable="true" minOccurs="0"/>
+					<element name="isTegenAanslagregel" type="WOZ:BZWASL-kennisgeving" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="isTegenBeschikking" type="WOZ:BZWBSK-kennisgeving" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="isTegenBiljet" type="WOZ:BZWBLJ-kennisgeving" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="BZW"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="BZW-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:BZW-kennisgeving">
+				<sequence>
+					<element name="brondocument" type="BG:BrondocumentWOZ" minOccurs="0"/>
+					<element name="statusBezwaar" type="WOZ:StatusBezwaar-e" nillable="true" minOccurs="0"/>
+					<element ref="StUF:tijdvakGeldigheid" minOccurs="0"/>
+					<element name="isIngediendDoor" type="WOZ:BZWSUBANV-kennisgeving_Sh" nillable="true" minOccurs="0"/>
+					<element name="wordtBehandeldDoorGemachtigde" type="WOZ:BZWSUBGMC-kennisgeving_Sh" nillable="true" minOccurs="0"/>
+					<element name="isTegenAanslagregel" type="WOZ:BZWASL-kennisgeving_Sh" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="isTegenBeschikking" type="WOZ:BZWBSK-kennisgeving_Sh" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="isTegenBiljet" type="WOZ:BZWBLJ-kennisgeving_Sh" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="BZW"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="BZW-kerngegevensKennisgeving">
+		<complexContent>
+			<restriction base="WOZ:BZW-basis">
+				<sequence>
+					<element name="brondocument" type="BG:BrondocumentWOZ-kerngegevens" minOccurs="0"/>
+					<element name="isIngediendDoor" type="WOZ:BZWSUBANV-kerngegevens" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="BZW"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="BZWASL-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:BZWASL-basis">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:ASL-kerngegevensKennisgeving" nillable="true"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="BZWASL"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="BZWASL-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:BZWASL-kennisgeving">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:ASL-kerngegevensKennisgeving" nillable="true"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:entiteittype" use="required" fixed="BZWASL"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="BZWBLJ-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:BZWBLJ-basis">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:BLJ-kerngegevensKennisgeving" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="BZWBLJ"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="BZWBLJ-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:BZWBLJ-kennisgeving">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:BLJ-kerngegevensKennisgeving" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:entiteittype" use="required" fixed="BZWBLJ"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="BZWBSK-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:BZWBSK-basis">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:BSK-kerngegevensKennisgeving" nillable="true"/>
+					<element name="soortGrief" type="WOZ:SoortGrief-e" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="BZWBSK"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="BZWBSK-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:BZWBSK-kennisgeving">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:BSK-kerngegevensKennisgeving" nillable="true"/>
+					<element name="soortGrief" type="WOZ:SoortGrief-e" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:entiteittype" use="required" fixed="BZWBSK"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="BZWSUBANV-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:BZWSUBANV-basis">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:SUB-woz-kerngegevensKennisgeving"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="BZWSUBANV"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="BZWSUBANV-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:BZWSUBANV-kennisgeving">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:SUB-woz-kerngegevensKennisgeving"/>
+				</sequence>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:entiteittype" use="required" fixed="BZWSUBANV"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="BZWSUBGMC-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:BZWSUBGMC-basis">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:SUB-woz-kerngegevensKennisgeving"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="BZWSUBGMC"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="BZWSUBGMC-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:BZWSUBGMC-kennisgeving">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:SUB-woz-kerngegevensKennisgeving"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:entiteittype" use="required" fixed="BZWSUBGMC"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="CTL-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:CTL-basis">
+				<sequence>
+					<element name="identificatie" type="WOZ:Sleutel-e" nillable="true" minOccurs="0"/>
+					<element name="aantekening" type="WOZ:Aantekening-e" nillable="true" minOccurs="0"/>
+					<element name="taxateur" type="WOZ:Taxateur-e" nillable="true" minOccurs="0"/>
+					<element name="datumControle" type="StUF:Datum-e" nillable="true" minOccurs="0"/>
+					<element name="redenControle" type="WOZ:RedenControle-e" nillable="true" minOccurs="0"/>
+					<element name="gecontroleerdeWOZDeelObjecten" type="WOZ:GecontroleerdeWOZDeelObjecten-e" nillable="true" minOccurs="0"/>
+					<element name="gecontroleerdeObjectKenmerken" type="WOZ:GecontroleerdeObjectkenmerken-e" nillable="true" minOccurs="0"/>
+					<element name="identificatieUitvoerder" type="WOZ:IdentificatieUitvoerder-e" nillable="true" minOccurs="0"/>
+					<element name="methodiekControle" type="WOZ:MethodiekControle-e" nillable="true" minOccurs="0"/>
+					<element name="isVoor" type="WOZ:CTLWOZ-kennisgeving" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="CTL"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="CTL-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:CTL-kennisgeving">
+				<sequence>
+					<element name="identificatie" type="WOZ:Sleutel-e" nillable="true" minOccurs="0"/>
+					<element name="aantekening" type="WOZ:Aantekening-e" nillable="true" minOccurs="0"/>
+					<element name="taxateur" type="WOZ:Taxateur-e" nillable="true" minOccurs="0"/>
+					<element name="datumControle" type="StUF:Datum-e" nillable="true" minOccurs="0"/>
+					<element name="redenControle" type="WOZ:RedenControle-e" nillable="true" minOccurs="0"/>
+					<element name="gecontroleerdeWOZDeelObjecten" type="WOZ:GecontroleerdeWOZDeelObjecten-e" nillable="true" minOccurs="0"/>
+					<element name="gecontroleerdeObjectKenmerken" type="WOZ:GecontroleerdeObjectkenmerken-e" nillable="true" minOccurs="0"/>
+					<element name="identificatieUitvoerder" type="WOZ:IdentificatieUitvoerder-e" nillable="true" minOccurs="0"/>
+					<element name="methodiekControle" type="WOZ:MethodiekControle-e" nillable="true" minOccurs="0"/>
+					<element name="isVoor" type="WOZ:CTLWOZ-kennisgeving_Sh" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:entiteittype" use="required" fixed="CTL"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="CTLWOZ-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:CTLWOZ-basis">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:WOZ-kerngegevensKennisgeving" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="CTLWOZ"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="CTLWOZ-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:CTLWOZ-kennisgeving">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:WOZ-kerngegevensKennisgeving" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:entiteittype" use="required" fixed="CTLWOZ"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="KPA-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:KPA-basis">
+				<sequence>
+					<element name="codeArchetype" type="WOZ:ArchetypeAanduiding-e" nillable="true" minOccurs="0"/>
+					<element name="naamArchetype" type="WOZ:ArchetypeNaam-e" nillable="true" minOccurs="0"/>
+					<element name="versieArchetype" type="WOZ:Versie-e" nillable="true" minOccurs="0"/>
+					<element name="waardepeildatum" type="WOZ:Peildatum-e" nillable="true" minOccurs="0"/>
+					<element name="objectCategorieNaam" type="WOZ:ObjectCategorieNaam-e" nillable="true" minOccurs="0"/>
+					<element name="soortObjectCode" type="WOZ:SoortObjectCode-e" nillable="true" minOccurs="0"/>
+					<element name="codeWOZDeelObject" type="WOZ:CodeWOZDeelObject-e" nillable="true" minOccurs="0"/>
+					<element name="versieTaxatiewijzer" type="WOZ:VersieMajorMinor-e" nillable="true" minOccurs="0"/>
+					<element name="kengetalDefinitieSet" type="WOZ:KengetalDefinitieSetGrp" minOccurs="0"/>
+					<element name="ingangsdatumObject" type="StUF:DatumMetIndicator" nillable="true" minOccurs="0"/>
+					<element name="einddatumObject" type="StUF:DatumMetIndicator" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="KPA"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="KPA-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:KPA-kennisgeving">
+				<sequence>
+					<element name="codeArchetype" type="WOZ:ArchetypeAanduiding-e" nillable="true" minOccurs="0"/>
+					<element name="naamArchetype" type="WOZ:ArchetypeNaam-e" nillable="true" minOccurs="0"/>
+					<element name="versieArchetype" type="WOZ:Versie-e" nillable="true" minOccurs="0"/>
+					<element name="waardepeildatum" type="WOZ:Peildatum-e" nillable="true" minOccurs="0"/>
+					<element name="objectCategorieNaam" type="WOZ:ObjectCategorieNaam-e" nillable="true" minOccurs="0"/>
+					<element name="soortObjectCode" type="WOZ:SoortObjectCode-e" nillable="true" minOccurs="0"/>
+					<element name="codeWOZDeelObject" type="WOZ:CodeWOZDeelObject-e" nillable="true" minOccurs="0"/>
+					<element name="versieTaxatiewijzer" type="WOZ:VersieMajorMinor-e" nillable="true" minOccurs="0"/>
+					<element name="kengetalDefinitieSet" type="WOZ:KengetalDefinitieSetGrp" minOccurs="0"/>
+					<element name="ingangsdatumObject" type="StUF:DatumMetIndicator" nillable="true" minOccurs="0"/>
+					<element name="einddatumObject" type="StUF:DatumMetIndicator" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:entiteittype" use="required" fixed="KPA"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="KPA-kerngegevensKennisgeving">
+		<complexContent>
+			<restriction base="WOZ:KPA-basis">
+				<sequence>
+					<element name="codeArchetype" type="WOZ:ArchetypeAanduiding-e" nillable="true" minOccurs="0"/>
+					<element name="versieArchetype" type="WOZ:Versie-e" nillable="true" minOccurs="0"/>
+					<element name="waardepeildatum" type="WOZ:Peildatum-e" nillable="true" minOccurs="0"/>
+					<element name="kengetalDefinitieSet" type="WOZ:KengetalDefinitieSetKernGrp" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="KPA"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="NNP-woz-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:NNP-woz-basis">
+				<sequence>
+					<element name="isEen" type="WOZ:NNPisNNP-woz-kennisgeving"/>
+					<element name="aanvullingSoFiNummer" type="WOZ:AanvullingSoFiNummer-e" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="NNP-woz-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:NNP-woz-kennisgeving">
+				<sequence>
+					<element name="isEen" type="WOZ:NNPisNNP-woz-kennisgeving_Sh"/>
+					<element name="aanvullingSoFiNummer" type="WOZ:AanvullingSoFiNummer-e" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="NNP-woz-kerngegevensKennisgeving">
+		<complexContent>
+			<restriction base="WOZ:NNP-woz-basis">
+				<sequence>
+					<element name="isEen" type="WOZ:NNPisNNP-woz-kerngegevensKennisgeving" minOccurs="0"/>
+					<element name="aanvullingSoFiNummer" type="WOZ:AanvullingSoFiNummer-e" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="NNPisNNP-woz-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:NNPisNNP-basis">
+				<sequence>
+					<element name="gerelateerde" type="BG:NNP-woz-kennisgeving" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="NNPisNNP-woz-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:NNPisNNP-woz-kennisgeving">
+				<sequence>
+					<element name="gerelateerde" type="BG:NNP-woz-kennisgeving" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="NNPisNNP-woz-kerngegevensKennisgeving">
+		<complexContent>
+			<restriction base="WOZ:NNPisNNP-basis">
+				<sequence>
+					<element name="gerelateerde" type="BG:NNP-woz-kerngegevensKennisgeving" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="NPS-woz-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:NPS-woz-basis">
+				<sequence>
+					<element name="isEen" type="WOZ:NPSisNPS-woz-kennisgeving"/>
+					<element name="soFiNummer" type="BG:BSN-e" minOccurs="0"/>
+					<element name="aanvullingSoFiNummer" type="WOZ:AanvullingSoFiNummer-e" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="NPS-woz-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:NPS-woz-kennisgeving">
+				<sequence>
+					<element name="isEen" type="WOZ:NPSisNPS-woz-kennisgeving_Sh"/>
+					<element name="soFiNummer" type="BG:BSN-e" minOccurs="0"/>
+					<element name="aanvullingSoFiNummer" type="WOZ:AanvullingSoFiNummer-e" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="NPS-woz-kerngegevensKennisgeving">
+		<complexContent>
+			<restriction base="WOZ:NPS-woz-basis">
+				<sequence>
+					<element name="isEen" type="WOZ:NPSisNPS-woz-kerngegevensKennisgeving" minOccurs="0"/>
+					<element name="soFiNummer" type="BG:BSN-e" nillable="true" minOccurs="0"/>
+					<element name="aanvullingSoFiNummer" type="WOZ:AanvullingSoFiNummer-e" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="NPSisNPS-woz-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:NPSisNPS-basis">
+				<sequence>
+					<element name="gerelateerde" type="BG:NPS-woz-kennisgeving" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="NPSisNPS-woz-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:NPSisNPS-woz-kennisgeving">
+				<sequence>
+					<element name="gerelateerde" type="BG:NPS-woz-kennisgeving" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="NPSisNPS-woz-kerngegevensKennisgeving">
+		<complexContent>
+			<restriction base="WOZ:NPSisNPS-basis">
+				<sequence>
+					<element name="gerelateerde" type="BG:NPS-woz-kerngegevensKennisgeving" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="RMA-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:RMA-basis">
+				<sequence>
+					<element name="waardepeildatum" type="WOZ:Peildatum-e" nillable="true" minOccurs="0"/>
+					<element name="toestandspeildatum" type="WOZ:Peildatum-e" nillable="true" minOccurs="0"/>
+					<element name="waardeWaarmeeVergeleken" type="WOZ:Maateenheid11-e" nillable="true" minOccurs="0"/>
+					<element name="verwachteWijzigingWaarde" type="WOZ:VerwachteWijzigingWaarde-e" nillable="true" minOccurs="0"/>
+					<element name="redenAfwijkingGrp" type="WOZ:RedenAfwijkingGrp" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="transactieprijsGeindexeerd" type="WOZ:Maateenheid11-e" nillable="true" minOccurs="0"/>
+					<element name="huurprijsPerM2Geindexeerd" type="WOZ:Maateenheid11-e" nillable="true" minOccurs="0"/>
+					<element ref="StUF:tijdvakGeldigheid" minOccurs="0"/>
+					<element name="analyseert" type="WOZ:RMATRN-kennisgeving" nillable="true" minOccurs="0"/>
+					<element name="heeftBetrekkingOp" type="WOZ:RMAWOZ-kennisgeving" nillable="true" minOccurs="0"/>
+					<element name="wordtVergelekenMet" type="WOZ:RMATAX-kennisgeving" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="RMA"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="RMA-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:RMA-kennisgeving">
+				<sequence>
+					<element name="waardepeildatum" type="WOZ:Peildatum-e" nillable="true" minOccurs="0"/>
+					<element name="toestandspeildatum" type="WOZ:Peildatum-e" nillable="true" minOccurs="0"/>
+					<element name="waardeWaarmeeVergeleken" type="WOZ:Maateenheid11-e" nillable="true" minOccurs="0"/>
+					<element name="verwachteWijzigingWaarde" type="WOZ:VerwachteWijzigingWaarde-e" nillable="true" minOccurs="0"/>
+					<element name="redenAfwijkingGrp" type="WOZ:RedenAfwijkingGrp" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="transactieprijsGeindexeerd" type="WOZ:Maateenheid11-e" nillable="true" minOccurs="0"/>
+					<element name="huurprijsPerM2Geindexeerd" type="WOZ:Maateenheid11-e" nillable="true" minOccurs="0"/>
+					<element ref="StUF:tijdvakGeldigheid" minOccurs="0"/>
+					<element name="analyseert" type="WOZ:RMATRN-kennisgeving" nillable="true" minOccurs="0"/>
+					<element name="heeftBetrekkingOp" type="WOZ:RMAWOZ-kennisgeving" nillable="true" minOccurs="0"/>
+					<element name="wordtVergelekenMet" type="WOZ:RMATAX-kennisgeving" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="RMA"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="RMA-kerngegevensKennisgeving">
+		<complexContent>
+			<restriction base="WOZ:RMA-basis">
+				<sequence>
+					<element name="waardepeildatum" type="WOZ:Peildatum-e" nillable="true" minOccurs="0"/>
+					<element name="analyseert" type="WOZ:RMATRN-kerngegevens" nillable="true" minOccurs="0"/>
+					<element name="heeftBetrekkingOp" type="WOZ:RMAWOZ-kerngegevens" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="RMA"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="RMATAX-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:RMATAX-basis">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:TAX-kerngegevensKennisgeving" nillable="true"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="RMATAX"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="RMATAX-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:RMATAX-kennisgeving">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:TAX-kerngegevensKennisgeving" nillable="true"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:entiteittype" use="required" fixed="RMATAX"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="RMATRN-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:RMATRN-basis">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:TRN-kerngegevensKennisgeving" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="RMATRN"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="RMATRN-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:RMATRN-kennisgeving">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:TRN-kerngegevensKennisgeving" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:entiteittype" use="required" fixed="RMATRN"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="RMAWOZ-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:RMAWOZ-basis">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:WOZ-kerngegevensKennisgeving" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="RMAWOZ"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="RMAWOZ-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:RMAWOZ-kennisgeving">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:WOZ-kerngegevensKennisgeving" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:entiteittype" use="required" fixed="RMAWOZ"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="SOC-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:SOC-basis">
+				<sequence>
+					<element name="soortObjectCode" type="WOZ:SoortObjectCode-e" nillable="true" minOccurs="0"/>
+					<element name="omschrijvingSoortObject" type="WOZ:Omschrijving50-e" nillable="true" minOccurs="0"/>
+					<element name="omschrijvingSoortObjectVerkort" type="WOZ:Omschrijving12-e" nillable="true" minOccurs="0"/>
+					<element name="ingangsdatumObject" type="StUF:Datum-e" nillable="true" minOccurs="0"/>
+					<element name="einddatumObject" type="StUF:Datum-e" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="SOC-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:SOC-kennisgeving">
+				<sequence>
+					<element name="soortObjectCode" type="WOZ:SoortObjectCode-e" nillable="true" minOccurs="0"/>
+					<element name="omschrijvingSoortObject" type="WOZ:Omschrijving50-e" nillable="true" minOccurs="0"/>
+					<element name="omschrijvingSoortObjectVerkort" type="WOZ:Omschrijving12-e" nillable="true" minOccurs="0"/>
+					<element name="ingangsdatumObject" type="StUF:Datum-e" nillable="true" minOccurs="0"/>
+					<element name="einddatumObject" type="StUF:Datum-e" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="SWO-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:SWO-basis">
+				<sequence minOccurs="0">
+					<element name="wozObjectNummer" type="WOZ:WOZObjectNummer-e" nillable="true" minOccurs="0"/>
+					<element name="statusWozObject" type="WOZ:StatusObject-e" nillable="true" minOccurs="0"/>
+					<element name="grondoppervlakte" type="WOZ:Maateenheid11-neg-e" nillable="true" minOccurs="0"/>
+					<element name="codeGebouwdOngebouwd" type="WOZ:CodeGebouwdOngebouwd-e" nillable="true" minOccurs="0"/>
+					<element name="meegetaxeerdeOppervlakteGebouwd" type="WOZ:Maateenheid11-neg-e" nillable="true" minOccurs="0"/>
+					<element name="verantwoordelijkeGemeente" type="BG:VerantwoordelijkeGemeenteGrp" minOccurs="0"/>
+					<element name="wozObjectGeometrie" type="BG:GeometrieVlak-e" nillable="true" minOccurs="0"/>
+					<element name="inOnderzoek" type="StUF:InOnderzoekSWO" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="ingangsdatumObject" type="StUF:Datum-e" nillable="true" minOccurs="0"/>
+					<element name="einddatumObject" type="StUF:Datum-e" nillable="true" minOccurs="0"/>
+					<element ref="StUF:tijdvakGeldigheid" minOccurs="0"/>
+					<element ref="StUF:tijdstipRegistratie" minOccurs="0"/>
+					<element name="omvat" type="WOZ:SWOKOZ-kennisgeving" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="ligtIn" type="WOZ:SWOWSP-kennisgeving" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="SWO"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="SWO-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:SWO-kennisgeving">
+				<sequence minOccurs="0">
+					<element name="wozObjectNummer" type="WOZ:WOZObjectNummer-e" nillable="true" minOccurs="0"/>
+					<element name="statusWozObject" type="WOZ:StatusObject-e" nillable="true" minOccurs="0"/>
+					<element name="grondoppervlakte" type="WOZ:Maateenheid11-neg-e" nillable="true" minOccurs="0"/>
+					<element name="codeGebouwdOngebouwd" type="WOZ:CodeGebouwdOngebouwd-e" nillable="true" minOccurs="0"/>
+					<element name="meegetaxeerdeOppervlakteGebouwd" type="WOZ:Maateenheid11-neg-e" nillable="true" minOccurs="0"/>
+					<element name="verantwoordelijkeGemeente" type="BG:VerantwoordelijkeGemeenteGrp" minOccurs="0"/>
+					<element name="wozObjectGeometrie" type="BG:GeometrieVlak-e" nillable="true" minOccurs="0"/>
+					<element name="inOnderzoek" type="StUF:InOnderzoekSWO" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="ingangsdatumObject" type="StUF:Datum-e" nillable="true" minOccurs="0"/>
+					<element name="einddatumObject" type="StUF:Datum-e" nillable="true" minOccurs="0"/>
+					<element ref="StUF:tijdvakGeldigheid" minOccurs="0"/>
+					<element ref="StUF:tijdstipRegistratie" minOccurs="0"/>
+					<element name="omvat" type="WOZ:SWOKOZ-kennisgeving_Sh" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="ligtIn" type="WOZ:SWOWSP-kennisgeving_Sh" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="SWO"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="SWO-kerngegevensKennisgeving">
+		<complexContent>
+			<restriction base="WOZ:SWO-basis">
+				<sequence minOccurs="0">
+					<element name="wozObjectNummer" type="WOZ:WOZObjectNummer-e" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="SWO"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="SWOKOZ-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:SWOKOZ-basis">
+				<sequence>
+					<element name="gerelateerde" type="BG:KOZ-woz-kerngegevensKennisgeving" nillable="true"/>
+					<element name="toegekendeOppervlakte" type="WOZ:Maateenheid11-neg-e" nillable="true" minOccurs="0"/>
+					<element name="meegetaxeerdeOppervlakte" type="WOZ:Maateenheid11-neg-e" nillable="true" minOccurs="0"/>
+					<element name="inOnderzoek" type="StUF:InOnderzoekWOZKOZ-woz" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+					<element ref="StUF:tijdvakGeldigheid" minOccurs="0"/>
+					<element ref="StUF:tijdstipRegistratie" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="SWOKOZ"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="SWOKOZ-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:SWOKOZ-kennisgeving">
+				<sequence>
+					<element name="gerelateerde" type="BG:KOZ-woz-kerngegevensKennisgeving" nillable="true"/>
+					<element name="toegekendeOppervlakte" type="WOZ:Maateenheid11-neg-e" nillable="true" minOccurs="0"/>
+					<element name="meegetaxeerdeOppervlakte" type="WOZ:Maateenheid11-neg-e" nillable="true" minOccurs="0"/>
+					<element name="inOnderzoek" type="StUF:InOnderzoekWOZKOZ-woz" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+					<element ref="StUF:tijdvakGeldigheid" minOccurs="0"/>
+					<element ref="StUF:tijdstipRegistratie" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="SWOKOZ"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="SWOWSP-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:SWOWSP-basis">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:WSP-kerngegevensKennisgeving" nillable="true"/>
+					<element name="inOnderzoek" type="StUF:StatusMetagegevenNoValue" nillable="true" minOccurs="0"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+					<element ref="StUF:tijdvakGeldigheid" minOccurs="0"/>
+					<element ref="StUF:tijdstipRegistratie" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="SWOWSP"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="SWOWSP-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:SWOWSP-kennisgeving">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:WSP-kerngegevensKennisgeving" nillable="true"/>
+					<element name="inOnderzoek" type="StUF:StatusMetagegevenNoValue" nillable="true" minOccurs="0"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+					<element ref="StUF:tijdvakGeldigheid" minOccurs="0"/>
+					<element ref="StUF:tijdstipRegistratie" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="SWOWSP"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="SUB-woz-kerngegevensKennisgeving">
+		<complexContent>
+			<restriction base="WOZ:SUB-woz-basis">
+				<choice minOccurs="0">
+					<choice minOccurs="0">
+						<element name="natuurlijkPersoon" type="WOZ:NPS-woz-kerngegevensKennisgeving" nillable="true"/>
+						<element name="nietNatuurlijkPersoon" type="WOZ:NNP-woz-kerngegevensKennisgeving" nillable="true"/>
+						<element name="vestiging" type="WOZ:VES-woz-kerngegevensKennisgeving" nillable="true"/>
+					</choice>
+				</choice>
+				<attribute ref="StUF:entiteittype" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TAX-inTVS-kennisgeving">
+		<annotation>
+			<documentation>TAX-object binnen TVN en TVW</documentation>
+		</annotation>
+		<complexContent>
+			<restriction base="WOZ:TAX-basis">
+				<sequence>
+					<element name="nswLandgoedGrp" type="WOZ:NSWLandgoedTAXGrp" minOccurs="0"/>
+					<element name="getaxeerdeWaarde" type="WOZ:Maateenheid11-e" nillable="true" minOccurs="0"/>
+					<element name="bedragBTWInWaarde" type="WOZ:Maateenheid11-neg-e" nillable="true" minOccurs="0"/>
+					<element name="soortTaxatieverslag" type="WOZ:SoortTaxatieverslag-e" nillable="true" minOccurs="0"/>
+					<element name="percentageGereed" type="WOZ:Percentage-e" nillable="true" minOccurs="0"/>
+					<element name="gehanteerdWaarderingsVoorschrift" type="WOZ:GehanteerdWaarderingsVoorschrift-e" nillable="true" minOccurs="0"/>
+					<element name="aantekening" type="WOZ:Aantekening-e" nillable="true" minOccurs="0"/>
+					<element name="beschouwdDeelObject" type="WOZ:TAXWDO-inTVS-kennisgeving" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="TAX"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TAX-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:TAX-basis">
+				<sequence>
+					<element name="waardepeildatum" type="WOZ:Peildatum-e" nillable="true" minOccurs="0"/>
+					<element name="toestandspeildatum" type="WOZ:Peildatum-e" nillable="true" minOccurs="0"/>
+					<element name="taxatiedatum" type="StUF:Datum-e" nillable="true" minOccurs="0"/>
+					<element name="taxateur" type="WOZ:Taxateur-e" nillable="true" minOccurs="0"/>
+					<element name="inpandigeOpname" type="WOZ:InpandigeOpname-e" nillable="true" minOccurs="0"/>
+					<element name="nswLandgoedGrp" type="WOZ:NSWLandgoedTAXGrp" minOccurs="0"/>
+					<element name="getaxeerdeWaarde" type="WOZ:Maateenheid11-e" nillable="true" minOccurs="0"/>
+					<element name="bedragBTWInWaarde" type="WOZ:Maateenheid11-neg-e" nillable="true" minOccurs="0"/>
+					<element name="soortTaxatieverslag" type="WOZ:SoortTaxatieverslag-e" nillable="true" minOccurs="0"/>
+					<element name="percentageGereed" type="WOZ:Percentage-e" nillable="true" minOccurs="0"/>
+					<element name="heffingsmaatstafOZB" type="WOZ:Maateenheid11-e" nillable="true" minOccurs="0"/>
+					<element name="redenVerschilOZBWOZ" type="WOZ:CodeVrijstellingOZB-e" nillable="true" minOccurs="0" maxOccurs="5"/>
+					<element name="heffingsmaatstafOZBGebruikers" type="WOZ:Maateenheid11-e" nillable="true" minOccurs="0"/>
+					<element name="gehanteerdWaarderingsVoorschrift" type="WOZ:GehanteerdWaarderingsVoorschrift-e" nillable="true" minOccurs="0"/>
+					<element name="aantekening" type="WOZ:Aantekening-e" nillable="true" minOccurs="0"/>
+					<element name="codeBlokkerenTaxatie" type="WOZ:CodeBlokkerenTaxatie-e" nillable="true" minOccurs="0"/>
+					<element ref="StUF:tijdvakGeldigheid" minOccurs="0"/>
+					<element name="betrokkenWOZobject" type="WOZ:TAXWOZBOB-kennisgeving" nillable="true" minOccurs="0"/>
+					<element name="beschouwdDeelObject" type="WOZ:TAXWDO-kennisgeving" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="onderbouwendeTransacties" type="WOZ:TAXTRN-kennisgeving" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="vergelekenWOZobject" type="WOZ:TAXWOZOWV-kennisgeving" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="TAX"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TAX-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:TAX-kennisgeving">
+				<sequence>
+					<element name="waardepeildatum" type="WOZ:Peildatum-e" nillable="true" minOccurs="0"/>
+					<element name="toestandspeildatum" type="WOZ:Peildatum-e" nillable="true" minOccurs="0"/>
+					<element name="taxatiedatum" type="StUF:Datum-e" nillable="true" minOccurs="0"/>
+					<element name="taxateur" type="WOZ:Taxateur-e" nillable="true" minOccurs="0"/>
+					<element name="inpandigeOpname" type="WOZ:InpandigeOpname-e" nillable="true" minOccurs="0"/>
+					<element name="nswLandgoedGrp" type="WOZ:NSWLandgoedTAXGrp" minOccurs="0"/>
+					<element name="getaxeerdeWaarde" type="WOZ:Maateenheid11-e" nillable="true" minOccurs="0"/>
+					<element name="bedragBTWInWaarde" type="WOZ:Maateenheid11-neg-e" nillable="true" minOccurs="0"/>
+					<element name="soortTaxatieverslag" type="WOZ:SoortTaxatieverslag-e" nillable="true" minOccurs="0"/>
+					<element name="percentageGereed" type="WOZ:Percentage-e" nillable="true" minOccurs="0"/>
+					<element name="heffingsmaatstafOZB" type="WOZ:Maateenheid11-e" nillable="true" minOccurs="0"/>
+					<element name="redenVerschilOZBWOZ" type="WOZ:CodeVrijstellingOZB-e" nillable="true" minOccurs="0" maxOccurs="5"/>
+					<element name="heffingsmaatstafOZBGebruikers" type="WOZ:Maateenheid11-e" nillable="true" minOccurs="0"/>
+					<element name="gehanteerdWaarderingsVoorschrift" type="WOZ:GehanteerdWaarderingsVoorschrift-e" nillable="true" minOccurs="0"/>
+					<element name="aantekening" type="WOZ:Aantekening-e" nillable="true" minOccurs="0"/>
+					<element name="codeBlokkerenTaxatie" type="WOZ:CodeBlokkerenTaxatie-e" nillable="true" minOccurs="0"/>
+					<element ref="StUF:tijdvakGeldigheid" minOccurs="0"/>
+					<element name="betrokkenWOZobject" type="WOZ:TAXWOZBOB-kennisgeving_Sh" nillable="true" minOccurs="0"/>
+					<element name="beschouwdDeelObject" type="WOZ:TAXWDO-kennisgeving_Sh" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="onderbouwendeTransacties" type="WOZ:TAXTRN-kennisgeving_Sh" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="vergelekenWOZobject" type="WOZ:TAXWOZOWV-kennisgeving_Sh" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="TAX"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TAX-kerngegevensKennisgeving">
+		<complexContent>
+			<restriction base="WOZ:TAX-basis">
+				<sequence>
+					<element name="waardepeildatum" type="WOZ:Peildatum-e" nillable="true" minOccurs="0"/>
+					<element name="betrokkenWOZobject" type="WOZ:TAXWOZBOB-kerngegevens" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="TAX"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TAXTRN-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:TAXTRN-basis">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:TRN-kerngegevensKennisgeving" nillable="true"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="TAXTRN"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TAXTRN-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:TAXTRN-kennisgeving">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:TRN-kerngegevensKennisgeving" nillable="true"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:entiteittype" use="required" fixed="TAXTRN"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TAXWDO-inTVS-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:TAXWDO-basis">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:WDO-inWOZ-kennisgeving" nillable="true"/>
+					<choice minOccurs="0">
+						<element name="agrarischeAsbestGrp" type="WOZ:AgrarischeAsbestGrp"/>
+						<element name="agrarischeGebouwenGrp" type="WOZ:AgrarischeGebouwenGrp"/>
+						<element name="agrarischeGrondGrp" type="WOZ:AgrarischeGrondGrp"/>
+						<element name="bijzondereOmstandighedenGrp" type="WOZ:BijzondereOmstandighedenGrp" maxOccurs="unbounded"/>
+						<element name="gecorrigeerdeVervangingsWaardeGrp" type="WOZ:GecorrigeerdeVervangingsWaardeGrp"/>
+						<element name="huurwaardeKapitalisatieGrp" type="WOZ:HuurwaardeKapitalisatieGrp"/>
+						<element name="motorbrandstofverkooppuntenGrp" type="WOZ:MotorbrandstofverkooppuntenLocatieWaardeGrp"/>
+						<element name="nswLandgoedGrp" type="WOZ:NSWLandgoedTAXWDOGrp"/>
+						<element name="recRecreatieGrp" type="WOZ:RECRecreatieGrp"/>
+						<element name="stuksprijzenGrp" type="WOZ:StuksprijzenGrp"/>
+					</choice>
+					<element name="gehanteerdWaarderingsvoorschrift" type="WOZ:GehanteerdWaarderingsVoorschrift-e" nillable="true" minOccurs="0"/>
+					<element name="bepaaldeWaardeWOZDeelObject" type="WOZ:Maateenheid11-neg-e" nillable="true" minOccurs="0"/>
+					<element name="bedragBTWInWaarde" type="WOZ:Maateenheid11-neg-e" nillable="true" minOccurs="0"/>
+					<element name="bepaaldeWaardeWOZDeelObjectInclusiefBtw" type="WOZ:Maateenheid11-neg-e" nillable="true" minOccurs="0"/>
+					<element name="percentageGereed" type="WOZ:Percentage-e" nillable="true" minOccurs="0"/>
+					<element name="gebruiktArchetypeTaxatiewijzer" type="WOZ:ArchetypeAanduiding-e" nillable="true" minOccurs="0"/>
+					<element name="codeTaxatiemethodiek" type="WOZ:CodeTaxatiemethodiek-e" nillable="true" minOccurs="0"/>
+					<element name="gebruikteEenheid" type="WOZ:GebruikteEenheid-e" nillable="true" minOccurs="0"/>
+					<element name="aantekening" type="WOZ:Aantekening-e" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="TAXWDO"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TAXWDO-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:TAXWDO-basis">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:WDO-kerngegevensKennisgeving" nillable="true"/>
+					<choice minOccurs="0">
+						<element name="agrarischeAsbestGrp" type="WOZ:AgrarischeAsbestGrp"/>
+						<element name="agrarischeGebouwenGrp" type="WOZ:AgrarischeGebouwenGrp"/>
+						<element name="agrarischeGrondGrp" type="WOZ:AgrarischeGrondGrp"/>
+						<element name="bijzondereOmstandighedenGrp" type="WOZ:BijzondereOmstandighedenGrp" maxOccurs="unbounded"/>
+						<element name="gecorrigeerdeVervangingsWaardeGrp" type="WOZ:GecorrigeerdeVervangingsWaardeGrp"/>
+						<element name="huurwaardeKapitalisatieGrp" type="WOZ:HuurwaardeKapitalisatieGrp"/>
+						<element name="motorbrandstofverkooppuntenGrp" type="WOZ:MotorbrandstofverkooppuntenLocatieWaardeGrp"/>
+						<element name="nswLandgoedGrp" type="WOZ:NSWLandgoedTAXWDOGrp"/>
+						<element name="recRecreatieGrp" type="WOZ:RECRecreatieGrp"/>
+						<element name="stuksprijzenGrp" type="WOZ:StuksprijzenGrp"/>
+					</choice>
+					<element name="gehanteerdWaarderingsvoorschrift" type="WOZ:GehanteerdWaarderingsVoorschrift-e" nillable="true" minOccurs="0"/>
+					<element name="bepaaldeWaardeWOZDeelObject" type="WOZ:Maateenheid11-neg-e" nillable="true" minOccurs="0"/>
+					<element name="bedragBTWInWaarde" type="WOZ:Maateenheid11-neg-e" nillable="true" minOccurs="0"/>
+					<element name="bepaaldeWaardeWOZDeelObjectInclusiefBtw" type="WOZ:Maateenheid11-neg-e" nillable="true" minOccurs="0"/>
+					<element name="percentageGereed" type="WOZ:Percentage-e" nillable="true" minOccurs="0"/>
+					<element name="gebruiktArchetypeTaxatiewijzer" type="WOZ:ArchetypeAanduiding-e" nillable="true" minOccurs="0"/>
+					<element name="documentNummer" type="BG:DocumentNummering-e" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="codeTaxatiemethodiek" type="WOZ:CodeTaxatiemethodiek-e" nillable="true" minOccurs="0"/>
+					<element name="gebruikteEenheid" type="WOZ:GebruikteEenheid-e" nillable="true" minOccurs="0"/>
+					<element name="aantekening" type="WOZ:Aantekening-e" nillable="true" minOccurs="0"/>
+					<element ref="StUF:tijdvakGeldigheid" minOccurs="0"/>
+					<element name="heeftKengetalDefinitieSet" type="WOZ:TAXWDOKPA-kennisgeving" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="TAXWDO"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TAXWDO-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:TAXWDO-kennisgeving">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:WDO-kerngegevensKennisgeving" nillable="true"/>
+					<choice minOccurs="0">
+						<element name="agrarischeAsbestGrp" type="WOZ:AgrarischeAsbestGrp"/>
+						<element name="agrarischeGebouwenGrp" type="WOZ:AgrarischeGebouwenGrp"/>
+						<element name="agrarischeGrondGrp" type="WOZ:AgrarischeGrondGrp"/>
+						<element name="bijzondereOmstandighedenGrp" type="WOZ:BijzondereOmstandighedenGrp" maxOccurs="unbounded"/>
+						<element name="gecorrigeerdeVervangingsWaardeGrp" type="WOZ:GecorrigeerdeVervangingsWaardeGrp"/>
+						<element name="huurwaardeKapitalisatieGrp" type="WOZ:HuurwaardeKapitalisatieGrp"/>
+						<element name="motorbrandstofverkooppuntenGrp" type="WOZ:MotorbrandstofverkooppuntenLocatieWaardeGrp"/>
+						<element name="nswLandgoedGrp" type="WOZ:NSWLandgoedTAXWDOGrp"/>
+						<element name="recRecreatieGrp" type="WOZ:RECRecreatieGrp"/>
+						<element name="stuksprijzenGrp" type="WOZ:StuksprijzenGrp"/>
+					</choice>
+					<element name="gehanteerdWaarderingsvoorschrift" type="WOZ:GehanteerdWaarderingsVoorschrift-e" nillable="true" minOccurs="0"/>
+					<element name="bepaaldeWaardeWOZDeelObject" type="WOZ:Maateenheid11-neg-e" nillable="true" minOccurs="0"/>
+					<element name="bedragBTWInWaarde" type="WOZ:Maateenheid11-neg-e" nillable="true" minOccurs="0"/>
+					<element name="bepaaldeWaardeWOZDeelObjectInclusiefBtw" type="WOZ:Maateenheid11-neg-e" nillable="true" minOccurs="0"/>
+					<element name="percentageGereed" type="WOZ:Percentage-e" nillable="true" minOccurs="0"/>
+					<element name="gebruiktArchetypeTaxatiewijzer" type="WOZ:ArchetypeAanduiding-e" nillable="true" minOccurs="0"/>
+					<element name="documentNummer" type="BG:DocumentNummering-e" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="codeTaxatiemethodiek" type="WOZ:CodeTaxatiemethodiek-e" nillable="true" minOccurs="0"/>
+					<element name="gebruikteEenheid" type="WOZ:GebruikteEenheid-e" nillable="true" minOccurs="0"/>
+					<element name="aantekening" type="WOZ:Aantekening-e" nillable="true" minOccurs="0"/>
+					<element ref="StUF:tijdvakGeldigheid" minOccurs="0"/>
+					<element name="heeftKengetalDefinitieSet" type="WOZ:TAXWDOKPA-kennisgeving_Sh" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="TAXWDO"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TAXWDOKPA-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:TAXWDOKPA-basis">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:KPA-kerngegevensKennisgeving" nillable="true"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="TAXWDOKPA"/>
+				<attribute ref="StUF:noValue"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TAXWDOKPA-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:TAXWDOKPA-kennisgeving">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:KPA-kerngegevensKennisgeving" nillable="true"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:entiteittype" use="required" fixed="TAXWDOKPA"/>
+				<attribute ref="StUF:noValue"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TAXWOZBOB-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:TAXWOZBOB-basis">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:WOZ-kerngegevensKennisgeving" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="TAXWOZBOB"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TAXWOZBOB-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:TAXWOZBOB-kennisgeving">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:WOZ-kerngegevensKennisgeving" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:entiteittype" use="required" fixed="TAXWOZBOB"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TAXWOZOWV-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:TAXWOZOWV-basis">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:WOZ-kerngegevensKennisgeving" nillable="true"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="TAXWOZOWV"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TAXWOZOWV-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:TAXWOZOWV-kennisgeving">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:WOZ-kerngegevensKennisgeving" nillable="true"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:entiteittype" use="required" fixed="TAXWOZOWV"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TRN-inTVSBOB-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:TRN-basis">
+				<sequence>
+					<element name="volgnummerMarktgegeven" type="WOZ:VolgnummerMarktgegeven-e" nillable="true" minOccurs="0"/>
+					<element name="omschrijvingTransactie" type="WOZ:Omschrijving50-e" nillable="true" minOccurs="0"/>
+					<element name="documentNummer" type="BG:DocumentNummering-e" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="aardMarktinformatie" type="WOZ:AardMarktinformatie-e" nillable="true" minOccurs="0"/>
+					<element name="soortTransactie" type="WOZ:SoortTransactie-e" nillable="true" minOccurs="0"/>
+					<element name="aanduidingBruikbaarheid" type="WOZ:AanduidingBruikbaarheid-e" nillable="true" minOccurs="0"/>
+					<element name="datumTransactie" type="StUF:Datum-e" nillable="true" minOccurs="0"/>
+					<element name="transactieprijs" type="WOZ:Maateenheid11-e" nillable="true" minOccurs="0"/>
+					<choice>
+						<element name="kooptransactie" type="WOZ:KooptransactieGrp" nillable="true" minOccurs="0"/>
+						<element name="huurtransactie" type="WOZ:HuurtransactieGrp" minOccurs="0"/>
+						<element name="gronduitgifte" type="WOZ:GronduitgifteGrp" minOccurs="0"/>
+						<element name="stichtingskosten" type="WOZ:StichtingskostenGrp" minOccurs="0"/>
+					</choice>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="TRN"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TRN-inTVWOWV-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:TRN-basis">
+				<sequence>
+					<element name="volgnummerMarktgegeven" type="WOZ:VolgnummerMarktgegeven-e" nillable="true" minOccurs="0"/>
+					<element name="omschrijvingTransactie" type="WOZ:Omschrijving50-e" nillable="true" minOccurs="0"/>
+					<element name="documentNummer" type="BG:DocumentNummering-e" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="aardMarktinformatie" type="WOZ:AardMarktinformatie-e" nillable="true" minOccurs="0"/>
+					<element name="soortTransactie" type="WOZ:SoortTransactie-e" nillable="true" minOccurs="0"/>
+					<element name="aanduidingBruikbaarheid" type="WOZ:AanduidingBruikbaarheid-e" nillable="true" minOccurs="0"/>
+					<element name="datumTransactie" type="StUF:Datum-e" nillable="true" minOccurs="0"/>
+					<element name="transactieprijs" type="WOZ:Maateenheid11-e" nillable="true" minOccurs="0"/>
+					<choice minOccurs="0">
+						<element name="kooptransactie" type="WOZ:KooptransactieGrp" nillable="true" minOccurs="0"/>
+					</choice>
+					<element name="heeftBetrekkingOp" type="WOZ:TRNWOZ-inTVW-kennisgeving" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="TRN"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TRN-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:TRN-basis">
+				<sequence>
+					<element name="volgnummerMarktgegeven" type="WOZ:VolgnummerMarktgegeven-e" nillable="true" minOccurs="0"/>
+					<element name="omschrijvingTransactie" type="WOZ:Omschrijving50-e" nillable="true" minOccurs="0"/>
+					<element name="documentNummer" type="BG:DocumentNummering-e" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="aardMarktinformatie" type="WOZ:AardMarktinformatie-e" nillable="true" minOccurs="0"/>
+					<element name="soortTransactie" type="WOZ:SoortTransactie-e" nillable="true" minOccurs="0"/>
+					<element name="aanduidingBruikbaarheid" type="WOZ:AanduidingBruikbaarheid-e" nillable="true" minOccurs="0"/>
+					<element name="datumTransactie" type="StUF:Datum-e" nillable="true" minOccurs="0"/>
+					<element name="transactieprijs" type="WOZ:Maateenheid11-e" nillable="true" minOccurs="0"/>
+					<choice minOccurs="0">
+						<element name="kooptransactie" type="WOZ:KooptransactieGrp" nillable="true" minOccurs="0"/>
+						<element name="huurtransactie" type="WOZ:HuurtransactieGrp" minOccurs="0"/>
+						<element name="gronduitgifte" type="WOZ:GronduitgifteGrp" minOccurs="0"/>
+						<element name="stichtingskosten" type="WOZ:StichtingskostenGrp" minOccurs="0"/>
+					</choice>
+					<element name="heeftBetrekkingOp" type="WOZ:TRNWOZ-kennisgeving" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="isBetrokkenIn" type="WOZ:TRNKOZ-kennisgeving" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="TRN"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TRN-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:TRN-kennisgeving">
+				<sequence>
+					<element name="volgnummerMarktgegeven" type="WOZ:VolgnummerMarktgegeven-e" nillable="true" minOccurs="0"/>
+					<element name="omschrijvingTransactie" type="WOZ:Omschrijving50-e" nillable="true" minOccurs="0"/>
+					<element name="documentNummer" type="BG:DocumentNummering-e" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="aardMarktinformatie" type="WOZ:AardMarktinformatie-e" nillable="true" minOccurs="0"/>
+					<element name="soortTransactie" type="WOZ:SoortTransactie-e" nillable="true" minOccurs="0"/>
+					<element name="aanduidingBruikbaarheid" type="WOZ:AanduidingBruikbaarheid-e" nillable="true" minOccurs="0"/>
+					<element name="datumTransactie" type="StUF:Datum-e" nillable="true" minOccurs="0"/>
+					<element name="transactieprijs" type="WOZ:Maateenheid11-e" nillable="true" minOccurs="0"/>
+					<choice minOccurs="0">
+						<element name="kooptransactie" type="WOZ:KooptransactieGrp" nillable="true" minOccurs="0"/>
+						<element name="huurtransactie" type="WOZ:HuurtransactieGrp" minOccurs="0"/>
+						<element name="gronduitgifte" type="WOZ:GronduitgifteGrp" minOccurs="0"/>
+						<element name="stichtingskosten" type="WOZ:StichtingskostenGrp" minOccurs="0"/>
+					</choice>
+					<element name="heeftBetrekkingOp" type="WOZ:TRNWOZ-kennisgeving_Sh" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="isBetrokkenIn" type="WOZ:TRNKOZ-kennisgeving_Sh" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+				</sequence>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:entiteittype" use="required" fixed="TRN"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TRN-kerngegevensKennisgeving">
+		<complexContent>
+			<restriction base="WOZ:TRN-basis">
+				<sequence>
+					<element name="volgnummerMarktgegeven" type="WOZ:VolgnummerMarktgegeven-e" nillable="true" minOccurs="0"/>
+					<element name="soortTransactie" type="WOZ:SoortTransactie-e" nillable="true" minOccurs="0"/>
+					<element name="datumTransactie" type="StUF:Datum-e" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="TRN"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TRNKOZ-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:TRNKOZ-basis">
+				<sequence>
+					<element name="gerelateerde" type="BG:KOZ-woz-kerngegevensKennisgeving" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="TRNKOZ"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TRNKOZ-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:TRNKOZ-kennisgeving">
+				<sequence>
+					<element name="gerelateerde" type="BG:KOZ-woz-kerngegevensKennisgeving" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:entiteittype" use="required" fixed="TRNKOZ"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TRNWOZ-inTVW-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:TRNWOZ-basis">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:WOZ-inTVWOWV-kennisgeving" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="TRNWOZ"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TRNWOZ-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:TRNWOZ-basis">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:WOZ-kerngegevensKennisgeving" nillable="true"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="TRNWOZ"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TRNWOZ-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:TRNWOZ-kennisgeving">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:WOZ-kerngegevensKennisgeving" nillable="true"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:entiteittype" use="required" fixed="TRNWOZ"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TVN-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:TVN-basis">
+				<sequence>
+					<element name="identificatie" type="WOZ:Sleutel-e" nillable="true" minOccurs="0"/>
+					<element name="waardepeildatum" type="WOZ:Peildatum-e" nillable="true" minOccurs="0"/>
+					<element name="toestandspeildatum" type="WOZ:Peildatum-e" nillable="true" minOccurs="0"/>
+					<element name="datumVaststelling" type="StUF:Datum-e" nillable="true" minOccurs="0"/>
+					<element name="isGebaseerdOp" type="WOZ:TVNTAX-kennisgeving" nillable="true" minOccurs="0"/>
+					<element name="isVoor" type="WOZ:TVNWOZBOB-kennisgeving" nillable="true" minOccurs="0"/>
+					<element name="vermeldtVoorBetrokkenObject" type="WOZ:TVNTRNBOB-kennisgeving" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="TVN"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TVN-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:TVN-kennisgeving">
+				<sequence>
+					<element name="identificatie" type="WOZ:Sleutel-e" nillable="true" minOccurs="0"/>
+					<element name="waardepeildatum" type="WOZ:Peildatum-e" nillable="true" minOccurs="0"/>
+					<element name="toestandspeildatum" type="WOZ:Peildatum-e" nillable="true" minOccurs="0"/>
+					<element name="datumVaststelling" type="StUF:Datum-e" nillable="true" minOccurs="0"/>
+					<element name="isGebaseerdOp" type="WOZ:TVNTAX-kennisgeving_Sh" nillable="true" minOccurs="0"/>
+					<element name="isVoor" type="WOZ:TVNWOZBOB-kennisgeving_Sh" nillable="true" minOccurs="0"/>
+					<element name="vermeldtVoorBetrokkenObject" type="WOZ:TVNTRNBOB-kennisgeving_Sh" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+				</sequence>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:entiteittype" use="required" fixed="TVN"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TVN-kerngegevensKennisgeving">
+		<complexContent>
+			<restriction base="WOZ:TVN-basis">
+				<sequence>
+					<element name="identificatie" type="WOZ:Sleutel-e" nillable="true" minOccurs="0"/>
+					<element name="waardepeildatum" type="WOZ:Peildatum-e" nillable="true" minOccurs="0"/>
+					<element name="toestandspeildatum" type="WOZ:Peildatum-e" nillable="true" minOccurs="0"/>
+					<element name="datumVaststelling" type="StUF:Datum-e" nillable="true" minOccurs="0"/>
+					<element name="isVoor" type="WOZ:TVNWOZBOB-kerngegevens" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="TVN"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TVNTAX-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:TVNTAX-basis">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:TAX-inTVS-kennisgeving" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="TVNTAX"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TVNTAX-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:TVNTAX-kennisgeving">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:TAX-inTVS-kennisgeving" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:entiteittype" use="required" fixed="TVNTAX"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TVNTRNBOB-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:TVNTRNBOB-basis">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:TRN-inTVSBOB-kennisgeving" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="TVNTRNBOB"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TVNTRNBOB-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:TVNTRNBOB-kennisgeving">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:TRN-inTVSBOB-kennisgeving" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:sleutelGegevensbeheer" use="required"/>
+				<attribute ref="StUF:entiteittype" use="required" fixed="TVNTRNBOB"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TVNWOZBOB-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:TVNWOZBOB-basis">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:WOZ-inTVS-kennisgeving" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="TVNWOZBOB"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TVNWOZBOB-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:TVNWOZBOB-kennisgeving">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:WOZ-inTVS-kennisgeving" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:entiteittype" use="required" fixed="TVNWOZBOB"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TVS-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:TVS-basis">
+				<choice>
+					<element name="taxatieverslagNietWoning" type="WOZ:TVN-kennisgeving" nillable="true"/>
+					<element name="taxatieverslagWoning" type="WOZ:TVW-kennisgeving" nillable="true"/>
+				</choice>
+				<attribute ref="StUF:entiteittype" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TVS-kerngegevensKennisgeving">
+		<complexContent>
+			<restriction base="WOZ:TVS-basis">
+				<choice>
+					<element name="taxatieverslagNietWoning" type="WOZ:TVN-kerngegevensKennisgeving" nillable="true"/>
+					<element name="taxatieverslagWoning" type="WOZ:TVW-kerngegevensKennisgeving" nillable="true"/>
+				</choice>
+				<attribute ref="StUF:entiteittype" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TVW-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:TVW-basis">
+				<sequence>
+					<element name="identificatie" type="WOZ:Sleutel-e" nillable="true" minOccurs="0"/>
+					<element name="waardepeildatum" type="WOZ:Peildatum-e" nillable="true" minOccurs="0"/>
+					<element name="toestandspeildatum" type="WOZ:Peildatum-e" nillable="true" minOccurs="0"/>
+					<element name="datumVaststelling" type="StUF:Datum-e" nillable="true" minOccurs="0"/>
+					<element name="isGebaseerdOp" type="WOZ:TVWTAX-kennisgeving" nillable="true" minOccurs="0"/>
+					<element name="isVoor" type="WOZ:TVWWOZBOB-kennisgeving" nillable="true" minOccurs="0"/>
+					<element name="vermeldtVoorBetrokkenObject" type="WOZ:TVWTRNBOB-kennisgeving" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="wordtOnderbouwdMet" type="WOZ:TVWWOZOWV-kennisgeving" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="gebruiktAlsOnderbouwing" type="WOZ:TVWTRNOWV-kennisgeving" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="TVW"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TVW-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:TVW-kennisgeving">
+				<sequence>
+					<element name="identificatie" type="WOZ:Sleutel-e" nillable="true" minOccurs="0"/>
+					<element name="waardepeildatum" type="WOZ:Peildatum-e" nillable="true" minOccurs="0"/>
+					<element name="toestandspeildatum" type="WOZ:Peildatum-e" nillable="true" minOccurs="0"/>
+					<element name="datumVaststelling" type="StUF:Datum-e" nillable="true" minOccurs="0"/>
+					<element name="isGebaseerdOp" type="WOZ:TVWTAX-kennisgeving_Sh" nillable="true" minOccurs="0"/>
+					<element name="isVoor" type="WOZ:TVWWOZBOB-kennisgeving_Sh" nillable="true" minOccurs="0"/>
+					<element name="vermeldtVoorBetrokkenObject" type="WOZ:TVWTRNBOB-kennisgeving_Sh" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="wordtOnderbouwdMet" type="WOZ:TVWWOZOWV-kennisgeving_Sh" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="gebruiktAlsOnderbouwing" type="WOZ:TVWTRNOWV-kennisgeving_Sh" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+				</sequence>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:entiteittype" use="required" fixed="TVW"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TVW-kerngegevensKennisgeving">
+		<complexContent>
+			<restriction base="WOZ:TVW-basis">
+				<sequence>
+					<element name="identificatie" type="WOZ:Sleutel-e" nillable="true" minOccurs="0"/>
+					<element name="waardepeildatum" type="WOZ:Peildatum-e" nillable="true" minOccurs="0"/>
+					<element name="toestandspeildatum" type="WOZ:Peildatum-e" nillable="true" minOccurs="0"/>
+					<element name="datumVaststelling" type="StUF:Datum-e" nillable="true" minOccurs="0"/>
+					<element name="isVoor" type="WOZ:TVWWOZBOB-kerngegevens" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="TVW"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TVWTAX-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:TVWTAX-basis">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:TAX-inTVS-kennisgeving" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="TVWTAX"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TVWTAX-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:TVWTAX-kennisgeving">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:TAX-inTVS-kennisgeving" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:entiteittype" use="required" fixed="TVWTAX"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TVWTRNBOB-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:TVWTRNBOB-basis">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:TRN-inTVSBOB-kennisgeving" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="TVWTRNBOB"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TVWTRNBOB-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:TVWTRNBOB-kennisgeving">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:TRN-inTVSBOB-kennisgeving" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:entiteittype" use="required" fixed="TVWTRNBOB"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TVWTRNOWV-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:TVWTRNOWV-basis">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:TRN-inTVWOWV-kennisgeving" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="TVWTRNOWV"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TVWTRNOWV-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:TVWTRNOWV-kennisgeving">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:TRN-inTVWOWV-kennisgeving" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:entiteittype" use="required" fixed="TVWTRNOWV"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TVWWOZBOB-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:TVWWOZBOB-basis">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:WOZ-inTVS-kennisgeving" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="TVWWOZBOB"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TVWWOZBOB-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:TVWWOZBOB-kennisgeving">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:WOZ-inTVS-kennisgeving" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:entiteittype" use="required" fixed="TVWWOZBOB"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TVWWOZOWV-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:TVWWOZOWV-basis">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:WOZ-inTVWOWV-kennisgeving" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="TVWWOZOWV"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="TVWWOZOWV-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:TVWWOZOWV-kennisgeving">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:WOZ-inTVWOWV-kennisgeving" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:entiteittype" use="required" fixed="TVWWOZOWV"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="VES-woz-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:VES-woz-basis">
+				<sequence>
+					<element name="isEen" type="WOZ:VESisVES-woz-kennisgeving"/>
+					<element name="soFiNummer" type="BG:BSN-e" nillable="true" minOccurs="0"/>
+					<element name="aanvullingSoFiNummer" type="WOZ:AanvullingSoFiNummer-e" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="VES-woz-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:VES-woz-kennisgeving">
+				<sequence>
+					<element name="isEen" type="WOZ:VESisVES-woz-kennisgeving_Sh"/>
+					<element name="soFiNummer" type="BG:BSN-e" nillable="true" minOccurs="0"/>
+					<element name="aanvullingSoFiNummer" type="WOZ:AanvullingSoFiNummer-e" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="VES-woz-kerngegevensKennisgeving">
+		<complexContent>
+			<restriction base="WOZ:VES-woz-basis">
+				<sequence>
+					<element name="isEen" type="WOZ:VESisVES-woz-kerngegevensKennisgeving" minOccurs="0"/>
+					<element name="soFiNummer" type="BG:BSN-e" nillable="true" minOccurs="0"/>
+					<element name="aanvullingSoFiNummer" type="WOZ:AanvullingSoFiNummer-e" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="VESisVES-woz-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:VESisVES-basis">
+				<sequence>
+					<element name="gerelateerde" type="BG:VES-woz-kennisgeving" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="VESisVES-woz-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:VESisVES-woz-kennisgeving">
+				<sequence>
+					<element name="gerelateerde" type="BG:VES-woz-kennisgeving" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="VESisVES-woz-kerngegevensKennisgeving">
+		<complexContent>
+			<restriction base="WOZ:VESisVES-basis">
+				<sequence>
+					<element name="gerelateerde" type="BG:VES-woz-kerngegevensKennisgeving" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WBP-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:WBP-basis">
+				<sequence>
+					<element name="waardepeildatum" type="WOZ:Peildatum-e" nillable="true" minOccurs="0"/>
+					<element name="toestandspeildatum" type="WOZ:Peildatum-e" nillable="true" minOccurs="0"/>
+					<element name="statusTaxatie" type="WOZ:StatusTaxatie-e" nillable="true" minOccurs="0"/>
+					<element name="statusWaardevaststelling" type="WOZ:StatusWaardevaststelling-e" nillable="true" minOccurs="0"/>
+					<element name="datumWaardevaststelling" type="StUF:Datum-e" nillable="true" minOccurs="0"/>
+					<element ref="StUF:tijdvakGeldigheid" minOccurs="0"/>
+					<element name="isVoor" type="WOZ:WBPWOZ-kennisgeving" nillable="true" minOccurs="0"/>
+					<element name="wordtOnderbouwdMet" type="WOZ:WBPTVS-kennisgeving" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WBP"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WBP-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:WBP-kennisgeving">
+				<sequence>
+					<element name="waardepeildatum" type="WOZ:Peildatum-e" nillable="true" minOccurs="0"/>
+					<element name="toestandspeildatum" type="WOZ:Peildatum-e" nillable="true" minOccurs="0"/>
+					<element name="statusTaxatie" type="WOZ:StatusTaxatie-e" nillable="true" minOccurs="0"/>
+					<element name="statusWaardevaststelling" type="WOZ:StatusWaardevaststelling-e" nillable="true" minOccurs="0"/>
+					<element name="datumWaardevaststelling" type="StUF:Datum-e" nillable="true" minOccurs="0"/>
+					<element ref="StUF:tijdvakGeldigheid" minOccurs="0"/>
+					<element name="isVoor" type="WOZ:WBPWOZ-kennisgeving_Sh" nillable="true" minOccurs="0"/>
+					<element name="wordtOnderbouwdMet" type="WOZ:WBPTVS-kennisgeving_Sh" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WBP"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WBP-kerngegevensKennisgeving">
+		<complexContent>
+			<restriction base="WOZ:WBP-basis">
+				<sequence>
+					<element name="waardepeildatum" type="WOZ:Peildatum-e" nillable="true" minOccurs="0"/>
+					<element name="isVoor" type="WOZ:WBPWOZ-kerngegevens" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WBP"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WBPTVS-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:WBPTVS-basis">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:TVS-kerngegevensKennisgeving" nillable="true"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WBPTVS"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WBPTVS-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:WBPTVS-kennisgeving">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:TVS-kerngegevensKennisgeving" nillable="true"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WBPTVS"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WBPWOZ-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:WBPWOZ-basis">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:WOZ-kerngegevensKennisgeving" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WBPWOZ"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WBPWOZ-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:WBPWOZ-kennisgeving">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:WOZ-kerngegevensKennisgeving" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WBPWOZ"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WDC-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:WDC-basis">
+				<sequence>
+					<element name="codeWOZDeelObject" type="WOZ:CodeWOZDeelObject-e" nillable="true" minOccurs="0"/>
+					<element name="omschrijvingWOZDeelObject" type="WOZ:Omschrijving50-e" nillable="true" minOccurs="0"/>
+					<element name="verkorteOmschrijvingWOZDeelObject" type="WOZ:Omschrijving12-e" nillable="true" minOccurs="0"/>
+					<element name="ingangsdatumObject" type="StUF:Datum-e" nillable="true" minOccurs="0"/>
+					<element name="einddatumObject" type="StUF:Datum-e" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WDC-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:WDC-kennisgeving">
+				<sequence>
+					<element name="codeWOZDeelObject" type="WOZ:CodeWOZDeelObject-e" nillable="true" minOccurs="0"/>
+					<element name="omschrijvingWOZDeelObject" type="WOZ:Omschrijving50-e" nillable="true" minOccurs="0"/>
+					<element name="verkorteOmschrijvingWOZDeelObject" type="WOZ:Omschrijving12-e" nillable="true" minOccurs="0"/>
+					<element name="ingangsdatumObject" type="StUF:Datum-e" nillable="true" minOccurs="0"/>
+					<element name="einddatumObject" type="StUF:Datum-e" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WDO-inWOZ-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:WDO-basis">
+				<sequence>
+					<element name="nummerWOZDeelObject" type="WOZ:NummerWOZDeelObject-e" nillable="true" minOccurs="0"/>
+					<element name="statusWOZDeelObject" type="WOZ:StatusObject-e" nillable="true" minOccurs="0"/>
+					<element name="bepaaltAanduiding" type="WOZ:Boolean-e" nillable="true" minOccurs="0"/>
+					<element name="bepaaltGegevensTaxatieverslag" type="WOZ:Boolean-e" nillable="true" minOccurs="0"/>
+					<element name="codeOmzetBelasting" type="WOZ:CodeOmzetBelasting-e" nillable="true" minOccurs="0"/>
+					<element name="groepaanduiding" type="WOZ:Groepaanduiding-e" nillable="true" minOccurs="0"/>
+					<element name="codeVrijstellingOZB" type="WOZ:CodeVrijstellingOZB-e" nillable="true" minOccurs="0" maxOccurs="5"/>
+					<element name="codeWOZDeelObject" type="WOZ:CodeWOZDeelObject-e" nillable="true" minOccurs="0"/>
+					<element name="archetypeAanduiding" type="WOZ:ArchetypeAanduiding-e" nillable="true" minOccurs="0"/>
+					<choice minOccurs="0">
+						<element name="bouwjaar" type="WOZ:Jaar-e" nillable="true" minOccurs="0"/>
+						<element name="bouwjaarKlasse" type="WOZ:BouwjaarKlasse-e" nillable="true" minOccurs="0"/>
+					</choice>
+					<element name="bouwlaag" type="BG:Bouwlaag-e" nillable="true" minOccurs="0"/>
+					<element name="ontsluitingVerdieping" type="WOZ:OntsluitingVerdieping-e" nillable="true" minOccurs="0"/>
+					<element name="aantalKamers" type="WOZ:Maateenheid2-e" nillable="true" minOccurs="0"/>
+					<element name="renovatiejaar" type="WOZ:Jaar-e" nillable="true" minOccurs="0"/>
+					<element name="renovatiepercentage" type="WOZ:RenovatiePercentage-e" nillable="true" minOccurs="0"/>
+					<element name="kwaliteitLuxe" type="WOZ:BeoordelingKenmerk-e" nillable="true" minOccurs="0"/>
+					<element name="onderhoudstoestand" type="WOZ:BeoordelingKenmerk-e" nillable="true" minOccurs="0"/>
+					<element name="uitstraling" type="WOZ:BeoordelingKenmerk-e" nillable="true" minOccurs="0"/>
+					<element name="doelmatigheid" type="WOZ:BeoordelingKenmerk-e" nillable="true" minOccurs="0"/>
+					<element name="voorzieningen" type="WOZ:BeoordelingKenmerk-e" nillable="true" minOccurs="0"/>
+					<element name="inhoud" type="WOZ:Maateenheid11-e" nillable="true" minOccurs="0"/>
+					<element name="codeBrutoNettoInhoud" type="WOZ:BrutoNettoInhoud-e" nillable="true" minOccurs="0"/>
+					<element name="oppervlakte" type="WOZ:Maateenheid11-e" nillable="true" minOccurs="0"/>
+					<element name="codeBrutoNettoOppervlakte" type="WOZ:BrutoNettoOppervlakte-e" nillable="true" minOccurs="0"/>
+					<element name="lengte" type="WOZ:Maateenheid3-1-e" nillable="true" minOccurs="0"/>
+					<element name="breedte" type="WOZ:Maateenheid3-1-e" nillable="true" minOccurs="0"/>
+					<element name="hoogte" type="WOZ:Maateenheid3-1-e" nillable="true" minOccurs="0"/>
+					<element name="frontBreedte" type="WOZ:Maateenheid3-1-e" nillable="true" minOccurs="0"/>
+					<element name="aantalStuksEenheden" type="WOZ:Maateenheid11-e" nillable="true" minOccurs="0"/>
+					<element name="aantekening" type="WOZ:Aantekening-e" nillable="true" minOccurs="0"/>
+					<element name="geometrie" type="BG:GeometrieVlak-e" minOccurs="0"/>
+					<element name="heeftAlsAanduiding" type="WOZ:WDOAOA-inWOZ-kennisgeving" nillable="true" minOccurs="0"/>
+					<element name="bestaatUit" type="WOZ:WDOTGOOND-inWOZ-kennisgeving" nillable="true" minOccurs="0"/>
+					<element name="bestaatUitPand" type="WOZ:WDOPND-inWOZ-kennisgeving" nillable="true" minOccurs="0"/>
+					<element name="geeftAanduidingVoor" type="WOZ:WDOTGOAND-inWOZ-kennisgeving" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WDO"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WDO-inWOZOWV-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:WDO-basis">
+				<sequence>
+					<element name="nummerWOZDeelObject" type="WOZ:NummerWOZDeelObject-e" nillable="true" minOccurs="0"/>
+					<element name="statusWOZDeelObject" type="WOZ:StatusObject-e" nillable="true" minOccurs="0"/>
+					<element name="bepaaltAanduiding" type="WOZ:Boolean-e" nillable="true" minOccurs="0"/>
+					<element name="bepaaltGegevensTaxatieverslag" type="WOZ:Boolean-e" nillable="true" minOccurs="0"/>
+					<element name="codeWOZDeelObject" type="WOZ:CodeWOZDeelObject-e" nillable="true" minOccurs="0"/>
+					<choice minOccurs="0">
+						<element name="bouwjaar" type="WOZ:Jaar-e" nillable="true" minOccurs="0"/>
+						<element name="bouwjaarKlasse" type="WOZ:BouwjaarKlasse-e" nillable="true" minOccurs="0"/>
+					</choice>
+					<element name="bouwlaag" type="BG:Bouwlaag-e" nillable="true" minOccurs="0"/>
+					<element name="ontsluitingVerdieping" type="WOZ:OntsluitingVerdieping-e" nillable="true" minOccurs="0"/>
+					<element name="aantalKamers" type="WOZ:Maateenheid2-e" nillable="true" minOccurs="0"/>
+					<element name="kwaliteitLuxe" type="WOZ:BeoordelingKenmerk-e" nillable="true" minOccurs="0"/>
+					<element name="onderhoudstoestand" type="WOZ:BeoordelingKenmerk-e" nillable="true" minOccurs="0"/>
+					<element name="uitstraling" type="WOZ:BeoordelingKenmerk-e" nillable="true" minOccurs="0"/>
+					<element name="doelmatigheid" type="WOZ:BeoordelingKenmerk-e" nillable="true" minOccurs="0"/>
+					<element name="voorzieningen" type="WOZ:BeoordelingKenmerk-e" nillable="true" minOccurs="0"/>
+					<element name="inhoud" type="WOZ:Maateenheid11-e" nillable="true" minOccurs="0"/>
+					<element name="codeBrutoNettoInhoud" type="WOZ:BrutoNettoInhoud-e" nillable="true" minOccurs="0"/>
+					<element name="oppervlakte" type="WOZ:Maateenheid11-e" nillable="true" minOccurs="0"/>
+					<element name="codeBrutoNettoOppervlakte" type="WOZ:BrutoNettoOppervlakte-e" nillable="true" minOccurs="0"/>
+					<element name="aantekening" type="WOZ:Aantekening-e" nillable="true" minOccurs="0"/>
+					<element ref="StUF:tijdvakGeldigheid" minOccurs="0"/>
+					<element name="bestaatUit" type="WOZ:WDOTGOOND-inWOZ-kennisgeving" nillable="true" minOccurs="0"/>
+					<element name="bestaatUitPand" type="WOZ:WDOPND-inWOZ-kennisgeving" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WDO"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WDO-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:WDO-basis">
+				<sequence>
+					<element name="nummerWOZDeelObject" type="WOZ:NummerWOZDeelObject-e" nillable="true" minOccurs="0"/>
+					<element name="statusWOZDeelObject" type="WOZ:StatusObject-e" nillable="true" minOccurs="0"/>
+					<element name="bepaaltAanduiding" type="WOZ:Boolean-e" nillable="true" minOccurs="0"/>
+					<element name="bepaaltGegevensTaxatieverslag" type="WOZ:Boolean-e" nillable="true" minOccurs="0"/>
+					<element name="codeOmzetBelasting" type="WOZ:CodeOmzetBelasting-e" nillable="true" minOccurs="0"/>
+					<element name="groepaanduiding" type="WOZ:Groepaanduiding-e" nillable="true" minOccurs="0"/>
+					<element name="codeVrijstellingOZB" type="WOZ:CodeVrijstellingOZB-e" nillable="true" minOccurs="0" maxOccurs="5"/>
+					<element name="codeWOZDeelObject" type="WOZ:CodeWOZDeelObject-e" nillable="true" minOccurs="0"/>
+					<element name="archetypeAanduiding" type="WOZ:ArchetypeAanduiding-e" nillable="true" minOccurs="0"/>
+					<choice minOccurs="0">
+						<element name="bouwjaar" type="WOZ:Jaar-e" nillable="true" minOccurs="0"/>
+						<element name="bouwjaarKlasse" type="WOZ:BouwjaarKlasse-e" nillable="true" minOccurs="0"/>
+					</choice>
+					<element name="bouwlaag" type="BG:Bouwlaag-e" nillable="true" minOccurs="0"/>
+					<element name="ontsluitingVerdieping" type="WOZ:OntsluitingVerdieping-e" nillable="true" minOccurs="0"/>
+					<element name="aantalKamers" type="WOZ:Maateenheid2-e" nillable="true" minOccurs="0"/>
+					<element name="renovatiejaar" type="WOZ:Jaar-e" nillable="true" minOccurs="0"/>
+					<element name="renovatiepercentage" type="WOZ:RenovatiePercentage-e" nillable="true" minOccurs="0"/>
+					<element name="kwaliteitLuxe" type="WOZ:BeoordelingKenmerk-e" nillable="true" minOccurs="0"/>
+					<element name="onderhoudstoestand" type="WOZ:BeoordelingKenmerk-e" nillable="true" minOccurs="0"/>
+					<element name="uitstraling" type="WOZ:BeoordelingKenmerk-e" nillable="true" minOccurs="0"/>
+					<element name="doelmatigheid" type="WOZ:BeoordelingKenmerk-e" nillable="true" minOccurs="0"/>
+					<element name="voorzieningen" type="WOZ:BeoordelingKenmerk-e" nillable="true" minOccurs="0"/>
+					<element name="inhoud" type="WOZ:Maateenheid11-e" nillable="true" minOccurs="0"/>
+					<element name="codeBrutoNettoInhoud" type="WOZ:BrutoNettoInhoud-e" nillable="true" minOccurs="0"/>
+					<element name="oppervlakte" type="WOZ:Maateenheid11-e" nillable="true" minOccurs="0"/>
+					<element name="codeBrutoNettoOppervlakte" type="WOZ:BrutoNettoOppervlakte-e" nillable="true" minOccurs="0"/>
+					<element name="lengte" type="WOZ:Maateenheid3-1-e" nillable="true" minOccurs="0"/>
+					<element name="breedte" type="WOZ:Maateenheid3-1-e" nillable="true" minOccurs="0"/>
+					<element name="hoogte" type="WOZ:Maateenheid3-1-e" nillable="true" minOccurs="0"/>
+					<element name="frontBreedte" type="WOZ:Maateenheid3-1-e" nillable="true" minOccurs="0"/>
+					<element name="aantalStuksEenheden" type="WOZ:Maateenheid11-e" nillable="true" minOccurs="0"/>
+					<element name="aantekening" type="WOZ:Aantekening-e" nillable="true" minOccurs="0"/>
+					<element name="geometrie" type="BG:GeometrieVlak-e" nillable="true" minOccurs="0"/>
+					<element name="ingangsdatumObject" type="StUF:DatumMetIndicator" nillable="true" minOccurs="0"/>
+					<element name="einddatumObject" type="StUF:DatumMetIndicator" nillable="true" minOccurs="0"/>
+					<element ref="StUF:tijdvakGeldigheid" minOccurs="0"/>
+					<element ref="StUF:tijdstipRegistratie" minOccurs="0"/>
+					<element name="heeftAlsAanduiding" type="WOZ:WDOAOA-kennisgeving" nillable="true" minOccurs="0"/>
+					<element name="isOnderdeelVan" type="WOZ:WDOWOZ-kennisgeving" nillable="true" minOccurs="0"/>
+					<element name="bestaatUit" type="WOZ:WDOTGOOND-kennisgeving" nillable="true" minOccurs="0"/>
+					<element name="bestaatUitPand" type="WOZ:WDOPND-kennisgeving" nillable="true" minOccurs="0"/>
+					<element name="geeftAanduidingVoor" type="WOZ:WDOTGOAND-kennisgeving" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WDO"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WDO-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:WDO-kennisgeving">
+				<sequence>
+					<element name="nummerWOZDeelObject" type="WOZ:NummerWOZDeelObject-e" nillable="true" minOccurs="0"/>
+					<element name="statusWOZDeelObject" type="WOZ:StatusObject-e" nillable="true" minOccurs="0"/>
+					<element name="bepaaltAanduiding" type="WOZ:Boolean-e" nillable="true" minOccurs="0"/>
+					<element name="bepaaltGegevensTaxatieverslag" type="WOZ:Boolean-e" nillable="true" minOccurs="0"/>
+					<element name="codeOmzetBelasting" type="WOZ:CodeOmzetBelasting-e" nillable="true" minOccurs="0"/>
+					<element name="groepaanduiding" type="WOZ:Groepaanduiding-e" nillable="true" minOccurs="0"/>
+					<element name="codeVrijstellingOZB" type="WOZ:CodeVrijstellingOZB-e" nillable="true" minOccurs="0" maxOccurs="5"/>
+					<element name="codeWOZDeelObject" type="WOZ:CodeWOZDeelObject-e" nillable="true" minOccurs="0"/>
+					<element name="archetypeAanduiding" type="WOZ:ArchetypeAanduiding-e" nillable="true" minOccurs="0"/>
+					<choice minOccurs="0">
+						<element name="bouwjaar" type="WOZ:Jaar-e" nillable="true" minOccurs="0"/>
+						<element name="bouwjaarKlasse" type="WOZ:BouwjaarKlasse-e" nillable="true" minOccurs="0"/>
+					</choice>
+					<element name="bouwlaag" type="BG:Bouwlaag-e" nillable="true" minOccurs="0"/>
+					<element name="ontsluitingVerdieping" type="WOZ:OntsluitingVerdieping-e" nillable="true" minOccurs="0"/>
+					<element name="aantalKamers" type="WOZ:Maateenheid2-e" nillable="true" minOccurs="0"/>
+					<element name="renovatiejaar" type="WOZ:Jaar-e" nillable="true" minOccurs="0"/>
+					<element name="renovatiepercentage" type="WOZ:RenovatiePercentage-e" nillable="true" minOccurs="0"/>
+					<element name="kwaliteitLuxe" type="WOZ:BeoordelingKenmerk-e" nillable="true" minOccurs="0"/>
+					<element name="onderhoudstoestand" type="WOZ:BeoordelingKenmerk-e" nillable="true" minOccurs="0"/>
+					<element name="uitstraling" type="WOZ:BeoordelingKenmerk-e" nillable="true" minOccurs="0"/>
+					<element name="doelmatigheid" type="WOZ:BeoordelingKenmerk-e" nillable="true" minOccurs="0"/>
+					<element name="voorzieningen" type="WOZ:BeoordelingKenmerk-e" nillable="true" minOccurs="0"/>
+					<element name="inhoud" type="WOZ:Maateenheid11-e" nillable="true" minOccurs="0"/>
+					<element name="codeBrutoNettoInhoud" type="WOZ:BrutoNettoInhoud-e" nillable="true" minOccurs="0"/>
+					<element name="oppervlakte" type="WOZ:Maateenheid11-e" nillable="true" minOccurs="0"/>
+					<element name="codeBrutoNettoOppervlakte" type="WOZ:BrutoNettoOppervlakte-e" nillable="true" minOccurs="0"/>
+					<element name="lengte" type="WOZ:Maateenheid3-1-e" nillable="true" minOccurs="0"/>
+					<element name="breedte" type="WOZ:Maateenheid3-1-e" nillable="true" minOccurs="0"/>
+					<element name="hoogte" type="WOZ:Maateenheid3-1-e" nillable="true" minOccurs="0"/>
+					<element name="frontBreedte" type="WOZ:Maateenheid3-1-e" nillable="true" minOccurs="0"/>
+					<element name="aantalStuksEenheden" type="WOZ:Maateenheid11-e" nillable="true" minOccurs="0"/>
+					<element name="aantekening" type="WOZ:Aantekening-e" nillable="true" minOccurs="0"/>
+					<element name="geometrie" type="BG:GeometrieVlak-e" nillable="true" minOccurs="0"/>
+					<element name="ingangsdatumObject" type="StUF:DatumMetIndicator" nillable="true" minOccurs="0"/>
+					<element name="einddatumObject" type="StUF:DatumMetIndicator" nillable="true" minOccurs="0"/>
+					<element ref="StUF:tijdvakGeldigheid" minOccurs="0"/>
+					<element ref="StUF:tijdstipRegistratie" minOccurs="0"/>
+					<element name="heeftAlsAanduiding" type="WOZ:WDOAOA-kennisgeving_Sh" nillable="true" minOccurs="0"/>
+					<element name="isOnderdeelVan" type="WOZ:WDOWOZ-kennisgeving_Sh" nillable="true" minOccurs="0"/>
+					<element name="bestaatUit" type="WOZ:WDOTGOOND-kennisgeving_Sh" nillable="true" minOccurs="0"/>
+					<element name="bestaatUitPand" type="WOZ:WDOPND-kennisgeving_Sh" nillable="true" minOccurs="0"/>
+					<element name="geeftAanduidingVoor" type="WOZ:WDOTGOAND-kennisgeving_Sh" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WDO"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WDO-kerngegevensKennisgeving">
+		<complexContent>
+			<restriction base="WOZ:WDO-basis">
+				<sequence>
+					<element name="nummerWOZDeelObject" type="WOZ:NummerWOZDeelObject-e" nillable="true" minOccurs="0"/>
+					<element name="heeftAlsAanduiding" type="WOZ:WDOAOA-kerngegevens" nillable="true" minOccurs="0"/>
+					<element name="isOnderdeelVan" type="WOZ:WDOWOZ-kerngegevens" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WDO"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WDOAOA-inWOZ-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:WDOAOA-basis">
+				<sequence>
+					<element name="gerelateerde" type="BG:AOA-woz-kerngegevensKennisgeving" nillable="true"/>
+					<element name="locatieOmschrijving" type="BG:LocatieOmschrijving-e" nillable="true" minOccurs="0"/>
+					<element name="inOnderzoek" type="StUF:StatusMetagegevenNoValue" nillable="true" minOccurs="0"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+					<element ref="StUF:tijdvakGeldigheid" minOccurs="0"/>
+					<element ref="StUF:tijdstipRegistratie" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WDOAOA"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WDOAOA-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:WDOAOA-basis">
+				<sequence>
+					<element name="gerelateerde" type="BG:AOA-woz-kerngegevensKennisgeving" nillable="true"/>
+					<element name="locatieOmschrijving" type="BG:LocatieOmschrijving-e" nillable="true" minOccurs="0"/>
+					<element name="inOnderzoek" type="StUF:StatusMetagegevenNoValue" nillable="true" minOccurs="0"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+					<element ref="StUF:tijdvakGeldigheid" minOccurs="0"/>
+					<element ref="StUF:tijdstipRegistratie" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WDOAOA"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WDOAOA-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:WDOAOA-kennisgeving">
+				<sequence>
+					<element name="gerelateerde" type="BG:AOA-woz-kerngegevensKennisgeving" nillable="true"/>
+					<element name="locatieOmschrijving" type="BG:LocatieOmschrijving-e" nillable="true" minOccurs="0"/>
+					<element name="inOnderzoek" type="StUF:StatusMetagegevenNoValue" nillable="true" minOccurs="0"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+					<element ref="StUF:tijdvakGeldigheid" minOccurs="0"/>
+					<element ref="StUF:tijdstipRegistratie" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WDOAOA"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WDOPND-inWOZ-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:WDOPND-basis">
+				<sequence>
+					<element name="gerelateerde" type="BG:PND-woz-kerngegevensKennisgeving" nillable="true"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+					<element ref="StUF:tijdstipRegistratie" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WDOPND"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WDOPND-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:WDOPND-basis">
+				<sequence>
+					<element name="gerelateerde" type="BG:PND-woz-kerngegevensKennisgeving" nillable="true"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+					<element ref="StUF:tijdstipRegistratie" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WDOPND"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WDOPND-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:WDOPND-kennisgeving">
+				<sequence>
+					<element name="gerelateerde" type="BG:PND-woz-kerngegevensKennisgeving" nillable="true"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+					<element ref="StUF:tijdstipRegistratie" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WDOPND"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WDOTGOAND-inWOZ-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:WDOTGOAND-basis">
+				<sequence>
+					<element name="gerelateerde" type="BG:TGO-woz-kerngegevensKennisgeving" nillable="true"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+					<element ref="StUF:tijdstipRegistratie" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WDOTGOAND"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WDOTGOAND-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:WDOTGOAND-basis">
+				<sequence>
+					<element name="gerelateerde" type="BG:TGO-woz-kerngegevensKennisgeving" nillable="true"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+					<element ref="StUF:tijdstipRegistratie" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WDOTGOAND"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WDOTGOAND-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:WDOTGOAND-kennisgeving">
+				<sequence>
+					<element name="gerelateerde" type="BG:TGO-woz-kerngegevensKennisgeving" nillable="true"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+					<element ref="StUF:tijdstipRegistratie" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WDOTGOAND"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WDOTGOOND-inWOZ-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:WDOTGOOND-basis">
+				<sequence>
+					<element name="gerelateerde" type="BG:TGO-woz-kerngegevensKennisgeving" nillable="true"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+					<element ref="StUF:tijdstipRegistratie" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WDOTGOOND"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WDOTGOOND-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:WDOTGOOND-basis">
+				<sequence>
+					<element name="gerelateerde" type="BG:TGO-woz-kerngegevensKennisgeving" nillable="true"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+					<element ref="StUF:tijdstipRegistratie" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WDOTGOOND"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WDOTGOOND-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:WDOTGOOND-kennisgeving">
+				<sequence>
+					<element name="gerelateerde" type="BG:TGO-woz-kerngegevensKennisgeving" nillable="true"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+					<element ref="StUF:tijdstipRegistratie" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WDOTGOOND"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WDOWOZ-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:WDOWOZ-basis">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:WOZ-kerngegevensKennisgeving" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WDOWOZ"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WDOWOZ-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:WDOWOZ-kennisgeving">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:WOZ-kerngegevensKennisgeving" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WDOWOZ"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZ-inTVS-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:WOZ-basis">
+				<sequence>
+					<element name="wozObjectNummer" type="WOZ:WOZObjectNummer-e" nillable="true" minOccurs="0"/>
+					<element name="aanduidingWOZobject" type="BG:AanduidingWOZobjectGrp-woz" minOccurs="0"/>
+					<element name="statusWozObject" type="WOZ:StatusObject-e" nillable="true" minOccurs="0"/>
+					<element name="grondoppervlakte" type="WOZ:Maateenheid11-neg-e" nillable="true" minOccurs="0"/>
+					<element name="gebruikscode" type="WOZ:Gebruikscode-e" nillable="true" minOccurs="0"/>
+					<element name="codeGebouwdOngebouwd" type="WOZ:CodeGebouwdOngebouwd-e" nillable="true" minOccurs="0"/>
+					<element name="meegetaxeerdeOppervlakteGebouwd" type="WOZ:Maateenheid11-neg-e" nillable="true" minOccurs="0"/>
+					<element name="omschrijving" type="WOZ:Omschrijving100-e" nillable="true" minOccurs="0"/>
+					<element name="waardegebied" type="WOZ:Waardegebied-e" nillable="true" minOccurs="0"/>
+					<element name="monumentaanduiding" type="WOZ:CodeMonumentAanduiding-e" nillable="true" minOccurs="0"/>
+					<element name="codeOmzetBelasting" type="WOZ:CodeOmzetBelasting-e" nillable="true" minOccurs="0"/>
+					<element name="soortObjectCode" type="WOZ:SoortObjectCode-e" nillable="true" minOccurs="0"/>
+					<element name="aanwezigheidLift" type="WOZ:Boolean-e" nillable="true" minOccurs="0"/>
+					<element name="indicatieLigging" type="WOZ:IndicatieLigging-e" nillable="true" minOccurs="0"/>
+					<element name="codeOntbrekenNutsvoorzieningen" type="WOZ:CodeOntbrekenNutsvoorzieningen-e" nillable="true" minOccurs="0"/>
+					<element name="bevatKadastraleObjecten" type="WOZ:WOZKOZ-kennisgeving" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WOZ"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZ-inTVWOWV-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:WOZ-basis">
+				<sequence>
+					<element name="wozObjectNummer" type="WOZ:WOZObjectNummer-e" nillable="true" minOccurs="0"/>
+					<element name="aanduidingWOZobject" type="BG:AanduidingWOZobjectGrp-woz" minOccurs="0"/>
+					<element name="statusWozObject" type="WOZ:StatusObject-e" nillable="true" minOccurs="0"/>
+					<element name="grondoppervlakte" type="WOZ:Maateenheid11-neg-e" nillable="true" minOccurs="0"/>
+					<element name="waardegebied" type="WOZ:Waardegebied-e" nillable="true" minOccurs="0"/>
+					<element name="soortObjectCode" type="WOZ:SoortObjectCode-e" nillable="true" minOccurs="0"/>
+					<element name="aanwezigheidLift" type="WOZ:Boolean-e" nillable="true" minOccurs="0"/>
+					<element name="indicatieLigging" type="WOZ:IndicatieLigging-e" nillable="true" minOccurs="0"/>
+					<element name="codeOntbrekenNutsvoorzieningen" type="WOZ:CodeOntbrekenNutsvoorzieningen-e" nillable="true" minOccurs="0"/>
+					<element name="heeftDeelobject" type="WOZ:WOZWDO-inTVWOWV-kennisgeving" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="heeftWaarde" type="WOZ:WOZWRD-inTVW-kennisgeving" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WOZ"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="prohibited"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZ-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:WOZ-basis">
+				<sequence>
+					<element name="wozObjectNummer" type="WOZ:WOZObjectNummer-e" nillable="true" minOccurs="0"/>
+					<element name="aanduidingWOZobject" type="BG:AanduidingWOZobjectGrp-woz" minOccurs="0"/>
+					<element name="statusWozObject" type="WOZ:StatusObject-e" nillable="true" minOccurs="0"/>
+					<element name="grondoppervlakte" type="WOZ:Maateenheid11-neg-e" nillable="true" minOccurs="0"/>
+					<element name="gebruikscode" type="WOZ:Gebruikscode-e" nillable="true" minOccurs="0"/>
+					<element name="codeGebouwdOngebouwd" type="WOZ:CodeGebouwdOngebouwd-e" nillable="true" minOccurs="0"/>
+					<element name="meegetaxeerdeOppervlakteGebouwd" type="WOZ:Maateenheid11-neg-e" nillable="true" minOccurs="0"/>
+					<element name="ozbVrijstelling" type="WOZ:OZBVrijstelling-e" nillable="true" minOccurs="0"/>
+					<element name="verantwoordelijkeGemeente" type="BG:VerantwoordelijkeGemeenteGrp" minOccurs="0"/>
+					<element name="bijzondereWaarderingscode" type="WOZ:BijzondereWaarderingscode-e" nillable="true" minOccurs="0"/>
+					<element name="omschrijving" type="WOZ:Omschrijving100-e" nillable="true" minOccurs="0"/>
+					<element name="waardegebied" type="WOZ:Waardegebied-e" nillable="true" minOccurs="0"/>
+					<element name="monumentaanduiding" type="WOZ:CodeMonumentAanduiding-e" nillable="true" minOccurs="0"/>
+					<element name="codeOmzetBelasting" type="WOZ:CodeOmzetBelasting-e" nillable="true" minOccurs="0"/>
+					<element name="groepaanduiding" type="WOZ:Groepaanduiding-e" nillable="true" minOccurs="0"/>
+					<element name="aanduidingBouwstroom" type="WOZ:AanduidingBouwstroom-e" nillable="true" minOccurs="0"/>
+					<element name="soortObjectCode" type="WOZ:SoortObjectCode-e" nillable="true" minOccurs="0"/>
+					<element name="aanwezigheidLift" type="WOZ:Boolean-e" nillable="true" minOccurs="0"/>
+					<element name="indicatieLigging" type="WOZ:IndicatieLigging-e" nillable="true" minOccurs="0"/>
+					<element name="codeOntbrekenNutsvoorzieningen" type="WOZ:CodeOntbrekenNutsvoorzieningen-e" nillable="true" minOccurs="0"/>
+					<element name="financieringsvorm" type="WOZ:Financieringsvorm-e" nillable="true" minOccurs="0"/>
+					<element name="stijlletter" type="WOZ:Stijlletter-e" nillable="true" minOccurs="0"/>
+					<element name="documentNummer" type="BG:DocumentNummering-e" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="wozObjectGeometrie" type="BG:GeometrieVlak-e" nillable="true" minOccurs="0"/>
+					<element name="inOnderzoek" type="StUF:InOnderzoekWOZ-woz" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="ingangsdatumObject" type="StUF:Datum-e" nillable="true" minOccurs="0"/>
+					<element name="einddatumObject" type="StUF:Datum-e" nillable="true" minOccurs="0"/>
+					<element ref="StUF:tijdvakGeldigheid" minOccurs="0"/>
+					<element ref="StUF:tijdstipRegistratie" minOccurs="0"/>
+					<element name="ontleentAanduidingAan" type="WOZ:WOZAOTAND-kennisgeving" nillable="true" minOccurs="0"/>
+					<element name="isVerbondenMet" type="WOZ:WOZAOTOND-kennisgeving" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="bevatKadastraleObjecten" type="WOZ:WOZKOZ-kennisgeving" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="heeftAlsAanduiding" type="WOZ:WOZNUM-kennisgeving" nillable="true" minOccurs="0"/>
+					<element name="heeftPand" type="WOZ:WOZPND-kennisgeving" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="heeftSluimerendObject" type="WOZ:WOZSWO-kennisgeving" nillable="true" minOccurs="0"/>
+					<element name="heeftBelanghebbende" type="WOZ:WOZSUB-kennisgeving" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="ligtIn" type="WOZ:WOZWSP-kennisgeving" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WOZ"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZ-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:WOZ-kennisgeving">
+				<sequence>
+					<element name="wozObjectNummer" type="WOZ:WOZObjectNummer-e" nillable="true" minOccurs="0"/>
+					<element name="aanduidingWOZobject" type="BG:AanduidingWOZobjectGrp-woz" minOccurs="0"/>
+					<element name="statusWozObject" type="WOZ:StatusObject-e" nillable="true" minOccurs="0"/>
+					<element name="grondoppervlakte" type="WOZ:Maateenheid11-neg-e" nillable="true" minOccurs="0"/>
+					<element name="gebruikscode" type="WOZ:Gebruikscode-e" nillable="true" minOccurs="0"/>
+					<element name="codeGebouwdOngebouwd" type="WOZ:CodeGebouwdOngebouwd-e" nillable="true" minOccurs="0"/>
+					<element name="meegetaxeerdeOppervlakteGebouwd" type="WOZ:Maateenheid11-neg-e" nillable="true" minOccurs="0"/>
+					<element name="ozbVrijstelling" type="WOZ:OZBVrijstelling-e" nillable="true" minOccurs="0"/>
+					<element name="verantwoordelijkeGemeente" type="BG:VerantwoordelijkeGemeenteGrp" minOccurs="0"/>
+					<element name="bijzondereWaarderingscode" type="WOZ:BijzondereWaarderingscode-e" nillable="true" minOccurs="0"/>
+					<element name="omschrijving" type="WOZ:Omschrijving100-e" nillable="true" minOccurs="0"/>
+					<element name="waardegebied" type="WOZ:Waardegebied-e" nillable="true" minOccurs="0"/>
+					<element name="monumentaanduiding" type="WOZ:CodeMonumentAanduiding-e" nillable="true" minOccurs="0"/>
+					<element name="codeOmzetBelasting" type="WOZ:CodeOmzetBelasting-e" nillable="true" minOccurs="0"/>
+					<element name="groepaanduiding" type="WOZ:Groepaanduiding-e" nillable="true" minOccurs="0"/>
+					<element name="aanduidingBouwstroom" type="WOZ:AanduidingBouwstroom-e" nillable="true" minOccurs="0"/>
+					<element name="soortObjectCode" type="WOZ:SoortObjectCode-e" nillable="true" minOccurs="0"/>
+					<element name="aanwezigheidLift" type="WOZ:Boolean-e" nillable="true" minOccurs="0"/>
+					<element name="indicatieLigging" type="WOZ:IndicatieLigging-e" nillable="true" minOccurs="0"/>
+					<element name="codeOntbrekenNutsvoorzieningen" type="WOZ:CodeOntbrekenNutsvoorzieningen-e" nillable="true" minOccurs="0"/>
+					<element name="financieringsvorm" type="WOZ:Financieringsvorm-e" nillable="true" minOccurs="0"/>
+					<element name="stijlletter" type="WOZ:Stijlletter-e" nillable="true" minOccurs="0"/>
+					<element name="documentNummer" type="BG:DocumentNummering-e" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="wozObjectGeometrie" type="BG:GeometrieVlak-e" nillable="true" minOccurs="0"/>
+					<element name="inOnderzoek" type="StUF:InOnderzoekWOZ-woz" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="ingangsdatumObject" type="StUF:Datum-e" nillable="true" minOccurs="0"/>
+					<element name="einddatumObject" type="StUF:Datum-e" nillable="true" minOccurs="0"/>
+					<element ref="StUF:tijdvakGeldigheid" minOccurs="0"/>
+					<element ref="StUF:tijdstipRegistratie" minOccurs="0"/>
+					<element name="ontleentAanduidingAan" type="WOZ:WOZAOTAND-kennisgeving_Sh" nillable="true" minOccurs="0"/>
+					<element name="isVerbondenMet" type="WOZ:WOZAOTOND-kennisgeving_Sh" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="bevatKadastraleObjecten" type="WOZ:WOZKOZ-kennisgeving_Sh" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="heeftAlsAanduiding" type="WOZ:WOZNUM-kennisgeving_Sh" nillable="true" minOccurs="0"/>
+					<element name="heeftPand" type="WOZ:WOZPND-kennisgeving_Sh" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="heeftSluimerendObject" type="WOZ:WOZSWO-kennisgeving_Sh" nillable="true" minOccurs="0"/>
+					<element name="heeftBelanghebbende" type="WOZ:WOZSUB-kennisgeving_Sh" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="ligtIn" type="WOZ:WOZWSP-kennisgeving_Sh" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WOZ"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZ-kerngegevensKennisgeving">
+		<complexContent>
+			<restriction base="WOZ:WOZ-basis">
+				<sequence>
+					<element name="wozObjectNummer" type="WOZ:WOZObjectNummer-e" nillable="true" minOccurs="0"/>
+					<element name="aanduidingWOZobject" type="BG:AanduidingWOZobjectGrp-woz-kerngegevensKennisgeving" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WOZ"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZAOTAND-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:WOZAOTAND-basis">
+				<sequence>
+					<element name="gerelateerde" type="BG:AOT-woz-kerngegevensKennisgeving"/>
+					<element name="inOnderzoek" type="StUF:StatusMetagegevenNoValue" nillable="true" minOccurs="0"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+					<element ref="StUF:tijdvakGeldigheid" minOccurs="0"/>
+					<element ref="StUF:tijdstipRegistratie" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WOZAOTAND"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZAOTAND-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:WOZAOTAND-kennisgeving">
+				<sequence>
+					<element name="gerelateerde" type="BG:AOT-woz-kerngegevensKennisgeving"/>
+					<element name="inOnderzoek" type="StUF:StatusMetagegevenNoValue" nillable="true" minOccurs="0"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+					<element ref="StUF:tijdvakGeldigheid" minOccurs="0"/>
+					<element ref="StUF:tijdstipRegistratie" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WOZAOTAND"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZAOTOND-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:WOZAOTOND-basis">
+				<sequence>
+					<element name="gerelateerde" type="BG:AOT-woz-kerngegevensKennisgeving"/>
+					<element name="inOnderzoek" type="StUF:StatusMetagegevenNoValue" nillable="true" minOccurs="0"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+					<element ref="StUF:tijdvakGeldigheid" minOccurs="0"/>
+					<element ref="StUF:tijdstipRegistratie" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WOZAOTOND"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZAOTOND-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:WOZAOTOND-kennisgeving">
+				<sequence>
+					<element name="gerelateerde" type="BG:AOT-woz-kerngegevensKennisgeving"/>
+					<element name="inOnderzoek" type="StUF:StatusMetagegevenNoValue" nillable="true" minOccurs="0"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+					<element ref="StUF:tijdvakGeldigheid" minOccurs="0"/>
+					<element ref="StUF:tijdstipRegistratie" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WOZAOTOND"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZKOZ-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:WOZKOZ-basis">
+				<sequence>
+					<element name="gerelateerde" type="BG:KOZ-woz-kerngegevensKennisgeving" nillable="true"/>
+					<element name="toegekendeOppervlakte" type="WOZ:Maateenheid11-neg-e" nillable="true" minOccurs="0"/>
+					<element name="meegetaxeerdeOppervlakte" type="WOZ:Maateenheid11-neg-e" nillable="true" minOccurs="0"/>
+					<element name="inOnderzoek" type="StUF:InOnderzoekWOZKOZ-woz" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+					<element ref="StUF:tijdvakGeldigheid" minOccurs="0"/>
+					<element ref="StUF:tijdstipRegistratie" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WOZKOZ"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZKOZ-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:WOZKOZ-kennisgeving">
+				<sequence>
+					<element name="gerelateerde" type="BG:KOZ-woz-kerngegevensKennisgeving" nillable="true"/>
+					<element name="toegekendeOppervlakte" type="WOZ:Maateenheid11-neg-e" nillable="true" minOccurs="0"/>
+					<element name="meegetaxeerdeOppervlakte" type="WOZ:Maateenheid11-neg-e" nillable="true" minOccurs="0"/>
+					<element name="inOnderzoek" type="StUF:InOnderzoekWOZKOZ-woz" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+					<element ref="StUF:tijdvakGeldigheid" minOccurs="0"/>
+					<element ref="StUF:tijdstipRegistratie" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WOZKOZ"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZNUM-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:WOZNUM-basis">
+				<sequence>
+					<element name="gerelateerde" type="BG:NUM-woz-kerngegevensKennisgeving" nillable="true"/>
+					<element name="locatieOmschrijving" type="BG:LocatieOmschrijving-e" nillable="true" minOccurs="0"/>
+					<element name="inOnderzoek" type="StUF:StatusMetagegevenNoValue" nillable="true" minOccurs="0"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+					<element ref="StUF:tijdvakGeldigheid" minOccurs="0"/>
+					<element ref="StUF:tijdstipRegistratie" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WOZNUM"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZNUM-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:WOZNUM-kennisgeving">
+				<sequence>
+					<element name="gerelateerde" type="BG:NUM-woz-kerngegevensKennisgeving" nillable="true"/>
+					<element name="locatieOmschrijving" type="BG:LocatieOmschrijving-e" nillable="true" minOccurs="0"/>
+					<element name="inOnderzoek" type="StUF:StatusMetagegevenNoValue" nillable="true" minOccurs="0"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+					<element ref="StUF:tijdvakGeldigheid" minOccurs="0"/>
+					<element ref="StUF:tijdstipRegistratie" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WOZNUM"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZPND-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:WOZPND-basis">
+				<sequence>
+					<element name="gerelateerde" type="BG:PND-woz-kerngegevensKennisgeving" nillable="true"/>
+					<element name="inOnderzoek" type="StUF:StatusMetagegevenNoValue" nillable="true" minOccurs="0"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+					<element ref="StUF:tijdvakGeldigheid" minOccurs="0"/>
+					<element ref="StUF:tijdstipRegistratie" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WOZPND"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZPND-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:WOZPND-kennisgeving">
+				<sequence>
+					<element name="gerelateerde" type="BG:PND-woz-kerngegevensKennisgeving" nillable="true"/>
+					<element name="inOnderzoek" type="StUF:StatusMetagegevenNoValue" nillable="true" minOccurs="0"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+					<element ref="StUF:tijdvakGeldigheid" minOccurs="0"/>
+					<element ref="StUF:tijdstipRegistratie" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WOZPND"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZSUB-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:WOZSUB-basis">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:SUB-woz-kerngegevensKennisgeving"/>
+					<element name="aanduidingEigenaarGebruiker" type="BG:AanduidingEigenaarGebruiker-e" nillable="true" minOccurs="0"/>
+					<element name="statusBelang" type="BG:StatusBelang-e" nillable="true" minOccurs="0"/>
+					<element name="avr.aard" type="BG:AardZakelijkRecht-e" nillable="true" minOccurs="0"/>
+					<element name="inOnderzoek" type="StUF:StatusMetagegevenNoValue" nillable="true" minOccurs="0"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+					<element ref="StUF:tijdvakGeldigheid" minOccurs="0"/>
+					<element ref="StUF:tijdstipRegistratie" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WOZSUB"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZSUB-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:WOZSUB-kennisgeving">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:SUB-woz-kerngegevensKennisgeving"/>
+					<element name="aanduidingEigenaarGebruiker" type="BG:AanduidingEigenaarGebruiker-e" nillable="true" minOccurs="0"/>
+					<element name="statusBelang" type="BG:StatusBelang-e" nillable="true" minOccurs="0"/>
+					<element name="avr.aard" type="BG:AardZakelijkRecht-e" nillable="true" minOccurs="0"/>
+					<element name="inOnderzoek" type="StUF:StatusMetagegevenNoValue" nillable="true" minOccurs="0"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+					<element ref="StUF:tijdvakGeldigheid" minOccurs="0"/>
+					<element ref="StUF:tijdstipRegistratie" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WOZSUB"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZSWO-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:WOZSWO-basis">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:SWO-kerngegevensKennisgeving" nillable="true"/>
+					<element name="inOnderzoek" type="StUF:StatusMetagegevenNoValue" nillable="true" minOccurs="0"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+					<element ref="StUF:tijdvakGeldigheid" minOccurs="0"/>
+					<element ref="StUF:tijdstipRegistratie" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WOZSWO"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZSWO-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:WOZSWO-kennisgeving">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:SWO-kerngegevensKennisgeving" nillable="true"/>
+					<element name="inOnderzoek" type="StUF:StatusMetagegevenNoValue" nillable="true" minOccurs="0"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+					<element ref="StUF:tijdvakGeldigheid" minOccurs="0"/>
+					<element ref="StUF:tijdstipRegistratie" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WOZSWO"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZWDO-inTVWOWV-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:WOZWDO-basis">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:WDO-inWOZOWV-kennisgeving" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WOZWDO"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZWDO-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:WOZWDO-basis">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:WDO-kennisgeving" nillable="true"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WOZWDO"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZWDO-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:WOZWDO-kennisgeving">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:WDO-kennisgeving" nillable="true"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WOZWDO"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZWRD-inTVW-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:WOZWRD-basis">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:WRD-inTVW-kennisgeving" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WOZWRD"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZWSP-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:WOZWSP-basis">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:WSP-kerngegevensKennisgeving" nillable="true"/>
+					<element name="inOnderzoek" type="StUF:StatusMetagegevenNoValue" nillable="true" minOccurs="0"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+					<element ref="StUF:tijdvakGeldigheid" minOccurs="0"/>
+					<element ref="StUF:tijdstipRegistratie" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WOZWSP"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WOZWSP-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:WOZWSP-kennisgeving">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:WSP-kerngegevensKennisgeving" nillable="true"/>
+					<element name="inOnderzoek" type="StUF:StatusMetagegevenNoValue" nillable="true" minOccurs="0"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+					<element ref="StUF:tijdvakGeldigheid" minOccurs="0"/>
+					<element ref="StUF:tijdstipRegistratie" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WOZWSP"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WRD-inTVW-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:WRD-basis">
+				<sequence>
+					<element name="vastgesteldeWaarde" type="WOZ:Maateenheid11-e" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WRD"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WRD-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:WRD-basis">
+				<sequence>
+					<element name="waardepeildatum" type="WOZ:Peildatum-e" nillable="true" minOccurs="0"/>
+					<element name="toestandspeildatum" type="WOZ:Peildatum-e" nillable="true" minOccurs="0"/>
+					<element name="vastgesteldeWaarde" type="WOZ:Maateenheid11-e" nillable="true" minOccurs="0"/>
+					<element name="ingangsdatumWaarde" type="StUF:Datum-e" nillable="true" minOccurs="0"/>
+					<element name="heffingsmaatstafOZB" type="WOZ:Maateenheid11-e" nillable="true" minOccurs="0"/>
+					<element name="heffingsmaatstafOZBGebruiker" type="WOZ:Maateenheid11-e" nillable="true" minOccurs="0"/>
+					<element name="codeBlokkeren" type="WOZ:CodeBlokkeren-e" nillable="true" minOccurs="0"/>
+					<element name="inOnderzoek" type="StUF:InOnderzoekWRD-woz" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					<element ref="StUF:tijdvakGeldigheid" minOccurs="0"/>
+					<element ref="StUF:tijdstipRegistratie" minOccurs="0"/>
+					<element name="isVoor" type="WOZ:WRDWOZ-kennisgeving" nillable="true" minOccurs="0"/>
+					<element name="wordtVerdeeldNaar" type="WOZ:WRDWSP-kennisgeving" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="isBeschiktVoor" type="WOZ:WRDSUB-kennisgeving" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WRD"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WRD-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:WRD-kennisgeving">
+				<sequence>
+					<element name="waardepeildatum" type="WOZ:Peildatum-e" nillable="true" minOccurs="0"/>
+					<element name="toestandspeildatum" type="WOZ:Peildatum-e" nillable="true" minOccurs="0"/>
+					<element name="vastgesteldeWaarde" type="WOZ:Maateenheid11-e" nillable="true" minOccurs="0"/>
+					<element name="ingangsdatumWaarde" type="StUF:Datum-e" nillable="true" minOccurs="0"/>
+					<element name="heffingsmaatstafOZB" type="WOZ:Maateenheid11-e" nillable="true" minOccurs="0"/>
+					<element name="heffingsmaatstafOZBGebruiker" type="WOZ:Maateenheid11-e" nillable="true" minOccurs="0"/>
+					<element name="codeBlokkeren" type="WOZ:CodeBlokkeren-e" nillable="true" minOccurs="0"/>
+					<element name="inOnderzoek" type="StUF:InOnderzoekWRD-woz" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					<element ref="StUF:tijdvakGeldigheid" minOccurs="0"/>
+					<element ref="StUF:tijdstipRegistratie" minOccurs="0"/>
+					<element name="isVoor" type="WOZ:WRDWOZ-kennisgeving_Sh" nillable="true" minOccurs="0"/>
+					<element name="wordtVerdeeldNaar" type="WOZ:WRDWSP-kennisgeving_Sh" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="isBeschiktVoor" type="WOZ:WRDSUB-kennisgeving_Sh" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WRD"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WRD-kerngegevensKennisgeving">
+		<complexContent>
+			<restriction base="WOZ:WRD-basis">
+				<sequence>
+					<element name="waardepeildatum" type="WOZ:Peildatum-e" nillable="true" minOccurs="0"/>
+					<element name="ingangsdatumWaarde" type="StUF:Datum-e" nillable="true" minOccurs="0"/>
+					<element name="isVoor" type="WOZ:WRDWOZ-kerngegevens" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WRD"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WRDSUB-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:WRDSUB-basis">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:SUB-woz-kerngegevensKennisgeving"/>
+					<element name="statusBeschikking" type="WOZ:StatusBeschikking-e" nillable="true" minOccurs="0"/>
+					<element name="brondocument" type="BG:BrondocumentWOZ" minOccurs="0"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+					<element ref="StUF:tijdvakGeldigheid" minOccurs="0"/>
+					<element ref="StUF:tijdstipRegistratie" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WRDSUB"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WRDSUB-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:WRDSUB-kennisgeving">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:SUB-woz-kerngegevensKennisgeving"/>
+					<element name="statusBeschikking" type="WOZ:StatusBeschikking-e" nillable="true" minOccurs="0"/>
+					<element name="brondocument" type="BG:BrondocumentWOZ" minOccurs="0"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+					<element ref="StUF:tijdvakGeldigheid" minOccurs="0"/>
+					<element ref="StUF:tijdstipRegistratie" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WRDSUB"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WRDWOZ-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:WRDWOZ-basis">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:WOZ-kerngegevensKennisgeving" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WRDWOZ"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WRDWOZ-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:WRDWOZ-kennisgeving">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:WOZ-kerngegevensKennisgeving" nillable="true"/>
+				</sequence>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WRDWOZ"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WRDWSP-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:WRDWSP-basis">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:WSP-kerngegevensKennisgeving" nillable="true"/>
+					<element name="aandeelWaardeWaterschap" type="WOZ:Maateenheid11-e" nillable="true" minOccurs="0"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+					<element ref="StUF:tijdvakGeldigheid" minOccurs="0"/>
+					<element ref="StUF:tijdstipRegistratie" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WRDWSP"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WRDWSP-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:WRDWSP-kennisgeving">
+				<sequence>
+					<element name="gerelateerde" type="WOZ:WSP-kerngegevensKennisgeving" nillable="true"/>
+					<element name="aandeelWaardeWaterschap" type="WOZ:Maateenheid11-e" nillable="true" minOccurs="0"/>
+					<element ref="StUF:tijdvakRelatie" minOccurs="0"/>
+					<element ref="StUF:tijdvakGeldigheid" minOccurs="0"/>
+					<element ref="StUF:tijdstipRegistratie" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WRDWSP"/>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WSP-kennisgeving">
+		<complexContent>
+			<restriction base="WOZ:WSP-basis">
+				<sequence>
+					<element name="betrokkenWaterschap" type="WOZ:BetrokkenWaterschap-e" nillable="true" minOccurs="0"/>
+					<element name="waterschapNaam" type="WOZ:Waterschapnaam-e" nillable="true" minOccurs="0"/>
+					<element name="ingangsdatumObject" type="StUF:Datum-e" nillable="true" minOccurs="0"/>
+					<element name="einddatumObject" type="StUF:Datum-e" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WSP"/>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WSP-kennisgeving_Sh">
+		<complexContent>
+			<restriction base="WOZ:WSP-kennisgeving">
+				<sequence>
+					<element name="betrokkenWaterschap" type="WOZ:BetrokkenWaterschap-e" nillable="true" minOccurs="0"/>
+					<element name="waterschapNaam" type="WOZ:Waterschapnaam-e" nillable="true" minOccurs="0"/>
+					<element name="ingangsdatumObject" type="StUF:Datum-e" nillable="true" minOccurs="0"/>
+					<element name="einddatumObject" type="StUF:Datum-e" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:sleutelSynchronisatie" use="required"/>
+				<attribute ref="StUF:entiteittype" use="required" fixed="WSP"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="WSP-kerngegevensKennisgeving">
+		<complexContent>
+			<restriction base="WOZ:WSP-basis">
+				<sequence>
+					<element name="betrokkenWaterschap" type="WOZ:BetrokkenWaterschap-e" nillable="true" minOccurs="0"/>
+				</sequence>
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:scope" use="prohibited"/>
+				<attribute ref="StUF:verwerkingssoort" use="required"/>
+			</restriction>
+		</complexContent>
+	</complexType>
+</schema>

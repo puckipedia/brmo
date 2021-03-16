@@ -1,0 +1,1194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2018 rel. 2 sp1 (x64) (http://www.altova.com) by M. van den Broek (messageDesign B.V.) -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:StUF="http://www.egem.nl/StUF/StUF0301" xmlns:WOZ="http://www.waarderingskamer.nl/StUF/0312" xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310" targetNamespace="http://www.waarderingskamer.nl/StUF/0312" elementFormDefault="qualified" attributeFormDefault="unqualified" version="031212">
+	<include schemaLocation="woz0312_ent_lv_mutatie.xsd"/>
+	<import namespace="http://www.egem.nl/StUF/StUF0301" schemaLocation="woz0312_msg_stuf_lv_mutatie.xsd"/>
+	<import namespace="http://www.egem.nl/StUF/sector/bg/0310" schemaLocation="woz0312_bg0310_lv_mutatie.xsd"/>
+	<annotation>
+		<documentation xml:lang="nl">
+			Dit schema bevat de definitie van de berichtelementen gebruikt voor het doorgeven van wijzigingen naar de LV WOZ en zijn afnemers
+			Wijzigingen vergeleken met version 031211:
+			-	Binnen de synchronisatieverzoeken NNP-Sa03, NPS-Sa03, SWO-Sa03-lv, SWO-Sh03-lv, VES-Sa03, WOZ-Sa03-lv, WOZ-Sh03-lv, WRD-Sa03-lv en WRD-Sh03-lv zijn de kerngegevens niet langer verplicht, omdat het verplicht maken van de kerngegevens in de praktijk niet downwards compatible blijkt te zijn.
+		</documentation>
+	</annotation>
+	<element name="nnpSa01" type="WOZ:NNP-Sa01-sleutelSynchronisatieOptioneel"/>
+	<element name="nnpSa03">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:NNP-StuurgegevensSa03"/>
+				<element name="object" type="WOZ:NNP-lv-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="npsSa01" type="WOZ:NPS-Sa01-sleutelSynchronisatieOptioneel"/>
+	<element name="npsSa03">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:NPS-StuurgegevensSa03"/>
+				<element name="object" type="WOZ:NPS-lv-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="swoSa01-lvwoz" type="WOZ:SWO-Sa01-lv-sleutelSynchronisatieOptioneel"/>
+	<element name="swoSa03-lvwoz">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:SWO-StuurgegevensSa03"/>
+				<element name="object" type="WOZ:SWO-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="swoSh01-lvwoz">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:SWO-StuurgegevensSh01"/>
+				<element name="actueel" type="WOZ:SWO-Sa01-lv"/>
+				<element name="historie" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="oudste" type="WOZ:SWO-Sx01-T-lv"/>
+							<sequence minOccurs="0" maxOccurs="unbounded">
+								<element name="wijziging" type="WOZ:SWO-Sh01-W-lv"/>
+							</sequence>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="swoSh03-lvwoz">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:SWO-StuurgegevensSh03"/>
+				<element name="object" type="WOZ:SWO-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="vesSa01" type="WOZ:VES-Sa01-sleutelSynchronisatieOptioneel"/>
+	<element name="vesSa03">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:VES-StuurgegevensSa03"/>
+				<element name="object" type="WOZ:VES-lv-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wozSa01-lvwoz" type="WOZ:WOZ-Sa01-lv-sleutelSynchronisatieOptioneel"/>
+	<element name="wozSa03-lvwoz">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WOZ-StuurgegevensSa03"/>
+				<element name="object" type="WOZ:WOZ-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wozSh01-lvwoz">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WOZ-StuurgegevensSh01"/>
+				<element name="actueel" type="WOZ:WOZ-Sa01-lv"/>
+				<element name="historie" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="oudste" type="WOZ:WOZ-Sx01-T-lv"/>
+							<sequence minOccurs="0" maxOccurs="unbounded">
+								<element name="wijziging" type="WOZ:WOZ-Sh01-W-lv"/>
+							</sequence>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wozSh03-lvwoz">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WOZ-StuurgegevensSh03"/>
+				<element name="object" type="WOZ:WOZ-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wrdSa01-lvwoz" type="WOZ:WRD-Sa01-lv-sleutelSynchronisatieOptioneel"/>
+	<element name="wrdSa03-lvwoz">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WRD-StuurgegevensSa03"/>
+				<element name="object" type="WOZ:WRD-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wrdSh01-lvwoz">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WRD-StuurgegevensSh01"/>
+				<element name="actueel" type="WOZ:WRD-Sa01-lv"/>
+				<element name="historie" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="oudste" type="WOZ:WRD-Sx01-T-lv"/>
+							<sequence minOccurs="0" maxOccurs="unbounded">
+								<element name="wijziging" type="WOZ:WRD-Sh01-W-lv"/>
+							</sequence>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="wrdSh03-lvwoz">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:WRD-StuurgegevensSh03"/>
+				<element name="object" type="WOZ:WRD-kerngegevens"/>
+			</sequence>
+		</complexType>
+	</element>
+	<!--Elementen voor gebeurtenis berichten-->
+	<element name="BSKMB_Di01">
+		<annotation>
+			<documentation>Beschikking voor een mede belanghebbende</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:Stuurgegevens-BSKMB"/>
+				<element name="routering" type="WOZ:WOZ-lv-routering"/>
+				<choice minOccurs="0">
+					<element name="voegToeNPS" type="WOZ:NPS-updateVoegToeMetDatumEindeSynchronisatie" minOccurs="0"/>
+					<element name="voegToeNNP" type="WOZ:NNP-updateVoegToeMetDatumEindeSynchronisatie" minOccurs="0"/>
+					<element name="voegToeVES" type="WOZ:VES-updateVoegToeMetDatumEindeSynchronisatie" minOccurs="0"/>
+				</choice>
+				<element name="voegBeschikkingMBtoeWRD" type="WOZ:WRD-updateVoegBeschikkingMBToe"/>
+				<element name="voegMedeBelanghebbendeToeWOZ" type="WOZ:WOZ-updateWijzigMedeBelanghebbende"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="BSWO_Di01">
+		<annotation>
+			<documentation>Beeindigen van een sluimerend WOZ-object</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:Stuurgegevens-BSWO"/>
+				<element name="routering" type="WOZ:WOZ-lv-routering"/>
+				<element name="beeindigSWO" type="WOZ:SWO-updateBeeindig"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="BWOZ_Di01">
+		<annotation>
+			<documentation>Beeindigen van een WOZ-object</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:Stuurgegevens-BWOZ"/>
+				<element name="routering" type="WOZ:WOZ-lv-routering"/>
+				<element name="beeindigWOZ" type="WOZ:WOZ-updateBeeindig"/>
+				<element name="beeindigNNP" type="WOZ:NNP-updateBeeindig" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="beeindigNPS" type="WOZ:NPS-updateBeeindig" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="beeindigVES" type="WOZ:VES-updateBeeindig" minOccurs="0" maxOccurs="unbounded"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="IBB_Di01">
+		<annotation>
+			<documentation>Indienen van  bezwaar of beroep</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:Stuurgegevens-IBB"/>
+				<element name="routering" type="WOZ:WOZ-lv-routering"/>
+				<element name="indienenBezwaarBeroepWRD" type="WOZ:WRD-updateIndienenBezwaarBeroep"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="MBAG_Di01">
+		<annotation>
+			<documentation>Wijzigen of synchronisaties van BAG-objecten en/of WOZ-object nav melding uit BAG</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:Stuurgegevens-MBAG"/>
+				<element name="routering" type="WOZ:WOZ-lv-routering"/>
+				<choice minOccurs="0" maxOccurs="unbounded">
+					<element name="synchroniseerLIG">
+						<complexType>
+							<complexContent>
+								<extension base="BG:LIG-lv-synchroniseer">
+									<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+								</extension>
+							</complexContent>
+						</complexType>
+					</element>
+					<element name="wijzigLIG" type="WOZ:LIG-updateWijzig"/>
+				</choice>
+				<choice minOccurs="0" maxOccurs="unbounded">
+					<element name="synchroniseerNUM">
+						<complexType>
+							<complexContent>
+								<extension base="BG:NUM-lv-synchroniseer">
+									<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+								</extension>
+							</complexContent>
+						</complexType>
+					</element>
+					<element name="wijzigNUM" type="WOZ:NUM-updateWijzig"/>
+				</choice>
+				<choice minOccurs="0" maxOccurs="unbounded">
+					<element name="synchroniseerSTA">
+						<complexType>
+							<complexContent>
+								<extension base="BG:STA-lv-synchroniseer">
+									<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+								</extension>
+							</complexContent>
+						</complexType>
+					</element>
+					<element name="wijzigSTA" type="WOZ:STA-updateWijzig"/>
+				</choice>
+				<choice minOccurs="0" maxOccurs="unbounded">
+					<element name="synchroniseerVBO">
+						<complexType>
+							<complexContent>
+								<extension base="BG:VBO-lv-synchroniseer">
+									<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+								</extension>
+							</complexContent>
+						</complexType>
+					</element>
+					<element name="wijzigVBO" type="WOZ:VBO-updateWijzig"/>
+				</choice>
+				<element name="wijzigBAGObjectWOZ" type="WOZ:WOZ-updateWijzigBAG" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="MBE_Di01">
+		<annotation>
+			<documentation>Een melding met betrekking tot de eigenaar van het WOZ-object</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:Stuurgegevens-MBE"/>
+				<element name="routering" type="WOZ:WOZ-lv-routering"/>
+				<choice minOccurs="0">
+					<element name="voegToeNPS" type="WOZ:NPS-updateVoegToe" minOccurs="0"/>
+					<element name="voegToeNNP" type="WOZ:NNP-updateVoegToe" minOccurs="0"/>
+					<element name="voegToeVES" type="WOZ:VES-updateVoegToe" minOccurs="0"/>
+				</choice>
+				<element name="wijzigStatusBelang" type="WOZ:WOZ-updateWijzigStatusBelang" minOccurs="0"/>
+				<element name="wijzigEigenaarWOZ">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:WOZ-updateWijzigEigenaar"/>
+						</complexContent>
+					</complexType>
+				</element>
+				<choice minOccurs="0">
+					<element name="beeindigNNP" type="WOZ:NNP-updateBeeindig" minOccurs="0"/>
+					<element name="beeindigNPS" type="WOZ:NPS-updateBeeindig" minOccurs="0"/>
+					<element name="beeindigVES" type="WOZ:VES-updateBeeindig" minOccurs="0"/>
+				</choice>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="MBG_Di01">
+		<annotation>
+			<documentation>Een melding met betrekking tot de gebruiker van het WOZ-object</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:Stuurgegevens-MBG"/>
+				<element name="routering" type="WOZ:WOZ-lv-routering"/>
+				<choice minOccurs="0">
+					<element name="voegToeNPS" type="WOZ:NPS-updateVoegToe" minOccurs="0"/>
+					<element name="voegToeNNP" type="WOZ:NNP-updateVoegToe" minOccurs="0"/>
+					<element name="voegToeVES" type="WOZ:VES-updateVoegToe" minOccurs="0"/>
+				</choice>
+				<element name="wijzigStatusBelang" type="WOZ:WOZ-updateWijzigStatusBelang" minOccurs="0"/>
+				<element name="wijzigGebruikerWOZ" type="WOZ:WOZ-updateWijzigGebruiker"/>
+				<choice minOccurs="0">
+					<element name="beeindigNNP" type="WOZ:NNP-updateBeeindig" minOccurs="0"/>
+					<element name="beeindigNPS" type="WOZ:NPS-updateBeeindig" minOccurs="0"/>
+					<element name="beeindigVES" type="WOZ:VES-updateBeeindig" minOccurs="0"/>
+				</choice>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="MEL_Di01">
+		<annotation>
+			<documentation>Een melding over het in of uit onderzoek halen van een attribuut</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:Stuurgegevens-MEL"/>
+				<element name="routering" type="WOZ:WOZ-lv-routering"/>
+				<element name="meldingSWO" type="WOZ:SWO-updateMelding" minOccurs="0"/>
+				<element name="meldingWOZ" type="WOZ:WOZ-updateMelding" minOccurs="0"/>
+				<element name="meldingWRD" type="WOZ:WRD-updateMelding" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="MHEF_Di01">
+		<annotation>
+			<documentation>Een melding dat heffingsgegevens zijn gewijzigd</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:Stuurgegevens-MHEF"/>
+				<element name="routering" type="WOZ:WOZ-lv-routering"/>
+				<element name="wijzigWOZ" type="WOZ:WOZ-updateWijzigOZBVrijstelling" minOccurs="0"/>
+				<element name="wijzigWRD" type="WOZ:WRD-updateWijzigHeffingskenmerken"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="MKEN_Di01">
+		<annotation>
+			<documentation>Een melding dat kenmerken van het WOZ-object zijn gewijzigd</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:Stuurgegevens-MKEN"/>
+				<element name="routering" type="WOZ:WOZ-lv-routering"/>
+				<element name="wijzigWOZ" type="WOZ:WOZ-updateWijzigKenmerken"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="MKOZ_Di01">
+		<annotation>
+			<documentation>Een melding dat kadastrale gegevens van een WOZ-object zijn gewijzigd</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:Stuurgegevens-MKOZ"/>
+				<element name="routering" type="WOZ:WOZ-lv-routering"/>
+				<choice>
+					<element name="wijzigKadObjectWOZ" type="WOZ:WOZ-updateWijzigKOZ"/>
+					<element name="wijzigKadObjectSWO" type="WOZ:SWO-updateWijzigKOZ"/>
+				</choice>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="MSUB_Di01">
+		<annotation>
+			<documentation>Een melding dat gegevens van een belanghebbende zijn gewijzigd</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:Stuurgegevens-MSUB"/>
+				<element name="routering" type="WOZ:WOZ-lv-routering"/>
+				<choice>
+					<element name="wijzigNNP" type="WOZ:NNP-updateWijzig"/>
+					<element name="wijzigNPS" type="WOZ:NPS-updateWijzig"/>
+					<element name="wijzigVES" type="WOZ:VES-updateWijzig"/>
+				</choice>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="NBSK_Di01">
+		<annotation>
+			<documentation>Beschikking aangemaakt</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:Stuurgegevens-NBSK"/>
+				<element name="routering" type="WOZ:WOZ-lv-routering"/>
+				<choice>
+					<sequence>
+						<element name="voegToeWRD" type="WOZ:WRD-updateVoegWaardeToe"/>
+					</sequence>
+					<element name="voegBeschikkingtoe" type="WOZ:WRD-updateVoegBeschikkingToe"/>
+				</choice>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="OSWO_Di01">
+		<annotation>
+			<documentation>Toevoegen van een sluimerend WOZ-object</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:Stuurgegevens-OSWO"/>
+				<element name="routering" type="WOZ:WOZ-lv-routering"/>
+				<element name="voegToeSWO" type="WOZ:SWO-updateVoegToe"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="OWOZ_Di01">
+		<annotation>
+			<documentation>Toevoegen van een WOZ-object</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:Stuurgegevens-OWOZ"/>
+				<element name="routering" type="WOZ:WOZ-lv-routering"/>
+				<element name="voegToeNNP" type="WOZ:NNP-updateVoegToe" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="voegToeNPS" type="WOZ:NPS-updateVoegToe" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="voegToeVES" type="WOZ:VES-updateVoegToe" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="voegToeWOZ" type="WOZ:WOZ-updateVoegToe"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="UBB_Di01">
+		<annotation>
+			<documentation>Uitspraak op bezwaar of beroep</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:Stuurgegevens-UBB"/>
+				<element name="routering" type="WOZ:WOZ-lv-routering"/>
+				<element name="uitspraakBezwaarBeroepWRD" type="WOZ:WRD-updateUitspraakBezwaarBeroep"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="VBSK_Di01">
+		<annotation>
+			<documentation>Vernietigen van een beschikking</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:Stuurgegevens-VBSK"/>
+				<element name="routering" type="WOZ:WOZ-lv-routering"/>
+				<element name="vernietigBeschikkingWRD" type="WOZ:WRD-updateVernietigBeschikking"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="WASWO_Di01">
+		<annotation>
+			<documentation>Wijzigen van de afbakening van een sluimerend WOZ-object</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:Stuurgegevens-WASWO"/>
+				<element name="routering" type="WOZ:WOZ-lv-routering"/>
+				<element name="wijzigAfbakeningSWO" type="WOZ:SWO-updateWijzigAfbakening"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="WAWOZ_Di01">
+		<annotation>
+			<documentation>Wijzigen van de afbakening van een WOZ-object</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:Stuurgegevens-WAWOZ"/>
+				<element name="routering" type="WOZ:WOZ-lv-routering"/>
+				<element name="wijzigAfbakeningWOZ" type="WOZ:WOZ-updateWijzigAfbakening"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="WGEM_hangObjectOm_Di01">
+		<annotation>
+			<documentation>Het wijzigen van de gemeente waarin een (sluimerend) WOZ-object ligt</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:Stuurgegevens-WGEM_hangObjectOm"/>
+				<element name="routering" type="WOZ:WOZ-lv-routering"/>
+				<choice>
+					<element name="wijzigGemeenteSWO" type="WOZ:SWO-updateWijzigGemeente"/>
+					<element name="wijzigGemeenteWOZ" type="WOZ:WOZ-updateWijzigGemeente"/>
+				</choice>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="WGEM_hangSubjectOm_Di01">
+		<annotation>
+			<documentation>Het omhangen van het subject bij een object verkregen vanuit een gemeentelijke herindeling</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:Stuurgegevens-WGEM_hangSubjectOm"/>
+				<element name="routering" type="WOZ:WOZ-lv-routering"/>
+				<choice>
+					<sequence>
+						<element name="oudeGemeenteNNP">
+							<complexType>
+								<complexContent>
+									<extension base="WOZ:NNP-lv-kerngegevensVerplicht">
+										<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+									</extension>
+								</complexContent>
+							</complexType>
+						</element>
+						<element name="nieuweGemeenteNNP">
+							<complexType>
+								<complexContent>
+									<extension base="WOZ:NNP-lv-kerngegevensVerplicht">
+										<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+									</extension>
+								</complexContent>
+							</complexType>
+						</element>
+					</sequence>
+					<sequence>
+						<element name="oudeGemeenteNPS">
+							<complexType>
+								<complexContent>
+									<extension base="WOZ:NPS-lv-kerngegevensVerplicht">
+										<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+									</extension>
+								</complexContent>
+							</complexType>
+						</element>
+						<element name="nieuweGemeenteNPS">
+							<complexType>
+								<complexContent>
+									<extension base="WOZ:NPS-lv-kerngegevensVerplicht">
+										<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+									</extension>
+								</complexContent>
+							</complexType>
+						</element>
+					</sequence>
+					<sequence>
+						<element name="oudeGemeenteVES">
+							<complexType>
+								<complexContent>
+									<extension base="WOZ:VES-lv-kerngegevensVerplicht">
+										<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+									</extension>
+								</complexContent>
+							</complexType>
+						</element>
+						<element name="nieuweGemeenteVES">
+							<complexType>
+								<complexContent>
+									<extension base="WOZ:VES-lv-kerngegevensVerplicht">
+										<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+									</extension>
+								</complexContent>
+							</complexType>
+						</element>
+					</sequence>
+				</choice>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="WGEM_meldSubjectAf_Di01">
+		<annotation>
+			<documentation>Het afmelden van een subject, omdat zijn objecten zijn overgedragen naar een andere gemeente</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:Stuurgegevens-WGEM_meldSubjectAf"/>
+				<element name="routering" type="WOZ:WOZ-lv-routering"/>
+				<choice>
+					<element name="meldAfNNP" type="WOZ:NNP-updateBeeindig"/>
+					<element name="meldAfNPS" type="WOZ:NPS-updateBeeindig"/>
+					<element name="meldAfVES" type="WOZ:VES-updateBeeindig"/>
+				</choice>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="WGEM_voegSubjectToe_Di01">
+		<annotation>
+			<documentation>Het toevoegen van een subject dat belanghebbende is bij een object toegevoegd vanuit een gemeentelijke herindeling</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:Stuurgegevens-WGEM_voegSubjectToe"/>
+				<element name="routering" type="WOZ:WOZ-lv-routering"/>
+				<choice>
+					<element name="voegToeNNP" type="WOZ:NNP-updateVoegToe"/>
+					<element name="voegToeNPS" type="WOZ:NPS-updateVoegToe"/>
+					<element name="voegToeVES" type="WOZ:VES-updateVoegToe"/>
+				</choice>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="WWSP_Di01">
+		<annotation>
+			<documentation>Het wijzigen van het waterschap waarin een (sluimerend) WOZ-object ligt</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:Stuurgegevens-WWSP"/>
+				<element name="routering" type="WOZ:WOZ-lv-routering"/>
+				<choice>
+					<element name="wijzigWaterschapSWO" type="WOZ:SWO-updateWijzigWaterschap"/>
+					<element name="wijzigWaterschapWOZ" type="WOZ:WOZ-updateWijzigWaterschap"/>
+				</choice>
+			</sequence>
+		</complexType>
+	</element>
+	<!--ComplexTypes tbv kennisgevingen en synchronisatieberichten-->
+	<complexType name="NNP-Lk01">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:NNP-StuurgegevensLk01"/>
+			<element name="parameters" type="StUF:ParametersLk01TInSx01"/>
+			<element name="object" type="WOZ:NNP-lv-kennisgeving" nillable="true"/>
+		</sequence>
+	</complexType>
+	<complexType name="NNP-inSa01">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:NNP-StuurgegevensLk01"/>
+			<element name="parameters" type="StUF:ParametersLk01TInSx01"/>
+			<element name="object" type="WOZ:NNP-lv-synchronisatieActueel"/>
+		</sequence>
+	</complexType>
+	<complexType name="NNP-inSa01-sleutelSynchronisatieOptioneel">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:NNP-StuurgegevensLk01"/>
+			<element name="parameters" type="StUF:ParametersLk01TInSx01"/>
+			<element name="object" type="WOZ:NNP-lv-synchronisatieActueel-sleutelSynchronisatieOptioneel"/>
+		</sequence>
+	</complexType>
+	<complexType name="NNP-Sa01">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:NNP-StuurgegevensSa01"/>
+			<element name="actueel" type="WOZ:NNP-inSa01"/>
+		</sequence>
+	</complexType>
+	<complexType name="NNP-Sa01-sleutelSynchronisatieOptioneel">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:NNP-StuurgegevensSa01"/>
+			<element name="actueel" type="WOZ:NNP-inSa01-sleutelSynchronisatieOptioneel"/>
+		</sequence>
+	</complexType>
+	<complexType name="NPS-Lk01">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:NPS-StuurgegevensLk01"/>
+			<element name="parameters" type="StUF:ParametersLk01TInSx01"/>
+			<element name="object" type="WOZ:NPS-lv-kennisgeving" nillable="true"/>
+		</sequence>
+	</complexType>
+	<complexType name="NPS-inSa01">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:NPS-StuurgegevensLk01"/>
+			<element name="parameters" type="StUF:ParametersLk01TInSx01"/>
+			<element name="object" type="WOZ:NPS-lv-synchronisatieActueel"/>
+		</sequence>
+	</complexType>
+	<complexType name="NPS-inSa01-sleutelSynchronisatieOptioneel">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:NPS-StuurgegevensLk01"/>
+			<element name="parameters" type="StUF:ParametersLk01TInSx01"/>
+			<element name="object" type="WOZ:NPS-lv-synchronisatieActueel-sleutelSynchronisatieOptioneel"/>
+		</sequence>
+	</complexType>
+	<complexType name="NPS-Sa01">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:NPS-StuurgegevensSa01"/>
+			<element name="actueel" type="WOZ:NPS-inSa01"/>
+		</sequence>
+	</complexType>
+	<complexType name="NPS-Sa01-sleutelSynchronisatieOptioneel">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:NPS-StuurgegevensSa01"/>
+			<element name="actueel" type="WOZ:NPS-inSa01-sleutelSynchronisatieOptioneel"/>
+		</sequence>
+	</complexType>
+	<complexType name="SWO-Lk01-T-lv">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:SWO-StuurgegevensLk01"/>
+			<element name="parameters" type="StUF:ParametersLk01TInSx01"/>
+			<element name="object" type="WOZ:SWO-lv-kennisgeving-T"/>
+		</sequence>
+	</complexType>
+	<complexType name="SWO-Sx01-T-lv">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:SWO-StuurgegevensLk01"/>
+			<element name="parameters" type="StUF:ParametersLk01TInSx01"/>
+			<element name="object" type="WOZ:SWO-lv-synchronisatie-T"/>
+		</sequence>
+	</complexType>
+	<complexType name="SWO-Sx01-T-lv-sleutelSynchronisatieOptioneel">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:SWO-StuurgegevensLk01"/>
+			<element name="parameters" type="StUF:ParametersLk01TInSx01"/>
+			<element name="object" type="WOZ:SWO-lv-synchronisatie-T-sleutelSynchronisatieOptioneel"/>
+		</sequence>
+	</complexType>
+	<complexType name="SWO-Sh01-W-lv">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:SWO-StuurgegevensLk01"/>
+			<element name="parameters" type="StUF:ParametersLk01WInSx01"/>
+			<element name="object" type="WOZ:SWO-lv-synchronisatie-W" minOccurs="2" maxOccurs="2"/>
+		</sequence>
+	</complexType>
+	<complexType name="SWO-Sa01-lv">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:SWO-StuurgegevensSa01"/>
+			<element name="actueel" type="WOZ:SWO-Sx01-T-lv"/>
+		</sequence>
+	</complexType>
+	<complexType name="SWO-Sa01-lv-sleutelSynchronisatieOptioneel">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:SWO-StuurgegevensSa01"/>
+			<element name="actueel" type="WOZ:SWO-Sx01-T-lv-sleutelSynchronisatieOptioneel"/>
+		</sequence>
+	</complexType>
+	<complexType name="VES-Lk01">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:VES-StuurgegevensLk01"/>
+			<element name="parameters" type="StUF:ParametersLk01TInSx01"/>
+			<element name="object" type="WOZ:VES-lv-kennisgeving" nillable="true"/>
+		</sequence>
+	</complexType>
+	<complexType name="VES-inSa01">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:VES-StuurgegevensLk01"/>
+			<element name="parameters" type="StUF:ParametersLk01TInSx01"/>
+			<element name="object" type="WOZ:VES-lv-synchronisatieActueel"/>
+		</sequence>
+	</complexType>
+	<complexType name="VES-inSa01-sleutelSynchronisatieOptioneel">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:VES-StuurgegevensLk01"/>
+			<element name="parameters" type="StUF:ParametersLk01TInSx01"/>
+			<element name="object" type="WOZ:VES-lv-synchronisatieActueel-sleutelSynchronisatieOptioneel"/>
+		</sequence>
+	</complexType>
+	<complexType name="VES-Sa01">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:VES-StuurgegevensSa01"/>
+			<element name="actueel" type="WOZ:VES-inSa01"/>
+		</sequence>
+	</complexType>
+	<complexType name="VES-Sa01-sleutelSynchronisatieOptioneel">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:VES-StuurgegevensSa01"/>
+			<element name="actueel" type="WOZ:VES-inSa01-sleutelSynchronisatieOptioneel"/>
+		</sequence>
+	</complexType>
+	<complexType name="WOZ-Lk01-T-lv">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:WOZ-StuurgegevensLk01"/>
+			<element name="parameters" type="StUF:ParametersLk01TInSx01"/>
+			<element name="object" type="WOZ:WOZ-lv-WOZ-OWOZ"/>
+		</sequence>
+	</complexType>
+	<complexType name="WOZ-Sh01-W-lv">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:WOZ-StuurgegevensLk01"/>
+			<element name="parameters" type="StUF:ParametersLk01WInSx01"/>
+			<element name="object" type="WOZ:WOZ-lv-synchronisatie-W" minOccurs="2" maxOccurs="2"/>
+		</sequence>
+	</complexType>
+	<complexType name="WOZ-Sa01-lv">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:WOZ-StuurgegevensSa01"/>
+			<element name="actueel" type="WOZ:WOZ-Sx01-T-lv"/>
+		</sequence>
+	</complexType>
+	<complexType name="WOZ-Sa01-lv-sleutelSynchronisatieOptioneel">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:WOZ-StuurgegevensSa01"/>
+			<element name="actueel" type="WOZ:WOZ-Sx01-T-lv-sleutelSynchronisatieOptioneel"/>
+		</sequence>
+	</complexType>
+	<complexType name="WOZ-Sx01-T-lv">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:WOZ-StuurgegevensLk01"/>
+			<element name="parameters" type="StUF:ParametersLk01TInSx01"/>
+			<element name="object" type="WOZ:WOZ-lv-synchronisatie-T"/>
+		</sequence>
+	</complexType>
+	<complexType name="WOZ-Sx01-T-lv-sleutelSynchronisatieOptioneel">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:WOZ-StuurgegevensLk01"/>
+			<element name="parameters" type="StUF:ParametersLk01TInSx01"/>
+			<element name="object" type="WOZ:WOZ-lv-synchronisatie-T-sleutelSynchronisatieOptioneel"/>
+		</sequence>
+	</complexType>
+	<complexType name="WRD-Lk01-T-lv">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:WRD-StuurgegevensLk01"/>
+			<element name="parameters" type="StUF:ParametersLk01TInSx01"/>
+			<element name="object" type="WOZ:WRD-lv-kennisgeving"/>
+		</sequence>
+	</complexType>
+	<complexType name="WRD-Sh01-W-lv">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:WRD-StuurgegevensLk01"/>
+			<element name="parameters" type="StUF:ParametersLk01WInSx01"/>
+			<element name="object" type="WOZ:WRD-lv-synchronisatie-W" minOccurs="2" maxOccurs="2"/>
+		</sequence>
+	</complexType>
+	<complexType name="WRD-Sa01-lv">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:WRD-StuurgegevensSa01"/>
+			<element name="actueel" type="WOZ:WRD-Sx01-T-lv"/>
+		</sequence>
+	</complexType>
+	<complexType name="WRD-Sa01-lv-sleutelSynchronisatieOptioneel">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:WRD-StuurgegevensSa01"/>
+			<element name="actueel" type="WOZ:WRD-Sx01-T-lv-sleutelSynchronisatieOptioneel"/>
+		</sequence>
+	</complexType>
+	<complexType name="WRD-Sx01-T-lv">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:WRD-StuurgegevensLk01"/>
+			<element name="parameters" type="StUF:ParametersLk01TInSx01"/>
+			<element name="object" type="WOZ:WRD-lv-synchronisatie-T"/>
+		</sequence>
+	</complexType>
+	<complexType name="WRD-Sx01-T-lv-sleutelSynchronisatieOptioneel">
+		<sequence>
+			<element name="stuurgegevens" type="StUF:WRD-StuurgegevensLk01"/>
+			<element name="parameters" type="StUF:ParametersLk01TInSx01"/>
+			<element name="object" type="WOZ:WRD-lv-synchronisatie-T-sleutelSynchronisatieOptioneel"/>
+		</sequence>
+	</complexType>
+	<!--ComplexTypes tbv gebeurtenisberichten-->
+	<complexType name="LIG-updateWijzig">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk01WInSx01"/>
+			<element name="object" type="BG:LIG-lv-kennisgeving" minOccurs="2" maxOccurs="2"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="LIG"/>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+	</complexType>
+	<complexType name="NNP-updateBeeindig">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk01WInSx01"/>
+			<element name="object" type="WOZ:NNP-lv-beeindigen" minOccurs="2" maxOccurs="2"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="NNP"/>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+	</complexType>
+	<complexType name="NNP-updateVoegToe">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk01TInSx01"/>
+			<element name="object" type="WOZ:NNP-lv-kennisgeving"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="NNP"/>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+	</complexType>
+	<complexType name="NNP-updateVoegToeMetDatumEindeSynchronisatie">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk01TInSx01"/>
+			<element name="object" type="WOZ:NNP-lv-voegToeMetDatumEindeSynchronisatie"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="NNP"/>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+	</complexType>
+	<complexType name="NNP-updateWijzig">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk01WInSx01"/>
+			<element name="object" type="WOZ:NNP-lv-kennisgeving" minOccurs="2" maxOccurs="2"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="NNP"/>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+	</complexType>
+	<complexType name="NPS-updateBeeindig">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk01WInSx01"/>
+			<element name="object" type="WOZ:NPS-lv-beeindigen" minOccurs="2" maxOccurs="2"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="NPS"/>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+	</complexType>
+	<complexType name="NPS-updateVoegToe">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk01TInSx01"/>
+			<element name="object" type="WOZ:NPS-lv-kennisgeving"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="NPS"/>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+	</complexType>
+	<complexType name="NPS-updateVoegToeMetDatumEindeSynchronisatie">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk01TInSx01"/>
+			<element name="object" type="WOZ:NPS-lv-voegToeMetDatumEindeSynchronisatie"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="NPS"/>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+	</complexType>
+	<complexType name="NPS-updateWijzig">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk01WInSx01"/>
+			<element name="object" type="WOZ:NPS-lv-kennisgeving" minOccurs="2" maxOccurs="2"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="NPS"/>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+	</complexType>
+	<complexType name="NUM-updateWijzig">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk01WInSx01"/>
+			<element name="object" type="BG:NUM-lv-kennisgeving" minOccurs="2" maxOccurs="2"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="NUM"/>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+	</complexType>
+	<complexType name="STA-updateWijzig">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk01WInSx01"/>
+			<element name="object" type="BG:STA-lv-kennisgeving" minOccurs="2" maxOccurs="2"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="STA"/>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+	</complexType>
+	<complexType name="SWO-updateBeeindig">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk01WInSx01"/>
+			<element name="object" type="WOZ:SWO-lv-beeindigen" minOccurs="2" maxOccurs="2"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="SWO"/>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+	</complexType>
+	<complexType name="SWO-updateMelding">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk01WInSx01"/>
+			<element name="object" type="WOZ:SWO-lv-WOZ-MEL" minOccurs="2" maxOccurs="2"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="SWO"/>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+	</complexType>
+	<complexType name="SWO-updateVoegToe">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk01TInSx01"/>
+			<element name="object" type="WOZ:SWO-lv-kennisgeving-T"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="SWO"/>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+	</complexType>
+	<complexType name="SWO-updateWijzigKOZ">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk01WInSx01"/>
+			<element name="object" type="WOZ:SWO-lv-WOZ-MKOZ" minOccurs="2" maxOccurs="2"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="SWO"/>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+	</complexType>
+	<complexType name="SWO-updateWijzigAfbakening">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk01WInSx01"/>
+			<element name="object" type="WOZ:SWO-lv-WOZ-WASWO" minOccurs="2" maxOccurs="2"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="SWO"/>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+	</complexType>
+	<complexType name="SWO-updateWijzigGemeente">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk01WInSx01"/>
+			<element name="object" type="WOZ:SWO-lv-WOZ-WGEM" minOccurs="2" maxOccurs="2"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="SWO"/>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+	</complexType>
+	<complexType name="SWO-updateWijzigWaterschap">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk01WInSx01"/>
+			<element name="object" type="WOZ:SWO-lv-WOZ-WWSP" minOccurs="2" maxOccurs="2"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="SWO"/>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+	</complexType>
+	<complexType name="VBO-updateWijzig">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk01WInSx01"/>
+			<element name="object" type="BG:VBO-lv-kennisgeving" minOccurs="2" maxOccurs="2"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="VBO"/>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+	</complexType>
+	<complexType name="VES-updateBeeindig">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk01WInSx01"/>
+			<element name="object" type="WOZ:VES-lv-beeindigen" minOccurs="2" maxOccurs="2"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="VES"/>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+	</complexType>
+	<complexType name="VES-updateVoegToe">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk01TInSx01"/>
+			<element name="object" type="WOZ:VES-lv-kennisgeving-T"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="VES"/>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+	</complexType>
+	<complexType name="VES-updateVoegToeMetDatumEindeSynchronisatie">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk01TInSx01"/>
+			<element name="object" type="WOZ:VES-lv-voegToeMetDatumEindeSynchronisatie"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="VES"/>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+	</complexType>
+	<complexType name="VES-updateWijzig">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk01WInSx01"/>
+			<element name="object" type="WOZ:VES-lv-kennisgeving" minOccurs="2" maxOccurs="2"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="VES"/>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+	</complexType>
+	<complexType name="WOZ-updateBeeindig">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk01WInSx01"/>
+			<element name="object" type="WOZ:WOZ-lv-WOZ-BWOZ" minOccurs="2" maxOccurs="2"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="WOZ"/>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+	</complexType>
+	<complexType name="WOZ-updateMelding">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk01WInSx01"/>
+			<element name="object" type="WOZ:WOZ-lv-WOZ-MEL" minOccurs="2" maxOccurs="2"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="WOZ"/>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+	</complexType>
+	<complexType name="WOZ-updateVoegToe">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk01TInSx01"/>
+			<element name="object" type="WOZ:WOZ-lv-WOZ-OWOZ"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="WOZ"/>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+	</complexType>
+	<complexType name="WOZ-updateWijzigAfbakening">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk01WInSx01"/>
+			<element name="object" type="WOZ:WOZ-lv-WOZ-WAWOZ" minOccurs="2" maxOccurs="2"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="WOZ"/>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+	</complexType>
+	<complexType name="WOZ-updateWijzigBAG">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk01WInSx01"/>
+			<element name="object" type="WOZ:WOZ-lv-WOZ-MBAG" minOccurs="2" maxOccurs="2"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="WOZ"/>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+	</complexType>
+	<complexType name="WOZ-updateWijzigEigenaar">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk01WInSx01"/>
+			<element name="object" type="WOZ:WOZ-lv-WOZ-MBE" minOccurs="2" maxOccurs="2"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="WOZ"/>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+	</complexType>
+	<complexType name="WOZ-updateWijzigGebruiker">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk01WInSx01"/>
+			<element name="object" type="WOZ:WOZ-lv-WOZ-MBG" minOccurs="2" maxOccurs="2"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="WOZ"/>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+	</complexType>
+	<complexType name="WOZ-updateWijzigGemeente">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk01WInSx01"/>
+			<element name="object" type="WOZ:WOZ-lv-WOZ-WGEM" minOccurs="2" maxOccurs="2"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="WOZ"/>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+	</complexType>
+	<complexType name="WOZ-updateWijzigKenmerken">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk01WInSx01"/>
+			<element name="object" type="WOZ:WOZ-lv-WOZ-MKEN" minOccurs="2" maxOccurs="2"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="WOZ"/>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+	</complexType>
+	<complexType name="WOZ-updateWijzigOZBVrijstelling">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk01WInSx01"/>
+			<element name="object" type="WOZ:WOZ-lv-WOZ-MHEF" minOccurs="2" maxOccurs="2"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="WOZ"/>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+	</complexType>
+	<complexType name="WOZ-updateWijzigKOZ">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk01WInSx01"/>
+			<element name="object" type="WOZ:WOZ-lv-WOZ-MKOZ" minOccurs="2" maxOccurs="2"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="WOZ"/>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+	</complexType>
+	<complexType name="WOZ-updateWijzigMedeBelanghebbende">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk01WInSx01"/>
+			<element name="object" type="WOZ:WOZ-lv-WOZ-BSKMB" minOccurs="2" maxOccurs="2"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="WOZ"/>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+	</complexType>
+	<complexType name="WOZ-updateWijzigStatusBelang">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk01WInSx01"/>
+			<element name="object" type="WOZ:WOZ-lv-WOZ-WijzigStatusBelang" minOccurs="2" maxOccurs="2"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="WOZ"/>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+	</complexType>
+	<complexType name="WOZ-updateWijzigWaterschap">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk01WInSx01"/>
+			<element name="object" type="WOZ:WOZ-lv-WOZ-WWSP" minOccurs="2" maxOccurs="2"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="WOZ"/>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+	</complexType>
+	<complexType name="WRD-updateIndienenBezwaarBeroep">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk01WInSx01"/>
+			<element name="object" type="WOZ:WRD-lv-WOZ-IBB" minOccurs="2" maxOccurs="2"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="WRD"/>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+	</complexType>
+	<complexType name="WRD-updateMelding">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk01WInSx01"/>
+			<element name="object" type="WOZ:WRD-lv-WOZ-MEL" minOccurs="2" maxOccurs="2"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="WRD"/>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+	</complexType>
+	<complexType name="WRD-updateUitspraakBezwaarBeroep">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk01WInSx01"/>
+			<element name="object" type="WOZ:WRD-lv-WOZ-UBB" minOccurs="2" maxOccurs="2"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="WRD"/>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+	</complexType>
+	<complexType name="WRD-updateVoegWaardeToe">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk01TInSx01"/>
+			<element name="object" type="WOZ:WRD-lv-WOZ-NBSK-voegWaardeToe"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="WRD"/>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+	</complexType>
+	<complexType name="WRD-updateVoegBeschikkingToe">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk01WInSx01"/>
+			<element name="object" type="WOZ:WRD-lv-WOZ-NBSK-voegBeschikkingToe" minOccurs="2" maxOccurs="2"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="WRD"/>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+	</complexType>
+	<complexType name="WRD-updateVoegBeschikkingMBToe">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk01WInSx01"/>
+			<element name="object" type="WOZ:WRD-lv-WOZ-BSKMB" minOccurs="2" maxOccurs="2"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="WRD"/>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+	</complexType>
+	<complexType name="WRD-updateVernietigBeschikking">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk01WInSx01"/>
+			<element name="object" type="WOZ:WRD-lv-WOZ-VBSK" minOccurs="2" maxOccurs="2"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="WRD"/>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+	</complexType>
+	<complexType name="WRD-updateWijzigHeffingskenmerken">
+		<sequence>
+			<element name="parameters" type="StUF:ParametersLk01WInSx01"/>
+			<element name="object" type="WOZ:WRD-lv-WOZ-MHEF" minOccurs="2" maxOccurs="2"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="WRD"/>
+		<attribute ref="StUF:functie" use="required" fixed="update"/>
+	</complexType>
+</schema>

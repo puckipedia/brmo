@@ -1,0 +1,594 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2012 (http://www.altova.com) by Maarten van den Broek (messageDesign) -->
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:WOZ="http://www.waarderingskamer.nl/StUF/0312" xmlns:StUF="http://www.egem.nl/StUF/StUF0301" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wsi="http://ws-i.org/schemas/conformanceClaim/" name="StUF-WOZ0312" targetNamespace="http://www.waarderingskamer.nl/StUF/0312">
+	<documentation>
+		Deze wsdl definieert voor de OntvangAsynchroon webservice van een afnemer van de LV WOZ de operations voor het ontvangen van de berichten met mutaties
+		
+		Versie 031204:
+		Wijzigingen vergeleken met versie 031203:
+		- In de operation voor Fo01 is in de fault Fo01 vervangen door Fo03
+		- plaats van documentation elements verbeterd
+	</documentation>
+	<import namespace="http://www.egem.nl/StUF/StUF0301" location="../../0301/stuf0301_types.wsdl"/>
+	<types>
+		<xs:schema>
+			<xs:import namespace="http://www.waarderingskamer.nl/StUF/0312" schemaLocation="woz0312_msg_lv_mutatie.xsd"/>
+		</xs:schema>
+	</types>
+	<message name="nnpSa01">
+		<part name="body" element="WOZ:nnpSa01"/>
+	</message>
+	<message name="npsSa01">
+		<part name="body" element="WOZ:npsSa01"/>
+	</message>
+	<message name="swoSa01-lvwoz">
+		<part name="body" element="WOZ:swoSa01-lvwoz"/>
+	</message>
+	<message name="swoSh01-lvwoz">
+		<part name="body" element="WOZ:swoSh01-lvwoz"/>
+	</message>
+	<message name="vesSa01">
+		<part name="body" element="WOZ:vesSa01"/>
+	</message>
+	<message name="wozSa01-lvwoz">
+		<part name="body" element="WOZ:wozSa01-lvwoz"/>
+	</message>
+	<message name="wozSh01-lvwoz">
+		<part name="body" element="WOZ:wozSh01-lvwoz"/>
+	</message>
+	<message name="wrdSa01-lvwoz">
+		<part name="body" element="WOZ:wrdSa01-lvwoz"/>
+	</message>
+	<message name="wrdSh01-lvwoz">
+		<part name="body" element="WOZ:wrdSh01-lvwoz"/>
+	</message>
+	<message name="BSKMB_Di01">
+		<part name="body" element="WOZ:BSKMB_Di01"/>
+	</message>
+	<message name="BSWO_Di01">
+		<part name="body" element="WOZ:BSWO_Di01"/>
+	</message>
+	<message name="BWOZ_Di01">
+		<part name="body" element="WOZ:BWOZ_Di01"/>
+	</message>
+	<message name="IBB_Di01">
+		<part name="body" element="WOZ:IBB_Di01"/>
+	</message>
+	<message name="MBAG_Di01">
+		<part name="body" element="WOZ:MBAG_Di01"/>
+	</message>
+	<message name="MBE_Di01">
+		<part name="body" element="WOZ:MBE_Di01"/>
+	</message>
+	<message name="MBG_Di01">
+		<part name="body" element="WOZ:MBG_Di01"/>
+	</message>
+	<message name="MEL_Di01">
+		<part name="body" element="WOZ:MEL_Di01"/>
+	</message>
+	<message name="MHEF_Di01">
+		<part name="body" element="WOZ:MHEF_Di01"/>
+	</message>
+	<message name="MKEN_Di01">
+		<part name="body" element="WOZ:MKEN_Di01"/>
+	</message>
+	<message name="MKOZ_Di01">
+		<part name="body" element="WOZ:MKOZ_Di01"/>
+	</message>
+	<message name="MSUB_Di01">
+		<part name="body" element="WOZ:MSUB_Di01"/>
+	</message>
+	<message name="NBSK_Di01">
+		<part name="body" element="WOZ:NBSK_Di01"/>
+	</message>
+	<message name="OSWO_Di01">
+		<part name="body" element="WOZ:OSWO_Di01"/>
+	</message>
+	<message name="OWOZ_Di01">
+		<part name="body" element="WOZ:OWOZ_Di01"/>
+	</message>
+	<message name="UBB_Di01">
+		<part name="body" element="WOZ:UBB_Di01"/>
+	</message>
+	<message name="VBSK_Di01">
+		<part name="body" element="WOZ:VBSK_Di01"/>
+	</message>
+	<message name="WASWO_Di01">
+		<part name="body" element="WOZ:WASWO_Di01"/>
+	</message>
+	<message name="WAWOZ_Di01">
+		<part name="body" element="WOZ:WAWOZ_Di01"/>
+	</message>
+	<message name="WGEM_hangObjectOm_Di01">
+		<part name="body" element="WOZ:WGEM_hangObjectOm_Di01"/>
+	</message>
+	<message name="WGEM_hangSubjectOm_Di01">
+		<part name="body" element="WOZ:WGEM_hangSubjectOm_Di01"/>
+	</message>
+	<message name="WGEM_meldSubjectAf_Di01">
+		<part name="body" element="WOZ:WGEM_meldSubjectAf_Di01"/>
+	</message>
+	<message name="WGEM_voegSubjectToe_Di01">
+		<part name="body" element="WOZ:WGEM_voegSubjectToe_Di01"/>
+	</message>
+	<message name="WWSP_Di01">
+		<part name="body" element="WOZ:WWSP_Di01"/>
+	</message>
+	<portType name="OntvangAsynchroon">
+		<operation name="nnpSa01">
+			<input message="WOZ:nnpSa01"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="npsSa01">
+			<input message="WOZ:npsSa01"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="swoSa01-lvwoz">
+			<input message="WOZ:swoSa01-lvwoz"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="swoSh01-lvwoz">
+			<input message="WOZ:swoSh01-lvwoz"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="vesSa01">
+			<input message="WOZ:vesSa01"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="wozSa01-lvwoz">
+			<input message="WOZ:wozSa01-lvwoz"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="wozSh01-lvwoz">
+			<input message="WOZ:wozSh01-lvwoz"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="wrdSa01-lvwoz">
+			<input message="WOZ:wrdSa01-lvwoz"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="wrdSh01-lvwoz">
+			<input message="WOZ:wrdSh01-lvwoz"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="Fo01">
+			<input message="StUF:Fo01"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="Fo03">
+			<input message="StUF:Fo03"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="BSKMB_Di01">
+			<input message="WOZ:BSKMB_Di01"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="BSWO_Di01">
+			<input message="WOZ:BSWO_Di01"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="BWOZ_Di01">
+			<input message="WOZ:BWOZ_Di01"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="IBB_Di01">
+			<input message="WOZ:IBB_Di01"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="MBAG_Di01">
+			<input message="WOZ:MBAG_Di01"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="MBE_Di01">
+			<input message="WOZ:MBE_Di01"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="MBG_Di01">
+			<input message="WOZ:MBG_Di01"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="MEL_Di01">
+			<input message="WOZ:MEL_Di01"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="MHEF_Di01">
+			<input message="WOZ:MHEF_Di01"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="MKEN_Di01">
+			<input message="WOZ:MKEN_Di01"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="MKOZ_Di01">
+			<input message="WOZ:MKOZ_Di01"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="MSUB_Di01">
+			<input message="WOZ:MSUB_Di01"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="NBSK_Di01">
+			<input message="WOZ:NBSK_Di01"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="OSWO_Di01">
+			<input message="WOZ:OSWO_Di01"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="OWOZ_Di01">
+			<input message="WOZ:OWOZ_Di01"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="UBB_Di01">
+			<input message="WOZ:UBB_Di01"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="VBSK_Di01">
+			<input message="WOZ:VBSK_Di01"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="WASWO_Di01">
+			<input message="WOZ:WASWO_Di01"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="WAWOZ_Di01">
+			<input message="WOZ:WAWOZ_Di01"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="WGEM_hangObjectOm_Di01">
+			<input message="WOZ:WGEM_hangObjectOm_Di01"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="WGEM_hangSubjectOm_Di01">
+			<input message="WOZ:WGEM_hangSubjectOm_Di01"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="WGEM_meldSubjectAf_Di01">
+			<input message="WOZ:WGEM_meldSubjectAf_Di01"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="WGEM_voegSubjectToe_Di01">
+			<input message="WOZ:WGEM_voegSubjectToe_Di01"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="WWSP_Di01">
+			<input message="WOZ:WWSP_Di01"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+	</portType>
+	<binding name="SOAPOntvangAsynchroon" type="WOZ:OntvangAsynchroon">
+		<documentation>
+			Omdat de uit te wisselen berichten volledig gedefinieerd zijn in het sectormodel cq de StUF-standaard, kunnen we ze zonder verdere encoding (“literal”) opnemen in de body.
+Niet ondersteunde berichten kunnen uit de binding en portType worden verwijderd.
+		</documentation>
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="nnpSa01">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/nnpSa01"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="npsSa01">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/npsSa01"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="swoSa01-lvwoz">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/swoSa01-lvwoz"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="swoSh01-lvwoz">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/swoSh01-lvwoz"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="vesSa01">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/vesSa01"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="wozSa01-lvwoz">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/wozSa01-lvwoz"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="wozSh01-lvwoz">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/wozSh01-lvwoz"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="wrdSa01-lvwoz">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/wrdSa01-lvwoz"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="wrdSh01-lvwoz">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/wrdSh01-lvwoz"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="Fo01">
+			<soap:operation soapAction="http://www.egem.nl/StUF/StUF0301/Fo01"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="Fo03">
+			<soap:operation soapAction="http://www.egem.nl/StUF/StUF0301/Fo03"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="BSKMB_Di01">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/BSKMB_Di01"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="BSWO_Di01">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/BSWO_Di01"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="BWOZ_Di01">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/BWOZ_Di01"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="IBB_Di01">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/IBB_Di01"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="MBAG_Di01">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/MBAG_Di01"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="MBE_Di01">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/MBE_Di01"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="MBG_Di01">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/MBG_Di01"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="MEL_Di01">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/MEL_Di01"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="MHEF_Di01">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/MHEF_Di01"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="MKEN_Di01">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/MKEN_Di01"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="MKOZ_Di01">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/MKOZ_Di01"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="MSUB_Di01">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/MSUB_Di01"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="NBSK_Di01">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/NBSK_Di01"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="OSWO_Di01">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/OSWO_Di01"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="OWOZ_Di01">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/OWOZ_Di01"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="UBB_Di01">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/UBB_Di01"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="VBSK_Di01">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/VBSK_Di01"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="WASWO_Di01">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/WASWO_Di01"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="WAWOZ_Di01">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/WAWOZ_Di01"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="WGEM_hangObjectOm_Di01">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312WGEM_hangObjectOm_Di01"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="WGEM_hangSubjectOm_Di01">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312WGEM_hangSubjectOm_Di01"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="WGEM_meldSubjectAf_Di01">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312WGEM_meldSubjectAf_Di01"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="WGEM_voegSubjectToe_Di01">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312WGEM_voegSubjectToe_Di01"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="WWSP_Di01">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/WWSP_Di01"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+	</binding>
+	<service name="OntvangAsynchroon">
+		<documentation>
+	Hieronder wordt de concreet aan te roepen service voor het ontvangen van asynchrone berichten vanuit de LV WOZ gedefinieerd. In het attribute location in het element soap:address dient nog de correcte URL te worden ingevuld.
+		</documentation>
+		<port name="OntvangAsynchroon" binding="WOZ:SOAPOntvangAsynchroon">
+			<documentation>
+				<wsi:Claim conformsTo="http://ws-i.org/profiles/basic/1.1"/>
+			</documentation>
+			<soap:address location="http://example.com/OntvangAsynchroon"/>
+		</port>
+	</service>
+	<!-- message elementen tbv synchronisatie -->
+	<!-- message elementen tbv doorgeven mutaties -->
+</definitions>

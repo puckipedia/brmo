@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:WOZ="http://www.waarderingskamer.nl/StUF/0312" xmlns:StUF="http://www.egem.nl/StUF/StUF0301" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wsi="http://ws-i.org/schemas/conformanceClaim/" name="StUF-WOZ0312" targetNamespace="http://www.waarderingskamer.nl/StUF/0312">
+	<import namespace="http://www.egem.nl/StUF/StUF0301" location="../../0301/stuf0301_types.wsdl"/>
+	<documentation>
+		Deze wsdl definieert de VerwerkSynchroonVrijBericht webservice ten behoeve van mijnOverheid
+		
+		Versie 031201:
+		- De import van de namespace "http://www.egem.nl/StUF/StUF0301" is verbeterd nav een bugfix in stuf0301
+	</documentation>
+	<types>
+		<xs:schema>
+			<xs:import namespace="http://www.waarderingskamer.nl/StUF/0312" schemaLocation="woz0312_msg_mijnOverheid.xsd"/>
+		</xs:schema>
+	</types>
+	<message name="mijnOverheid-antwTaxatieverslag">
+		<part name="body" element="WOZ:mijnOverheid-antwTaxatieverslag"/>
+	</message>
+	<message name="mijnOverheid-antwWRDDetails">
+		<part name="body" element="WOZ:mijnOverheid-antwWRDDetails"/>
+	</message>
+	<message name="mijnOverheid-vraagTaxatieverslag">
+		<part name="body" element="WOZ:mijnOverheid-vraagTaxatieverslag"/>
+	</message>
+	<message name="mijnOverheid-vraagWRDDetails">
+		<part name="body" element="WOZ:mijnOverheid-vraagWRDDetails"/>
+	</message>
+	<portType name="VerwerkSynchroonVrijBericht">
+		<operation name="mijnOverheid-vraagWRDDetails">
+			<input message="WOZ:mijnOverheid-vraagWRDDetails"/>
+			<output message="WOZ:mijnOverheid-antwWRDDetails"/>
+			<fault name="fout" message="StUF:Fo02"/>
+		</operation>
+		<operation name="mijnOverheid-vraagTaxatieverslag">
+			<input message="WOZ:mijnOverheid-vraagTaxatieverslag"/>
+			<output message="WOZ:mijnOverheid-antwTaxatieverslag"/>
+			<fault name="fout" message="StUF:Fo02"/>
+		</operation>
+	</portType>
+	<binding name="SOAPVerwerkSynchroonVrijBericht" type="WOZ:VerwerkSynchroonVrijBericht">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="mijnOverheid-vraagWRDDetails">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/mijnOverheid-vraagWRDDetails"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="mijnOverheid-vraagTaxatieverslag">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/mijnOverheid-vraagTaxatieverslag"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+	</binding>
+	<service name="VerwerkSynchroonVrijBericht">
+		<documentation>
+	Hieronder wordt de concreet aan te roepen service voor het verwerken van synchrone WOZ0312-vrije berichten gedefinieerd. In het attribute location in het element soap:address dient nog de correcte URL te worden ingevuld.
+		</documentation>
+		<port name="VerwerkSynchroonVrijBericht" binding="WOZ:SOAPVerwerkSynchroonVrijBericht">
+			<soap:address location="http://example.com/VerwerkSynchroonVrijBericht"/>
+			<documentation>
+				<wsi:Claim conformsTo="http://ws-i.org/profiles/basic/1.1"/>
+			</documentation>
+		</port>
+	</service>
+</definitions>

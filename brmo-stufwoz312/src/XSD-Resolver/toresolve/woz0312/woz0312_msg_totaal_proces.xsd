@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2012 (http://www.altova.com) by Maarten van den Broek (messageDesign) -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:StUF="http://www.egem.nl/StUF/StUF0301" xmlns:WOZ="http://www.waarderingskamer.nl/StUF/0312" xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310" targetNamespace="http://www.waarderingskamer.nl/StUF/0312" elementFormDefault="qualified" attributeFormDefault="unqualified" version="031201">
+	<annotation>
+		<documentation>
+			Wijziging vergeleken met versie 031200:
+			- xmlns:xxx declaraties toegevoegd voor StUF, WOZ en BG (Nodig omdat zonder het schema niet valideerde)
+		</documentation>
+	</annotation>
+	<include schemaLocation="mutatie/woz0312_msg_mutatie.xsd"/>
+	<include schemaLocation="proces/woz0312_msg_proces.xsd"/>
+	<include schemaLocation="vraagAntwoord/woz0312_msg_vraagAntwoord.xsd"/>
+</schema>

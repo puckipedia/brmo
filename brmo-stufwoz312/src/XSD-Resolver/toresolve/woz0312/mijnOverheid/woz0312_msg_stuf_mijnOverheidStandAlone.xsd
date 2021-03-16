@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2012 sp1 (http://www.altova.com) by Maarten van den Broek (messageDesign) -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:StUF="http://www.egem.nl/StUF/StUF0301" targetNamespace="http://www.egem.nl/StUF/StUF0301" elementFormDefault="qualified" attributeFormDefault="unqualified" version="031200">
+	<include schemaLocation="../../0301/stuf0301mtom.xsd"/>
+	<annotation>
+		<documentation>
+			Dit schema bevat de restricties van StUF-types tbv het opvragen voor mijnOverheid
+		</documentation>
+	</annotation>
+	<!--Restricties op ParametersVraag voor fundamentele entiteittypen-->
+	<complexType name="ParametersAntwoord-mijnOverheid">
+		<sequence>
+			<element name="indicatorVervolgvraag" type="boolean"/>
+		</sequence>
+	</complexType>
+	<complexType name="WRD-mijnOverheid-parametersVraagSynchroon">
+		<sequence>
+			<element name="sortering" type="StUF:Sortering" fixed="4"/>
+			<element name="indicatorVervolgvraag" type="boolean" fixed="false"/>
+			<element name="maximumAantal" type="StUF:MaximumAantal" fixed="99999999"/>
+		</sequence>
+	</complexType>
+	<complexType name="WRD-mijnOverheid-parametersVraagSynchroon2">
+		<sequence>
+			<element name="sortering" type="StUF:Sortering" fixed="1"/>
+			<element name="indicatorVervolgvraag" type="boolean" fixed="false"/>
+			<element name="maximumAantal" type="StUF:MaximumAantal" fixed="1"/>
+		</sequence>
+	</complexType>
+	<complexType name="WRD-mijnOverheid-parametersVraagTaxVerslag">
+		<sequence>
+			<element name="sortering" type="StUF:Sortering" fixed="1"/>
+			<element name="indicatorVervolgvraag" type="boolean" fixed="false"/>
+			<element name="maximumAantal" type="StUF:MaximumAantal" fixed="1"/>
+		</sequence>
+	</complexType>
+	<!--Definities van stuurgegeven elementen-->
+	<complexType name="Stuurgegevens-mijnOverheid-antwTaxatieverslag">
+		<sequence>
+			<element name="berichtcode" type="StUF:Berichtcode" fixed="Du02"/>
+			<element name="ontvanger" type="StUF:Systeem"/>
+			<element name="functie" type="StUF:Functie" fixed="mijnOverheid-antwTaxVerslag"/>
+		</sequence>
+	</complexType>
+	<complexType name="Stuurgegevens-mijnOverheid-antwWRDDetails">
+		<sequence>
+			<element name="berichtcode" type="StUF:Berichtcode" fixed="Du02"/>
+			<element name="ontvanger" type="StUF:Systeem"/>
+			<element name="functie" type="StUF:Functie" fixed="mijnOverheid-antwWRDDetails"/>
+		</sequence>
+	</complexType>
+	<complexType name="Stuurgegevens-mijnOverheid-antwWRDPerBsn">
+		<sequence>
+			<element name="berichtcode" type="StUF:Berichtcode" fixed="La01"/>
+			<element name="ontvanger" type="StUF:Systeem"/>
+			<element name="entiteittype" type="StUF:Entiteittype" fixed="WRD"/>
+		</sequence>
+	</complexType>
+	<complexType name="Stuurgegevens-mijnOverheid-vraagTaxatieverslag">
+		<sequence>
+			<element name="berichtcode" type="StUF:Berichtcode" fixed="Di02"/>
+			<element name="zender" type="StUF:Systeem"/>
+			<element name="functie" type="StUF:Functie" fixed="mijnOverheid-vraagTaxVerslag"/>
+		</sequence>
+	</complexType>
+	<complexType name="Stuurgegevens-mijnOverheid-vraagWRDDetails">
+		<sequence>
+			<element name="berichtcode" type="StUF:Berichtcode" fixed="Di02"/>
+			<element name="zender" type="StUF:Systeem"/>
+			<element name="functie" type="StUF:Functie" fixed="mijnOverheid-vraagWRDDetails"/>
+		</sequence>
+	</complexType>
+	<complexType name="Stuurgegevens-mijnOverheid-vraagWRDPerBsn">
+		<sequence>
+			<element name="berichtcode" type="StUF:Berichtcode" fixed="Lv01"/>
+			<element name="zender" type="StUF:Systeem"/>
+			<element name="entiteittype" type="StUF:Entiteittype" fixed="WRD"/>
+		</sequence>
+	</complexType>
+</schema>

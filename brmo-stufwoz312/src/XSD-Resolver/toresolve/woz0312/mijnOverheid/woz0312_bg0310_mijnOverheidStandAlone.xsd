@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2012 sp1 (http://www.altova.com) by Maarten van den Broek (messageDesign) -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:StUF="http://www.egem.nl/StUF/StUF0301" xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310" targetNamespace="http://www.egem.nl/StUF/sector/bg/0310" elementFormDefault="qualified" attributeFormDefault="unqualified" version="031201">
+	<import namespace="http://www.egem.nl/StUF/StUF0301" schemaLocation="woz0312_msg_stuf_mijnOverheidStandAlone.xsd"/>
+	<annotation>
+		<documentation>
+			Dit schema bevat de restricties van BG-types tbv het LV WOZ deel van het sectormodel WOZ. Dit schema is afgeleid van het
+			normatieve schema voor mijnOverheid.
+ 		</documentation>
+	</annotation>
+	<!--ComplexTypes voor groepen-->
+	<complexType name="AOT-mijnOverheid-vraagAntwoord">
+		<choice minOccurs="0">
+			<element name="ligplaats" type="BG:LIG-mijnOverheid-vraagAntwoord"/>
+			<element name="standplaats" type="BG:STA-mijnOverheid-vraagAntwoord"/>
+			<element name="verblijfsobject" type="BG:VBO-mijnOverheid-vraagAntwoord"/>
+		</choice>
+	</complexType>
+	<complexType name="LIG-mijnOverheid-vraagAntwoord">
+		<sequence>
+			<element name="identificatie" type="BG:ObjectNummeringLIG-e" nillable="true"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="LIG"/>
+	</complexType>
+	<complexType name="PND-mijnOverheid-vraagAntwoord">
+		<sequence>
+			<element name="identificatie" type="BG:ObjectNummering-e" nillable="true"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="PND"/>
+	</complexType>
+	<complexType name="STA-mijnOverheid-vraagAntwoord">
+		<sequence>
+			<element name="identificatie" type="BG:ObjectNummeringSTA-e" nillable="true"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="STA"/>
+	</complexType>
+	<complexType name="VBO-mijnOverheid-vraagAntwoord">
+		<sequence>
+			<element name="identificatie" type="BG:ObjectNummeringVBO-e" nillable="true"/>
+		</sequence>
+		<attribute ref="StUF:entiteittype" use="required" fixed="VBO"/>
+	</complexType>
+	<complexType name="AanduidingWOZobjectGrp-mijnOverheid-vraagAntwoord">
+		<sequence>
+			<element name="aoa.identificatie" type="BG:ObjectNummering-e" nillable="true"/>
+			<element name="wpl.woonplaatsNaam" type="BG:WoonplaatsNaam-e" nillable="true"/>
+			<element name="aoa.postcode" type="BG:Postcode-e" nillable="true"/>
+			<element name="gor.openbareRuimteNaam" type="BG:NaamgevingObject-e" nillable="true"/>
+			<element name="gor.straatnaam" type="BG:Straatnaam-e" nillable="true"/>
+			<element name="aoa.huisnummer" type="BG:Huisnummering-e" nillable="true"/>
+			<element name="aoa.huisletter" type="BG:Huislettering-e" nillable="true"/>
+			<element name="aoa.huisnummertoevoeging" type="BG:Huisnummertoevoeging-e" nillable="true"/>
+			<element name="locatieOmschrijving" type="BG:LocatieOmschrijving-e" nillable="true"/>
+		</sequence>
+	</complexType>
+	<complexType name="VerantwoordelijkeGemeenteGrp-mijnOverheid-selectie">
+		<sequence>
+			<element name="gemeenteCode" type="BG:Gemeentecodering-e" nillable="true"/>
+		</sequence>
+	</complexType>
+	<!---e complexTypes-->
+	<complexType name="BSN-e">
+		<simpleContent>
+			<restriction base="BG:BsVesNummerOfId-e">
+				<simpleType>
+					<restriction base="BG:BSN"/>
+				</simpleType>
+			</restriction>
+		</simpleContent>
+	</complexType>
+	<complexType name="BsVesNummerOfId-e">
+		<simpleContent>
+			<extension base="BG:BsVesNummerOfId">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="Gemeentecodering-e">
+		<simpleContent>
+			<extension base="BG:Gemeentecodering">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="Huislettering-e">
+		<simpleContent>
+			<extension base="BG:Huislettering">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="Huisnummering-e">
+		<simpleContent>
+			<extension base="BG:Huisnummering">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="Huisnummertoevoeging-e">
+		<simpleContent>
+			<extension base="BG:Huisnummertoevoeging">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="LocatieOmschrijving-e">
+		<simpleContent>
+			<extension base="BG:LocatieOmschrijving">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="NaamgevingObject-e">
+		<simpleContent>
+			<extension base="BG:NaamgevingObject">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="ObjectNummering-e">
+		<simpleContent>
+			<extension base="BG:ObjectNummering">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="ObjectNummeringLIG-e">
+		<simpleContent>
+			<restriction base="BG:ObjectNummering-e">
+				<pattern value="[0-9]{4}02[0-9]{10}"/>
+			</restriction>
+		</simpleContent>
+	</complexType>
+	<complexType name="ObjectNummeringSTA-e">
+		<simpleContent>
+			<restriction base="BG:ObjectNummering-e">
+				<pattern value="[0-9]{4}03[0-9]{10}"/>
+			</restriction>
+		</simpleContent>
+	</complexType>
+	<complexType name="ObjectNummeringVBO-e">
+		<simpleContent>
+			<restriction base="BG:ObjectNummering-e">
+				<pattern value="[0-9]{4}01[0-9]{10}"/>
+			</restriction>
+		</simpleContent>
+	</complexType>
+	<complexType name="Postcode-e">
+		<simpleContent>
+			<extension base="BG:Postcode">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="SoortObjectCode-e">
+		<simpleContent>
+			<extension base="BG:SoortObjectCode">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="Straatnaam-e">
+		<simpleContent>
+			<extension base="BG:Straatnaam">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="WoonplaatsNaam-e">
+		<simpleContent>
+			<extension base="BG:WoonplaatsNaam">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<!--SimpleTypes-->
+	<simpleType name="BsVesNummerOfId">
+		<restriction base="string">
+			<maxLength value="17"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="BSN">
+		<restriction base="BG:BsVesNummerOfId">
+			<maxLength value="9"/>
+			<pattern value="[0-9]{9}"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Gemeentecodering">
+		<restriction base="nonNegativeInteger">
+			<totalDigits value="4"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Huislettering">
+		<restriction base="string">
+			<pattern value="[a-zA-Z]"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Huisnummering">
+		<restriction base="positiveInteger">
+			<maxInclusive value="99999"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Huisnummertoevoeging">
+		<restriction base="string">
+			<pattern value="[a-zA-Z0-9]{0,4}"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="LocatieOmschrijving">
+		<restriction base="string">
+			<maxLength value="40"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="NaamgevingObject">
+		<restriction base="string">
+			<maxLength value="80"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="ObjectNummering">
+		<restriction base="string">
+			<length value="16"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Postcode">
+		<restriction base="string">
+			<pattern value="[1-9][0-9]{3}[A-Z]{0,2}"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="SoortObjectCode">
+		<restriction base="string">
+			<length value="4"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Straatnaam">
+		<restriction base="string">
+			<maxLength value="24"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="WoonplaatsNaam">
+		<restriction base="string">
+			<maxLength value="80"/>
+		</restriction>
+	</simpleType>
+</schema>

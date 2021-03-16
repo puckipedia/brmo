@@ -1,0 +1,3193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2012 sp1 (http://www.altova.com) by Maarten van den Broek (messageDesign) -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:StUF="http://www.egem.nl/StUF/StUF0301" xmlns:WOZ="http://www.waarderingskamer.nl/StUF/0312" xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310" xmlns:bag="http://www.vrom.nl/bag/0120" targetNamespace="http://www.waarderingskamer.nl/StUF/0312" elementFormDefault="qualified" attributeFormDefault="unqualified" version="031207">
+	<annotation>
+		<documentation>
+			Dit schema bevat de definities van de simpleTypes en de ervan afgeleide complexTypes met simpleContent specifiek voor het sectormodel WOZ
+			
+			Verbeteringen vergeleken met versie 031206:
+			- In het simpleType StatusObject is totalDigits gewijzigd van 2 naar 1
+		</documentation>
+	</annotation>
+	<import namespace="http://www.egem.nl/StUF/StUF0301" schemaLocation="woz0312_stuf_simpleTypes.xsd"/>
+	<!--Attribute definities-->
+	<attribute name="statusTaxatieParameter" type="WOZ:StatusTaxatieParameter">
+		<annotation>
+			<documentation>een attribute om te kunnen aangeven wat de status van een parameter voor de taxatie binnen TAXWDO is.</documentation>
+		</annotation>
+	</attribute>
+	<!--ComplexTypes voor elementen met daaraan toegevoegd het attribute statusTaxatieParameter-->
+	<complexType name="AandeelGebouwdOpInstandhoudingskosten-es">
+		<simpleContent>
+			<extension base="WOZ:AandeelGebouwdOpInstandhoudingskosten">
+				<attributeGroup ref="StUF:element"/>
+				<attribute ref="WOZ:statusTaxatieParameter"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="Aantekening-es">
+		<simpleContent>
+			<extension base="WOZ:Aantekening">
+				<attributeGroup ref="StUF:element"/>
+				<attribute ref="WOZ:statusTaxatieParameter"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="ArchetypeAanduiding-es">
+		<simpleContent>
+			<extension base="WOZ:ArchetypeAanduiding">
+				<attributeGroup ref="StUF:element"/>
+				<attribute ref="WOZ:statusTaxatieParameter"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="BeoordelingKenmerk-es">
+		<simpleContent>
+			<extension base="WOZ:BeoordelingKenmerk">
+				<attributeGroup ref="StUF:element"/>
+				<attribute ref="WOZ:statusTaxatieParameter"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="Boolean-es">
+		<simpleContent>
+			<extension base="boolean">
+				<attributeGroup ref="StUF:element"/>
+				<attribute ref="WOZ:statusTaxatieParameter"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="CodeDoorzetBasisTaxatie-es">
+		<simpleContent>
+			<extension base="WOZ:CodeDoorzetBasisTaxatie">
+				<attributeGroup ref="StUF:element"/>
+				<attribute ref="WOZ:statusTaxatieParameter"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="CorrectiefactorTot1-es">
+		<simpleContent>
+			<extension base="WOZ:CorrectiefactorTot1">
+				<attributeGroup ref="StUF:element"/>
+				<attribute ref="WOZ:statusTaxatieParameter"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="CorrectiefactorTot1Met4Decimalen-es">
+		<simpleContent>
+			<extension base="WOZ:CorrectiefactorTot1Met4Decimalen">
+				<attributeGroup ref="StUF:element"/>
+				<attribute ref="WOZ:statusTaxatieParameter"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="CorrectiefactorTot10Met2Decimalen-es">
+		<simpleContent>
+			<extension base="WOZ:CorrectiefactorTot10Met2Decimalen">
+				<attributeGroup ref="StUF:element"/>
+				<attribute ref="WOZ:statusTaxatieParameter"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="CorrectiefactorTot10Met3Decimalen-es">
+		<simpleContent>
+			<extension base="WOZ:CorrectiefactorTot10Met3Decimalen">
+				<attributeGroup ref="StUF:element"/>
+				<attribute ref="WOZ:statusTaxatieParameter"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="CorrectiefactorTot10Met4Decimalen-es">
+		<simpleContent>
+			<extension base="WOZ:CorrectiefactorTot10Met4Decimalen">
+				<attributeGroup ref="StUF:element"/>
+				<attribute ref="WOZ:statusTaxatieParameter"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="CorrectieFunderingKeuze-es">
+		<simpleContent>
+			<extension base="WOZ:CorrectieFunderingKeuze">
+				<attributeGroup ref="StUF:element"/>
+				<attribute ref="WOZ:statusTaxatieParameter"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="Indicatie-es">
+		<simpleContent>
+			<extension base="WOZ:Indicatie">
+				<attributeGroup ref="StUF:element"/>
+				<attribute ref="WOZ:statusTaxatieParameter"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="IndModelWerkelijk-es">
+		<simpleContent>
+			<extension base="WOZ:IndModelWerkelijk">
+				<attributeGroup ref="StUF:element"/>
+				<attribute ref="WOZ:statusTaxatieParameter"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="Jaar-es">
+		<simpleContent>
+			<extension base="WOZ:Jaar">
+				<attributeGroup ref="StUF:element"/>
+				<attribute ref="WOZ:statusTaxatieParameter"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="Kapitalisatiefactor-es">
+		<simpleContent>
+			<extension base="WOZ:Kapitalisatiefactor">
+				<attributeGroup ref="StUF:element"/>
+				<attribute ref="WOZ:statusTaxatieParameter"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="Levensduur-es">
+		<simpleContent>
+			<extension base="WOZ:Levensduur">
+				<attributeGroup ref="StUF:element"/>
+				<attribute ref="WOZ:statusTaxatieParameter"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="Maateenheid11-es">
+		<simpleContent>
+			<extension base="WOZ:Maateenheid11">
+				<attributeGroup ref="StUF:element"/>
+				<attribute ref="WOZ:statusTaxatieParameter"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="Maateenheid11-2-es">
+		<simpleContent>
+			<extension base="WOZ:Maateenheid11-2">
+				<attributeGroup ref="StUF:element"/>
+				<attribute ref="WOZ:statusTaxatieParameter"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="Maateenheid11-2-neg-es">
+		<simpleContent>
+			<extension base="WOZ:Maateenheid11-2-neg">
+				<attributeGroup ref="StUF:element"/>
+				<attribute ref="WOZ:statusTaxatieParameter"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="Maateenheid11-neg-es">
+		<simpleContent>
+			<extension base="WOZ:Maateenheid11-neg">
+				<attributeGroup ref="StUF:element"/>
+				<attribute ref="WOZ:statusTaxatieParameter"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="Maateenheid4-es">
+		<simpleContent>
+			<extension base="WOZ:Maateenheid4">
+				<attributeGroup ref="StUF:element"/>
+				<attribute ref="WOZ:statusTaxatieParameter"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="Maateenheid4-1-es">
+		<simpleContent>
+			<extension base="WOZ:Maateenheid4-1">
+				<attributeGroup ref="StUF:element"/>
+				<attribute ref="WOZ:statusTaxatieParameter"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="Maateenheid4-2-es">
+		<simpleContent>
+			<extension base="WOZ:Maateenheid4-2">
+				<attributeGroup ref="StUF:element"/>
+				<attribute ref="WOZ:statusTaxatieParameter"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="Percentage-es">
+		<simpleContent>
+			<extension base="WOZ:Percentage">
+				<attributeGroup ref="StUF:element"/>
+				<attribute ref="WOZ:statusTaxatieParameter"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="Percentage2DecimalenMin0Max100-es">
+		<simpleContent>
+			<extension base="WOZ:Percentage2DecimalenMin0Max100">
+				<attributeGroup ref="StUF:element"/>
+				<attribute ref="WOZ:statusTaxatieParameter"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="PercentageAfwijkingWerkelijkeDoorzet-es">
+		<simpleContent>
+			<extension base="WOZ:PercentageAfwijkingWerkelijkeDoorzet">
+				<attributeGroup ref="StUF:element"/>
+				<attribute ref="WOZ:statusTaxatieParameter"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="PercentageBtw-es">
+		<simpleContent>
+			<extension base="WOZ:PercentageBtw">
+				<attributeGroup ref="StUF:element"/>
+				<attribute ref="WOZ:statusTaxatieParameter"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="PercentageNegatief1Decimaal-es">
+		<simpleContent>
+			<extension base="WOZ:PercentageNegatief1Decimaal">
+				<attributeGroup ref="StUF:element"/>
+				<attribute ref="WOZ:statusTaxatieParameter"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="PercentageNegatief2Decimalen-es">
+		<simpleContent>
+			<extension base="WOZ:PercentageNegatief2Decimalen">
+				<attributeGroup ref="StUF:element"/>
+				<attribute ref="WOZ:statusTaxatieParameter"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="RECSterren-es">
+		<simpleContent>
+			<extension base="WOZ:RECSterren">
+				<attributeGroup ref="StUF:element"/>
+				<attribute ref="WOZ:statusTaxatieParameter"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="RENPunten-es">
+		<simpleContent>
+			<extension base="WOZ:RENPunten">
+				<attributeGroup ref="StUF:element"/>
+				<attribute ref="WOZ:statusTaxatieParameter"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="RENScore-es">
+		<simpleContent>
+			<extension base="WOZ:RENScore">
+				<attributeGroup ref="StUF:element"/>
+				<attribute ref="WOZ:statusTaxatieParameter"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="TijdstipUrenMinuten-es">
+		<simpleContent>
+			<extension base="WOZ:TijdstipUrenMinuten">
+				<attributeGroup ref="StUF:element"/>
+				<attribute ref="WOZ:statusTaxatieParameter"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<!--ComplexTypes met StUF:element op alfabet-->
+	<complexType name="AandeelGebouwdOpInstandhoudingskosten-e">
+		<simpleContent>
+			<extension base="WOZ:AandeelGebouwdOpInstandhoudingskosten">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="AanduidingBouwstroom-e">
+		<simpleContent>
+			<extension base="WOZ:AanduidingBouwstroom">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="AanduidingBruikbaarheid-e">
+		<simpleContent>
+			<extension base="WOZ:AanduidingBruikbaarheid">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="AanduidingEigenaarGebruiker-e">
+		<simpleContent>
+			<extension base="WOZ:AanduidingEigenaarGebruiker">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="Aantekening-e">
+		<simpleContent>
+			<extension base="WOZ:Aantekening">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="AanvullingSoFiNummer-e">
+		<simpleContent>
+			<extension base="WOZ:AanvullingSoFiNummer">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="AanvullingSoFiNummer-r">
+		<simpleContent>
+			<restriction base="WOZ:AanvullingSoFiNummer-e">
+				<attribute ref="StUF:noValue" use="prohibited"/>
+			</restriction>
+		</simpleContent>
+	</complexType>
+	<complexType name="AardMarktinformatie-e">
+		<simpleContent>
+			<extension base="WOZ:AardMarktinformatie">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="ArchetypeAanduiding-e">
+		<simpleContent>
+			<extension base="WOZ:ArchetypeAanduiding">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="ArchetypeNaam-e">
+		<simpleContent>
+			<extension base="WOZ:ArchetypeNaam">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="Belastingsoort-e">
+		<simpleContent>
+			<extension base="WOZ:Belastingsoort">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="BeoordelingKenmerk-e">
+		<simpleContent>
+			<extension base="WOZ:BeoordelingKenmerk">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="BetrokkenWaterschap-e">
+		<simpleContent>
+			<extension base="WOZ:BetrokkenWaterschap">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="BetrokkenWaterschap-r">
+		<simpleContent>
+			<restriction base="WOZ:BetrokkenWaterschap-e">
+				<attribute ref="StUF:noValue" use="prohibited"/>
+			</restriction>
+		</simpleContent>
+	</complexType>
+	<complexType name="BijzondereWaarderingscode-e">
+		<simpleContent>
+			<extension base="WOZ:BijzondereWaarderingscode">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="Boolean-e">
+		<simpleContent>
+			<extension base="boolean">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="BouwjaarKlasse-e">
+		<simpleContent>
+			<extension base="WOZ:BouwjaarKlasse">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="BrutoNettoInhoud-e">
+		<simpleContent>
+			<extension base="WOZ:BrutoNettoInhoud">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="BrutoNettoOppervlakte-e">
+		<simpleContent>
+			<extension base="WOZ:BrutoNettoOppervlakte">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="CodeBlokkeren-e">
+		<simpleContent>
+			<extension base="WOZ:CodeBlokkeren">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="CodeBlokkerenTaxatie-e">
+		<simpleContent>
+			<extension base="WOZ:CodeBlokkerenTaxatie">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="CodeDoorzetBasisTaxatie-e">
+		<simpleContent>
+			<extension base="WOZ:CodeDoorzetBasisTaxatie">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="CodeGebouwdOngebouwd-e">
+		<simpleContent>
+			<extension base="WOZ:CodeGebouwdOngebouwd">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="CodeGebouwdOngebouwd-r">
+		<simpleContent>
+			<restriction base="WOZ:CodeGebouwdOngebouwd-e">
+				<attribute ref="StUF:noValue" use="prohibited"/>
+			</restriction>
+		</simpleContent>
+	</complexType>
+	<complexType name="CodeMonumentAanduiding-e">
+		<simpleContent>
+			<extension base="WOZ:CodeMonumentAanduiding">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="CodeOmzetBelasting-e">
+		<simpleContent>
+			<extension base="WOZ:CodeOmzetBelasting">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="CodeWOZDeelObject-e">
+		<simpleContent>
+			<extension base="WOZ:CodeWOZDeelObject">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="CodeOntbrekenNutsvoorzieningen-e">
+		<simpleContent>
+			<extension base="WOZ:CodeOntbrekenNutsvoorzieningen">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="CodeTaxatiemethodiek-e">
+		<simpleContent>
+			<extension base="WOZ:CodeTaxatiemethodiek">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="CodeVrijstellingOZB-e">
+		<simpleContent>
+			<extension base="WOZ:CodeVrijstellingOZB">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="CorrectiefactorTot1-e">
+		<simpleContent>
+			<extension base="WOZ:CorrectiefactorTot1">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="CorrectiefactorTot1Met4Decimalen-e">
+		<simpleContent>
+			<extension base="WOZ:CorrectiefactorTot1Met4Decimalen">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="CorrectiefactorTot10Met2Decimalen-e">
+		<simpleContent>
+			<extension base="WOZ:CorrectiefactorTot10Met2Decimalen">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="CorrectiefactorTot10Met3Decimalen-e">
+		<simpleContent>
+			<extension base="WOZ:CorrectiefactorTot10Met3Decimalen">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="CorrectiefactorTot10Met4Decimalen-e">
+		<simpleContent>
+			<extension base="WOZ:CorrectiefactorTot10Met4Decimalen">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="Financieringsvorm-e">
+		<simpleContent>
+			<extension base="WOZ:Financieringsvorm">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="Gebruikscode-e">
+		<simpleContent>
+			<extension base="WOZ:Gebruikscode">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="GebruikteEenheid-e">
+		<simpleContent>
+			<extension base="WOZ:GebruikteEenheid">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="Gebruikscode-r">
+		<simpleContent>
+			<restriction base="WOZ:Gebruikscode-e">
+				<attribute ref="StUF:noValue" use="prohibited"/>
+			</restriction>
+		</simpleContent>
+	</complexType>
+	<complexType name="GecontroleerdeObjectkenmerken-e">
+		<simpleContent>
+			<extension base="WOZ:GecontroleerdeObjectkenmerken">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="GecontroleerdeWOZDeelObjecten-e">
+		<simpleContent>
+			<extension base="WOZ:GecontroleerdeWOZDeelObjecten">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="GehanteerdWaarderingsVoorschrift-e">
+		<simpleContent>
+			<extension base="WOZ:GehanteerdWaarderingsVoorschrift">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="Groepaanduiding-e">
+		<simpleContent>
+			<extension base="WOZ:Groepaanduiding">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="IdentificatieUitvoerder-e">
+		<simpleContent>
+			<extension base="WOZ:IdentificatieUitvoerder">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="Indicatie-e">
+		<simpleContent>
+			<extension base="WOZ:Indicatie">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="IndicatieLigging-e">
+		<simpleContent>
+			<extension base="WOZ:IndicatieLigging">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="IndModelWerkelijk-e">
+		<simpleContent>
+			<extension base="WOZ:IndModelWerkelijk">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="InpandigeOpname-e">
+		<simpleContent>
+			<extension base="WOZ:InpandigeOpname">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="Jaar-e">
+		<simpleContent>
+			<extension base="WOZ:Jaar">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="Kapitalisatiefactor-e">
+		<simpleContent>
+			<extension base="WOZ:Kapitalisatiefactor">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="KengetalNaam-e">
+		<simpleContent>
+			<extension base="WOZ:KengetalNaam">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="KengetalType-e">
+		<simpleContent>
+			<extension base="WOZ:KengetalType">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="KengetalWaarde-e">
+		<simpleContent>
+			<extension base="WOZ:KengetalWaarde">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="KeuzeTaxateurWoonwagens-e">
+		<simpleContent>
+			<extension base="WOZ:KeuzeTaxateurWoonwagens">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="Levensduur-e">
+		<simpleContent>
+			<extension base="WOZ:Levensduur">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="LooptijdHuurcontract-e">
+		<simpleContent>
+			<extension base="WOZ:LooptijdHuurcontract">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="Maateenheid2-e">
+		<simpleContent>
+			<extension base="WOZ:Maateenheid2">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="Maateenheid3-1-e">
+		<simpleContent>
+			<extension base="WOZ:Maateenheid3-1">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="Maateenheid4-e">
+		<simpleContent>
+			<extension base="WOZ:Maateenheid4">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="Maateenheid4-1-e">
+		<simpleContent>
+			<extension base="WOZ:Maateenheid4-1">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="Maateenheid4-2-e">
+		<simpleContent>
+			<extension base="WOZ:Maateenheid4-2">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="Maateenheid11-e">
+		<simpleContent>
+			<extension base="WOZ:Maateenheid11">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="Maateenheid11-r">
+		<simpleContent>
+			<restriction base="WOZ:Maateenheid11-e">
+				<attribute ref="StUF:noValue" use="prohibited"/>
+			</restriction>
+		</simpleContent>
+	</complexType>
+	<complexType name="Maateenheid11-neg-e">
+		<simpleContent>
+			<extension base="WOZ:Maateenheid11-neg">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="Maateenheid11-neg-r">
+		<simpleContent>
+			<restriction base="WOZ:Maateenheid11-neg-e">
+				<attribute ref="StUF:noValue" use="prohibited"/>
+			</restriction>
+		</simpleContent>
+	</complexType>
+	<complexType name="Maateenheid11-2-e">
+		<simpleContent>
+			<extension base="WOZ:Maateenheid11-2">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="Maateenheid11-2-neg-e">
+		<simpleContent>
+			<extension base="WOZ:Maateenheid11-2-neg">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="MethodiekControle-e">
+		<simpleContent>
+			<extension base="WOZ:MethodiekControle">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="NummerWOZDeelObject-e">
+		<simpleContent>
+			<extension base="WOZ:NummerWOZDeelObject">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="ObjectCategorieNaam-e">
+		<simpleContent>
+			<extension base="WOZ:ObjectCategorieNaam">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="Omschrijving100-e">
+		<simpleContent>
+			<extension base="WOZ:Omschrijving100">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="Omschrijving1000-e">
+		<simpleContent>
+			<extension base="WOZ:Omschrijving1000">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="Omschrijving12-e">
+		<simpleContent>
+			<extension base="WOZ:Omschrijving12">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="Omschrijving50-e">
+		<simpleContent>
+			<extension base="WOZ:Omschrijving50">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="OntsluitingVerdieping-e">
+		<simpleContent>
+			<extension base="WOZ:OntsluitingVerdieping">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="OZBVrijstelling-e">
+		<simpleContent>
+			<extension base="WOZ:OZBVrijstelling">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="OZBVrijstelling-r">
+		<simpleContent>
+			<restriction base="WOZ:OZBVrijstelling-e">
+				<attribute ref="StUF:noValue" use="prohibited"/>
+			</restriction>
+		</simpleContent>
+	</complexType>
+	<complexType name="Peildatum-e">
+		<simpleContent>
+			<extension base="WOZ:Peildatum">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="Peildatum-r">
+		<simpleContent>
+			<restriction base="WOZ:Peildatum-e">
+				<attribute ref="StUF:noValue" use="prohibited"/>
+			</restriction>
+		</simpleContent>
+	</complexType>
+	<complexType name="Percentage-e">
+		<simpleContent>
+			<extension base="WOZ:Percentage">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="Percentage2Decimalen-e">
+		<simpleContent>
+			<extension base="WOZ:Percentage2Decimalen">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="Percentage2DecimalenMin0Max100-e">
+		<simpleContent>
+			<extension base="WOZ:Percentage2DecimalenMin0Max100">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="Percentage5DecimalenMin0Max100-e">
+		<simpleContent>
+			<extension base="WOZ:Percentage5DecimalenMin0Max100">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="PercentageAfwijkingWerkelijkeDoorzet-e">
+		<simpleContent>
+			<extension base="WOZ:PercentageAfwijkingWerkelijkeDoorzet">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="PercentageBtw-e">
+		<simpleContent>
+			<extension base="WOZ:PercentageBtw">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="PercentageNegatief1Decimaal-e">
+		<simpleContent>
+			<extension base="WOZ:PercentageNegatief1Decimaal">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="PercentageNegatief2Decimalen-e">
+		<simpleContent>
+			<extension base="WOZ:PercentageNegatief2Decimalen">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="RECSterren-e">
+		<simpleContent>
+			<extension base="WOZ:RECSterren">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="RedenAfwijking-e">
+		<simpleContent>
+			<extension base="WOZ:RedenAfwijking">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="RedenControle-e">
+		<simpleContent>
+			<extension base="WOZ:RedenControle">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="RelevantieRedenAfwijking-e">
+		<simpleContent>
+			<extension base="WOZ:RelevantieRedenAfwijking">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="RenovatiePercentage-e">
+		<simpleContent>
+			<extension base="WOZ:RenovatiePercentage">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="RENPunten-e">
+		<simpleContent>
+			<extension base="WOZ:RENPunten">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="RENScore-e">
+		<simpleContent>
+			<extension base="WOZ:RENScore">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="Sleutel-e">
+		<simpleContent>
+			<extension base="WOZ:Sleutel">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="SoortGrief-e">
+		<simpleContent>
+			<extension base="WOZ:SoortGrief">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="SoortObjectCode-e">
+		<simpleContent>
+			<extension base="WOZ:SoortObjectCode">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="SoortTaxatieverslag-e">
+		<simpleContent>
+			<extension base="WOZ:SoortTaxatieverslag">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="SoortTransactie-e">
+		<simpleContent>
+			<extension base="WOZ:SoortTransactie">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="Stijlletter-e">
+		<simpleContent>
+			<extension base="WOZ:Stijlletter">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="StatusAanslag-e">
+		<simpleContent>
+			<extension base="WOZ:StatusAanslag">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="StatusBelang-e">
+		<simpleContent>
+			<extension base="WOZ:StatusBelang">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="StatusBeschikking-e">
+		<simpleContent>
+			<extension base="WOZ:StatusBeschikking">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="StatusBeschikking-r">
+		<simpleContent>
+			<restriction base="WOZ:StatusBeschikking-e">
+				<attribute ref="StUF:noValue" use="prohibited"/>
+			</restriction>
+		</simpleContent>
+	</complexType>
+	<complexType name="StatusBetaling-e">
+		<simpleContent>
+			<extension base="WOZ:StatusBetaling">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="StatusBiljet-e">
+		<simpleContent>
+			<extension base="WOZ:StatusBiljet">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="StatusBezwaar-e">
+		<simpleContent>
+			<extension base="WOZ:StatusBezwaar">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="StatusTaxatie-e">
+		<simpleContent>
+			<extension base="WOZ:StatusTaxatie">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="StatusWaardevaststelling-e">
+		<simpleContent>
+			<extension base="WOZ:StatusWaardevaststelling">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="StatusObject-e">
+		<simpleContent>
+			<extension base="WOZ:StatusObject">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="StatusObject-r">
+		<simpleContent>
+			<restriction base="WOZ:StatusObject-e">
+				<attribute ref="StUF:noValue" use="prohibited"/>
+			</restriction>
+		</simpleContent>
+	</complexType>
+	<complexType name="Tariefsoort-e">
+		<simpleContent>
+			<extension base="WOZ:Tariefsoort">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="Taxateur-e">
+		<simpleContent>
+			<extension base="WOZ:Taxateur">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="TijdstipUrenMinuten-e">
+		<simpleContent>
+			<extension base="WOZ:TijdstipUrenMinuten">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="Versie-e">
+		<simpleContent>
+			<extension base="WOZ:Versie">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="VersieMajorMinor-e">
+		<simpleContent>
+			<extension base="WOZ:VersieMajorMinor">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="VerwachteWijzigingWaarde-e">
+		<simpleContent>
+			<extension base="WOZ:VerwachteWijzigingWaarde">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="VolgnummerMarktgegeven-e">
+		<simpleContent>
+			<extension base="WOZ:VolgnummerMarktgegeven">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="Waardegebied-e">
+		<simpleContent>
+			<extension base="WOZ:Waardegebied">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="Waterschapnaam-e">
+		<simpleContent>
+			<extension base="WOZ:Waterschapnaam">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="WOZObjectNummer-e">
+		<simpleContent>
+			<extension base="WOZ:WOZObjectNummer">
+				<attributeGroup ref="StUF:element"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="WOZObjectNummer-r">
+		<simpleContent>
+			<restriction base="WOZ:WOZObjectNummer-e">
+				<attribute ref="StUF:noValue" use="prohibited"/>
+			</restriction>
+		</simpleContent>
+	</complexType>
+	<!--SimpleTypes op alfabet-->
+	<simpleType name="AandeelGebouwdOpInstandhoudingskosten">
+		<restriction base="string">
+			<enumeration value="0-5%"/>
+			<enumeration value="5-10%"/>
+			<enumeration value="10-15%"/>
+			<enumeration value="15-20%"/>
+			<enumeration value="20-25%"/>
+			<enumeration value="25-30%"/>
+			<enumeration value="30-35%"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="AanduidingBouwstroom">
+		<restriction base="string">
+			<maxLength value="6" fixed="false"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="AanduidingBruikbaarheid">
+		<restriction base="string">
+			<enumeration value="00">
+				<annotation>
+					<documentation>Marktgegeven waarschijnlijk goed bruikbaar</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="11">
+				<annotation>
+					<documentation>Familietransactie</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="12">
+				<annotation>
+					<documentation>Transactie tussen bedrijfsonderdelen</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="13">
+				<annotation>
+					<documentation>Transactie aan zittende huurder</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="14">
+				<annotation>
+					<documentation>Minnelijke verwerving/onteigening</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="15">
+				<annotation>
+					<documentation>Aan of verkoop door overheidsorgaan</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="21">
+				<annotation>
+					<documentation>Verkooptransactie in verhuurde staat</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="22">
+				<annotation>
+					<documentation>Transactie van beperkt recht (erfpacht etc.)</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="31">
+				<annotation>
+					<documentation>Transactieprijs inclusief inrichting/inventaris</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="32">
+				<annotation>
+					<documentation>Transactieprijs inclusief goodwill</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="33">
+				<annotation>
+					<documentation>Transactieprijs inclusief overige diensten</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="41">
+				<annotation>
+					<documentation>Verkoop op veiling</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="42">
+				<annotation>
+					<documentation>Feitelijke, juridische levering meer dan 6 maanden na verkoop</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="51">
+				<annotation>
+					<documentation>Transactieprijs onverklaarbaar hoger dan vergelijkbare objecten</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="52">
+				<annotation>
+					<documentation>Transactieprijs onverklaarbaar lager dan vergelijkbare objecten</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="53">
+				<annotation>
+					<documentation>Gesloopt, nieuwbouw</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="54">
+				<annotation>
+					<documentation>Overige redenen (argumentatie verplicht)</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="60">
+				<annotation>
+					<documentation>Met meer onroerend goed verkocht (bijvoorbeeld vrijgestelde cultuurgrond)</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="61">
+				<annotation>
+					<documentation>In combinatie met meerdere objecten verkocht</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="62">
+				<annotation>
+					<documentation>Het verkochte object bestaat uit meerdere WOZ-objecten</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="63">
+				<annotation>
+					<documentation>Het verkochte object is een gedeelte van een WOZ-object</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="64">
+				<annotation>
+					<documentation>Niet reële transactie</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="65">
+				<annotation>
+					<documentation>Transactie heeft betrekking op grond</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="71">
+				<annotation>
+					<documentation>Bouwsom zoals opgegeven in aanvraag bouwvergunning</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="72">
+				<annotation>
+					<documentation>Geanalyseerde bouwkosten</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="99">
+				<annotation>
+					<documentation>Nog niet gescreend</documentation>
+				</annotation>
+			</enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="AanduidingEigenaarGebruiker">
+		<restriction base="string">
+			<length value="1"/>
+			<enumeration value="B">
+				<annotation>
+					<documentation>Eigenaar-gebruiker</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="E">
+				<annotation>
+					<documentation>Eigenaar</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="G">
+				<annotation>
+					<documentation>Gebruiker</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="M">
+				<annotation>
+					<documentation>Medebelanghebbende</documentation>
+				</annotation>
+			</enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="Aantekening">
+		<restriction base="string">
+			<maxLength value="50"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="AanvullingSoFiNummer">
+		<restriction base="string">
+			<pattern value="[0-9]{10}"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="AardMarktinformatie">
+		<restriction base="string">
+			<length value="1"/>
+			<enumeration value="O">
+				<annotation>
+					<documentation>Openingsprijs (vanaf prijs bij Opbod)</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="T">
+				<annotation>
+					<documentation>Transactie</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="V">
+				<annotation>
+					<documentation>Vraagprijs</documentation>
+				</annotation>
+			</enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="ArchetypeAanduiding">
+		<restriction base="string">
+			<length value="8"/>
+			<pattern value="[A-Z][0-9]{2}[0-9][A-Z0-9]{2}[0-9][A-Z0-9]"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="ArchetypeNaam">
+		<restriction base="string">
+			<maxLength value="70"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Belastingsoort">
+		<restriction base="string">
+			<maxLength value="30"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="BeoordelingKenmerk">
+		<restriction base="string">
+			<length value="1"/>
+			<enumeration value="1">
+				<annotation>
+					<documentation>Zeer slecht, ver onder gemiddeld</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="2">
+				<annotation>
+					<documentation>Slecht, onder gemiddeld</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="3">
+				<annotation>
+					<documentation>Voldoende, gemiddeld</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="4">
+				<annotation>
+					<documentation>Goed, boven gemiddeld</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="5">
+				<annotation>
+					<documentation>Zeer goed, ver boven gemiddeld</documentation>
+				</annotation>
+			</enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="BijzondereWaarderingscode">
+		<restriction base="nonNegativeInteger">
+			<totalDigits value="3"/>
+			<enumeration value="000">
+				<annotation>
+					<documentation>Standaardwaarde</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="001">
+				<annotation>
+					<documentation>Waarderingsvoorschrift Natuurschoonwet 1928</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="010">
+				<annotation>
+					<documentation>Aftrek waarde cultuurgrond toegepast</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="011">
+				<annotation>
+					<documentation>Aftrek waarde cultuurgrond toegepast plus waarderingsvoorschrift Natuurschoonwet 1928</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="100">
+				<annotation>
+					<documentation>Werktuigen buiten aanmerking gelaten</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="101">
+				<annotation>
+					<documentation>Werktuigen buiten aanmerking gelaten plus waarderingsvoorschrift Natuurschoonwet 1928</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="110">
+				<annotation>
+					<documentation>Werktuigen buiten aanmerking gelaten plus aftrek waarde cultuurgrond toegepast</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="111">
+				<annotation>
+					<documentation>Werktuigen buiten aanmerking gelaten plus aftrek waarde cultuurgrond toegepast plus waarderingsvoorschrift Natuurschoonwet 1928</documentation>
+				</annotation>
+			</enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="BouwjaarKlasse">
+		<restriction base="string">
+			<length value="9"/>
+			<pattern value="[0-9]{4}-[0-9]{4}"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="BrutoNettoInhoud">
+		<restriction base="string">
+			<length value="1"/>
+			<enumeration value="B">
+				<annotation>
+					<documentation>Bruto</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="N">
+				<annotation>
+					<documentation>Netto</documentation>
+				</annotation>
+			</enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="BrutoNettoOppervlakte">
+		<restriction base="string">
+			<length value="1"/>
+			<enumeration value="B">
+				<annotation>
+					<documentation>Bruto</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="G">
+				<annotation>
+					<documentation>Gebruiksoppervlakte</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="N">
+				<annotation>
+					<documentation>Netto</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="V">
+				<annotation>
+					<documentation>Verhuurbaar vloeroppervlakte (VVO)</documentation>
+				</annotation>
+			</enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="CodeDoorzetBasisTaxatie">
+		<restriction base="string">
+			<enumeration value="Objectief"/>
+			<enumeration value="GecorrigeerdWerkelijk"/>
+			<enumeration value=""/>
+		</restriction>
+	</simpleType>
+	<simpleType name="CodeBlokkeren">
+		<restriction base="nonNegativeInteger">
+			<enumeration value="0">
+				<annotation>
+					<documentation>Niet geblokkeerd of een sluimerend WOZ-object</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="1">
+				<annotation>
+					<documentation>Geblokkeerde waarde: taxatie/afbakening niet gereed</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="2">
+				<annotation>
+					<documentation>Geblokkeerd: belanghebbende(n) onbekend</documentation>
+				</annotation>
+			</enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="CodeBlokkerenTaxatie">
+		<restriction base="nonNegativeInteger">
+			<enumeration value="0">
+				<annotation>
+					<documentation>Niet geblokkeerd, standaard waarde</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="1">
+				<annotation>
+					<documentation>Geblokkeerde waarde: taxatie/afbakening niet gereed</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="2">
+				<annotation>
+					<documentation>Geblokkeerd: belanghebbende(n) onbekend</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="3">
+				<annotation>
+					<documentation>Bezwaarschrift in behandeling</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="4">
+				<annotation>
+					<documentation>Beroepschrift in behandeling</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="5">
+				<annotation>
+					<documentation>Bouwvergunning in behandeling</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="6">
+				<annotation>
+					<documentation>Object niet aangetroffen</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="7">
+				<annotation>
+					<documentation>Object gesloopt</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="8">
+				<annotation>
+					<documentation>Waarde niet correct/nog niet getaxeerd</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="9">
+				<annotation>
+					<documentation>Splitsing in behandeling</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="10">
+				<annotation>
+					<documentation>Samenvoeging in behandeling</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="11">
+				<annotation>
+					<documentation>Aanvraag hertaxatie</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="12">
+				<annotation>
+					<documentation>Diversen</documentation>
+				</annotation>
+			</enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="CodeGebouwdOngebouwd">
+		<restriction base="string">
+			<length value="1"/>
+			<enumeration value="G">
+				<annotation>
+					<documentation>Gebouwd</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="O">
+				<annotation>
+					<documentation>Ongebouwd</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="B">
+				<annotation>
+					<documentation>Beide</documentation>
+				</annotation>
+			</enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="CodeMonumentAanduiding">
+		<restriction base="string">
+			<enumeration value="0">
+				<annotation>
+					<documentation>geen monument/onbekend</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="1">
+				<annotation>
+					<documentation>rijksmonument</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="2">
+				<annotation>
+					<documentation>provinciaal monument</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="3">
+				<annotation>
+					<documentation>gemeentelijk monument</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="4">
+				<annotation>
+					<documentation>nominatie rijksmonument</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="5">
+				<annotation>
+					<documentation>nominatie provinciaal monument</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="6">
+				<annotation>
+					<documentation>nominatie gemeentelijk monument</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="7">
+				<annotation>
+					<documentation>in onderzoeksfase om als monument te worden aangewezen</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="8">
+				<annotation>
+					<documentation>beschermd stads- of dorpsgezicht</documentation>
+				</annotation>
+			</enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="CodeOmzetBelasting">
+		<restriction base="string">
+			<length value="1"/>
+			<enumeration value="E">
+				<annotation>
+					<documentation>Exclusief omzetbelasting</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="I">
+				<annotation>
+					<documentation>Inclusief omzetbelasting</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="O">
+				<annotation>
+					<documentation>Onbelaste transactie</documentation>
+				</annotation>
+			</enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="CodeOntbrekenNutsvoorzieningen">
+		<restriction base="string">
+			<maxLength value="3"/>
+			<pattern value="[GWRE]{1,3}"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="CodeTaxatiemethodiek">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="10"/>
+			<enumeration value="A">
+				<annotation>
+					<documentation>Waarde afgeleid uit kengetal per stuk/eenheid maal het aantal of gecorrigeerde vervangingswaarde afgeleid uit ongecorrigeerde vervangingswaarde per stuk/eenheid maal het aantal en daarna gecorrigeerd</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="AAS"/>
+			<enumeration value="AER">
+				<annotation>
+					<documentation>Agrarisch erf</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="AGB"/>
+			<enumeration value="AGR"/>
+			<enumeration value="DGVW">
+				<annotation>
+					<documentation>gecorrigeerde vervangingswaarde (dummy-archetype)</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="DSP">
+				<annotation>
+					<documentation>stuks prijs (dummy archetype)</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="G">
+				<annotation>
+					<documentation>Geen berekening</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="GVW"/>
+			<enumeration value="H">
+				<annotation>
+					<documentation>Huurwaardekapitalisatie op basis van huurwaarde per vierkante meter en kapitalisatiefactor</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="I">
+				<annotation>
+					<documentation>Waarde afgeleid uit kengetal per kubieke meter maal de inhoud of gecorrigeerde vervangingswaarde afgeleid uit ongecorrigeerde vervangingswaarde per kubieke meter maal de inhoud en daarna gecorrigeerd</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="IS"/>
+			<enumeration value="MBVP"/>
+			<enumeration value="MBVPLW">
+				<annotation>
+					<documentation>Motorbrandstofverkooppunt locatiewaarde</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="MBVPOS">
+				<annotation>
+					<documentation>Motorbrandstofverkooppunt opstal</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="MBVPT">
+				<annotation>
+					<documentation>Motorbrandstofverkooppunt tanks</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="NSW">
+				<annotation>
+					<documentation>Natuurschoonwet landgoed</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="O">
+				<annotation>
+					<documentation>Waarde afgeleid uit kengetal per vierkante meter maal de oppervlakte of gecorrigeerde vervangingswaarde afgeleid uit ongecorrigeerde vervangingswaarde per vierkante meter maal de oppervlakte en daarna gecorrigeerd</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="RECR">
+				<annotation>
+					<documentation>Recreatieterreinen</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="S">
+				<annotation>
+					<documentation>Stichtingskosten/vervangingswaarde met afschrijving geeft gecorrigeerde vervangingswaarde</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="SP">
+				<annotation>
+					<documentation>Stuksprijs</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="WTS">
+				<annotation>
+					<documentation>windturbines</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="WW">
+				<annotation>
+					<documentation>Woonwagens</documentation>
+				</annotation>
+			</enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="CodeVrijstellingOZB">
+		<restriction base="string">
+			<length value="1"/>
+			<enumeration value="B">
+				<annotation>
+					<documentation>Bedrijfsmatig gebruikte cultuurgrond (kassen)</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="C">
+				<annotation>
+					<documentation>Niet-bedrijfsmatig gebruikte cultuurgrond</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="D">
+				<annotation>
+					<documentation>WoonDeel of Dienstbaar aan woonDoeleinden</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="F">
+				<annotation>
+					<documentation>Overige (facultatieve) gemeentelijke vrijstellingen</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="G">
+				<annotation>
+					<documentation>Graven op een begraafplaats</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="K">
+				<annotation>
+					<documentation>Bestemd voor de openbare eredienst</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="L">
+				<annotation>
+					<documentation>Landgoed op de voet van Natuurschoonwet 1928</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="N">
+				<annotation>
+					<documentation>Natuurterreinen</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="O">
+				<annotation>
+					<documentation>Ongebouwd</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="W">
+				<annotation>
+					<documentation>Waterverdedigings- en waterbeheersingswerken</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="Z">
+				<annotation>
+					<documentation>Zuiveringsinstallaties</documentation>
+				</annotation>
+			</enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="BetrokkenWaterschap">
+		<restriction base="nonNegativeInteger">
+			<totalDigits value="4"/>
+			<pattern value="[0-9]{4}"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="CodeWOZDeelObject">
+		<restriction base="string">
+			<length value="4"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="CorrectiefactorTot1">
+		<restriction base="decimal">
+			<totalDigits value="4"/>
+			<minInclusive value="0"/>
+			<fractionDigits value="3"/>
+			<maxInclusive value="1"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="CorrectiefactorTot1Met4Decimalen">
+		<restriction base="decimal">
+			<totalDigits value="5"/>
+			<minInclusive value="0"/>
+			<fractionDigits value="4"/>
+			<maxInclusive value="1"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="CorrectiefactorTot10Met2Decimalen">
+		<restriction base="decimal">
+			<minInclusive value="0"/>
+			<totalDigits value="3"/>
+			<fractionDigits value="2"/>
+			<maxExclusive value="10"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="CorrectiefactorTot10Met3Decimalen">
+		<restriction base="decimal">
+			<minInclusive value="0"/>
+			<totalDigits value="4"/>
+			<fractionDigits value="3"/>
+			<maxExclusive value="10"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="CorrectiefactorTot10Met4Decimalen">
+		<restriction base="decimal">
+			<totalDigits value="5"/>
+			<minInclusive value="0"/>
+			<fractionDigits value="4"/>
+			<maxExclusive value="10"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="CorrectieFunderingKeuze">
+		<restriction base="string">
+			<maxLength value="20"/>
+			<enumeration value="standaard"/>
+			<enumeration value="staal"/>
+			<enumeration value="diepe fundering"/>
+			<enumeration value="geen correctie"/>
+			<enumeration value="gespecificeerd"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Financieringsvorm">
+		<restriction base="string">
+			<maxLength value="2"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Gebruikscode">
+		<restriction base="nonNegativeInteger">
+			<totalDigits value="2"/>
+			<enumeration value="10">
+				<annotation>
+					<documentation>Woning dienend tot hoofdverblijf</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="11">
+				<annotation>
+					<documentation>Woning met "ruimte voor bedrijfsmatige activiteiten aan huis"</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="12">
+				<annotation>
+					<documentation>Recreatiewoning en overige woningen</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="20">
+				<annotation>
+					<documentation>Boerderij</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="21">
+				<annotation>
+					<documentation>Niet-woning deels in gebruik als woning</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="30">
+				<annotation>
+					<documentation>Niet-woning</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="31">
+				<annotation>
+					<documentation>Niet-woning verplicht uitgezonderd</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="40">
+				<annotation>
+					<documentation>Terrein</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="80">
+				<annotation>
+					<documentation>Ongebouwd object verplicht uitgezonderd</documentation>
+				</annotation>
+			</enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="GebruikteEenheid">
+		<restriction base="string">
+			<enumeration value="A">
+				<annotation>
+					<documentation>aantal stuks eenheid</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="I">
+				<annotation>
+					<documentation>inhoud</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="O">
+				<annotation>
+					<documentation>oppervlakte</documentation>
+				</annotation>
+			</enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="GecontroleerdeObjectkenmerken">
+		<restriction base="nonNegativeInteger">
+			<totalDigits value="1"/>
+			<enumeration value="1">
+				<annotation>
+					<documentation>Alle objectkenmerken</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="2">
+				<annotation>
+					<documentation>Alle objectkenmerken m.u.v. grootte</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="3">
+				<annotation>
+					<documentation>Soort object/soort deelobject</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="4">
+				<annotation>
+					<documentation>Bouwjaar</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="5">
+				<annotation>
+					<documentation>Grootte (oppervlakte/inhoud)</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="6">
+				<annotation>
+					<documentation>Secundaire objectkenmerken (kwaliteit/onderhoud etc)</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="9">
+				<annotation>
+					<documentation>Overig/onbekend</documentation>
+				</annotation>
+			</enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="GecontroleerdeWOZDeelObjecten">
+		<restriction base="nonNegativeInteger">
+			<totalDigits value="1"/>
+			<enumeration value="1">
+				<annotation>
+					<documentation>Alle objectonderdelen</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="2">
+				<annotation>
+					<documentation>Hoofdonderdeel</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="3">
+				<annotation>
+					<documentation>Grondperceel</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="4">
+				<annotation>
+					<documentation>Overige onderdelen/bijgebouwen</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="9">
+				<annotation>
+					<documentation>Overig/onbekend</documentation>
+				</annotation>
+			</enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="GehanteerdWaarderingsVoorschrift">
+		<restriction base="string">
+			<length value="1"/>
+			<enumeration value="G">
+				<annotation>
+					<documentation>Gecorrigeerde vervangingswaarde</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="W">
+				<annotation>
+					<documentation>Waarde in het economisch verkeer</documentation>
+				</annotation>
+			</enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="Groepaanduiding">
+		<restriction base="string">
+			<maxLength value="8"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Id">
+		<restriction base="nonNegativeInteger">
+			<totalDigits value="40"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="IdentificatieUitvoerder">
+		<restriction base="string">
+			<length value="1"/>
+			<enumeration value="E">
+				<annotation>
+					<documentation>Extern bureau</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="G">
+				<annotation>
+					<documentation>Gemeente</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="O">
+				<annotation>
+					<documentation>Overig</documentation>
+				</annotation>
+			</enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="Indicatie">
+		<restriction base="string">
+			<enumeration value="J"/>
+			<enumeration value="N"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="IndicatieLigging">
+		<restriction base="string">
+			<maxLength value="2"/>
+			<enumeration value="A1"/>
+			<enumeration value="A2"/>
+			<enumeration value="B1"/>
+			<enumeration value="B2"/>
+			<enumeration value="C"/>
+			<enumeration value="D"/>
+			<enumeration value="0"/>
+			<enumeration value="1"/>
+			<enumeration value="2"/>
+			<enumeration value="3"/>
+			<enumeration value="4"/>
+			<enumeration value="5"/>
+			<enumeration value="6"/>
+			<enumeration value="7"/>
+			<enumeration value="8"/>
+			<enumeration value="9"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="IndModelWerkelijk">
+		<restriction base="string">
+			<enumeration value="model"/>
+			<enumeration value="aangepast aan werkelijk tarief"/>
+			<enumeration value="gemiddeld"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="InpandigeOpname">
+		<restriction base="string">
+			<length value="1"/>
+			<enumeration value="G">
+				<annotation>
+					<documentation>Nee, toegang geweigerd</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="J">
+				<annotation>
+					<documentation>Ja</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="K">
+				<annotation>
+					<documentation>Nee, kaart achtergelaten na uitpandige opname met mededeling dat alsnog bezoek mogelijk is na telefonisch contact</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="L">
+				<annotation>
+					<documentation>Nee, leegstand</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="N">
+				<annotation>
+					<documentation>Nee</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="T">
+				<annotation>
+					<documentation>Nee, niet thuis</documentation>
+				</annotation>
+			</enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="Jaar">
+		<restriction base="nonNegativeInteger">
+			<totalDigits value="4"/>
+			<minInclusive value="1000"/>
+			<maxInclusive value="3000"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Kapitalisatiefactor">
+		<restriction base="decimal">
+			<totalDigits value="3"/>
+			<fractionDigits value="1"/>
+			<minInclusive value="0"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="KengetalNaam">
+		<restriction base="string">
+			<maxLength value="50"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="KengetalType">
+		<restriction base="string">
+			<maxLength value="10"/>
+			<enumeration value="string"/>
+			<enumeration value="integer"/>
+			<enumeration value="decimal"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="KengetalWaarde">
+		<restriction base="string">
+			<maxLength value="50"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="KeuzeTaxateurWoonwagens">
+		<restriction base="string">
+			<length value="1"/>
+			<enumeration value="E">
+				<annotation>
+					<documentation>Eenheidsprijs, taxatie per vierkante meter</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="T">
+				<annotation>
+					<documentation>Totaalprijs, taxatie per woonwagen</documentation>
+				</annotation>
+			</enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="Levensduur">
+		<restriction base="nonNegativeInteger">
+			<totalDigits value="3"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="LooptijdHuurcontract">
+		<restriction base="nonNegativeInteger">
+			<totalDigits value="3"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Maateenheid2">
+		<restriction base="nonNegativeInteger">
+			<totalDigits value="2"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Maateenheid3-1">
+		<restriction base="decimal">
+			<minInclusive value="0"/>
+			<totalDigits value="4"/>
+			<fractionDigits value="1"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Maateenheid4">
+		<restriction base="nonNegativeInteger">
+			<totalDigits value="4"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Maateenheid4-1">
+		<restriction base="decimal">
+			<minInclusive value="0"/>
+			<totalDigits value="5"/>
+			<fractionDigits value="1"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Maateenheid4-2">
+		<restriction base="decimal">
+			<minInclusive value="0"/>
+			<totalDigits value="6"/>
+			<fractionDigits value="2"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Maateenheid11">
+		<restriction base="nonNegativeInteger">
+			<totalDigits value="11"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Maateenheid11-neg">
+		<restriction base="integer">
+			<totalDigits value="11"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Maateenheid11-2">
+		<restriction base="decimal">
+			<minInclusive value="0"/>
+			<totalDigits value="13"/>
+			<fractionDigits value="2"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Maateenheid11-2-neg">
+		<restriction base="decimal">
+			<totalDigits value="13"/>
+			<fractionDigits value="2"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="MethodiekControle">
+		<restriction base="nonNegativeInteger">
+			<totalDigits value="2"/>
+			<enumeration value="01">
+				<annotation>
+					<documentation>Inpandige opname</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="02">
+				<annotation>
+					<documentation>Opname ter plaatse</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="03">
+				<annotation>
+					<documentation>Uit luchtfoto</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="04">
+				<annotation>
+					<documentation>Foto/cyclorama</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="05">
+				<annotation>
+					<documentation>Uit bouwtekening</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="06">
+				<annotation>
+					<documentation>Uit beschrijving verkochte/te koop aangeboden object</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="07">
+				<annotation>
+					<documentation>Overig administratief</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="08">
+				<annotation>
+					<documentation>Uit opgave/bevestiging door belanghebbende</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="09">
+				<annotation>
+					<documentation>Geautomatiseerde vergelijking met ander bestand</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="10">
+				<annotation>
+					<documentation>Geautomatiseerde waarschijnlijkheidscontrole binnen bestand</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="99">
+				<annotation>
+					<documentation>Overig/onbekend</documentation>
+				</annotation>
+			</enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="NummerWOZDeelObject">
+		<restriction base="integer">
+			<totalDigits value="6"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="ObjectCategorieNaam">
+		<restriction base="string">
+			<maxLength value="80"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Omschrijving100">
+		<restriction base="string">
+			<maxLength value="100"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Omschrijving1000">
+		<restriction base="string">
+			<maxLength value="1000"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Omschrijving12">
+		<restriction base="string">
+			<maxLength value="12"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Omschrijving50">
+		<restriction base="string">
+			<maxLength value="50"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="OntsluitingVerdieping">
+		<restriction base="string">
+			<maxLength value="3"/>
+			<pattern value="[TRL]{1,3}"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="OZBVrijstelling">
+		<restriction base="nonNegativeInteger">
+			<totalDigits value="1"/>
+			<enumeration value="0">
+				<annotation>
+					<documentation>OZB-waarde gelijk aan WOZ-waarde</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="1">
+				<annotation>
+					<documentation>OZB-waarde ongelijk aan WOZ-waarde in verband met een facultatieve vrijstelling</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="2">
+				<annotation>
+					<documentation>OZB-waarde ongelijk aan WOZ-waarde in verband met een verplichte vrijstelling op grond van artikel 220d of 243 van de Gemeentewet</documentation>
+				</annotation>
+			</enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="Peildatum">
+		<restriction base="StUF:Datum">
+			<pattern value="[1-2][0-9]{3}0101"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Percentage">
+		<restriction base="nonNegativeInteger">
+			<totalDigits value="3"/>
+			<maxInclusive value="100"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Percentage2Decimalen">
+		<restriction base="decimal">
+			<totalDigits value="5"/>
+			<fractionDigits value="2"/>
+			<minInclusive value="-100"/>
+			<maxInclusive value="100"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Percentage2DecimalenMin0Max100">
+		<restriction base="decimal">
+			<totalDigits value="5"/>
+			<fractionDigits value="2"/>
+			<minInclusive value="0"/>
+			<maxInclusive value="100"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Percentage5DecimalenMin0Max100">
+		<restriction base="decimal">
+			<totalDigits value="8"/>
+			<fractionDigits value="5"/>
+			<minInclusive value="0"/>
+			<maxInclusive value="100"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="PercentageAfwijkingWerkelijkeDoorzet">
+		<restriction base="decimal">
+			<minInclusive value="-999.9"/>
+			<maxInclusive value="999.9"/>
+			<totalDigits value="4"/>
+			<fractionDigits value="1"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="PercentageBtw">
+		<restriction base="decimal">
+			<minInclusive value="0"/>
+			<totalDigits value="3"/>
+			<fractionDigits value="1"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="PercentageNegatief1Decimaal">
+		<restriction base="decimal">
+			<totalDigits value="4"/>
+			<fractionDigits value="1"/>
+			<minInclusive value="-100"/>
+			<maxInclusive value="+100"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="PercentageNegatief2Decimalen">
+		<restriction base="decimal">
+			<totalDigits value="5"/>
+			<fractionDigits value="2"/>
+			<minInclusive value="-100"/>
+			<maxInclusive value="100"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="RECSterren">
+		<restriction base="positiveInteger">
+			<maxInclusive value="5"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="RedenAfwijking">
+		<restriction base="nonNegativeInteger">
+			<totalDigits value="2"/>
+			<enumeration value="00">
+				<annotation>
+					<documentation>Geen afwijking</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="11">
+				<annotation>
+					<documentation>Familietransactie</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="12">
+				<annotation>
+					<documentation>Verkoop tussen bedrijfsonderdelen</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="13">
+				<annotation>
+					<documentation>Verkoop aan huurder</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="14">
+				<annotation>
+					<documentation>Verkoop aan overheidsorgaan: minnelijke verwerving/onteigening</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="15">
+				<annotation>
+					<documentation>Overige verkopen aan of door overheidsorgaan</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="16">
+				<annotation>
+					<documentation>Verkoop door woningcorporatie aan nieuwe bewoner</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="21">
+				<annotation>
+					<documentation>Verkoop in verhuurde staat</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="22">
+				<annotation>
+					<documentation>Erfpacht</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="23">
+				<annotation>
+					<documentation>Ander beperkt recht</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="24">
+				<annotation>
+					<documentation>VON-prijs</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="31">
+				<annotation>
+					<documentation>Verkoopprijs inclusief roerende goederen</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="32">
+				<annotation>
+					<documentation>Verkoopprijs omvat reserve VVE (die hoger is dan regulier)</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="41">
+				<annotation>
+					<documentation>Verkoop op veiling</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="42">
+				<annotation>
+					<documentation>Lange periode tussen verkoopdatum en transportdatum</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="55">
+				<annotation>
+					<documentation>Marktprijs is om andere reden lager dan marktwaarde</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="56">
+				<annotation>
+					<documentation>Marktprijs is om onbekende reden lager dan marktwaarde</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="57">
+				<annotation>
+					<documentation>Marktprijs is om andere reden hoger dan marktwaarde</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="58">
+				<annotation>
+					<documentation>Marktprijs is om onbekende reden hoger dan marktwaarde</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="61">
+				<annotation>
+					<documentation>Verkochte object komt niet volledig overeen met afbakening WOZ-object</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="62">
+				<annotation>
+					<documentation>Object gewijzigd sinds verkoop</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="63">
+				<annotation>
+					<documentation>Verkoopprijs inclusief waterverdedigingswerken die bij WOZ-waarde buiten aanmerking blijven</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="71">
+				<annotation>
+					<documentation>Vorige vastgestelde waarde te laag, onjuiste objectkenmerken</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="72">
+				<annotation>
+					<documentation>Vorige vastgestelde waarde te laag, onjuiste onderbouwing</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="73">
+				<annotation>
+					<documentation>Vorige vastgestelde waarde te laag, andere redenen</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="76">
+				<annotation>
+					<documentation>Vorige vastgestelde waarde te hoog, onjuiste objectkenmerken</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="77">
+				<annotation>
+					<documentation>Vorige vastgestelde waarde te hoog, onjuiste onderbouwing</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="78">
+				<annotation>
+					<documentation>Vorige vastgestelde waarde te hoog, andere redenen</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="81">
+				<annotation>
+					<documentation>Object gewijzigd sinds voorgaande taxatie</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="99">
+				<annotation>
+					<documentation>Onbekend</documentation>
+				</annotation>
+			</enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="RedenControle">
+		<restriction base="nonNegativeInteger">
+			<totalDigits value="2"/>
+			<enumeration value="01">
+				<annotation>
+					<documentation>Wijziging objectafbakening</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="02">
+				<annotation>
+					<documentation>Marktanalyse m.b.t. dit object</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="03">
+				<annotation>
+					<documentation>Marktanalyse m.b.t.. ander object</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="04">
+				<annotation>
+					<documentation>Bezwaar/beroep m.b.t. dit object</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="05">
+				<annotation>
+					<documentation>Bezwaar/beroep m.b.t. ander object</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="06">
+				<annotation>
+					<documentation>Bouwvergunning/verbouw/nieuwbouw/sloop m.b.t. dit object</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="07">
+				<annotation>
+					<documentation>Bouwvergunning/verbouw/nieuwbouw/sloop m.b.t. ander object</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="08">
+				<annotation>
+					<documentation>Situatie per 1 januari</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="09">
+				<annotation>
+					<documentation>Steekproefsgewijze controle</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="10">
+				<annotation>
+					<documentation>Bestandscontrole</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="11">
+				<annotation>
+					<documentation>Controle taxatie-prognose/resultaten</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="99">
+				<annotation>
+					<documentation>Ander signaal/proces</documentation>
+				</annotation>
+			</enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="RelevantieRedenAfwijking">
+		<restriction base="nonNegativeInteger">
+			<totalDigits value="2"/>
+			<enumeration value="0">
+				<annotation>
+					<documentation>Geen afwijking</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="1">
+				<annotation>
+					<documentation>Afwijking niet relevant (verkoopprijs reëel marktniveau en conform waarderingsvoorschriften)</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="2">
+				<annotation>
+					<documentation>Afwijking wel relevant (verkoopprijs geen reële indicatie van marktniveau rekening houdend met waarderingsvoorschriften)</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="9">
+				<annotation>
+					<documentation>Onbekend / nog niet geanalyseerd</documentation>
+				</annotation>
+			</enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="RenovatiePercentage">
+		<restriction base="nonNegativeInteger">
+			<totalDigits value="2"/>
+			<minInclusive value="10"/>
+			<maxInclusive value="90"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="RENPunten">
+		<restriction base="decimal">
+			<minInclusive value="0"/>
+			<maxInclusive value="100"/>
+			<fractionDigits value="1"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="RENScore">
+		<restriction base="decimal">
+			<minInclusive value="0"/>
+			<maxInclusive value="5"/>
+			<fractionDigits value="1"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Sleutel">
+		<restriction base="string">
+			<maxLength value="40"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="SoortGrief">
+		<restriction base="string">
+			<enumeration value="01">
+				<annotation>
+					<documentation>Onjuiste objectafbakening</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="02">
+				<annotation>
+					<documentation>Geen belanghebbende (eigenaar/gebruiker)</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="11">
+				<annotation>
+					<documentation>Onjuiste objectkenmerken (inhoud, oppervlakte, bouwjaar, bijgebouwen, deelobjecten)</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="12">
+				<annotation>
+					<documentation>Onvoldoende rekening gehouden met secundaire objectkenmerken (ligging, kwaliteit etc.)</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="21">
+				<annotation>
+					<documentation>Waarde te hoog ten opzichte van 'eigen' marktgegeven</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="31">
+				<annotation>
+					<documentation>Onderbouwende verkooptransacties niet goed vergelijkbaar</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="41">
+				<annotation>
+					<documentation>Onjuiste berekening gecorrigeerde vervangingswaarde</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="51">
+				<annotation>
+					<documentation>Onjuiste opbouw waarde in het economische verkeer niet-woning</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="61">
+				<annotation>
+					<documentation>Waardeverhouding ten opzichte van andere objecten niet juist</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="71">
+				<annotation>
+					<documentation>Stijgingspercentage ten opzichte van vorige WOZ-waarde</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="81">
+				<annotation>
+					<documentation>Waarde te hoog ten opzichte van een taxatierapport (van derden)</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="99">
+				<annotation>
+					<documentation>Overig</documentation>
+				</annotation>
+			</enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="SoortObjectCode">
+		<restriction base="string">
+			<length value="4"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="SoortTaxatieverslag">
+		<restriction base="string">
+			<length value="1"/>
+			<enumeration value="A">
+				<annotation>
+					<documentation>Agrarisch</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="G">
+				<annotation>
+					<documentation>Gecorrigeerde vervangingswaarde</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="H">
+				<annotation>
+					<documentation>Huurwaardekapitalisatie</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="I">
+				<annotation>
+					<documentation>In aanbouw</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="W">
+				<annotation>
+					<documentation>Woning</documentation>
+				</annotation>
+			</enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="SoortTransactie">
+		<restriction base="string">
+			<length value="1"/>
+			<enumeration value="K">
+				<annotation>
+					<documentation>Verkooptransactie</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="H">
+				<annotation>
+					<documentation>Huurtransactie</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="U">
+				<annotation>
+					<documentation>Gronduitgifte</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="S">
+				<annotation>
+					<documentation>Stichtingskosten</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="O">
+				<annotation>
+					<documentation>Overige marktinformatie</documentation>
+				</annotation>
+			</enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="StatusAanslag">
+		<restriction base="nonNegativeInteger">
+			<totalDigits value="2"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="StatusBelang">
+		<restriction base="nonNegativeInteger">
+			<totalDigits value="2"/>
+			<enumeration value="0">
+				<annotation>
+					<documentation>Actief</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="1">
+				<annotation>
+					<documentation>Gevormd, niet actief</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="8">
+				<annotation>
+					<documentation>Beëindigd</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="9">
+				<annotation>
+					<documentation>Ten onrechte opgevoerd</documentation>
+				</annotation>
+			</enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="StatusBeschikking">
+		<restriction base="nonNegativeInteger">
+			<totalDigits value="2"/>
+			<enumeration value="01">
+				<annotation>
+					<documentation>Beschikking genomen</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="02">
+				<annotation>
+					<documentation>Vernietiging beschikking</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="03">
+				<annotation>
+					<documentation>Herzieningsbeschikking</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="10">
+				<annotation>
+					<documentation>Bezwaar ingediend</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="11">
+				<annotation>
+					<documentation>Bezwaar afgehandeld, beschikking gehandhaafd</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="12">
+				<annotation>
+					<documentation>Bezwaar afgehandeld, vastgestelde waarde veranderd</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="13">
+				<annotation>
+					<documentation>Waarde ambtshalve verminderd</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="20">
+				<annotation>
+					<documentation>Beroep aangetekend</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="21">
+				<annotation>
+					<documentation>Uitspraak beroep, beschikking gehandhaafd</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="22">
+				<annotation>
+					<documentation>Uitspraak beroep, vastgestelde waarde veranderd</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="23">
+				<annotation>
+					<documentation>Hoger beroep aangetekend</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="24">
+				<annotation>
+					<documentation>Uitspraak hoger beroep, beschikking gehandhaafd</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="25">
+				<annotation>
+					<documentation>Uitspraak hoger beroep, vastgestelde waarde veranderd</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="30">
+				<annotation>
+					<documentation>Cassatie ingesteld</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="31">
+				<annotation>
+					<documentation>Arrest Hoge Raad, beschikking gehandhaafd</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="32">
+				<annotation>
+					<documentation>Arrest Hoge Raad, vastgestelde waarde veranderd</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="33">
+				<annotation>
+					<documentation>Arrest Hoge Raad, geding verwezen</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="99">
+				<annotation>
+					<documentation>Waarde te gebruiken voor voorlopige aanslag</documentation>
+				</annotation>
+			</enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="StatusBetaling">
+		<restriction base="nonNegativeInteger">
+			<totalDigits value="2"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="StatusBezwaar">
+		<restriction base="nonNegativeInteger">
+			<totalDigits value="2"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="StatusBiljet">
+		<restriction base="nonNegativeInteger">
+			<totalDigits value="2"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="StatusObject">
+		<restriction base="nonNegativeInteger">
+			<totalDigits value="1"/>
+			<enumeration value="0">
+				<annotation>
+					<documentation>Actief</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="1">
+				<annotation>
+					<documentation>Gevormd, niet actief</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="8">
+				<annotation>
+					<documentation>Beëindigd</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="9">
+				<annotation>
+					<documentation>Ten onrechte opgevoerd</documentation>
+				</annotation>
+			</enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="StatusTaxatie">
+		<restriction base="nonNegativeInteger">
+			<totalDigits value="2"/>
+			<enumeration value="0">
+				<annotation>
+					<documentation>Object vervallen</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="10">
+				<annotation>
+					<documentation>Te taxeren</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="12">
+				<annotation>
+					<documentation>Taxatie uitgesteld, afbakening niet gereed</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="14">
+				<annotation>
+					<documentation>Taxatie uitgesteld, bouwvergunning</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="16">
+				<annotation>
+					<documentation>Taxatie uitgesteld, bezwaarschrift</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="18">
+				<annotation>
+					<documentation>Taxatie uitgesteld, beroepschrift</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="20">
+				<annotation>
+					<documentation>Getaxeerd</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="22">
+				<annotation>
+					<documentation>Gecontroleerd/geaccepteerd</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="24">
+				<annotation>
+					<documentation>Te herzien na controle</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="26">
+				<annotation>
+					<documentation>Herzie taxatieverslag na controle</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="28">
+				<annotation>
+					<documentation>Nieuw taxatieverslag na controle</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="30">
+				<annotation>
+					<documentation>Te fiatteren</documentation>
+				</annotation>
+			</enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="StatusTaxatieParameter">
+		<restriction base="nonNegativeInteger">
+			<totalDigits value="1"/>
+			<enumeration value="0">
+				<annotation>
+					<documentation>Uitkomst (model)berekening</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="3">
+				<annotation>
+					<documentation>Input voor (model)berekening andere parameters</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="6">
+				<annotation>
+					<documentation>Van model afwijkend, door taxateur toegekend</documentation>
+				</annotation>
+			</enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="StatusWaardevaststelling">
+		<restriction base="nonNegativeInteger">
+			<totalDigits value="2"/>
+			<enumeration value="0">
+				<annotation>
+					<documentation>Waarde nog niet gefiatteerd</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="3">
+				<annotation>
+					<documentation>Waarde gefiatteerd, geen belanghebbende bekend</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="6">
+				<annotation>
+					<documentation>Waarde gefiatteerd</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="9">
+				<annotation>
+					<documentation>Beschikt</documentation>
+				</annotation>
+			</enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="Stijlletter">
+		<restriction base="string">
+			<maxLength value="1"/>
+			<pattern value="[a-zA-Z]"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Tariefsoort">
+		<restriction base="string">
+			<maxLength value="4"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Taxateur">
+		<restriction base="string">
+			<maxLength value="100"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="TijdstipUrenMinuten">
+		<restriction base="string">
+			<length value="5"/>
+			<pattern value="[0-2][0-9]:[0-5][0-9]"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Versie">
+		<restriction base="nonNegativeInteger">
+			<minInclusive value="1"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="VersieMajorMinor">
+		<restriction base="string">
+			<pattern value="[0-9]{1,2}.[0-9]{1,2}"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="VerwachteWijzigingWaarde">
+		<restriction base="decimal">
+			<minInclusive value="-99.9"/>
+			<maxInclusive value="999.9"/>
+			<totalDigits value="4"/>
+			<fractionDigits value="1"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="VolgnummerMarktgegeven">
+		<annotation>
+			<documentation>als waarde binnen 00000000 en 10999999 dan opgevoerd door gemeente
+			als waarde binnen 11000000 en 99999999 dan opgevoerd door externe dienstverlener</documentation>
+		</annotation>
+		<restriction base="nonNegativeInteger">
+			<totalDigits value="8"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Waardegebied">
+		<restriction base="string">
+			<maxLength value="8"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Waterschapnaam">
+		<restriction base="string">
+			<maxLength value="80"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="WOZObjectNummer">
+		<restriction base="string">
+			<pattern value="[0-9]{12}"/>
+		</restriction>
+	</simpleType>
+</schema>

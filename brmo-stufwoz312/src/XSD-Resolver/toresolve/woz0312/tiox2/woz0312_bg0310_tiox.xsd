@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2012 (http://www.altova.com) by Maarten van den Broek (messageDesign) -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:StUF="http://www.egem.nl/StUF/StUF0301" xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310" targetNamespace="http://www.egem.nl/StUF/sector/bg/0310" elementFormDefault="qualified" attributeFormDefault="unqualified" version="031201">
+	<annotation>
+		<documentation>
+			Dit schema bevat de restricties van BG-types tbv TIOX.
+			
+			Wijzigingen vergeleken met versie 031200:
+			- Binnen KOZ-TIOX het type van het element kdp.grootte in overeenstemming gebracht met het nieuwe type binnen bg0310 vanaf 1-4-2015
+ 		</documentation>
+	</annotation>
+	<include schemaLocation="../entiteiten/woz0312_bg0310_ent_basis.xsd"/>
+	<import namespace="http://www.egem.nl/StUF/StUF0301" schemaLocation="../entiteiten/woz0312_stuf_simpleTypes.xsd"/>
+	<complexType name="KOZ-TIOX">
+		<complexContent>
+			<restriction base="BG:KOZ-woz-basis">
+				<sequence>
+					<element name="kadastraleAanduiding" type="BG:KadastraleAanduidingGrp-verplicht"/>
+					<choice minOccurs="0">
+						<sequence minOccurs="0">
+							<element name="kdp.grootte" type="BG:Maateenheid8-2-neg-e" nillable="true" minOccurs="0"/>
+						</sequence>
+						<sequence minOccurs="0"/>
+					</choice>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<!--ComplexTypes voor groepen-->
+	<complexType name="AanduidingWOZobjectGrp-woz-kerngegevensKennisgeving">
+		<complexContent>
+			<restriction base="BG:AanduidingWOZobjectGrp-woz">
+				<sequence minOccurs="0">
+					<element name="aoa.identificatie" type="BG:ObjectNummering-e" nillable="true"/>
+					<element name="wpl.woonplaatsNaam" type="BG:WoonplaatsNaam-e" nillable="true"/>
+					<element name="aoa.postcode" type="BG:Postcode-e" nillable="true"/>
+					<element name="gor.openbareRuimteNaam" type="BG:NaamgevingObject-e" nillable="true"/>
+					<element name="aoa.huisnummer" type="BG:Huisnummering-e" nillable="true"/>
+					<element name="aoa.huisletter" type="BG:Huislettering-e" nillable="true"/>
+					<element name="aoa.huisnummertoevoeging" type="BG:Huisnummertoevoeging-e" nillable="true"/>
+					<element name="locatieOmschrijving" type="BG:LocatieOmschrijving-e" nillable="true"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="VerantwoordelijkeGemeenteGrp-TIOX">
+		<complexContent>
+			<restriction base="BG:VerantwoordelijkeGemeenteGrp">
+				<sequence>
+					<element name="gemeenteCode" type="BG:Gemeentecodering-e" nillable="true"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+</schema>

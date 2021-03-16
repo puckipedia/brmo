@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2012 sp1 (http://www.altova.com) by Maarten van den Broek (messageDesign) -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:StUF="http://www.egem.nl/StUF/StUF0301" xmlns:WOZ="http://www.waarderingskamer.nl/StUF/0312" xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310" targetNamespace="http://www.waarderingskamer.nl/StUF/0312" elementFormDefault="qualified" attributeFormDefault="unqualified" version="031200">
+	<annotation>
+		<documentation>
+			Dit schema bevat de definitie van de complexTypes gebruikt in de vrije berichten voor de communicatie met mijnOverheid</documentation>
+	</annotation>
+	<import namespace="http://www.egem.nl/StUF/StUF0301" schemaLocation="woz0312_msg_stuf_mijnOverheid.xsd"/>
+	<import namespace="http://www.egem.nl/StUF/sector/bg/0310" schemaLocation="woz0312_bg0310_mijnOverheid.xsd"/>
+	<include schemaLocation="woz0312_ent_mijnOverheid.xsd"/>
+	<element name="mijnOverheid-antwTaxatieverslag">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:Stuurgegevens-mijnOverheid-antwTaxatieverslag"/>
+				<element name="parameters" type="WOZ:Parameters-taxatieVerslag"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="mijnOverheid-antwWRDDetails">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:Stuurgegevens-mijnOverheid-antwWRDDetails"/>
+				<element name="parameters" type="WOZ:Parameters-Url"/>
+				<element name="wrd">
+					<complexType>
+						<sequence>
+							<element name="parameters" type="StUF:ParametersAntwoord-mijnOverheid"/>
+							<element name="antwoord" minOccurs="0">
+								<complexType>
+									<sequence>
+										<element name="wrd" type="WOZ:WRD-mijnOverheid-antwoord2"/>
+									</sequence>
+								</complexType>
+							</element>
+						</sequence>
+						<attribute ref="StUF:functie" use="required" fixed="antwoord"/>
+						<attribute ref="StUF:entiteittype" use="required" fixed="WRD"/>
+					</complexType>
+				</element>
+				<element name="soc">
+					<complexType>
+						<complexContent>
+							<extension base="WOZ:SOC-mijnOverheid-entiteit">
+								<attribute ref="StUF:functie" use="required" fixed="entiteit"/>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="mijnOverheid-antwWRDPerBsn">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:Stuurgegevens-mijnOverheid-antwWRDPerBsn"/>
+				<element name="parameters" type="StUF:ParametersAntwoord-mijnOverheid"/>
+				<element name="antwoord" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="wrd" type="WOZ:WRD-mijnOverheid-antwoord" minOccurs="0" maxOccurs="unbounded"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="mijnOverheid-vraagTaxatieverslag">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:Stuurgegevens-mijnOverheid-vraagTaxatieverslag"/>
+				<element name="selectie">
+					<complexType>
+						<sequence>
+							<element name="parameters" type="StUF:WRD-mijnOverheid-parametersVraagTaxVerslag"/>
+							<element name="gelijk" type="WOZ:WRD-mijnOverheid-selectieWOZPeildatum"/>
+						</sequence>
+						<attribute ref="StUF:entiteittype" use="required" fixed="WRD"/>
+						<attribute ref="StUF:functie" use="required" fixed="selectie"/>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="mijnOverheid-vraagWRDDetails">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:Stuurgegevens-mijnOverheid-vraagWRDDetails"/>
+				<element name="selectie">
+					<complexType>
+						<sequence>
+							<element name="parameters" type="StUF:WRD-mijnOverheid-parametersVraagSynchroon2"/>
+							<element name="gelijk" type="WOZ:WRD-mijnOverheid-selectieWOZPeildatum"/>
+							<element name="scope">
+								<complexType>
+									<sequence>
+										<element name="wrd" type="WOZ:WRD-mijnOverheid-scope2"/>
+									</sequence>
+								</complexType>
+							</element>
+						</sequence>
+						<attribute ref="StUF:functie" use="required" fixed="selectie"/>
+						<attribute ref="StUF:entiteittype" use="required" fixed="WRD"/>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="mijnOverheid-vraagWRDPerBsn">
+		<complexType>
+			<sequence>
+				<element name="stuurgegevens" type="StUF:Stuurgegevens-mijnOverheid-vraagWRDPerBsn"/>
+				<element name="parameters" type="StUF:WRD-mijnOverheid-parametersVraagSynchroon"/>
+				<element name="gelijk" type="WOZ:WRD-mijnOverheid-selectieBsnEnGemeente"/>
+				<element name="vanaf" type="WOZ:WRD-mijnOverheid-selectiePeildatum"/>
+				<element name="totEnMet" type="WOZ:WRD-mijnOverheid-selectiePeildatum"/>
+				<element name="scope">
+					<complexType>
+						<sequence>
+							<element name="wrd" type="WOZ:WRD-mijnOverheid-scope"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<!--Definitie parameters complexType-->
+	<complexType name="Parameters-taxatieVerslag">
+		<sequence>
+			<element name="pdfTaxatieVerslag" type="StUF:BinaireInhoud-basis"/>
+		</sequence>
+	</complexType>
+	<complexType name="Parameters-Url">
+		<sequence>
+			<element name="url" type="WOZ:DiepUrl-e"/>
+		</sequence>
+	</complexType>
+<complexType name="DiepUrl-e">
+	<simpleContent>
+		<extension base="WOZ:DiepUrl">
+			<attributeGroup ref="StUF:element"/>
+		</extension>
+	</simpleContent>
+</complexType>
+<simpleType name="DiepUrl">
+	<restriction base="string">
+		<maxLength value="512"/>
+	</restriction>
+</simpleType>
+</schema>

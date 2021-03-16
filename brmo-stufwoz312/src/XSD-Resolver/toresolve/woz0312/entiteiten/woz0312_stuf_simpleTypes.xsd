@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2014 rel. 2 sp1 (x64) (http://www.altova.com) by Maarten van den Broek (messageDesign B.V.) -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:StUF="http://www.egem.nl/StUF/StUF0301" targetNamespace="http://www.egem.nl/StUF/StUF0301" elementFormDefault="qualified" attributeFormDefault="unqualified" version="031205">
+	<include schemaLocation="../../bg0310/entiteiten/bg0310_stuf_simpleTypes.xsd"/>
+	<annotation>
+		<documentation>
+			Dit schema bevat de restricties van StUF-types tbv het sectormodel WOZ.
+			
+			Wijzigingen tov versie 031204:
+			- Het SimpleType OIN toegevoegd met als pattern [0-9]{20}
+		</documentation>
+	</annotation>
+	<!--Nog als erratum toe te voegen onderdelen in stuf0301.xsd-->
+	<element name="melding" type="StUF:Melding"/>
+	<!---r complexTypes-->
+	<complexType name="DatumMetIndicator-r">
+		<simpleContent>
+			<restriction base="StUF:DatumMetIndicator">
+				<attribute ref="StUF:noValue" use="prohibited"/>
+			</restriction>
+		</simpleContent>
+	</complexType>
+	<complexType name="TijdstipmetIndicator-r">
+		<simpleContent>
+			<restriction base="StUF:TijdstipMetIndicator">
+				<attribute ref="StUF:noValue" use="prohibited"/>
+			</restriction>
+		</simpleContent>
+	</complexType>
+	<!--InOnderzoek typen-->
+	<complexType name="InOnderzoekBSK">
+		<simpleContent>
+			<restriction base="StUF:StatusMetagegevenMetAttributes">
+				<attribute name="groepsnaam" type="StUF:Groepsnaam" use="prohibited"/>
+				<attribute name="elementnaam" type="StUF:InOnderzoekBSKElementen"/>
+			</restriction>
+		</simpleContent>
+	</complexType>
+	<complexType name="InOnderzoekSWO">
+		<simpleContent>
+			<restriction base="StUF:StatusMetagegevenMetAttributes">
+				<attribute name="groepsnaam" type="StUF:Groepsnaam" use="prohibited"/>
+				<attribute name="elementnaam" type="StUF:InOnderzoekSWOElementen"/>
+			</restriction>
+		</simpleContent>
+	</complexType>
+	<complexType name="InOnderzoekWOZ-woz">
+		<simpleContent>
+			<restriction base="StUF:StatusMetagegevenMetAttributes">
+				<attribute name="groepsnaam" type="StUF:InOnderzoekWOZGroep"/>
+				<attribute name="elementnaam" type="StUF:InOnderzoekWOZElementen-woz"/>
+			</restriction>
+		</simpleContent>
+	</complexType>
+	<complexType name="InOnderzoekWOZKOZ-woz">
+		<simpleContent>
+			<restriction base="StUF:StatusMetagegevenMetAttributes">
+				<attribute name="groepsnaam" type="StUF:InOnderzoekWOZGroep" use="prohibited"/>
+				<attribute name="elementnaam" type="StUF:InOnderzoekWOZKOZElementen-woz"/>
+			</restriction>
+		</simpleContent>
+	</complexType>
+	<complexType name="InOnderzoekWRD-woz">
+		<simpleContent>
+			<restriction base="StUF:StatusMetagegevenMetAttributes">
+				<attribute name="groepsnaam" use="prohibited"/>
+				<attribute name="elementnaam" type="StUF:InOnderzoekWRDElementen-woz"/>
+			</restriction>
+		</simpleContent>
+	</complexType>
+	<simpleType name="InOnderzoekBSKElementen">
+		<restriction base="StUF:Groepsnaam">
+			<enumeration value="vastgesteldeWaarde"/>
+			<enumeration value="heffingsmaatstafOZB"/>
+			<enumeration value="heffingsmaatstafOZBGebruiker"/>
+			<enumeration value="toestandspeildatum"/>
+			<enumeration value="statusBeschikking"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="InOnderzoekSWOElementen">
+		<restriction base="StUF:Groepsnaam">
+			<enumeration value="codeGebouwdOngebouwd"/>
+			<enumeration value="grondOppervlakte"/>
+			<enumeration value="meegetaxeerdeOppervlakteGebouwd"/>
+			<enumeration value="wozObjectGeometrie"/>
+			<enumeration value="statusWOZObject"/>
+			<enumeration value="ingangsdatumObject"/>
+			<enumeration value="einddatumObject"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="InOnderzoekWOZElementen-woz">
+		<restriction base="StUF:Groepsnaam">
+			<enumeration value="ozbVrijstelling"/>
+			<enumeration value="meegetaxeerdeOppervlakteGebouwd"/>
+			<enumeration value="wozObjectGeometrie"/>
+			<enumeration value="codeGebouwdOngebouwd"/>
+			<enumeration value="grondOppervlakte"/>
+			<enumeration value="gebruikscode"/>
+			<enumeration value="ingangsdatumObject"/>
+			<enumeration value="einddatumObject"/>
+			<enumeration value="gor.openbareRuimteNaam"/>
+			<enumeration value="locatieOmschrijving"/>
+			<enumeration value="statusWozObject"/>
+			<enumeration value="woonplaatsnaam"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="InOnderzoekWOZKOZElementen-woz">
+		<restriction base="StUF:Groepsnaam">
+			<enumeration value="toegekendeOppervlakte"/>
+			<enumeration value="meegetaxeerdeOppervlakte"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="InOnderzoekWRDElementen-woz">
+		<restriction base="StUF:Groepsnaam">
+			<enumeration value="vastgesteldeWaarde"/>
+			<enumeration value="heffingsmaatstafOZB"/>
+			<enumeration value="heffingsmaatstafOZBGebruiker"/>
+			<enumeration value="toestandspeildatum"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="EntiteittypeASL">
+		<restriction base="StUF:Entiteittype">
+			<enumeration value="ASL"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="EntiteittypeBLJ">
+		<restriction base="StUF:Entiteittype">
+			<enumeration value="BLJ"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="EntiteittypeBSK">
+		<restriction base="StUF:Entiteittype">
+			<enumeration value="BSK"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="EntiteittypeBZW">
+		<restriction base="StUF:Entiteittype">
+			<enumeration value="BZW"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="EntiteittypeCTL">
+		<restriction base="StUF:Entiteittype">
+			<enumeration value="CTL"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="EntiteittypeKPA">
+		<restriction base="StUF:Entiteittype">
+			<enumeration value="KPA"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="EntiteittypeRMA">
+		<restriction base="StUF:Entiteittype">
+			<enumeration value="RMA"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="EntiteittypeSOC">
+		<restriction base="StUF:Entiteittype">
+			<enumeration value="SOC"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="EntiteittypeSWO">
+		<restriction base="StUF:Entiteittype">
+			<enumeration value="SWO"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="EntiteittypeTAX">
+		<restriction base="StUF:Entiteittype">
+			<enumeration value="TAX"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="EntiteittypeTRN">
+		<restriction base="StUF:Entiteittype">
+			<enumeration value="TRN"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="EntiteittypeTVN">
+		<restriction base="StUF:Entiteittype">
+			<enumeration value="TVN"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="EntiteittypeTVW">
+		<restriction base="StUF:Entiteittype">
+			<enumeration value="TVW"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="EntiteittypeWBP">
+		<restriction base="StUF:Entiteittype">
+			<enumeration value="WBP"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="EntiteittypeWDC">
+		<restriction base="StUF:Entiteittype">
+			<enumeration value="WDC"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="EntiteittypeWSP">
+		<restriction base="StUF:Entiteittype">
+			<enumeration value="WSP"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="OIN">
+		<restriction base="StUF:Organisatie">
+			<pattern value="[0-9]{20}"/>
+		</restriction>
+	</simpleType>
+</schema>

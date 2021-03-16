@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2012 (http://www.altova.com) by Maarten van den Broek (messageDesign) -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:StUF="http://www.egem.nl/StUF/StUF0301" xmlns:WOZ="http://www.waarderingskamer.nl/StUF/0312" xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310" targetNamespace="http://www.waarderingskamer.nl/StUF/0312" elementFormDefault="qualified" attributeFormDefault="unqualified" version="031203">
+	<annotation>
+		<documentation>
+			Wijzigingen vergeleken met versie 031202:
+			- include voor lv_mutatie_afnemers/woz0312_msg_lv_mutatie_afnemers.xsd toegevoegd
+		</documentation>
+	</annotation>
+	<include schemaLocation="lv_mutatieMetFo01/woz0312_msg_lv_mutatie.xsd"/>
+	<include schemaLocation="lv_vraagAntwoord/woz0312_msg_lv_vraagAntwoord.xsd"/>
+	<include schemaLocation="aansluitproces/woz0312_msg_aansluitproces.xsd"/>
+</schema>

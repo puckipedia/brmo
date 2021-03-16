@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2013 sp1 (x64) (http://www.altova.com) by Maarten van den Broek (messageDesign B.V.) -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:StUF="http://www.egem.nl/StUF/StUF0301" targetNamespace="http://www.egem.nl/StUF/StUF0301" elementFormDefault="qualified" attributeFormDefault="unqualified" version="031202">
+	<include schemaLocation="../../0301/stuf0301.xsd"/>
+	<annotation>
+		<documentation>
+			Dit schema bevat de restricties van StUF-types tbv het opvragen voor mijnOverheid
+			
+			Wijzigingen vergeleken met versie 031201:
+			- SimpleType voor berichtcode in de complexTypes voor de stuurgegevens in lijn gebracht met gewijzigde simpleType in patch016 van StUF0301
+			- SimpleTypes voor functie vervangen door een toegevoegd simpleType met als enumeration value de huidige fixed value nav patch 016 van StUF0301
+		</documentation>
+	</annotation>
+	<!--Definities van stuurgegeven elementen-->
+	<complexType name="Stuurgegevens-aansluitproces-leegDatabaseDi01">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensDi01">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeDi01"/>
+					<element name="zender" type="StUF:Systeem"/>
+					<element name="ontvanger" type="StUF:Systeem"/>
+					<element name="referentienummer" type="StUF:Refnummer"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip"/>
+					<element name="functie" type="StUF:FunctieAansluitproces_leegDatabase"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<complexType name="Stuurgegevens-aansluitproces-leegDatabaseDu01">
+		<complexContent>
+			<restriction base="StUF:StuurgegevensDu01">
+				<sequence>
+					<element name="berichtcode" type="StUF:BerichtcodeDu01"/>
+					<element name="zender" type="StUF:Systeem"/>
+					<element name="ontvanger" type="StUF:Systeem"/>
+					<element name="referentienummer" type="StUF:Refnummer"/>
+					<element name="tijdstipBericht" type="StUF:Tijdstip"/>
+					<element name="crossRefnummer" type="StUF:Refnummer"/>
+					<element name="functie" type="StUF:FunctieAansluitproces_leegDatabase"/>
+				</sequence>
+			</restriction>
+		</complexContent>
+	</complexType>
+	<simpleType name="FunctieAansluitproces_leegDatabase">
+		<restriction base="StUF:Functie">
+			<enumeration value="aansluitproces_leegDatabase"/>
+		</restriction>
+	</simpleType>
+</schema>

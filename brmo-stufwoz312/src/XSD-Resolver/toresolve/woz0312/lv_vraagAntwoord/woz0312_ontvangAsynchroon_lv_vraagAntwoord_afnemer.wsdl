@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:WOZ="http://www.waarderingskamer.nl/StUF/0312" xmlns:StUF="http://www.egem.nl/StUF/StUF0301" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wsi="http://ws-i.org/schemas/conformanceClaim/" name="StUF-WOZ0312" targetNamespace="http://www.waarderingskamer.nl/StUF/0312">
+	<import namespace="http://www.egem.nl/StUF/StUF0301" location="../../0301/stuf0301_types.wsdl"/>
+	<documentation>
+		Deze wsdl definieert voor de ontvangAsynchroon webservice van een afnemer van de LV WOZ de operations voor de asynchrone antwoordberichten
+		NB: Het output element ontbreekt binnen de elementen porttype en binding, omdat er bij binding aan ebMS geen bevestigingsbericht wordt teruggegeven.
+		
+		Versie 031202:
+		- Het kunnen ontvangen van een Fo01 foutbericht toegevoegd
+	</documentation>
+	<types>
+		<xs:schema>
+			<xs:import namespace="http://www.waarderingskamer.nl/StUF/0312" schemaLocation="woz0312_msg_lv_vraagAntwoord.xsd"/>
+		</xs:schema>
+	</types>
+	<message name="nnpLa02">
+		<part name="body" element="WOZ:nnpLa02"/>
+	</message>
+	<message name="npsLa02">
+		<part name="body" element="WOZ:npsLa02"/>
+	</message>
+	<message name="swoLa02-lvwoz">
+		<part name="body" element="WOZ:swoLa02-lvwoz"/>
+	</message>
+	<message name="swoLa04-lvwoz">
+		<part name="body" element="WOZ:swoLa04-lvwoz"/>
+	</message>
+	<message name="swoLa06-lvwoz">
+		<part name="body" element="WOZ:swoLa06-lvwoz"/>
+	</message>
+	<message name="swoLa08-lvwoz">
+		<part name="body" element="WOZ:swoLa08-lvwoz"/>
+	</message>
+	<message name="swoLa10-lvwoz">
+		<part name="body" element="WOZ:swoLa10-lvwoz"/>
+	</message>
+	<message name="vesLa02">
+		<part name="body" element="WOZ:vesLa02"/>
+	</message>
+	<message name="wozLa02-lvwoz">
+		<part name="body" element="WOZ:wozLa02-lvwoz"/>
+	</message>
+	<message name="wozLa04-lvwoz">
+		<part name="body" element="WOZ:wozLa04-lvwoz"/>
+	</message>
+	<message name="wozLa06-lvwoz">
+		<part name="body" element="WOZ:wozLa06-lvwoz"/>
+	</message>
+	<message name="wozLa08-lvwoz">
+		<part name="body" element="WOZ:wozLa08-lvwoz"/>
+	</message>
+	<message name="wozLa10-lvwoz">
+		<part name="body" element="WOZ:wozLa10-lvwoz"/>
+	</message>
+	<message name="wrdLa02-lvwoz">
+		<part name="body" element="WOZ:wrdLa02-lvwoz"/>
+	</message>
+	<message name="wrdLa04-lvwoz">
+		<part name="body" element="WOZ:wrdLa04-lvwoz"/>
+	</message>
+	<message name="wrdLa06-lvwoz">
+		<part name="body" element="WOZ:wrdLa06-lvwoz"/>
+	</message>
+	<message name="wrdLa08-lvwoz">
+		<part name="body" element="WOZ:wrdLa08-lvwoz"/>
+	</message>
+	<message name="wrdLa10-lvwoz">
+		<part name="body" element="WOZ:wrdLa10-lvwoz"/>
+	</message>
+	<portType name="OntvangAsynchroon">
+		<documentation>
+		Dit portType ondersteunt als operaties alle asynchrone berichten gedefinieerd binnen het sectormodel
+	</documentation>
+		<operation name="nnpLa02">
+			<input message="WOZ:nnpLa02"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="npsLa02">
+			<input message="WOZ:npsLa02"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="swoLa02-lvwoz">
+			<input message="WOZ:swoLa02-lvwoz"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="swoLa04-lvwoz">
+			<input message="WOZ:swoLa04-lvwoz"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="swoLa06-lvwoz">
+			<input message="WOZ:swoLa06-lvwoz"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="swoLa08-lvwoz">
+			<input message="WOZ:swoLa08-lvwoz"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="swoLa10-lvwoz">
+			<input message="WOZ:swoLa10-lvwoz"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="vesLa02">
+			<input message="WOZ:vesLa02"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="wozLa02-lvwoz">
+			<input message="WOZ:wozLa02-lvwoz"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="wozLa04-lvwoz">
+			<input message="WOZ:wozLa04-lvwoz"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="wozLa06-lvwoz">
+			<input message="WOZ:wozLa06-lvwoz"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="wozLa08-lvwoz">
+			<input message="WOZ:wozLa08-lvwoz"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="wozLa10-lvwoz">
+			<input message="WOZ:wozLa10-lvwoz"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="wrdLa02-lvwoz">
+			<input message="WOZ:wrdLa02-lvwoz"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="wrdLa04-lvwoz">
+			<input message="WOZ:wrdLa04-lvwoz"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="wrdLa06-lvwoz">
+			<input message="WOZ:wrdLa06-lvwoz"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="wrdLa08-lvwoz">
+			<input message="WOZ:wrdLa08-lvwoz"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="wrdLa10-lvwoz">
+			<input message="WOZ:wrdLa10-lvwoz"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="Fo01">
+			<input message="StUF:Fo01"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+		<operation name="Fo03">
+			<input message="StUF:Fo03"/>
+			<fault name="fout" message="StUF:Fo03"/>
+		</operation>
+	</portType>
+	<binding name="SOAPOntvangAsynchroon" type="WOZ:OntvangAsynchroon">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<documentation>
+			Omdat de uit te wisselen berichten volledig gedefinieerd zijn in het sectormodel cq de StUF-standaard, kunnen we ze zonder verdere encoding (“literal”) opnemen in de body.
+Niet ondersteunde berichten kunnen uit de binding en portType worden verwijderd.
+		</documentation>
+		<operation name="nnpLa02">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/nnpLa02"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="npsLa02">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/npsLa02"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="swoLa02-lvwoz">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/swoLa02-lvwoz"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="swoLa04-lvwoz">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/swoLa04-lvwoz"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="swoLa06-lvwoz">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/swoLa06-lvwoz"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="swoLa08-lvwoz">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/swoLa08-lvwoz"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="swoLa10-lvwoz">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/swoLa10-lvwoz"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="vesLa02">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/vesLa02"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="wozLa02-lvwoz">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/wozLa02-lvwoz"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="wozLa04-lvwoz">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/wozLa04-lvwoz"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="wozLa06-lvwoz">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/wozLa06-lvwoz"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="wozLa08-lvwoz">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/wozLa08-lvwoz"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="wozLa10-lvwoz">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/wozLa10-lvwoz"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="wrdLa02-lvwoz">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/wrdLa02-lvwoz"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="wrdLa04-lvwoz">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/wrdLa04-lvwoz"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="wrdLa06-lvwoz">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/wrdLa06-lvwoz"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="wrdLa08-lvwoz">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/wrdLa08-lvwoz"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="wrdLa10-lvwoz">
+			<soap:operation soapAction="http://www.waarderingskamer.nl/StUF/0312/wrdLa10-lvwoz"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="Fo01">
+			<soap:operation soapAction="http://www.egem.nl/StUF/StUF0301/Fo01"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="Fo03">
+			<soap:operation soapAction="http://www.egem.nl/StUF/StUF0301/Fo03"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<fault name="fout">
+				<soap:fault name="fout" use="literal"/>
+			</fault>
+		</operation>
+	</binding>
+	<service name="OntvangAsynchroon">
+		<documentation>
+	Hieronder wordt de concreet aan te roepen service voor het ontvangen van asynchrone berichten vanuit de LV WOZ gedefinieerd. In het attribute location in het element soap:address dient nog de correcte URL te worden ingevuld.
+		</documentation>
+		<port name="OntvangAsynchroon" binding="WOZ:SOAPOntvangAsynchroon">
+			<soap:address location="http://example.com/OntvangAsynchroon"/>
+			<documentation>
+				<wsi:Claim conformsTo="http://ws-i.org/profiles/basic/1.1"/>
+			</documentation>
+		</port>
+	</service>
+</definitions>
