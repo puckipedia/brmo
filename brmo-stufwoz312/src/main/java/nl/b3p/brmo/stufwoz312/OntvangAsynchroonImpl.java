@@ -67,12 +67,13 @@ public class OntvangAsynchroonImpl implements OntvangAsynchroonPortType {
             Date d = STUFWOZDATEFORMAT.parse(tijdstipBericht);
             String bestand_naam = "StUF-WOZ upload op " + STUFWOZDATEFORMAT.format(new Date());
 
-            brmo.loadFromStream(BrmoFramework.BR_BRP, in, bestand_naam, d, null);
+            brmo.loadFromStream(BrmoFramework.BR_WOZ, in, bestand_naam, d, null);
             brmo.closeBrmoFramework();
         } catch (BrmoException ex) {
-            LOG.error("Fout tijdens laden van StUF-BG bericht", ex);
+            LOG.error("Fout tijdens laden van StUF-WOZ bericht", ex);
         } catch (JAXBException | ParseException ex) {
             LOG.error("Fout tijdens parsen van bericht", ex);
+            LOG.debug("Fout tijdens parsen van bericht: "+ jaxbElement);
         }
     }
 
@@ -153,7 +154,7 @@ public class OntvangAsynchroonImpl implements OntvangAsynchroonPortType {
 
     @Override
     public Bv03Bericht.Stuurgegevens wozSh01Lvwoz(WOZStuurgegevensSh01 stuurgegevens, WOZSa01Lv actueel, WozSh01Lvwoz.Historie historie) throws Fo03 {
-        return null;
+        throw new Fo03("unsupported", maakFout("unsupported"));
     }
 
     @Override
@@ -163,54 +164,55 @@ public class OntvangAsynchroonImpl implements OntvangAsynchroonPortType {
 
     @Override
     public Bv03Bericht.Stuurgegevens wrdSh01Lvwoz(WRDStuurgegevensSh01 stuurgegevens, WRDSa01Lv actueel, WrdSh01Lvwoz.Historie historie) throws Fo03 {
-        return null;
+        throw new Fo03("unsupported", maakFout("unsupported"));
     }
 
     @Override
     public Bv03Bericht.Stuurgegevens bskmbDi01(StuurgegevensBSKMB stuurgegevens, WOZLvRoutering routering, NPSUpdateVoegToeMetDatumEindeSynchronisatie voegToeNPS, NNPUpdateVoegToeMetDatumEindeSynchronisatie voegToeNNP, VESUpdateVoegToeMetDatumEindeSynchronisatie voegToeVES, WRDUpdateVoegBeschikkingMBToe voegBeschikkingMBtoeWRD, WOZUpdateWijzigMedeBelanghebbende voegMedeBelanghebbendeToeWOZ) throws Fo03 {
-        return null;
+        throw new Fo03("unsupported", maakFout("unsupported"));
     }
 
     @Override
     public Bv03Bericht.Stuurgegevens bswoDi01(StuurgegevensBSWO stuurgegevens, WOZLvRoutering routering, SWOUpdateBeeindig beeindigSWO) throws Fo03 {
-        return null;
+        throw new Fo03("unsupported", maakFout("unsupported"));
     }
 
     @Override
     public Bv03Bericht.Stuurgegevens bwozDi01(StuurgegevensBWOZ stuurgegevens, WOZLvRoutering routering, WOZUpdateBeeindig beeindigWOZ, List<NNPUpdateBeeindig> beeindigNNP, List<NPSUpdateBeeindig> beeindigNPS, List<VESUpdateBeeindig> beeindigVES) throws Fo03 {
-        return null;
+        throw new Fo03("unsupported", maakFout("unsupported"));
     }
 
     @Override
     public Bv03Bericht.Stuurgegevens ibbDi01(StuurgegevensIBB stuurgegevens, WOZLvRoutering routering, WRDUpdateIndienenBezwaarBeroep indienenBezwaarBeroepWRD) throws Fo03 {
-        return null;
+        throw new Fo03("unsupported", maakFout("unsupported"));
     }
 
 
     @Override
     public Bv03Bericht.Stuurgegevens mbeDi01(StuurgegevensMBE stuurgegevens, WOZLvRoutering routering, NPSUpdateVoegToe voegToeNPS, NNPUpdateVoegToe voegToeNNP, VESUpdateVoegToe voegToeVES, WOZUpdateWijzigStatusBelang wijzigStatusBelang, MBEDi01.WijzigEigenaarWOZ wijzigEigenaarWOZ, NNPUpdateBeeindig beeindigNNP, NPSUpdateBeeindig beeindigNPS, VESUpdateBeeindig beeindigVES) throws Fo03 {
-        return null;
+        throw new Fo03("unsupported", maakFout("unsupported"));
     }
 
     @Override
     public Bv03Bericht.Stuurgegevens mbgDi01(StuurgegevensMBG stuurgegevens, WOZLvRoutering routering, NPSUpdateVoegToe voegToeNPS, NNPUpdateVoegToe voegToeNNP, VESUpdateVoegToe voegToeVES, WOZUpdateWijzigStatusBelang wijzigStatusBelang, WOZUpdateWijzigGebruiker wijzigGebruikerWOZ, NNPUpdateBeeindig beeindigNNP, NPSUpdateBeeindig beeindigNPS, VESUpdateBeeindig beeindigVES) throws Fo03 {
-        return null;
+        throw new Fo03("unsupported", maakFout("unsupported"));
     }
 
     @Override
     public Bv03Bericht.Stuurgegevens melDi01(StuurgegevensMEL stuurgegevens, WOZLvRoutering routering, SWOUpdateMelding meldingSWO, WOZUpdateMelding meldingWOZ, WRDUpdateMelding meldingWRD) throws Fo03 {
-        return null;
+        throw new Fo03("unsupported", maakFout("unsupported"));
     }
 
     @Override
     public Bv03Bericht.Stuurgegevens mhefDi01(StuurgegevensMHEF stuurgegevens, WOZLvRoutering routering, WOZUpdateWijzigOZBVrijstelling wijzigWOZ, WRDUpdateWijzigHeffingskenmerken wijzigWRD) throws Fo03 {
-        return null;
+        LOG.warn("unsupported bericht voor:  " + wijzigWOZ + wijzigWRD);
+        throw new Fo03("unsupported", maakFout("unsupported"));
     }
 
 
     @Override
     public Bv03Bericht mbagDi01(MBAGDi01 body) throws Fo03 {
-        return null;
+        throw new Fo03("unsupported", maakFout("unsupported"));
     }
 
     @Override
@@ -220,7 +222,8 @@ public class OntvangAsynchroonImpl implements OntvangAsynchroonPortType {
 
     @Override
     public void fo03(Holder<Fo03Bericht> body) throws Fo03 {
-
+        LOG.warn("unsupported functie aanroep voor:  " + body);
+        throw new Fo03("unsupported", maakFout("unsupported"));
     }
 
     @Override
@@ -232,72 +235,85 @@ public class OntvangAsynchroonImpl implements OntvangAsynchroonPortType {
 
     @Override
     public Bv03Bericht.Stuurgegevens mkozDi01(StuurgegevensMKOZ stuurgegevens, WOZLvRoutering routering, WOZUpdateWijzigKOZ wijzigKadObjectWOZ, SWOUpdateWijzigKOZ wijzigKadObjectSWO) throws Fo03 {
-        return null;
+        LOG.warn("unsupported bericht voor:  " + wijzigKadObjectWOZ);
+        throw new Fo03("unsupported", maakFout("unsupported"));
     }
 
     @Override
     public Bv03Bericht.Stuurgegevens msubDi01(StuurgegevensMSUB stuurgegevens, WOZLvRoutering routering, NNPUpdateWijzig wijzigNNP, NPSUpdateWijzig wijzigNPS, VESUpdateWijzig wijzigVES) throws Fo03 {
-        return null;
+        LOG.warn("unsupported bericht voor:  " + wijzigNNP);
+        throw new Fo03("unsupported", maakFout("unsupported"));
     }
 
     @Override
     public Bv03Bericht.Stuurgegevens nbskDi01(StuurgegevensNBSK stuurgegevens, WOZLvRoutering routering, WRDUpdateVoegWaardeToe voegToeWRD, WRDUpdateVoegBeschikkingToe voegBeschikkingtoe) throws Fo03 {
-        return null;
+        throw new Fo03("unsupported", maakFout("unsupported"));
     }
 
     @Override
     public Bv03Bericht.Stuurgegevens oswoDi01(StuurgegevensOSWO stuurgegevens, WOZLvRoutering routering, SWOUpdateVoegToe voegToeSWO) throws Fo03 {
-        return null;
+        LOG.debug("WOZUpdateWijzigKenmerken bericht ontvangen: " + voegToeSWO);
+        saveBericht(voegToeSWO, stuurgegevens.getTijdstipBericht());
+        return maakStuurgegevensBv03();
     }
 
     @Override
     public Bv03Bericht.Stuurgegevens owozDi01(StuurgegevensOWOZ stuurgegevens, WOZLvRoutering routering, List<NNPUpdateVoegToe> voegToeNNP, List<NPSUpdateVoegToe> voegToeNPS, List<VESUpdateVoegToe> voegToeVES, WOZUpdateVoegToe voegToeWOZ) throws Fo03 {
-        return null;
+        throw new Fo03("unsupported", maakFout("unsupported"));
     }
 
     @Override
     public Bv03Bericht.Stuurgegevens ubbDi01(StuurgegevensUBB stuurgegevens, WOZLvRoutering routering, WRDUpdateUitspraakBezwaarBeroep uitspraakBezwaarBeroepWRD) throws Fo03 {
-        return null;
+        LOG.debug("WOZUpdateWijzigKenmerken bericht ontvangen: " + uitspraakBezwaarBeroepWRD);
+        saveBericht(uitspraakBezwaarBeroepWRD, stuurgegevens.getTijdstipBericht());
+        return maakStuurgegevensBv03();
     }
 
     @Override
     public Bv03Bericht.Stuurgegevens vbskDi01(StuurgegevensVBSK stuurgegevens, WOZLvRoutering routering, WRDUpdateVernietigBeschikking vernietigBeschikkingWRD) throws Fo03 {
-        return null;
+        LOG.debug("WOZUpdateWijzigKenmerken bericht ontvangen: " + vernietigBeschikkingWRD);
+        saveBericht(vernietigBeschikkingWRD, stuurgegevens.getTijdstipBericht());
+        return maakStuurgegevensBv03();
     }
 
     @Override
     public Bv03Bericht.Stuurgegevens waswoDi01(StuurgegevensWASWO stuurgegevens, WOZLvRoutering routering, SWOUpdateWijzigAfbakening wijzigAfbakeningSWO) throws Fo03 {
-        return null;
+        LOG.debug("WOZUpdateWijzigKenmerken bericht ontvangen: " + wijzigAfbakeningSWO);
+        saveBericht(wijzigAfbakeningSWO, stuurgegevens.getTijdstipBericht());
+        return maakStuurgegevensBv03();
     }
 
     @Override
     public Bv03Bericht.Stuurgegevens wawozDi01(StuurgegevensWAWOZ stuurgegevens, WOZLvRoutering routering, WOZUpdateWijzigAfbakening wijzigAfbakeningWOZ) throws Fo03 {
-        return null;
+        LOG.debug("WOZUpdateWijzigKenmerken bericht ontvangen: " + wijzigAfbakeningWOZ);
+        saveBericht(wijzigAfbakeningWOZ, stuurgegevens.getTijdstipBericht());
+        return maakStuurgegevensBv03();
     }
 
     @Override
     public Bv03Bericht.Stuurgegevens wgemHangObjectOmDi01(StuurgegevensWGEMHangObjectOm stuurgegevens, WOZLvRoutering routering, SWOUpdateWijzigGemeente wijzigGemeenteSWO, WOZUpdateWijzigGemeente wijzigGemeenteWOZ) throws Fo03 {
-        return null;
+
+        throw new Fo03("unsupported", maakFout("unsupported"));
     }
 
     @Override
     public Bv03Bericht.Stuurgegevens wgemHangSubjectOmDi01(StuurgegevensWGEMHangSubjectOm stuurgegevens, WOZLvRoutering routering, WGEMHangSubjectOmDi01.OudeGemeenteNNP oudeGemeenteNNP, WGEMHangSubjectOmDi01.NieuweGemeenteNNP nieuweGemeenteNNP, WGEMHangSubjectOmDi01.OudeGemeenteNPS oudeGemeenteNPS, WGEMHangSubjectOmDi01.NieuweGemeenteNPS nieuweGemeenteNPS, WGEMHangSubjectOmDi01.OudeGemeenteVES oudeGemeenteVES, WGEMHangSubjectOmDi01.NieuweGemeenteVES nieuweGemeenteVES) throws Fo03 {
-        return null;
+        throw new Fo03("unsupported", maakFout("unsupported"));
     }
 
     @Override
     public Bv03Bericht.Stuurgegevens wgemMeldSubjectAfDi01(StuurgegevensWGEMMeldSubjectAf stuurgegevens, WOZLvRoutering routering, NNPUpdateBeeindig meldAfNNP, NPSUpdateBeeindig meldAfNPS, VESUpdateBeeindig meldAfVES) throws Fo03 {
-        return null;
+        throw new Fo03("unsupported", maakFout("unsupported"));
     }
 
     @Override
     public Bv03Bericht.Stuurgegevens wgemVoegSubjectToeDi01(StuurgegevensWGEMVoegSubjectToe stuurgegevens, WOZLvRoutering routering, NNPUpdateVoegToe voegToeNNP, NPSUpdateVoegToe voegToeNPS, VESUpdateVoegToe voegToeVES) throws Fo03 {
-        return null;
+        throw new Fo03("unsupported", maakFout("unsupported"));
     }
 
     @Override
     public Bv03Bericht.Stuurgegevens wwspDi01(StuurgegevensWWSP stuurgegevens, WOZLvRoutering routering, SWOUpdateWijzigWaterschap wijzigWaterschapSWO, WOZUpdateWijzigWaterschap wijzigWaterschapWOZ) throws Fo03 {
-        return null;
+        throw new Fo03("unsupported", maakFout("unsupported"));
     }
 
 }
