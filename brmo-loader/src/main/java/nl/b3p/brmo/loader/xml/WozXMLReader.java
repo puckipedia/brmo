@@ -5,6 +5,9 @@ import nl.b3p.brmo.loader.StagingProxy;
 import nl.b3p.brmo.loader.entity.Bericht;
 import nl.b3p.brmo.loader.entity.WozBericht;
 import nl.b3p.brmo.loader.util.RsgbTransformer;
+import org.apache.commons.io.input.TeeInputStream;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -17,41 +20,54 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 import javax.xml.xpath.*;
+import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.StringWriter;
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 public class WozXMLReader extends BrmoXMLReader {
     public static final String PRS_PREFIX = "WOZ.NPS.";
+    private static final Log LOG = LogFactory.getLog(WozXMLReader.class);
     private final String pathToXsl = "/xsl/woz-brxml-preprocessor.xsl";
-    private StagingProxy staging;
+    private final StagingProxy staging;
     private InputStream in;
     private Templates template;
     private NodeList nodes = null;
     private int index;
+    private String brOrigXML = null;
 
     public WozXMLReader(InputStream in, Date d, StagingProxy staging) throws Exception {
         this.in = in;
         this.staging = staging;
 
-        if (d!=null) {
+
+        if (d != null) {
             setBestandsDatum(d);
         } else {
             //TODO  WOZ:stuurgegevens/StUF:tijdstipBericht 20200712072147894
-             setDatumAsString("20200712072147894","yyyyMMddHHmmssSSS");
+            setDatumAsString("20200712072147894", "yyyyMMddHHmmssSSS");
         }
+
         init();
     }
 
     @Override
     public void init() throws Exception {
         soort = BrmoFramework.BR_WOZ;
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        in = new TeeInputStream(in, bos, true);
+
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         factory.setNamespaceAware(true);
         DocumentBuilder builder = factory.newDocumentBuilder();
         Document doc = builder.parse(in);
+
+
+        brOrigXML = bos.toString(StandardCharsets.UTF_8.name());
+        LOG.debug("Originele WOZ xml is: \n" + brOrigXML);
 
         TransformerFactory tf = TransformerFactory.newInstance();
         tf.setURIResolver(new URIResolver() {
@@ -64,7 +80,12 @@ public class WozXMLReader extends BrmoXMLReader {
         Source xsl = new StreamSource(this.getClass().getResourceAsStream(pathToXsl));
         this.template = tf.newTemplates(xsl);
 
-        nodes = doc.getDocumentElement().getChildNodes();
+        XPathFactory xPathfactory = XPathFactory.newInstance();
+
+        XPath xpath = xPathfactory.newXPath();
+        XPathExpression expr = xpath.compile("//*[local-name()='object']");
+
+        nodes = (NodeList) expr.evaluate(doc, XPathConstants.NODESET);
         index = 0;
     }
 
@@ -84,8 +105,10 @@ public class WozXMLReader extends BrmoXMLReader {
         Bericht old = staging.getPreviousBericht(object_ref, getBestandsDatum(), -1L, new StringBuilder());
         Transformer t;
         if (old != null) {
+            LOG.debug("gebruik preprocessor xsl");
             t = this.template.newTransformer();
         } else {
+            LOG.debug("gebruik extractie xsl");
             t = TransformerFactory.newInstance().newTransformer();
         }
 
@@ -93,16 +116,20 @@ public class WozXMLReader extends BrmoXMLReader {
         t.transform(new DOMSource(n), new StreamResult(sw));
 
         Map<String, String> bsns = extractBSN(n);
-
         String el = getXML(bsns);
         String origXML = sw.toString();
         String brXML = "<root>" + origXML;
         brXML += el + "</root>";
+
         WozBericht b = new WozBericht(brXML);
-        b.setBrOrgineelXml(origXML);
+        if (index == 1) {
+            // alleen op 1e brmo bericht van mogelijk meer uit originele soap bericht
+            b.setBrOrgineelXml(brOrigXML);
+        }
         b.setVolgordeNummer(index);
         b.setObjectRef(object_ref);
         b.setDatum(getBestandsDatum());
+        LOG.trace("bericht: " + b);
         return b;
     }
 
@@ -114,13 +141,13 @@ public class WozXMLReader extends BrmoXMLReader {
         // WOZ.NPS.<bsnhash>
         // WOZ:object StUF:entiteittype="NNP"/WOZ:isEen/WOZ:gerelateerde/BG:inn.nnpId
         // WOZ.NNP.nummer
-
-        NodeList childs = n.getChildNodes();
         String objRef = null;
+        NodeList childs = n.getChildNodes();
+//        LOG.debug("zoek objectref in node: " + n.getNodeName() + " - aantal subnodes: " + childs.getLength());
+
         for (int i = 0; i < childs.getLength(); i++) {
             Node child = childs.item(i);
-            String name = child.getNodeName();
-            if (name.contains("wozObjectNummer")) {
+            if (child.getLocalName().equals("wozObjectNummer")) {
                 objRef = child.getTextContent();
                 break;
             }
@@ -130,6 +157,7 @@ public class WozXMLReader extends BrmoXMLReader {
 
     /**
      * maakt een map met bsn,bsnhash.
+     *
      * @param n document node met bsn-nummer
      * @return hashmap met bsn,bsnhash
      * @throws XPathExpressionException if any
@@ -152,6 +180,10 @@ public class WozXMLReader extends BrmoXMLReader {
     }
 
     public String getXML(Map<String, String> map) throws ParserConfigurationException {
+        if (map.isEmpty()) {
+            // als in bericht geen personen zitten
+            return "";
+        }
         String root = "<bsnhashes>";
         for (Map.Entry<String, String> entry : map.entrySet()) {
             if (!entry.getKey().isEmpty() && !entry.getValue().isEmpty()) {

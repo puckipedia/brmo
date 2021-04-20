@@ -3,13 +3,26 @@
  */
 package nl.b3p.brmo.stufwoz312.util;
 
+import nl.b3p.brmo.loader.BrmoFramework;
+import nl.b3p.brmo.loader.util.BrmoException;
+import nl.b3p.brmo.loader.util.BrmoLeegBestandException;
+import nl.b3p.brmo.service.util.ConfigUtil;
 import nl.egem.stuf.stuf0301.*;
+import nl.waarderingskamer.stuf._0312.Fo03;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 
+import javax.sql.DataSource;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.AbstractMap.SimpleEntry;
 import java.util.Date;
@@ -21,12 +34,53 @@ import java.util.List;
  * @author mprins
  */
 public final class StUFwoz312Util {
-
     public static final SimpleDateFormat STUFWOZDATEFORMAT = new SimpleDateFormat("yyyyMMddkkmmssSSS");
+    private static final Log LOG = LogFactory.getLog(StUFwoz312Util.class);
     private static final String XMLNAMESPACE = "xmlns";
     private static JAXBContext jaxbContext;
 
     private StUFwoz312Util() {
+    }
+
+    public static Bv03Bericht.Stuurgegevens saveBericht(Object jaxbElement, String tijdstipBericht) throws Fo03 {
+        try {
+            Date d = STUFWOZDATEFORMAT.parse(tijdstipBericht);
+            String bestand_naam = "StUF-WOZ upload op " + STUFWOZDATEFORMAT.format(new Date());
+
+            DataSource ds = ConfigUtil.getDataSourceStaging();
+            BrmoFramework brmo = new BrmoFramework(ds, null);
+
+            InputStream in = getXml(jaxbElement);
+            brmo.loadFromStream(BrmoFramework.BR_WOZ, in, bestand_naam, d, null);
+            brmo.closeBrmoFramework();
+        } catch (BrmoLeegBestandException ex) {
+            LOG.error(ex.getLocalizedMessage());
+            throw new Fo03(ex.getLocalizedMessage(), maakFout(ex.getLocalizedMessage(), ex));
+        } catch (BrmoException ex) {
+            LOG.error("Fout tijdens laden van StUF-WOZ bericht", ex);
+            throw new Fo03("Fout tijdens laden van StUF-WOZ bericht", maakFout("Fout tijdens laden van StUF-WOZ bericht", ex));
+        } catch (JAXBException | ParseException ex) {
+            LOG.error("Fout tijdens parsen van bericht", ex);
+            LOG.debug("Fout tijdens parsen van bericht: " + jaxbElement);
+            throw new Fo03("Fout tijdens parsen van bericht", maakFout("Fout tijdens parsen van bericht", ex));
+        }
+        return maakStuurgegevensBv03();
+    }
+
+    /**
+     * Maakt van POJO een inputstream.
+     *
+     * @param jaxbElement POJO (bericht body)
+     * @return inputstream van bericht body/POJO
+     * @throws JAXBException als mashalling mislukt
+     */
+    private static InputStream getXml(Object jaxbElement) throws JAXBException {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        Marshaller jaxbMarshaller = StUFwoz312Util.getStufJaxbContext().createMarshaller();
+        jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+        jaxbMarshaller.setProperty(Marshaller.JAXB_ENCODING, "UTF-8");
+        jaxbMarshaller.marshal(jaxbElement, baos);
+        return new ByteArrayInputStream(baos.toByteArray());
     }
 
     public static Fo03Bericht.Stuurgegevens maakStuurgegevensFo03() {
@@ -77,7 +131,8 @@ public final class StUFwoz312Util {
         sys.setAdministratie("P");
         stuurgegevens.setZender(sys);
         stuurgegevens.setBerichtcode(Berichtcode.BV_03);
-        // stuur.setOntvanger();
+        // TODO mogelijk niet correct
+        stuurgegevens.setOntvanger(sys);
         // stuur.setCrossRefnummer();
         // stuur.setReferentienummer();
 
@@ -118,7 +173,7 @@ public final class StUFwoz312Util {
             Node node = atts.item(i);
             String name = node.getNodeName();
             if (name != null && (XMLNAMESPACE.equals(name) || name.startsWith(XMLNAMESPACE + ":"))) {
-                SimpleEntry s = new SimpleEntry(name, node.getNodeValue());
+                SimpleEntry<String, String> s = new SimpleEntry<>(name, node.getNodeValue());
                 prefixes.add(s);
             }
         }
