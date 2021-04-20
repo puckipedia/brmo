@@ -15,9 +15,7 @@
     </xsl:template>
 
     <xsl:template match="*[@StUF:noValue='geenWaarde']">
-        <xsl:copy>
-            <xsl:apply-templates select="@*|node()"/>geenWaarde
-        </xsl:copy>
+        <xsl:copy><xsl:apply-templates select="@*|node()"/>geenWaarde</xsl:copy>
     </xsl:template>
 
     <xsl:template match="@*|text()|comment()|processing-instruction()">

@@ -14,6 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.AbstractMap.SimpleEntry;
 import java.util.Date;
 import java.util.List;
+
 /**
  * Utility methodes voor StUF BG 204.
  *
@@ -22,6 +23,7 @@ import java.util.List;
 public final class StUFwoz312Util {
 
     public static final SimpleDateFormat STUFWOZDATEFORMAT = new SimpleDateFormat("yyyyMMddkkmmssSSS");
+    private static final String XMLNAMESPACE = "xmlns";
     private static JAXBContext jaxbContext;
 
     private StUFwoz312Util() {
@@ -50,6 +52,7 @@ public final class StUFwoz312Util {
         f.setPlek(Foutplek.SERVER);
         if (e != null) {
             f.setOmschrijving(e.getLocalizedMessage());
+            f.setDetails(e.toString());
         }
         fout.setBody(f);
         fout.setStuurgegevens(maakStuurgegevensFo03());
@@ -90,7 +93,7 @@ public final class StUFwoz312Util {
 
     public static JAXBContext getStufJaxbContext() throws JAXBException {
         if (jaxbContext == null) {
-            jaxbContext = JAXBContext.newInstance("nl.egem.stuf.stuf0301:nl.waarderingskamer.stuf._0312");
+            jaxbContext = JAXBContext.newInstance("nl.egem.stuf.stuf0301:nl.egem.stuf.sector.bg._0310:nl.waarderingskamer.stuf._0312:net.opengis.gml");
         }
         return jaxbContext;
     }
@@ -106,7 +109,7 @@ public final class StUFwoz312Util {
     /**
      * Get all prefixes defined on this element for the specified namespace.
      *
-     * @param element dom element
+     * @param element  dom element
      * @param prefixes lijst van namespace prefixes
      */
     public static void getPrefixes(Element element, List<SimpleEntry<String, String>> prefixes) {
@@ -120,6 +123,5 @@ public final class StUFwoz312Util {
             }
         }
     }
-    private static final String XMLNAMESPACE = "xmlns";
 
 }
