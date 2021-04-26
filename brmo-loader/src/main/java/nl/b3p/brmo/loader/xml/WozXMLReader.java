@@ -39,18 +39,12 @@ public class WozXMLReader extends BrmoXMLReader {
     private int index;
     private String brOrigXML = null;
 
+    private final XPathFactory xPathfactory = XPathFactory.newInstance();
+
     public WozXMLReader(InputStream in, Date d, StagingProxy staging) throws Exception {
         this.in = in;
         this.staging = staging;
-
-
-        if (d != null) {
-            setBestandsDatum(d);
-        } else {
-            //TODO  WOZ:stuurgegevens/StUF:tijdstipBericht 20200712072147894
-            setDatumAsString("20200712072147894", "yyyyMMddHHmmssSSS");
-        }
-
+        setBestandsDatum(d);
         init();
     }
 
@@ -64,7 +58,6 @@ public class WozXMLReader extends BrmoXMLReader {
         factory.setNamespaceAware(true);
         DocumentBuilder builder = factory.newDocumentBuilder();
         Document doc = builder.parse(in);
-
 
         brOrigXML = bos.toString(StandardCharsets.UTF_8.name());
         LOG.debug("Originele WOZ xml is: \n" + brOrigXML);
@@ -80,12 +73,17 @@ public class WozXMLReader extends BrmoXMLReader {
         Source xsl = new StreamSource(this.getClass().getResourceAsStream(pathToXsl));
         this.template = tf.newTemplates(xsl);
 
-        XPathFactory xPathfactory = XPathFactory.newInstance();
-
         XPath xpath = xPathfactory.newXPath();
-        XPathExpression expr = xpath.compile("//*[local-name()='object']");
 
-        nodes = (NodeList) expr.evaluate(doc, XPathConstants.NODESET);
+        if (this.getBestandsDatum() == null) {
+            // probeer nog uit doc te halen
+            XPathExpression tijdstipBericht = xpath.compile("//*[local-name()='tijdstipBericht']");
+            Node datum = (Node) tijdstipBericht.evaluate(doc, XPathConstants.NODE);
+            setDatumAsString(datum.getTextContent(), "yyyyMMddHHmmssSSS");
+        }
+
+        XPathExpression objectNode = xpath.compile("//*[local-name()='object']");
+        nodes = (NodeList) objectNode.evaluate(doc, XPathConstants.NODESET);
         index = 0;
     }
 
@@ -134,23 +132,45 @@ public class WozXMLReader extends BrmoXMLReader {
     }
 
 
-    private String getObjectRef(Node n) {
+    private String getObjectRef(Node n) throws XPathExpressionException {
         // WOZ:object StUF:entiteittype="WOZ"/WOZ:wozObjectNummer
-        // WOZ.WOZ.<nummer>
         // WOZ:object StUF:entiteittype="NPS"/WOZ:isEen/WOZ:gerelateerde/BG:inp.bsn
-        // WOZ.NPS.<bsnhash>
         // WOZ:object StUF:entiteittype="NNP"/WOZ:isEen/WOZ:gerelateerde/BG:inn.nnpId
-        // WOZ.NNP.nummer
-        String objRef = null;
-        NodeList childs = n.getChildNodes();
-//        LOG.debug("zoek objectref in node: " + n.getNodeName() + " - aantal subnodes: " + childs.getLength());
+        XPath xpath = xPathfactory.newXPath();
+        XPathExpression wozObjectNummer = xpath.compile("//*[local-name()='wozObjectNummer']");
+        XPathExpression bsn = xpath.compile("//*[local-name()='inp.bsn']");
+        XPathExpression nnpId = xpath.compile("//*[local-name()='nnpId']");
 
-        for (int i = 0; i < childs.getLength(); i++) {
-            Node child = childs.item(i);
-            if (child.getLocalName().equals("wozObjectNummer")) {
-                objRef = child.getTextContent();
-                break;
-            }
+        String objRef = null;
+//        NodeList childs = n.getChildNodes();
+//
+//        for (int i = 0; i < childs.getLength(); i++) {
+//            Node child = childs.item(i);
+//            if (child != null && null != child.getLocalName()) {
+//                switch (child.getLocalName()) {
+//                    case "wozObjectNummer":
+//                        objRef = "WOZ.WOZ." + child.getTextContent();
+//                        break;
+//                    case "inp.bsn":
+//                        objRef = "WOZ.NPS." + getHash(child.getTextContent());
+//                        break;
+//                    case "inp.nnpId":
+//                        objRef = "WOZ.NNP." + child.getTextContent();
+//                        break;
+//                }
+//            }
+//        }
+        NodeList obRefs = (NodeList) wozObjectNummer.evaluate(n, XPathConstants.NODESET);
+        if (obRefs.getLength() > 0) {
+            objRef = "WOZ.WOZ." + obRefs.item(0).getTextContent();
+        }
+        obRefs = (NodeList) bsn.evaluate(n, XPathConstants.NODESET);
+        if (obRefs.getLength() > 0) {
+            objRef = "WOZ.NPS." + getHash(obRefs.item(0).getTextContent());
+        }
+        obRefs = (NodeList) nnpId.evaluate(n, XPathConstants.NODESET);
+        if (obRefs.getLength() > 0) {
+            objRef = "WOZ.NPS." + obRefs.item(0).getTextContent();
         }
         return objRef;
     }
@@ -165,7 +185,7 @@ public class WozXMLReader extends BrmoXMLReader {
     public Map<String, String> extractBSN(Node n) throws XPathExpressionException {
         Map<String, String> hashes = new HashMap<>();
 
-        XPathFactory xPathfactory = XPathFactory.newInstance();
+        //XPathFactory xPathfactory = XPathFactory.newInstance();
         XPath xpath = xPathfactory.newXPath();
         XPathExpression expr = xpath.compile("//*[local-name() = 'inp.bsn']");
         NodeList nodelist = (NodeList) expr.evaluate(n, XPathConstants.NODESET);

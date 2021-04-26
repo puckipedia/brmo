@@ -848,7 +848,7 @@ public class StagingProxy {
                     lastErrorMessage = String.format("Laden bericht uit %s mislukt vanwege: %s",
                             fileName, e.getLocalizedMessage());
                     log.error(lastErrorMessage);
-                    log.trace(e.fillInStackTrace());
+                    log.trace(lastErrorMessage, e);
                     if (listener != null) {
                         listener.exception(e);
                     }
