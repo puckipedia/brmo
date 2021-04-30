@@ -1,5 +1,6 @@
 package nl.b3p.brmo.loader;
 
+import nl.b3p.brmo.loader.util.*;
 import org.locationtech.jts.io.ParseException;
 
 import java.io.IOException;
@@ -31,11 +32,6 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamSource;
 import nl.b3p.brmo.loader.entity.Bericht;
 import nl.b3p.brmo.loader.updates.UpdateProcess;
-import nl.b3p.brmo.loader.util.BrmoException;
-import nl.b3p.brmo.loader.util.DataComfortXMLReader;
-import nl.b3p.brmo.loader.util.TableData;
-import nl.b3p.brmo.loader.util.TableRow;
-import nl.b3p.brmo.loader.util.RsgbTransformer;
 import nl.b3p.loader.jdbc.ColumnMetadata;
 import nl.b3p.loader.jdbc.GeometryJdbcConverter;
 import nl.b3p.loader.jdbc.GeometryJdbcConverterFactory;
@@ -693,7 +689,7 @@ public class RsgbProxy implements Runnable, BerichtenHandler {
             } else if (brType.equals(BrmoFramework.BR_GBAV)) {
                 t = new RsgbTransformer(BrmoFramework.XSL_GBAV);
             } else if(brType.equals(BrmoFramework.BR_WOZ)){
-                t = new RsgbBRPTransformer(BrmoFramework.XSL_WOZ, this.stagingProxy);
+                t = new RsgbWOZTransformer(BrmoFramework.XSL_WOZ, this.stagingProxy);
             } else {
                 throw new IllegalArgumentException("Onbekende basisregistratie: " + brType);
             }
@@ -1313,8 +1309,7 @@ public class RsgbProxy implements Runnable, BerichtenHandler {
         Date date = null;
         Calendar calendar = javax.xml.bind.DatatypeConverter.parseDateTime(datum);
         if (calendar != null) {
-            Calendar cal = (Calendar) calendar;
-            date = new java.sql.Date(cal.getTimeInMillis());
+            date = new java.sql.Date(calendar.getTimeInMillis());
         }
 
         insertMetadataStatement.setString(1, tabel);

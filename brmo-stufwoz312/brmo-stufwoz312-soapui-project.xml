@@ -13110,137 +13110,7 @@ constructs, e.g.
          </ns:wijzigWRD>
       </ns:MHEF_Di01>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.waarderingskamer.nl/StUF/0312/MHEF_Di01"/></con:call></con:operation><con:operation id="eee59f15-e07c-4e91-a42e-5b251e3c49ff" isOneWay="false" action="http://www.waarderingskamer.nl/StUF/0312/MKEN_Di01" name="MKEN_Di01" bindingOperationName="MKEN_Di01" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="009bfbc6-b8ab-4f63-b88e-482968dafa3f" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/brmo-stufwoz312/OntvangAsynchroon</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://www.waarderingskamer.nl/StUF/0312" xmlns:StUF="http://www.egem.nl/StUF/StUF0301" xmlns:ns1="http://www.egem.nl/StUF/sector/bg/0310" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:gml="http://www.opengis.net/gml">
-   <soapenv:Header/>
-   <soapenv:Body>
-      <ns:MKEN_Di01>
-         <ns:stuurgegevens>
-            <StUF:berichtcode>?</StUF:berichtcode>
-            <StUF:zender>
-               <StUF:organisatie>?</StUF:organisatie>
-               <StUF:applicatie>?</StUF:applicatie>
-               <!--Optional:-->
-               <StUF:administratie>?</StUF:administratie>
-               <!--Optional:-->
-               <StUF:gebruiker>?</StUF:gebruiker>
-            </StUF:zender>
-            <StUF:ontvanger>
-               <!--Optional:-->
-               <StUF:organisatie>?</StUF:organisatie>
-               <StUF:applicatie>?</StUF:applicatie>
-               <!--Optional:-->
-               <StUF:administratie>?</StUF:administratie>
-               <!--Optional:-->
-               <StUF:gebruiker>?</StUF:gebruiker>
-            </StUF:ontvanger>
-            <StUF:referentienummer>?</StUF:referentienummer>
-            <StUF:tijdstipBericht>?</StUF:tijdstipBericht>
-            <StUF:functie>?</StUF:functie>
-         </ns:stuurgegevens>
-         <ns:routering StUF:entiteittype="WOZ" StUF:functie="entiteit">
-            <ns:verantwoordelijkeGemeente>
-               <ns1:gemeenteCode StUF:noValue="?" StUF:exact="true">?</ns1:gemeenteCode>
-            </ns:verantwoordelijkeGemeente>
-            <!--1 or more repetitions:-->
-            <ns:ligtIn StUF:entiteittype="WOZWSP">
-               <ns:gerelateerde StUF:entiteittype="WSP">
-                  <ns:betrokkenWaterschap StUF:exact="true">?</ns:betrokkenWaterschap>
-               </ns:gerelateerde>
-            </ns:ligtIn>
-         </ns:routering>
-         <ns:wijzigWOZ StUF:entiteittype="WOZ" StUF:functie="update">
-            <ns:parameters>
-               <StUF:mutatiesoort>?</StUF:mutatiesoort>
-               <StUF:indicatorOvername>V</StUF:indicatorOvername>
-            </ns:parameters>
-            <ns:object StUF:entiteittype="WOZ" StUF:verwerkingssoort="?">
-               <ns:wozObjectNummer StUF:exact="true">?</ns:wozObjectNummer>
-               <ns:aanduidingWOZobject>
-                  <ns1:aoa.identificatie StUF:noValue="?" StUF:exact="true">?</ns1:aoa.identificatie>
-                  <ns1:wpl.woonplaatsNaam StUF:noValue="?" StUF:exact="true">?</ns1:wpl.woonplaatsNaam>
-                  <ns1:aoa.postcode StUF:noValue="?" StUF:exact="true">?</ns1:aoa.postcode>
-                  <ns1:gor.openbareRuimteNaam StUF:noValue="?" StUF:exact="true">?</ns1:gor.openbareRuimteNaam>
-                  <!--Optional:-->
-                  <ns1:gor.straatnaam StUF:noValue="?" StUF:exact="true">?</ns1:gor.straatnaam>
-                  <ns1:aoa.huisnummer StUF:noValue="?" StUF:exact="true">?</ns1:aoa.huisnummer>
-                  <ns1:aoa.huisletter StUF:noValue="?" StUF:exact="true">?</ns1:aoa.huisletter>
-                  <ns1:aoa.huisnummertoevoeging StUF:noValue="?" StUF:exact="true">?</ns1:aoa.huisnummertoevoeging>
-                  <ns1:locatieOmschrijving StUF:noValue="?" StUF:exact="true">?</ns1:locatieOmschrijving>
-               </ns:aanduidingWOZobject>
-               <!--Optional:-->
-               <ns:grondoppervlakte StUF:noValue="?" StUF:exact="true">?</ns:grondoppervlakte>
-               <!--Optional:-->
-               <ns:gebruikscode StUF:exact="true">?</ns:gebruikscode>
-               <!--Optional:-->
-               <ns:codeGebouwdOngebouwd StUF:noValue="?" StUF:exact="true">?</ns:codeGebouwdOngebouwd>
-               <!--Optional:-->
-               <ns:meegetaxeerdeOppervlakteGebouwd StUF:noValue="?" StUF:exact="true">?</ns:meegetaxeerdeOppervlakteGebouwd>
-               <!--Optional:-->
-               <ns:wozObjectGeometrie xlink:type="simple" xlink:href="?" xlink:role="?" xlink:arcrole="?" xlink:title="?" xlink:show="?" xlink:actuate="?" gml:remoteSchema="?" StUF:noValue="?" StUF:exact="true">
-                  <gml:_Surface gml:id="?" gid="?" srsName="?" srsDimension="?" axisLabels="?" uomLabels="?">
-                     <!--Zero or more repetitions:-->
-                     <gml:metaDataProperty xlink:type="simple" xlink:href="?" xlink:role="?" xlink:arcrole="?" xlink:title="?" xlink:show="?" xlink:actuate="?" gml:remoteSchema="?" about="?">
-                        <!--You may enter ANY elements at this point-->
-                     </gml:metaDataProperty>
-                     <!--Optional:-->
-                     <gml:description xlink:type="simple" xlink:href="?" xlink:role="?" xlink:arcrole="?" xlink:title="?" xlink:show="?" xlink:actuate="?" gml:remoteSchema="?">?</gml:description>
-                     <!--Zero or more repetitions:-->
-                     <gml:name codeSpace="?">?</gml:name>
-                  </gml:_Surface>
-               </ns:wozObjectGeometrie>
-               <StUF:tijdvakGeldigheid>
-                  <StUF:beginGeldigheid StUF:noValue="?" StUF:exact="true" StUF:indOnvolledigeDatum="V">?</StUF:beginGeldigheid>
-                  <StUF:eindGeldigheid StUF:noValue="?" StUF:exact="true" StUF:indOnvolledigeDatum="V">?</StUF:eindGeldigheid>
-               </StUF:tijdvakGeldigheid>
-               <!--Optional:-->
-               <StUF:tijdstipRegistratie StUF:noValue="?" StUF:exact="true">?</StUF:tijdstipRegistratie>
-            </ns:object>
-            <ns:object StUF:entiteittype="WOZ" StUF:verwerkingssoort="?">
-               <ns:wozObjectNummer StUF:exact="true">?</ns:wozObjectNummer>
-               <ns:aanduidingWOZobject>
-                  <ns1:aoa.identificatie StUF:noValue="?" StUF:exact="true">?</ns1:aoa.identificatie>
-                  <ns1:wpl.woonplaatsNaam StUF:noValue="?" StUF:exact="true">?</ns1:wpl.woonplaatsNaam>
-                  <ns1:aoa.postcode StUF:noValue="?" StUF:exact="true">?</ns1:aoa.postcode>
-                  <ns1:gor.openbareRuimteNaam StUF:noValue="?" StUF:exact="true">?</ns1:gor.openbareRuimteNaam>
-                  <!--Optional:-->
-                  <ns1:gor.straatnaam StUF:noValue="?" StUF:exact="true">?</ns1:gor.straatnaam>
-                  <ns1:aoa.huisnummer StUF:noValue="?" StUF:exact="true">?</ns1:aoa.huisnummer>
-                  <ns1:aoa.huisletter StUF:noValue="?" StUF:exact="true">?</ns1:aoa.huisletter>
-                  <ns1:aoa.huisnummertoevoeging StUF:noValue="?" StUF:exact="true">?</ns1:aoa.huisnummertoevoeging>
-                  <ns1:locatieOmschrijving StUF:noValue="?" StUF:exact="true">?</ns1:locatieOmschrijving>
-               </ns:aanduidingWOZobject>
-               <!--Optional:-->
-               <ns:grondoppervlakte StUF:noValue="?" StUF:exact="true">?</ns:grondoppervlakte>
-               <!--Optional:-->
-               <ns:gebruikscode StUF:exact="true">?</ns:gebruikscode>
-               <!--Optional:-->
-               <ns:codeGebouwdOngebouwd StUF:noValue="?" StUF:exact="true">?</ns:codeGebouwdOngebouwd>
-               <!--Optional:-->
-               <ns:meegetaxeerdeOppervlakteGebouwd StUF:noValue="?" StUF:exact="true">?</ns:meegetaxeerdeOppervlakteGebouwd>
-               <!--Optional:-->
-               <ns:wozObjectGeometrie xlink:type="simple" xlink:href="?" xlink:role="?" xlink:arcrole="?" xlink:title="?" xlink:show="?" xlink:actuate="?" gml:remoteSchema="?" StUF:noValue="?" StUF:exact="true">
-                  <gml:_Surface gml:id="?" gid="?" srsName="?" srsDimension="?" axisLabels="?" uomLabels="?">
-                     <!--Zero or more repetitions:-->
-                     <gml:metaDataProperty xlink:type="simple" xlink:href="?" xlink:role="?" xlink:arcrole="?" xlink:title="?" xlink:show="?" xlink:actuate="?" gml:remoteSchema="?" about="?">
-                        <!--You may enter ANY elements at this point-->
-                     </gml:metaDataProperty>
-                     <!--Optional:-->
-                     <gml:description xlink:type="simple" xlink:href="?" xlink:role="?" xlink:arcrole="?" xlink:title="?" xlink:show="?" xlink:actuate="?" gml:remoteSchema="?">?</gml:description>
-                     <!--Zero or more repetitions:-->
-                     <gml:name codeSpace="?">?</gml:name>
-                  </gml:_Surface>
-               </ns:wozObjectGeometrie>
-               <StUF:tijdvakGeldigheid>
-                  <StUF:beginGeldigheid StUF:noValue="?" StUF:exact="true" StUF:indOnvolledigeDatum="V">?</StUF:beginGeldigheid>
-                  <StUF:eindGeldigheid StUF:noValue="?" StUF:exact="true" StUF:indOnvolledigeDatum="V">?</StUF:eindGeldigheid>
-               </StUF:tijdvakGeldigheid>
-               <!--Optional:-->
-               <StUF:tijdstipRegistratie StUF:noValue="?" StUF:exact="true">?</StUF:tijdstipRegistratie>
-            </ns:object>
-         </ns:wijzigWOZ>
-      </ns:MKEN_Di01>
-   </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.waarderingskamer.nl/StUF/0312/MKEN_Di01"/><con:wsrmConfig version="1.2"/></con:call><con:call id="42d9324c-9124-44e1-9add-2dcaf1b7fd8c" name="Request 2"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/brmo-stufwoz312/OntvangAsynchroon</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.waarderingskamer.nl/StUF/0312/MHEF_Di01"/></con:call></con:operation><con:operation id="eee59f15-e07c-4e91-a42e-5b251e3c49ff" isOneWay="false" action="http://www.waarderingskamer.nl/StUF/0312/MKEN_Di01" name="MKEN_Di01" bindingOperationName="MKEN_Di01" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="42d9324c-9124-44e1-9add-2dcaf1b7fd8c" name="Request 2"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/brmo-stufwoz312/OntvangAsynchroon</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
 xmlns:WOZ="http://www.waarderingskamer.nl/StUF/0312"
 xmlns:StUF="http://www.egem.nl/StUF/StUF0301"
 xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310"
@@ -14930,7 +14800,101 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
          </ns:voegToeSWO>
       </ns:OSWO_Di01>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.waarderingskamer.nl/StUF/0312/OSWO_Di01"/></con:call></con:operation><con:operation id="b1887c08-c8b0-4e6f-b3ac-b1b1bd38aae9" isOneWay="false" action="http://www.waarderingskamer.nl/StUF/0312/OWOZ_Di01" name="OWOZ_Di01" bindingOperationName="OWOZ_Di01" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="d3ed71a5-96b3-4fa3-8957-7189723cbb5d" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/brmo-stufwoz312/OntvangAsynchroon</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://www.waarderingskamer.nl/StUF/0312" xmlns:StUF="http://www.egem.nl/StUF/StUF0301" xmlns:ns1="http://www.egem.nl/StUF/sector/bg/0310" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:gml="http://www.opengis.net/gml">
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.waarderingskamer.nl/StUF/0312/OSWO_Di01"/><con:wsrmConfig version="1.2"/></con:call><con:call id="2e0351cd-3938-4621-b0fe-3263d168bad9" name="204253181"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/brmo-stufwoz312/OntvangAsynchroon</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:WOZ="http://www.waarderingskamer.nl/StUF/0312" xmlns:StUF="http://www.egem.nl/StUF/StUF0301" xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:gml="http://www.opengis.net/gml">
+  <soapenv:Header />
+  <soapenv:Body>
+    <WOZ:OSWO_Di01>
+      <WOZ:stuurgegevens>
+        <StUF:berichtcode>Di01</StUF:berichtcode>
+        <StUF:zender>
+          <StUF:organisatie>00000001803577058000</StUF:organisatie>
+          <StUF:applicatie>xxx</StUF:applicatie>
+          <StUF:administratie>P</StUF:administratie>
+          <StUF:gebruiker>Waarderingskamer</StUF:gebruiker>
+        </StUF:zender>
+        <StUF:ontvanger>
+          <StUF:organisatie>KADASTER</StUF:organisatie>
+          <StUF:applicatie>LVWOZ</StUF:applicatie>
+          <StUF:administratie>P</StUF:administratie>
+          <StUF:gebruiker />
+        </StUF:ontvanger>
+        <StUF:referentienummer>ddd43d5f-caaf-46eb-935d-92858b94162f</StUF:referentienummer>
+        <StUF:tijdstipBericht>20200712072147894</StUF:tijdstipBericht>
+        <StUF:functie>WOZ-OSWO</StUF:functie>
+      </WOZ:stuurgegevens>
+      <WOZ:routering StUF:entiteittype="WOZ" StUF:functie="entiteit">
+        <WOZ:verantwoordelijkeGemeente>
+          <BG:gemeenteCode>8000</BG:gemeenteCode>
+        </WOZ:verantwoordelijkeGemeente>
+        <WOZ:ligtIn StUF:entiteittype="WOZWSP">
+          <WOZ:gerelateerde StUF:entiteittype="WSP">
+            <WOZ:betrokkenWaterschap>8106</WOZ:betrokkenWaterschap>
+          </WOZ:gerelateerde>
+        </WOZ:ligtIn>
+      </WOZ:routering>
+      <WOZ:voegToeSWO StUF:entiteittype="SWO" StUF:functie="update">
+        <WOZ:parameters>
+          <StUF:mutatiesoort>T</StUF:mutatiesoort>
+          <StUF:indicatorOvername>V</StUF:indicatorOvername>
+        </WOZ:parameters>
+        <WOZ:object StUF:entiteittype="SWO" StUF:verwerkingssoort="T">
+          <WOZ:wozObjectNummer>800000793120</WOZ:wozObjectNummer>
+          <WOZ:statusWozObject>0</WOZ:statusWozObject>
+          <WOZ:grondoppervlakte>4000</WOZ:grondoppervlakte>
+          <WOZ:codeGebouwdOngebouwd>G</WOZ:codeGebouwdOngebouwd>
+          <WOZ:meegetaxeerdeOppervlakteGebouwd StUF:noValue="geenWaarde" xsi:nil="true" />
+          <WOZ:verantwoordelijkeGemeente>
+            <BG:gemeenteCode>8000</BG:gemeenteCode>
+          </WOZ:verantwoordelijkeGemeente>
+          <WOZ:wozObjectGeometrie StUF:noValue="waardeOnbekend" xsi:nil="true" />
+          <WOZ:ingangsdatumObject>20090413</WOZ:ingangsdatumObject>
+          <WOZ:einddatumObject StUF:noValue="geenWaarde" xsi:nil="true" />
+          <StUF:tijdvakGeldigheid>
+            <StUF:beginGeldigheid>20090413</StUF:beginGeldigheid>
+            <StUF:eindGeldigheid StUF:noValue="geenWaarde" xsi:nil="true" />
+          </StUF:tijdvakGeldigheid>
+          <StUF:tijdstipRegistratie>20090413000000001</StUF:tijdstipRegistratie>
+          <WOZ:omvat StUF:entiteittype="SWOKOZ" StUF:verwerkingssoort="T">
+            <WOZ:gerelateerde StUF:entiteittype="KOZ" StUF:verwerkingssoort="T">
+              <BG:kadastraleIdentificatie>8000552570003</BG:kadastraleIdentificatie>
+              <BG:kadastraleAanduiding>
+                <BG:kadastraleGemeentecode>DIEN1</BG:kadastraleGemeentecode>
+                <BG:kadastraleSectie>R</BG:kadastraleSectie>
+                <BG:kadastraalPerceelnummer>1</BG:kadastraalPerceelnummer>
+                <BG:kdp.deelperceelNummer StUF:noValue="geenWaarde" xsi:nil="true" />
+              </BG:kadastraleAanduiding>
+            </WOZ:gerelateerde>
+            <WOZ:toegekendeOppervlakte>4000</WOZ:toegekendeOppervlakte>
+            <WOZ:meegetaxeerdeOppervlakte StUF:noValue="geenWaarde" xsi:nil="true" />
+            <StUF:tijdvakRelatie>
+              <StUF:beginRelatie>20090413</StUF:beginRelatie>
+              <StUF:eindRelatie StUF:noValue="geenWaarde" xsi:nil="true" />
+            </StUF:tijdvakRelatie>
+            <StUF:tijdvakGeldigheid>
+              <StUF:beginGeldigheid>20090413</StUF:beginGeldigheid>
+              <StUF:eindGeldigheid StUF:noValue="geenWaarde" xsi:nil="true" />
+            </StUF:tijdvakGeldigheid>
+            <StUF:tijdstipRegistratie>20090413000000001</StUF:tijdstipRegistratie>
+          </WOZ:omvat>
+          <WOZ:ligtIn StUF:entiteittype="SWOWSP" StUF:verwerkingssoort="T">
+            <WOZ:gerelateerde StUF:entiteittype="WSP" StUF:verwerkingssoort="I">
+              <WOZ:betrokkenWaterschap>8106</WOZ:betrokkenWaterschap>
+            </WOZ:gerelateerde>
+            <StUF:tijdvakRelatie>
+              <StUF:beginRelatie>20090413</StUF:beginRelatie>
+              <StUF:eindRelatie StUF:noValue="geenWaarde" xsi:nil="true" />
+            </StUF:tijdvakRelatie>
+            <StUF:tijdvakGeldigheid>
+              <StUF:beginGeldigheid>20090413</StUF:beginGeldigheid>
+              <StUF:eindGeldigheid StUF:noValue="geenWaarde" xsi:nil="true" />
+            </StUF:tijdvakGeldigheid>
+            <StUF:tijdstipRegistratie>20090413000000001</StUF:tijdstipRegistratie>
+          </WOZ:ligtIn>
+        </WOZ:object>
+      </WOZ:voegToeSWO>
+    </WOZ:OSWO_Di01>
+  </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.waarderingskamer.nl/StUF/0312/OSWO_Di01"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="b1887c08-c8b0-4e6f-b3ac-b1b1bd38aae9" isOneWay="false" action="http://www.waarderingskamer.nl/StUF/0312/OWOZ_Di01" name="OWOZ_Di01" bindingOperationName="OWOZ_Di01" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="d3ed71a5-96b3-4fa3-8957-7189723cbb5d" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/brmo-stufwoz312/OntvangAsynchroon</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://www.waarderingskamer.nl/StUF/0312" xmlns:StUF="http://www.egem.nl/StUF/StUF0301" xmlns:ns1="http://www.egem.nl/StUF/sector/bg/0310" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:gml="http://www.opengis.net/gml">
    <soapenv:Header/>
    <soapenv:Body>
       <ns:OWOZ_Di01>

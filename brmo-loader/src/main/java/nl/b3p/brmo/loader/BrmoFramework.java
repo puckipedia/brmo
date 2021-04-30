@@ -56,7 +56,7 @@ public class BrmoFramework {
     public static final String XSL_NHR = "/xsl/nhr-to-rsgb-xml-3.0.xsl";
     public static final String XSL_BRP = "/xsl/brp-to-rsgb-xml.xsl";
     public static final String XSL_GBAV = "/xsl/gbav-to-rsgb-xml.xsl";
-    public static final String XSL_WOZ = "/xsl/woz-to-rsgb-xml.xsl";
+    public static final String XSL_WOZ = "/xsl/woz-to-rsgb.xsl";
 
     public static final String LAADPROCES_TABEL = "laadproces";
     public static final String BERICHT_TABLE = "bericht";
