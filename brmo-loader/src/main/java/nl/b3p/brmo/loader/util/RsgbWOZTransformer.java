@@ -14,6 +14,7 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
+import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -42,7 +43,13 @@ public class RsgbWOZTransformer extends RsgbTransformer {
         XPathExpression expression = xpath.compile("/root/object");
 
         DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
+        // to prevent XXE
+        docBuilderFactory.setExpandEntityReferences(false);
+        docBuilderFactory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
+        docBuilderFactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
         docBuilderFactory.setIgnoringElementContentWhitespace(true);
+        docBuilderFactory.setNamespaceAware(true);
+
         DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();
         Document base = docBuilder.parse(new InputSource(new StringReader(oldFile)));
 
@@ -109,6 +116,11 @@ public class RsgbWOZTransformer extends RsgbTransformer {
 
     protected static String print(Document doc) throws TransformerException {
         TransformerFactory transformerFactory = TransformerFactory.newInstance();
+        // to prevent XXE
+        transformerFactory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
+        transformerFactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
+        transformerFactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_STYLESHEET, "");
+
         Transformer transformer = transformerFactory.newTransformer();
         DOMSource source = new DOMSource(doc);
         StringWriter sw = new StringWriter();
