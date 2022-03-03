@@ -27,6 +27,8 @@ import org.quartz.JobBuilder;
 import org.quartz.JobDetail;
 import org.quartz.Scheduler;
 import org.quartz.SchedulerException;
+import org.quartz.SimpleScheduleBuilder;
+import org.quartz.SimpleTrigger;
 import org.quartz.TriggerBuilder;
 import org.quartz.impl.StdSchedulerFactory;
 import org.stripesstuff.stripersist.Stripersist;
@@ -126,7 +128,26 @@ public class GeplandeTakenInit implements Servlet {
         for (AutomatischProces p : procList) {
             addJobDetails(scheduler, p);
         }
+
+        createNHRJob(scheduler);
+
         this.getServletConfig().getServletContext().setAttribute(QUARTZ_FACTORY_KEY, factory);
+    }
+
+    private static void createNHRJob(Scheduler scheduler) throws SchedulerException {
+        JobDetail job = JobBuilder.newJob(NHRJob.class)
+          .withIdentity("NHR")
+          .build();
+
+        SimpleTrigger trigger = TriggerBuilder.newTrigger()
+          .startNow()
+          .forJob(job)
+          .withIdentity("NHR-cron")
+          .withSchedule(SimpleScheduleBuilder.repeatSecondlyForever(5))
+          .build();
+
+        scheduler.scheduleJob(job, trigger);
+        log.info("scheduled NHR job");
     }
 
     /**
