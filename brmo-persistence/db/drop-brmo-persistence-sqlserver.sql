@@ -30,4 +30,6 @@
 
     drop table laadproces;
 
+    drop table nhr_laadproces;
+
     drop table brmo_metadata;

@@ -114,6 +114,16 @@ GO
         primary key (jid)
     );
 
+    CREATE TABLE nhr_laadproces (
+        datum datetime null,
+        laatst_geprobeerd datetime null,
+        volgend_proberen datetime null,
+        probeer_aantal numeric(19,0),
+        kvk_nummer varchar(255) not null,
+        exception text null,
+        primary key (kvk_nummer)
+    );
+
 GO
 
 create index idx_bericht_job_id on bericht(job_id);
@@ -126,6 +136,7 @@ create index idx_laadproces_soort on laadproces(soort);
 create index idx_laadproces_contractnummer on laadproces(contractnummer);
 create index idx_laadproces_contractafgiftenummer on laadproces(contractafgiftenummer);
 create index idx_laadproces_klantafgiftenummer on laadproces(klantafgiftenummer);
+create index idx_nhr_laadproces_volgend_proberen on nhr_laadproces(volgend_proberen);
 
 GO
 
