@@ -23,6 +23,11 @@ Copyright (C) 2022 B3Partners B.V.
             <artifactId>gt-epsg-hsql</artifactId>
         </dependency>
         <dependency>
+            <groupId>javax.persistence</groupId>
+            <artifactId>javax.persistence-api</artifactId>
+            <version>2.2</version>
+        </dependency>
+        <dependency>
             <groupId>org.locationtech.jts</groupId>
             <artifactId>jts-core</artifactId>
         </dependency>
@@ -183,7 +188,32 @@ Copyright (C) 2022 B3Partners B.V.
                     </execution>
                 </executions>
             </plugin>
-
+            <plugin>
+                <groupId>de.jpdigital</groupId>
+                <artifactId>hibernate56-ddl-maven-plugin</artifactId>
+                <version>2.5.0</version>
+                <configuration>
+                    <dialects>
+                        <param>postgresql</param>
+                    </dialects>
+                    <persistencePropertiesToUse>
+                        <param>format_sql</param>
+                        <param>use_sql_comments</param>
+                        <param>hibernate.physical_naming_strategy</param>
+                    </persistencePropertiesToUse>
+                    <packages>
+                        <param>nl.b3p.brmo.nhr.model</param>
+                    </packages>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>gen-ddl</goal>
+                        </goals>
+                        <phase>process-classes</phase>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.apache.cxf</groupId>
                 <artifactId>cxf-codegen-plugin</artifactId>
