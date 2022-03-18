@@ -70,7 +70,7 @@ jobs:
           mvn resources:testResources compiler:testCompile surefire:test -Pmssql -pl datamodel -Dtest='!*UpgradeTest,!P8*'
 
       - name: Verify bgt-loader
-        run: mvn -e verify -B -Pmssql -T1 -Dtest.onlyITs=true -pl 'bgt-loader'
+        run: mvn -e verify -B -Pmssql -Dtest.onlyITs=true -pl 'bgt-loader'
 
       - name: Verify brmo-loader
         run: mvn -e verify -B -Pmssql -Dtest.onlyITs=true -pl 'brmo-loader'
@@ -86,6 +86,9 @@ jobs:
 
       - name: Verify brmo-commandline
         run: mvn -e verify -B -Pmssql -Dtest.onlyITs=true -pl 'brmo-commandline'
+
+      - name: Verify nhr-loader
+        run: mvn -e verify -B -Pmssql -Dtest.onlyITs=true -pl 'nhr-loader'
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v2
