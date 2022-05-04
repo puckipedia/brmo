@@ -20,7 +20,7 @@ import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.StreamingResolution;
 import net.sourceforge.stripes.validation.Validate;
 import nl.b3p.brmo.loader.util.BrmoException;
-import nl.b3p.brmo.persistence.staging.NHRLaadProces;
+import nl.b3p.brmo.persistence.staging.NHRVestiging;
 import nl.b3p.brmo.service.jobs.NHRJob;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -158,7 +158,7 @@ public class NHRActionBean implements ActionBean {
         EntityManager entityManager = Stripersist.getEntityManager();
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<Long> cq = cb.createQuery(Long.class);
-        Root<NHRLaadProces> from = cq.from(NHRLaadProces.class);
+        Root<NHRVestiging> from = cq.from(NHRVestiging.class);
         cq.select(cb.count(from));
         return entityManager.createQuery(cq).getSingleResult();
     }
@@ -168,7 +168,7 @@ public class NHRActionBean implements ActionBean {
         EntityManager entityManager = Stripersist.getEntityManager();
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<Long> cq = cb.createQuery(Long.class);
-        Root<NHRLaadProces> from = cq.from(NHRLaadProces.class);
+        Root<NHRVestiging> from = cq.from(NHRVestiging.class);
         cq.select(cb.count(from));
         cq.where(cb.lessThan(from.get("volgendProberen"), cb.currentTimestamp()));
         return entityManager.createQuery(cq).getSingleResult();
@@ -177,8 +177,8 @@ public class NHRActionBean implements ActionBean {
     public Resolution getGridData() throws BrmoException {
         EntityManager entityManager = Stripersist.getEntityManager();
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
-        CriteriaQuery<NHRLaadProces> cq = cb.createQuery(NHRLaadProces.class);
-        Root<NHRLaadProces> from = cq.from(NHRLaadProces.class);
+        CriteriaQuery<NHRVestiging> cq = cb.createQuery(NHRVestiging.class);
+        Root<NHRVestiging> from = cq.from(NHRVestiging.class);
 
         if (sort != null) {
             if (dir == null || !dir.equalsIgnoreCase("desc")) {
@@ -196,10 +196,10 @@ public class NHRActionBean implements ActionBean {
             limit = 40;
         }
 
-        List<NHRLaadProces> procList = entityManager.createQuery(cq).setMaxResults(limit).setFirstResult(start).getResultList();
+        List<NHRVestiging> procList = entityManager.createQuery(cq).setMaxResults(limit).setFirstResult(start).getResultList();
         JSONArray jsonBerichten = new JSONArray();
 
-        for (NHRLaadProces b : procList) {
+        for (NHRVestiging b : procList) {
             jsonBerichten.put(laadproces2Json(b));
         }
 
@@ -222,7 +222,7 @@ public class NHRActionBean implements ActionBean {
         if (selectedIds == null || selectedIds.length != 1) {
             responseString = "could not find log for 0 or >1 items";
         } else {
-            NHRLaadProces item = entityManager.find(NHRLaadProces.class, selectedIds[0]);
+            NHRVestiging item = entityManager.find(NHRVestiging.class, selectedIds[0]);
             if (item == null) {
                 responseString = String.format("Logs for KVK nummer %s niet gevonden", selectedIds[0]);
             } else {
@@ -242,8 +242,8 @@ public class NHRActionBean implements ActionBean {
         EntityManager entityManager = Stripersist.getEntityManager();
 
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
-        CriteriaQuery<NHRLaadProces> cq = cb.createQuery(NHRLaadProces.class);
-        Root<NHRLaadProces> from = cq.from(NHRLaadProces.class);
+        CriteriaQuery<NHRVestiging> cq = cb.createQuery(NHRVestiging.class);
+        Root<NHRVestiging> from = cq.from(NHRVestiging.class);
 
         CriteriaBuilder.In<String> in = cb.in(from.get("kvkNummer"));
         for (String item : selectedIds) {
@@ -251,8 +251,8 @@ public class NHRActionBean implements ActionBean {
         }
         cq.where(in);
 
-        List<NHRLaadProces> procList = entityManager.createQuery(cq).getResultList();
-        for (NHRLaadProces b : procList) {
+        List<NHRVestiging> procList = entityManager.createQuery(cq).getResultList();
+        for (NHRVestiging b : procList) {
             b.setVolgendProberen(new java.util.Date());
             b.setProbeerAantal(0);
         }
@@ -275,10 +275,10 @@ public class NHRActionBean implements ActionBean {
                     break;
                 }
 
-                NHRLaadProces proces;
-                proces = entityManager.find(NHRLaadProces.class, line);
+                NHRVestiging proces;
+                proces = entityManager.find(NHRVestiging.class, line);
                 if (proces == null) {
-                    proces = new NHRLaadProces();
+                    proces = new NHRVestiging();
                 }
 
                 proces.setDatum(new Date());
@@ -294,7 +294,7 @@ public class NHRActionBean implements ActionBean {
         return list();
     }
 
-    private JSONObject laadproces2Json(NHRLaadProces laadproces) {
+    private JSONObject laadproces2Json(NHRVestiging laadproces) {
         JSONObject json = new JSONObject();
 
         json.put("datum", laadproces.getDatum());

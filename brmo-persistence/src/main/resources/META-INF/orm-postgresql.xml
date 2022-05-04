@@ -35,7 +35,7 @@ Copyright (C) 2015 B3Partners B.V.
             </id>
         </attributes>
     </entity>
-    <entity class="nl.b3p.brmo.persistence.staging.NHRLaadProces">
+    <entity class="nl.b3p.brmo.persistence.staging.NHRVestiging">
         <attributes>
             <id name="id">
                 <generated-value strategy="IDENTITY"/>

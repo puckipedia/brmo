@@ -36,7 +36,7 @@
             </id>
         </attributes>
     </entity>
-    <entity class="nl.b3p.brmo.persistence.staging.NHRLaadProces">
+    <entity class="nl.b3p.brmo.persistence.staging.NHRVestiging">
         <attributes>
             <id name="id">
                 <generated-value strategy="SEQUENCE" generator="nhr_laadproces_id_seq" />
