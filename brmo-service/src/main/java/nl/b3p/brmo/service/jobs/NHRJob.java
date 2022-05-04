@@ -108,7 +108,7 @@ public class NHRJob implements Job {
         }
 
         while (true) {
-            // Batch requests in groups of 100, to make sure the database doesn't end up too far behind,
+            // Batch requests in groups of 20, to make sure the database doesn't end up too far behind,
             // and the user interface stays roughly up to date.
             Stripersist.requestInit();
             EntityManager entityManager = Stripersist.getEntityManager();
@@ -116,7 +116,7 @@ public class NHRJob implements Job {
             CriteriaQuery<NHRVestiging> cq = cb.createQuery(NHRVestiging.class);
             Root<NHRVestiging> from = cq.from(NHRVestiging.class);
             cq.where(cb.lessThan(from.get("volgendProberen"), cb.currentTimestamp()));
-            List<NHRVestiging> procList = entityManager.createQuery(cq).setMaxResults(100).getResultList();
+            List<NHRVestiging> procList = entityManager.createQuery(cq).setMaxResults(20).getResultList();
             if (procList.isEmpty()) break;
 
             log.info(String.format("processing %d items", procList.size()));
