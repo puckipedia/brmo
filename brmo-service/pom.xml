@@ -57,6 +57,12 @@
         <dependency>
             <groupId>nl.b3p</groupId>
             <artifactId>kadaster-gds2</artifactId>
+            <exclusions>
+              <exclusion>
+                <groupId>com.sun.xml.ws</groupId>
+                <artifactId>jaxws-rt</artifactId>
+              </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>nl.b3p</groupId>
